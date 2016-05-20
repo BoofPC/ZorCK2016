@@ -1,37 +1,58 @@
-How to GIT:
-1)clone repository so you have main working repo on your computer. You ONLY DO
-THIS ONCE!!!
->>git clone https:/github.com/aebooth/ZorCK2016.git
+# How to be a Git in 5 easy steps
 
-2)create your own branch to work on and switch to it using checkout:
->>git branch [your branch name]
->>git checkout [your branch name]
+## Step 0
+Know that the [Git book](https://git-scm.com/book/en/v2) probably talks about
+your problem, and you can append ``-h`` or ``--help`` to any `git` command to
+view either a short or in-depth help message.
 
-3)do work editing the code/adding cool stuff. When done with a fair bit of work
-AND testing of your code, add and commit your work on your branch 
-(don't forget the message):
->>git add [names of all changed files separated by spaces]
-    OR to add all of the files you've changed (modified, added, or deleted)
->>git add -A
-    Then
->>git commit -m "[description of work done goes here in quotes]"
+## Step 1
+Clone repository so you have main working repository (repo) on your computer.
+_You only do this once!_
 
-4)to merge your work into the master you need to follow this process
->>git checkout master
->>git pull
->>git merge [your branch name]
-    Here you may need to fix merge conflicts--if it says this needs to happen, 
-let me know and I will help you
->>git pull
-    Again fix any merge conflicts with my help
->>git push
-Your work should now be merged into the main branch and everyone else should be
-able to get your code with a pull
+```sh
+git clone https:/github.com/aebooth/ZorCK2016.git
+```
 
-5)to continue working, switch back to your working branch:
->>git checkout [your branch name]
-You should NOT need to merge again.
+## Step 2
+Create your own branch to work on and switch to it using `git checkout`:
+```sh
+git branch $MY_BRANCH
+git checkout $MY_BRANCH
+```
 
-6)Repeat the process by checking by repeating steps 3-5 as often as you need to.
-You can check the status of your current changes using "git status", and you 
-check on the entire project using "git history". 
+## Step 3
+Do work editing the code/adding cool stuff. When done with a fair bit of work
+*and* testing of your code, add and commit your work on your branch (don't
+forget the message):
+```sh
+git status # figure out what you've changed
+git add $FILE_A $FILE_B $FILE_C # add the files you changed and want to commit
+# (you can use git add -A to add everything, but be careful)
+git commit -m "Short description of work"
+# if you want to say more, use git commit and write the longer changes on
+# extra lines (the comments in the message in the editor should guide you)
+```
+
+## Step 4
+To merge your work into the master:
+```sh
+git checkout master
+git pull
+git checkout $MY_BRANCH
+git rebase master # if you need to fix merge conflicts, let me know & I'll help
+git checkout master
+git pull # if anything changed in master, restart this step
+git merge $MY_BRANCH
+```
+
+Your branch is now be merged into `master` and everyone can `pull` your changes.
+
+```sh
+git branch -d $MY_BRANCH
+```
+
+Your branch will be deleted if properly merged.
+
+## Step 5
+Repeat steps 2-4 as necessary. You can check on the commit history of a branch
+using `git log $BRANCH`, or no `$BRANCH` for the current branch.
