@@ -28,13 +28,9 @@ let me know and I will help you
 Your work should now be merged into the main branch and everyone else should be
 able to get your code with a pull
 
-5)to continue working, make sure that your working branch is up to date:
+5)to continue working, switch back to your working branch:
 >>git checkout [your branch name]
->>git merge master
-    fix any merge conflicts with help. If there are lots--I will probably just 
-have you nuke the branch and start over from master.
-After any merging/updating is done, you can continue coding on whatever you need
- to, and your branch will accurately reflect the master.
+You should NOT need to merge again.
 
 6)Repeat the process by checking by repeating steps 3-5 as often as you need to.
 You can check the status of your current changes using "git status", and you 
