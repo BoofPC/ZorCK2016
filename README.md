@@ -1,4 +1,4 @@
-# How to be a Git in 5 easy steps
+# How to Git Good in 5 easy steps
 
 ## Step 0
 Know that the [Git book](https://git-scm.com/book/en/v2) probably talks about
