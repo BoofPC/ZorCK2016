@@ -19,6 +19,9 @@ public class Player extends Character{
     }
     
     public void gainXP(Enemy enemy){
-        this.xp += (Math.pow(1.5,(enemy.LEVEL - this.level))*(this.hp - enemy.hp));
+        if(this.level>enemy.LEVEL){
+            this.xp += (enemy.LEVEL * enemy.EXP)/5 * Math.pow(2*enemy.LEVEL+10,2.5)/Math.pow(enemy.LEVEL*2+10,2.5)+1;
+        }
+        this.xp += (enemy.LEVEL * enemy.EXP)/5 * Math.pow(2*enemy.LEVEL+10,2.5)/Math.pow(enemy.LEVEL+this.level+10,2.5)+1;
     }
 }
