@@ -37,12 +37,12 @@ git commit -m "Short description of work"
 To merge your work into the master:
 ```sh
 git checkout master
-git pull
+git pull --rebase
 git checkout $MY_BRANCH
 git rebase master # if you need to fix merge conflicts, let me know & I'll help
 git checkout master
-git pull # if anything changed in master, restart this step
-git merge $MY_BRANCH
+git pull --rebase # if anything changed in master, restart this step
+git merge $MY_BRANCH # perform a final fast-forward merge of your branch with master
 ```
 
 Your branch is now be merged into `master`, you just need to push so everyone 
