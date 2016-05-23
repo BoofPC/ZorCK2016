@@ -10,7 +10,7 @@ Clone repository so you have main working repository (repo) on your computer.
 _You only do this once!_
 
 ```sh
-git clone https:/github.com/aebooth/ZorCK2016.git
+git clone https://github.com/aebooth/ZorCK2016.git
 ```
 
 ## Step 2
