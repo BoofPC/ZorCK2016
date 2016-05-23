@@ -12,8 +12,8 @@ public class Enemy extends Character{
     public final int EXP;
     public final int LEVEL;
     
-    public Enemy(int hp, int speed, int attack, int defense, int exp, int level){
-        super(hp,speed,attack,defense);
+    public Enemy(int hp, int speed, int attack, int defense, int exp, int level,String name){
+        super(hp,speed,attack,defense,name);
         this.EXP = exp;
         this.LEVEL = level;
     }

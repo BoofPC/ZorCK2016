@@ -13,7 +13,7 @@ public class Player extends Character{
     private int level;
     
     public Player(){
-        super(20,10,10,10);
+        super(20,10,10,10,"Red");
         this.xp = 0;
         this.level = 1;
     }
