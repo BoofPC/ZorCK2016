@@ -45,7 +45,14 @@ git pull # if anything changed in master, restart this step
 git merge $MY_BRANCH
 ```
 
-Your branch is now be merged into `master` and everyone can `pull` your changes.
+Your branch is now be merged into `master`, you just need to push so everyone 
+can `pull` your changes.
+
+```sh
+git push
+```
+
+Finally, if all that worked, delete your feature branch:
 
 ```sh
 git branch -d $MY_BRANCH
