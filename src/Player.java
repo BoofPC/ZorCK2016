@@ -13,7 +13,7 @@ public class Player extends Character{
     private int level;
     
     public Player(){
-        super(20,10,10,10,"Red");
+        super(435,235,235,235,"Red");
         this.xp = 0;
         this.level = 1;
     }
@@ -23,5 +23,27 @@ public class Player extends Character{
             this.xp += (enemy.LEVEL * enemy.EXP)/5 * Math.pow(2*enemy.LEVEL+10,2.5)/Math.pow(enemy.LEVEL*2+10,2.5)+1;
         }
         this.xp += (enemy.LEVEL * enemy.EXP)/5 * Math.pow(2*enemy.LEVEL+10,2.5)/Math.pow(enemy.LEVEL+this.level+10,2.5)+1;
+        
+        //determines if level needs to increase and then increases it.
+        boolean levelChanged = false;
+        while(this.xp >= Math.pow(this.level + 1,3)){
+            this.level++;
+            levelChanged = true;
+        }
+        // recalculates stats based on new level and new EVs
+            this.hp = (int) ((((this.HP+15)*2)*this.level)/100 + this.level +10);
+            this.attack = (int) ((((this.ATTACK+15)*2)*this.level)/100 + 5);
+            this.defense = (int) ((((this.DEFENSE+15)*2)*this.level)/100 + 5);
+            this.speed = (int) ((((this.SPEED+15)*2)*this.level)/100 + 5);
+    }
+    
+    public void takeDamage(Enemy enemy){
+        // the 40 in this equation will be replaced by the strength of the weapon used to attack.
+        this.hp -= (2 * enemy.LEVEL +10)/250 * enemy.attack / this.defense * 40 + 1;
+        if(this.hp<0) this.hp = 0;
+    }
+    
+    public int getLevel(){
+        return this.level;
     }
 }
