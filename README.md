@@ -49,7 +49,7 @@ Your branch is now be merged into `master`, you just need to push so everyone
 can `pull` your changes.
 
 ```sh
-git push
+git push origin master
 ```
 
 Finally, if all that worked, delete your feature branch:
@@ -67,5 +67,5 @@ using `git log $BRANCH`, or no `$BRANCH` for the current branch.
 
 IMPORTANT NOTE:
 If you are working on a PERMANENT feature branch (e.g. pokemon), you need to 
-switch all references to "master" above to your feature branch name ("pokemon").
+switch all references to "master" above to your feature branch name "pokemon".
 For all intents and purposes, "pokemon" is now your master branch.
