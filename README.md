@@ -63,3 +63,9 @@ Your branch will be deleted if properly merged.
 ## Step 5
 Repeat steps 2-4 as necessary. You can check on the commit history of a branch
 using `git log $BRANCH`, or no `$BRANCH` for the current branch.
+
+
+IMPORTANT NOTE:
+If you are working on a PERMANENT feature branch (e.g. pokemon), you need to 
+switch all references to "master" above to your feature branch name ("pokemon").
+For all intents and purposes, "pokemon" is now your master branch.
