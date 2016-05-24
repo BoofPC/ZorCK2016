@@ -10,11 +10,17 @@
  */
 public class World {
     private Area[][] map;
-    private boolean[][] isAccessible;
+    private boolean[][] isAccessibleNorth;
+    private boolean[][] isAccessibleSouth;
+    private boolean[][] isAccessibleEast;
+    private boolean[][] isAccessibleWest;
     
     public World(int size){
         this.map = new Area[size][size];
-        this.isAccessible = new boolean[size][size];
+        this.isAccessibleNorth = new boolean[size][size];
+        this.isAccessibleSouth = new boolean[size][size];
+        this.isAccessibleEast = new boolean[size][size];
+        this.isAccessibleWest = new boolean[size][size];
     }
     
     public void addArea(int x, int y, Area newArea){
@@ -22,11 +28,20 @@ public class World {
     }
     
     public Area getAreaAt(int x, int y){
-        if(isAccessible[x][y]) return this.map[x][y];
-        return null;
+        return this.map[x][y];
     }
     
-    public void setAccessibility(int x, int y, boolean isAccessible){
-        this.isAccessible[x][y] = isAccessible;
+    
+    public void setAccessibilityNorth(int x, int y, boolean isAccessible){
+        this.isAccessibleNorth[x][y] = isAccessible;
+    }
+    public void setAccessibilityEast(int x, int y, boolean isAccessible){
+        this.isAccessibleEast[x][y] = isAccessible;
+    }
+    public void setAccessibilitySouth(int x, int y, boolean isAccessible){
+        this.isAccessibleSouth[x][y] = isAccessible;
+    }
+    public void setAccessibilityWest(int x, int y, boolean isAccessible){
+        this.isAccessibleWest[x][y] = isAccessible;
     }
 }
