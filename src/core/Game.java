@@ -1,6 +1,7 @@
-
+package core;
 import java.util.ArrayList;
 import java.util.Scanner;
+import verbs.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

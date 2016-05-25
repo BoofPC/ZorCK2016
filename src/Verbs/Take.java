@@ -1,4 +1,5 @@
-
+package verbs;
+import core.Verb;
 /**
  *
  * @author keith5387h
