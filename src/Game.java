@@ -110,6 +110,7 @@ public class Game {
             if(input.substring(i,i+1).equals(" ")) s++;
         }
         String[] inputArray = new String[s];
+        String[] inputArraySinVerbos = new String[0];
         int n = 0;
         for (String retval: input.split(" ")){
             inputArray[n] = retval;
@@ -126,8 +127,23 @@ public class Game {
                 }
                 if(findVerb(verbTest) != null){
                     verb = verbTest;
+                    inputArraySinVerbos = new String[inputArray.length - i - j];
+                    int q = 0;
+                    for(int k = i+j; k < inputArray.length; k++){
+                        inputArraySinVerbos[q] = inputArray[k];
+                    }
                     break outerLoop;
                 }
+            }
+            throw new IllegalArgumentException("NO VERB");
+        }
+        if(findVerb(verb).checkUsageKey(0) && inputArraySinVerbos.length == 0){
+            
+        }else{
+            if(findVerb(verb).checkUsageKey(1) && inputArraySinVerbos.length > 0){
+                
+            }else if(findVerb(verb).checkUsageKey(2) && inputArraySinVerbos.length > 0){
+                
             }
         }
         //still need to finish the part where it takes a noun or direction
