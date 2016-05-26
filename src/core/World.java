@@ -5,6 +5,8 @@ package core;
  * and open the template in the editor.
  */
 
+import java.util.ArrayList
+
 /**
  *
  * @author alexb
@@ -12,18 +14,23 @@ package core;
 
 //remocing accessiblity, adding portals 
 public class World {
-    private Area[][] map;
     
+    private ArrayList<Area> areas;
 
-    public World(int size){
-        this.map = new Area[size][size];
+    public World(ArrayList<Area> areas){
+        for(Area item: areas){
+            this.areas.add(item);
+        }
     }
     
-    public void addArea(int x, int y, Area newArea){
-        this.map[x][y] = newArea;
+    public void addArea(Area newArea){
+        this.areas.add(newArea);
     }
     
-    public Area getAreaAt(int x, int y){
-        return this.map[x][y];
+    public Area getAreaAt(int id){
+        for(Area item: areas){
+            if(item.getID == id) return item;
+        }
+        return null;
     }
 }
