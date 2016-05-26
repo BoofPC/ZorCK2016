@@ -12,11 +12,13 @@ import java.util.HashMap;
  * @author alexb
  */
 public abstract class Area {
-    private HashMap<String,Boolean> state;
+    private ArrayList<Portal> portals;
     private World world;
     
-    public Area(World containingWorld){
-        this.state = new HashMap<>();
+    public Area(World containingWorld, ArrayList<Portal> portals){
+        for(Portal item: portals){
+            this.portals.add(item);
+        }
         this.world = containingWorld;
     }
     
@@ -30,15 +32,15 @@ public abstract class Area {
     
     public abstract void exit(Player player);
     
-    public void addStateSwitch(String key, Boolean startState){
-        this.state.put(key, startState);
+    public void addPortal(Portal portal){
+        this.portals.add(portal);
     }
     
-    public void setState(String key, Boolean newState){
-        this.state.replace(key, newState);
+    public void setPortal(Portal portal, Boolean newState){
+        this.portal.setAccessible(newState);
     }
     
-    public Boolean checkState(String key){
-        return this.state.get(key);
+    public Boolean checkPortal(Portal portal){
+        return this.portal.getAccessible();
     }
 }
