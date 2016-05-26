@@ -43,6 +43,12 @@ public class Player extends Character{
         if(this.hp<0) this.hp = 0;
     }
     
+    //I made all damage dealing the responibility of the player class.
+    public void dealDamage(Enemy enemy){
+        enemy.hp -= (2 * this.level +10)/250 * this.attack / enemy.defense * 40 + 1;
+        if(enemy.hp<0) enemy.hp = 0;
+    }
+    
     public int getLevel(){
         return this.level;
     }
