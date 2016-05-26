@@ -12,6 +12,6 @@ import core.Verb;
  */
 public class Move extends Verb{
     public Move(){
-        super("Move", new String[] {"Go"}, new boolean[]{false, false, true});
+        super("move", new String[] {"go","travel","walk"}, new boolean[]{false, false, true});
     }
 }

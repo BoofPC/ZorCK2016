@@ -13,7 +13,7 @@ import core.Verb;
 public class Examine extends Verb{
     
     public Examine(){
-        super("Examine",new String[]{"Look at"},new boolean[]{false,true,false});
+        super("examine",new String[]{"look at","scan","study","observe"},new boolean[]{false,true,false});
     }
     
 }
