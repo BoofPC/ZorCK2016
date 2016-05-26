@@ -14,8 +14,10 @@ import java.util.HashMap;
 public abstract class Area {
     private Portal[] portals;
     private World world;
+    private int id;
     
-    public Area(World containingWorld, Portal[] portals){
+    public Area(int id, World containingWorld, Portal[] portals){
+        this.id = id;
         this.portals = new Portal[8];
         for(int i = 0; i < portals.length; i++){
             this.portals[i] = portals[i];
@@ -46,5 +48,9 @@ public abstract class Area {
     
     public Boolean checkPortal(int n){
         return this.portals[n].isLocked();
+    }
+    
+    public int getID(){
+        return this.id;
     }
 }
