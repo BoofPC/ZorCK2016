@@ -25,9 +25,4 @@ public class Enemy extends Character{
         this.speed = (this.speed-5)*LEVEL+5;
     }
     
-    public void takeDamage(Player player){
-        // the 40 in this equation will be replaced by the strength of the weapon used to attack.
-        this.hp -= (2 * player.getLevel() +10)/250 * player.attack / this.defense * 40 + 1;
-        if(this.hp<0) this.hp = 0;
-    }
 }
