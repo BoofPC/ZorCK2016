@@ -1,2 +1,3 @@
 Map Spreadsheet: 	https://goo.gl/3qOxS2
 Doc: 			https://goo.gl/OBuWeQ
+core Design Doc:	https://goo.gl/7ZO40Z
