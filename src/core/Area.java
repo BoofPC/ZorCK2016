@@ -12,12 +12,13 @@ import java.util.HashMap;
  * @author alexb
  */
 public abstract class Area {
-    private ArrayList<Portal> portals;
+    private Portal[] portals;
     private World world;
     
-    public Area(World containingWorld, ArrayList<Portal> portals){
-        for(Portal item: portals){
-            this.portals.add(item);
+    public Area(World containingWorld, Portal[] portals){
+        this.portals = new Portal[8];
+        for(int i = 0; i < portals.length; i++){
+            this.portals[i] = portals[i];
         }
         this.world = containingWorld;
     }
@@ -32,15 +33,15 @@ public abstract class Area {
     
     public abstract void exit(Player player);
     
-    public void addPortal(Portal portal){
-        this.portals.add(portal);
+    public void addPortal(int n,Portal portal){
+        this.portals[n] = portal;
     }
     
-    public void setPortal(Portal portal, Boolean newState){
-        this.portal.setAccessible(newState);
+    public void setPortal(int n, Boolean newState){
+        this.portals[n].setAccessible(newState);
     }
     
-    public Boolean checkPortal(Portal portal){
-        return this.portal.getAccessible();
+    public Boolean checkPortal(int n){
+        return this.portals[n].getAccessible();
     }
 }
