@@ -38,10 +38,13 @@ public abstract class Area {
     }
     
     public void setPortal(int n, Boolean newState){
-        this.portals[n].setAccessible(newState);
+        if(newState)
+            this.portals[n].lock();
+        else
+            this.portals[n].unlock();
     }
     
     public Boolean checkPortal(int n){
-        return this.portals[n].getAccessible();
+        return this.portals[n].isLocked();
     }
 }
