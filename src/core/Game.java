@@ -28,12 +28,12 @@ public class Game {
 	private int SOUTH_WEST = 6;
 	private int NORTH_WEST = 7;
 
-	public ArrayList<Area> areas;
 	public Area currentRoom;
+        public World world;
 	
-    public static void main(String[] args){
+     /*public static void main(String[] args){
         
-        /*World world = new World(3);//creates World
+       World world = new World(3);//creates World
         
         for (int row = 0; row < 3; row++){ 
             for (int col = 0; col < 3; col++){
@@ -164,30 +164,24 @@ public class Game {
     }
 	
 	public String move(int direction){
-		if(this.currentRoom.checkPortalLock(direction)){
+		if(this.currentRoom.getPortal(direction).isLocked()){
 			return "You can't go that way!";
 		}else{
-			this.currentRoom  = this.currentRoom.getPortal(direction).getTarget();
+			this.currentRoom  = getAreaById(this.currentRoom.getPortal(direction).getTarget());
 			return "You moved to room " + this.currentRoom + "!";
 		}
 	}
 	
-	
-	
-	
-	public Area getAreaById(int id){
-		for(Area item: this.areas){
-			if(item.getId() == id) return Area;
-		}
-		return null;
+	public Area getAreaById(String id){
+		return this.world.getArea(id);
 	}
 	
-	public boolean checkIdConflict(){
+/*	public boolean checkIdConflict(){
 		for(int i = 0; i < this.areas.length - 1; i++){
 			for(int j = i + 1; j < this.areas.length; j++){
 				if(this.areas.get(i) == this.areas.get(j))) return true;
 			}
 		}
 		return false;
-	}
+	}*/
 }

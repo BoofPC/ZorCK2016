@@ -8,7 +8,7 @@ package core;
 public class Portal {
    
     boolean locked;
-    int target; //Should be the id of an area to go to
+    String target; //Should be the id of an area to go to
     
     public Portal(boolean locked, String target){
         this.locked = locked;
@@ -27,7 +27,7 @@ public class Portal {
         this.locked = false;
     }
     
-    public int getTarget(){
+    public String getTarget(){
         return this.target;
     }
 }
