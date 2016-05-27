@@ -40,10 +40,16 @@ public class Item {
 			//			3: "You need to open it first!"
 			//open -	0: unset (default, returns "not openable")
 			//			1: not openable
-			//			2: not takable
+			//			2: not openable
 			//
 			//someone should write the rest
 			
+	public String taste;
+	public Item inside;
+	public String text; 	//if item is read
+	public boolean active;	//if item can be turned on or pressed
+	public String smell;
+	
     public Item(String name, String description, int[] usage){
         this.name = name;
 		for(int i = 0; i < this.usage.length; i++){
@@ -56,12 +62,66 @@ public class Item {
         return this.name;
     }
 	
+	public void setName(String name){
+		this.name = name;
+	}
+	
 	public String getDescription(){
 		return this.description;
+	}
+	
+	public void setDescription(String description){
+		this.description = description;
 	}
 	
 	public int getUsageKey(int n){
 		if(n < this.usage.length) return this.usage[n];
 		else return -1;
 	}
+	
+	public void setUsageKey(int n, int state){
+		if(n < this.usage.length) usage[n] = state;
+	}
+	
+	public String getTaste(){
+		return this.taste;
+	}
+	
+	public void setTaste(String taste){
+		this.taste = taste;
+	}
+	
+	public Item getInside(){
+		return this.inside;
+	}
+	
+	public void setInside(Item inside){
+		this.inside = inside;
+	}
+	
+	public String getText(){
+		return this.text;
+	}
+	
+	public void setText(String text){
+		this.text = text;
+	}
+	
+	public boolean getActive(){
+		return this.active;
+	}
+	
+	public void setActive(boolean active){
+		this.active = active;
+	}
+	
+	public String getSmell(){
+		return this.smell;
+	}
+	
+	public void setSmell(String smell){
+		this.smell = smell;
+	}
+	
+	
 }
