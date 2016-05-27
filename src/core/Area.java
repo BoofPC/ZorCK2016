@@ -19,9 +19,12 @@ public abstract class Area{
     private String title;
     private String description;
     
+    private HashMap<String,Boolean> state;
+    
     public Area(World containingWorld){
        this.portals = new Portal[10];
        this.world = containingWorld;
+       this.state = new HashMap<>();
     }
     
     public World getContainingWorld(){
