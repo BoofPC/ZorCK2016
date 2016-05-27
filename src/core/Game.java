@@ -172,6 +172,9 @@ public class Game {
 		}
 	}
 	
+	
+	
+	
 	public Area getAreaById(int id){
 		for(Area item: this.areas){
 			if(item.getId() == id) return Area;
