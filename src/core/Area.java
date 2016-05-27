@@ -11,22 +11,17 @@ import java.util.HashMap;
  *
  * @author alexb & pedro
  */
-public abstract class Area {
-    private Portal[] portals;
+public abstract class Area{
+    //this is a 10 element array that has portals in 
+    //each of the cardinal and half-cardinal directions as well as up and down.
+    private final Portal[] portals; 
     private World world;
-    private int id;
-	private String title;
-	private String description;
+    private String title;
+    private String description;
     
-    public Area(int id, World containingWorld, Portal[] portals){
-        this.id = id;
-        this.portals = {true,true,true,true,true,true,true,true};  	//all directions are locked by default,
-																	//that way you could only import a 4 item
-																	//array and ignore NE,SE,SW,NW
-        for(int i = 0; i < portals.length; i++){
-            this.portals[i] = portals[i];
-        }
-        this.world = containingWorld;
+    public Area(World containingWorld){
+       this.portals = new Portal[10];
+       this.world = containingWorld;
     }
     
     public World getContainingWorld(){
@@ -39,34 +34,21 @@ public abstract class Area {
     
     public abstract void exit(Player player);
     
-    public void addPortal(int n,Portal portal){
-        this.portals[n] = portal;
+    public void setPortal(Portal portal, int direction){
+        this.portals[direction] = portal;
     }
-    
-    public void setPortalLock(int n, Boolean newState){
-        if(newState)
-            this.portals[n].lock();
-        else
-            this.portals[n].unlock();
-    }
-    
-    public Boolean checkPortalLock(int n){
-        return this.portals[n].isLocked();
+    //allow other classes to get the portal value where you can lock or unlock 
+    //it, and check its state. This is ideal because it is more direct than 
+    //having Portal helper methods in Area
+    public Portal getPortal(int direction){
+        return this.portals[direction];
     }
 	
-	public Portal getPortal(int n){
-		return this.portals[n];
-	}
-    
-    public int getId(){
-        return this.id;
+    public String getTitle(){
+	return this.title;
     }
 	
-	public String getTitle(){
-		return this.title;
-	}
-	
-	public String getDescription(){
-		return this.description;
-	}
+    public String getDescription(){
+        return this.description;
+    }
 }
