@@ -6,14 +6,14 @@ package core;/*
 
 /**
  *
- * @author alexb
+ * @author alexb & pedro
  */
 public class Player extends Character{
     private int xp;
     private int level;
     
     public Player(){
-        super(435,235,235,235,"Red");
+        super(435,235,235,235,"Zelda"); //That's the green guy, right?
         this.xp = 0;
         this.level = 1;
     }

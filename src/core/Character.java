@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 /**
  *
- * @author alexb
+ * @author alexb & pedro
  */
 public class Character {
     public int hp;
     public int speed;
     public int attack;
     public int defense;
-    public final String name;
+	public String name;
     
     //the following variables are base stats that are permanent and will be used
     //to determine the characters used stats as the level changes.
@@ -25,7 +25,7 @@ public class Character {
     public final int DEFENSE;
     public final int SPEED;
     
-    private ArrayList<Item> items;
+    private ArrayList<Item> inventory;
     
 
     public Character(int hp, int speed, int attack, int defense, String name){
@@ -41,8 +41,12 @@ public class Character {
         this.defense = ((DEFENSE+15)*2)/100 + 5;
         this.speed = ((SPEED+15)*2)/100 + 5;
         
-        this.items = new ArrayList<>();
+        this.inventory = new ArrayList<>();
     }
+	
+	public void rename(String name){
+		this.name = name;
+	}
 // this method has been moved and split to the Player and Enemy
 // classes because they interpret level differently.
 //    public void takeDamage(int attackStrength){

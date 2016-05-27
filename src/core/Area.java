@@ -9,12 +9,14 @@ import java.util.HashMap;
 
 /**
  *
- * @author alexb
+ * @author alexb & pedro
  */
 public abstract class Area {
     private Portal[] portals;
     private World world;
     private int id;
+	private String title;
+	private String description;
     
     public Area(int id, World containingWorld, Portal[] portals){
         this.id = id;
@@ -50,7 +52,15 @@ public abstract class Area {
         return this.portals[n].isLocked();
     }
     
-    public int getID(){
+    public int getId(){
         return this.id;
     }
+	
+	public String getTitle(){
+		return this.title;
+	}
+	
+	public String getDescription(){
+		return this.description;
+	}
 }

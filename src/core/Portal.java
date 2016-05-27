@@ -3,7 +3,7 @@ package core;
 
 /**
  *
- * @author keith5387h
+ * @author keith5387h & pedro & alexb
  */
 public class Portal {
    

@@ -9,7 +9,7 @@ import java.util.ArrayList
 
 /**
  *
- * @author alexb
+ * @author alexb & pedro
  */
 
 //remocing accessiblity, adding portals 
@@ -29,7 +29,7 @@ public class World {
     
     public Area getAreaAt(int id){
         for(Area item: areas){
-            if(item.getID == id) return item;
+            if(item.getId == id) return item;
         }
         return null;
     }
