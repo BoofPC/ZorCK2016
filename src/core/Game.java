@@ -28,6 +28,7 @@ public class Game {
 	private int SOUTH_WEST = 6;
 	private int NORTH_WEST = 7;
 
+	public ArrayList<Area> areas;
 	public Area currentRoom;
 	
     public static void main(String[] args){
@@ -169,5 +170,21 @@ public class Game {
 			this.currentRoom  = this.currentRoom.getPortal(direction).getTarget();
 			return "You moved to room " + this.currentRoom + "!";
 		}
+	}
+	
+	public Area getAreaById(int id){
+		for(Area item: this.areas){
+			if(item.getId() == id) return Area;
+		}
+		return null;
+	}
+	
+	public boolean checkIdConflict(){
+		for(int i = 0; i < this.areas.length - 1; i++){
+			for(int j = i + 1; j < this.areas.length; j++){
+				if(this.areas.get(i) == this.areas.get(j))) return true;
+			}
+		}
+		return false;
 	}
 }
