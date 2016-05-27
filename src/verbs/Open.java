@@ -11,5 +11,7 @@ import core.Verb;
  * @author Cody
  */
 public class Open {
-    super("open", new String[]{"unseal", "unlock"}, new boolean[]{true,false,true});
+    public Open(){
+        super("open", new String[]{"unseal", "unlock"}, new boolean[]{true,false,true});
+    }
 }
