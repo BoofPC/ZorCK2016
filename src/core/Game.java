@@ -18,12 +18,23 @@ import verbs.*;
 public class Game {
     
     public ArrayList<Verb> verbList;
-    
+	
+	private int NORTH = 0;
+	private int EAST  = 1;
+	private int SOUTH = 2;
+	private int WEST  = 3;
+	private int NORTH_EAST = 4;
+	private int SOUTH_EAST = 5;
+	private int SOUTH_WEST = 6;
+	private int NORTH_WEST = 7;
+
+	public Area currentRoom;
+	
     public static void main(String[] args){
         
-        World world = new World(3);
+        /*World world = new World(3);//creates World
         
-        for (int row = 0; row < 3; row++){ //creates World
+        for (int row = 0; row < 3; row++){ 
             for (int col = 0; col < 3; col++){
                 if ((col == 1 && row == 0)||(col == 0 && row == 1)||(col == 2 && row == 1)||(col == 1 && row == 2)){
                     world.setAccessibilityNorth(row, col, true);
@@ -89,7 +100,7 @@ public class Game {
             }
         }
         System.out.println("Quiting.");
-    }
+    }*/
     
     public void listVerbs(){
         this.verbList.add(new Look());
@@ -150,4 +161,13 @@ public class Game {
         //still need to finish the part where it takes a noun or direction
         
     }
+	
+	public String move(int direction){
+		if(this.currentRoom.checkPortalLock(direction)){
+			return "You can't go that way!";
+		}else{
+			this.currentRoom  = this.currentRoom.getPortal(direction).getTarget();
+			return "You moved to room " + this.currentRoom + "!";
+		}
+	}
 }
