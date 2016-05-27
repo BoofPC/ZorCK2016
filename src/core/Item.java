@@ -11,7 +11,9 @@ package core;
  */
 public class Item {
     private String name;
-    public int[] usage; 		//usage is an array of ints which determines many
+	public String description;
+    public int[] usage = new int[11]; 		//update this number as needed
+								//usage is an array of ints which determines many
 								//characteristics of an item. Each item in the 
 								//array corresponds with an attribute of the item
 								//for example the first item in the array represents
@@ -22,7 +24,7 @@ public class Item {
 			//is invoked. 3 means the item is bolted down, etc.
 			//
 			//The meanings of each item is as follows:
-			//{take,eat,drink,open,read,turnOn,move,close,stab,smell}
+			//{take,eat,drink,open,read,turnOn,move,close,stab,smell,press}
 			//feel free to add more
 			//the possible statuses of each are as follows:
 			//take -	0: unset (default, returns "not takable")
@@ -42,8 +44,7 @@ public class Item {
 			//
 			//someone should write the rest
 			
-			
-    public Item(String name, int[] usage){
+    public Item(String name, String description, int[] usage){
         this.name = name;
 		for(int i = 0; i < this.usage.length; i++){
 			if(i < usage.length) this.usage[i] = usage[i];
@@ -54,4 +55,13 @@ public class Item {
     public String getName(){
         return this.name;
     }
+	
+	public String getDescription(){
+		return this.description;
+	}
+	
+	public int getUsageKey(int n){
+		if(n < this.usage.length) return this.usage[n];
+		else return -1;
+	}
 }
