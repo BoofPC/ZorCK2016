@@ -64,8 +64,9 @@ public class Game {
             "Y8888888P `88888P' dP        Y88888P' dP     dP\n\n");
         
         Scanner reader = new Scanner(System.in);
+        String input = "";
         char letter = 'a';
-        while(letter != 'q'){
+        while(input != "q"){
             System.out.println("You are in room " + currentArea.getTitle());
             temp = currentArea;
             if(currentArea.getState("First") == true){
@@ -73,23 +74,23 @@ public class Game {
                 currentArea.setState("First",false);
             }
             System.out.print("Enter a direction: ");
-            letter = reader.next().charAt(0);
-            if (letter == 'n'){
+            input = reader.next();
+            if (input.equals("n")){
                 currentArea = game.move(0,currentArea,world);
             }
-            else if (letter == 'e'){
+            else if (input.equals("e")){
                 currentArea = game.move(1,currentArea,world);
             }
-            else if (letter == 's'){
+            else if (input.equals("s")){
                 currentArea = game.move(2,currentArea,world);
             }
-            else if (letter == 'w'){
+            else if (input.equals("w")){
                 currentArea = game.move(3,currentArea,world);
             }
-            else if (letter != 'q'){
+            else if (!input.equals("q")){
                 System.out.print("That is an invalid choice.");
             }
-            if(letter != 'q' && temp == currentArea){
+            if(!input.equals("q") && temp == currentArea){
                 System.out.println("You can't go that way!");
             }
         }
