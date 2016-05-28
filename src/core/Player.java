@@ -21,4 +21,31 @@ public class Player {
         
         this.inventory = new ArrayList<>();
     }
+
+    public void rename(String name){
+        this.name = name;
+    }
+    
+    public void addItem(Item item){
+        this.inventory.add(item);
+    }
+    
+    public void removeItem(Item item){
+        this.inventory.remove(item);
+    }
+    
+    public boolean ifItem(Item item){
+        for(Item item2: this.inventory){
+            if(item == item2) return true;
+        }
+        return false;
+    }
+    
+    public String[] listInventory(){
+        String[] list = new String[this.inventory.size()];
+        for(int i = 0; i < this.inventory.size(); i++){
+            list[i] = this.inventory.get(i).getName();
+        }
+        return list;
+    }
 }
