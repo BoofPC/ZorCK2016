@@ -2,12 +2,6 @@ package core;
 import java.util.ArrayList;
 import verbs.*;
 
-<<<<<<< HEAD
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import areas.Test1;
 import areas.Test2;
 import areas.Test3;
@@ -18,10 +12,7 @@ import areas.Test7;
 import areas.Test8;
 import areas.Test9;
 import java.util.Scanner;
-=======
 
-
->>>>>>> Samantha
 /**
  *
  * @author coons5457w & pedro
