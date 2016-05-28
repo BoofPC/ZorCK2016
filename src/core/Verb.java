@@ -1,11 +1,8 @@
 package core;
-import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 /**
  *
@@ -31,20 +28,16 @@ public class Verb {
     
     public Verb(String title, String[] synonyms, boolean[] usage){
         this.title = title;
-        for(String item : synonyms){
-            this.synonyms.add(item);
-        }
+        this.synonyms.addAll(Arrays.asList(synonyms));
         this.usage = new boolean[usage.length];
-        for(int i = 0; i < usage.length; i++){
-            this.usage[i] = usage[i];
-        }
+        System.arraycopy(usage, 0, this.usage, 0, usage.length);
     }
     
     public String getTitle(){
         return this.title;
     }
     
-    public boolean findMatching(String input){
+    public boolean hasMatching(String input){
         if(this.title.equals(input)) return true;
         for(String item : this.synonyms){
             if(item.equals(input)) return true;

@@ -6,6 +6,8 @@ import core.Verb;
  */
 public class Take extends Verb{
     public Take(){
-        super("take", new String[]{"get","obtain","pick up","pickup"}, new boolean[]{false, true, false});
+        super("take", 
+                new String[]{"get","obtain","pick up","pickup"},
+                new boolean[]{false, true, false});
     }
 }

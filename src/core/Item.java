@@ -1,4 +1,5 @@
 package core;
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 
@@ -7,6 +8,8 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+>>>>>>> Samantha
 
 /**
  *
@@ -14,6 +17,7 @@ import java.util.ArrayList;
  */
 public class Item {
     private String name;
+<<<<<<< HEAD
     public String description;
     public int[] usage = new int[15]; 		//update this number as needed
 						//usage is an array of ints which determines many
@@ -21,6 +25,15 @@ public class Item {
 						//array corresponds with an attribute of the item
 						//for example the first item in the array represents
 						//whether the item is takable, with different numbers
+=======
+	public String description;
+    public int[] usage = new int[11]; 		//update this number as needed
+			//usage is an array of ints which determines many
+			//characteristics of an item. Each item in the 
+			//array corresponds with an attribute of the item
+			//for example the first item in the array represents
+			//whether the item is takable, with different numbers
+>>>>>>> Samantha
 			//as different statuses. 0 is always "unset." 1 is "takable," the user can 
 			//"take" the item to get it into their inventory. 2 means the item is too 
 			//heavy to take, and will return an appropriate message if "take (item)" 
