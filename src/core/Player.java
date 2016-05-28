@@ -11,6 +11,7 @@ import java.util.List;
 public class Player {
     public int hp;
     public String name;
+    Area currentArea;
     
     private List<Item> inventory;
     
@@ -47,5 +48,13 @@ public class Player {
             list[i] = this.inventory.get(i).getName();
         }
         return list;
+    }
+    
+    public Area getCurrentArea(){
+        return this.currentArea;
+    }
+    
+    public void setCurrentArea(Area area){
+        this.currentArea = area;
     }
 }

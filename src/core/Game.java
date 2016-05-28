@@ -39,7 +39,6 @@ public class Game {
         Game game = new Game();
         
         Player player = new Player(10,"Carlton");
-        Area currentArea;
         World world = new World();
         
         world.addArea("Test1",new Test1(world));
@@ -52,7 +51,8 @@ public class Game {
         world.addArea("Test8",new Test8(world));
         world.addArea("Test9",new Test9(world));
         
-        currentArea = world.getArea("Test5");
+        player.setCurrentArea(world.getArea("Test5"));
+        
         Area temp;
         
         System.out.println("Welcome to\n\n" +
@@ -65,32 +65,31 @@ public class Game {
         
         Scanner reader = new Scanner(System.in);
         String input = "";
-        char letter = 'a';
         while(input != "q"){
-            System.out.println("You are in room " + currentArea.getTitle());
-            temp = currentArea;
-            if(currentArea.getState("First") == true){
-                System.out.println(currentArea.getInitialDescription());
-                currentArea.setState("First",false);
+            System.out.println("You are in room " + player.getCurrentArea().getTitle());
+            temp = player.getCurrentArea();
+            if(player.getCurrentArea().getState("First") == true){
+                System.out.println(player.getCurrentArea().getInitialDescription());
+                player.getCurrentArea().setState("First",false);
             }
             System.out.print("Enter a direction: ");
             input = reader.next();
             if (input.equals("n")){
-                currentArea = game.move(0,currentArea,world);
+                game.move(0,player,world);
             }
             else if (input.equals("e")){
-                currentArea = game.move(1,currentArea,world);
+                game.move(1,player,world);
             }
             else if (input.equals("s")){
-                currentArea = game.move(2,currentArea,world);
+                game.move(2,player,world);
             }
             else if (input.equals("w")){
-                currentArea = game.move(3,currentArea,world);
+                game.move(3,player,world);
             }
             else if (!input.equals("q")){
                 System.out.print("That is an invalid choice.");
             }
-            if(!input.equals("q") && temp == currentArea){
+            if(!input.equals("q") && temp == player.getCurrentArea()){
                 System.out.println("You can't go that way!");
             }
         }
@@ -175,9 +174,17 @@ public class Game {
     }
     
     public void listVerbs(){
-        this.verbList.add(new Look());
+        
         this.verbList.add(new Examine());
+        this.verbList.add(new Look());
+        this.verbList.add(new Move());
+        this.verbList.add(new Open());
+        this.verbList.add(new Shout());
+        this.verbList.add(new Take());
+        this.verbList.add(new TurnOff());
+        this.verbList.add(new TurnOn());
         //...
+        
     }
     
     public Verb findVerb(String input){
@@ -200,7 +207,7 @@ public class Game {
             n++;
         }
         return inputArray;
-        
+    }
         
         
         
@@ -248,17 +255,17 @@ public class Game {
             }
         }
         //still need to finish the part where it takes a noun or direction
-        */
-    }
+        
+    }*/
 	
-	public Area move(int direction, Area currentArea, World world){
-		if(currentArea.getPortal(direction).isLocked()){
-			return currentArea;
-		}else{
-			currentArea  = getAreaById(currentArea.getPortal(direction).getTarget(),world);
-			return currentArea;
-		}
-	}
+    public Area move(int direction, Player player, World world){
+        if(player.getCurrentArea().getPortal(direction).isLocked()){
+            return player.getCurrentArea();
+        }else{
+            player.setCurrentArea(world.getArea(player.getCurrentArea().getPortal(direction).getTarget()));
+            return player.getCurrentArea();
+        }
+    }
         
         public void take(Item item, Area currentArea, Player player){
             if(currentArea.ifItem(item)){
@@ -282,10 +289,6 @@ public class Game {
             }
             return desc;
         }
-	
-	public Area getAreaById(String id, World world){
-		return world.getArea(id);
-	}
 	
 /*	public boolean checkIdConflict(){
 		for(int i = 0; i < this.areas.length - 1; i++){
