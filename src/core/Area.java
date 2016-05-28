@@ -1,4 +1,5 @@
 package core;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
@@ -19,6 +20,7 @@ public abstract class Area{
     private String title;
     private String initialDescription;
     private String description;
+    public ArrayList<Item> items;
     
     private HashMap<String,Boolean> state;
     
@@ -26,6 +28,7 @@ public abstract class Area{
        this.portals = new Portal[10];
        this.world = containingWorld;
        this.state = new HashMap<>();
+       this.items = new ArrayList<Item>();
     }
     
     public World getContainingWorld(){
@@ -45,7 +48,8 @@ public abstract class Area{
     //it, and check its state. This is ideal because it is more direct than 
     //having Portal helper methods in Area
     public Portal getPortal(int direction){
-        return this.portals[direction];
+        if(this.portals[direction] == null) return new Portal(true,null);
+        else return this.portals[direction];
     }
 	
     public String getTitle(){
@@ -79,4 +83,30 @@ public abstract class Area{
     public void setState(String name, boolean bool){
 	this.state.put(name,bool);
     }
+    
+    public void addItem(Item item){
+        this.items.add(item);
+    }
+    
+    public void removeItem(Item item){
+        this.items.remove(item);
+    }
+    
+    public boolean ifItem(Item item){
+        for(Item item2: this.items){
+            if(item == item2) return true;
+        }
+        return false;
+    }
+    
+    public String[] listItems(){
+        String[] list = new String[this.items.size()];
+        for(int i = 0; i < this.items.size(); i++){
+            list[i] = this.items.get(i).getName();
+        }
+        return list;
+    }
+    
+    
+    
 }

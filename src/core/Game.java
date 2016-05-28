@@ -1,6 +1,5 @@
 package core;
 import java.util.ArrayList;
-import java.util.Scanner;
 import verbs.*;
 
 /*
@@ -8,7 +7,16 @@ import verbs.*;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import areas.Test1;
+import areas.Test2;
+import areas.Test3;
+import areas.Test4;
+import areas.Test5;
+import areas.Test6;
+import areas.Test7;
+import areas.Test8;
+import areas.Test9;
+import java.util.Scanner;
 /**
  *
  * @author coons5457w & pedro
@@ -19,21 +27,73 @@ public class Game {
     
     public ArrayList<Verb> verbList;
 	
-	private int NORTH = 0;
-	private int EAST  = 1;
-	private int SOUTH = 2;
-	private int WEST  = 3;
-	private int NORTH_EAST = 4;
-	private int SOUTH_EAST = 5;
-	private int SOUTH_WEST = 6;
-	private int NORTH_WEST = 7;
+    private int NORTH = 0;
+    private int EAST  = 1;
+    private int SOUTH = 2;
+    private int WEST  = 3;
+    private int NORTH_EAST = 4;
+    private int SOUTH_EAST = 5;
+    private int SOUTH_WEST = 6;
+    private int NORTH_WEST = 7;
 
-	public Area currentRoom;
-        public World world;
+    
 	
-        public static void main(String[] args){
+    public static void main(String[] args){
         
+        Game game = new Game();
+        
+        Area currentArea;
         World world = new World();
+        
+        world.addArea("Test1",new Test1(world));
+        world.addArea("Test2",new Test2(world));
+        world.addArea("Test3",new Test3(world));
+        world.addArea("Test4",new Test4(world));
+        world.addArea("Test5",new Test5(world));
+        world.addArea("Test6",new Test6(world));
+        world.addArea("Test7",new Test7(world));
+        world.addArea("Test8",new Test8(world));
+        world.addArea("Test9",new Test9(world));
+        
+        currentArea = world.getArea("Test5");
+        Area temp;
+        
+        System.out.println("Welcome to ZorCK.");
+        System.out.println("");
+        
+        Scanner reader = new Scanner(System.in);
+        char letter = 'a';
+        while(letter != 'q'){
+            System.out.println("You are in room " + currentArea.getTitle());
+            temp = currentArea;
+            if(currentArea.getState("First") == true){
+                System.out.println(currentArea.getInitialDescription());
+                currentArea.setState("First",false);
+            }
+            System.out.print("Enter a direction: ");
+            letter = reader.next().charAt(0);
+            if (letter == 'n'){
+                currentArea = game.move(0,currentArea,world);
+            }
+            else if (letter == 'e'){
+                currentArea = game.move(1,currentArea,world);
+            }
+            else if (letter == 's'){
+                currentArea = game.move(2,currentArea,world);
+            }
+            else if (letter == 'w'){
+                currentArea = game.move(3,currentArea,world);
+            }
+            else if (letter != 'q'){
+                System.out.print("That is an invalid choice.");
+            }
+            if(letter != 'q' && temp == currentArea){
+                System.out.println("You can't go that way!");
+            }
+        }
+        System.out.println("Quiting.");
+        
+        
         
        /* 
        World world = new World(3);//creates World
@@ -183,17 +243,17 @@ public class Game {
         */
     }
 	
-	public String move(int direction){
-		if(this.currentRoom.getPortal(direction).isLocked()){
-			return "You can't go that way!";
+	public Area move(int direction, Area currentArea, World world){
+		if(currentArea.getPortal(direction).isLocked()){
+			return currentArea;
 		}else{
-			this.currentRoom  = getAreaById(this.currentRoom.getPortal(direction).getTarget());
-			return "You moved to room " + this.currentRoom + "!";
+			currentArea  = getAreaById(currentArea.getPortal(direction).getTarget(),world);
+			return currentArea;
 		}
 	}
 	
-	public Area getAreaById(String id){
-		return this.world.getArea(id);
+	public Area getAreaById(String id, World world){
+		return world.getArea(id);
 	}
 	
 /*	public boolean checkIdConflict(){

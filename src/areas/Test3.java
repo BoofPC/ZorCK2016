@@ -9,24 +9,22 @@ import core.Area;
 import core.Player;
 import core.Portal;
 import core.World;
-import items.Door;
 
 /**
  *
  * @author pedro
  */
-public class Test1 extends Area{
+public class Test3 extends Area{
 
-       public Test1(World containingWorld){
+       public Test3(World containingWorld){
             super(containingWorld);
-            setPortal(1, new Portal(false, "Test2"));
-            setPortal(2, new Portal(true, "Test4"));
-            setTitle("Test Area 1");
-            setInitialDescription("This is the first test area, there is path to "
-                    + "the east and a locked door to the south");
-            setDescription("This is the first test area");   
-            addItem(new Door(true));
-            setState("First",true);
+            setPortal(3, new Portal(false, "Test2"));
+            setPortal(2, new Portal(false, "Test6"));
+            setTitle("Test Area 3");
+            setInitialDescription("This is the third test area, there is path "
+                    + "leading west and a path leading south");
+            setDescription("This is the third test area");
+            setState("First",true);   
        }
        
         public void interact(String command, Player player){

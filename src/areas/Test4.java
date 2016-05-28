@@ -9,23 +9,25 @@ import core.Area;
 import core.Player;
 import core.Portal;
 import core.World;
-import items.Door;
+import items.NoTea;
 
 /**
  *
  * @author pedro
  */
-public class Test1 extends Area{
+public class Test4 extends Area{
 
-       public Test1(World containingWorld){
+       public Test4(World containingWorld){
             super(containingWorld);
-            setPortal(1, new Portal(false, "Test2"));
-            setPortal(2, new Portal(true, "Test4"));
-            setTitle("Test Area 1");
-            setInitialDescription("This is the first test area, there is path to "
-                    + "the east and a locked door to the south");
-            setDescription("This is the first test area");   
-            addItem(new Door(true));
+            setPortal(0, new Portal(true, "Test1"));
+            setPortal(1, new Portal(false, "Test5"));
+            setPortal(2, new Portal(false, "Test7"));
+            setTitle("Test Area 4");
+            setInitialDescription("This is the fourth test area, there are paths"
+                    + " to the east and south and a locked door to the north. "
+                    + "No tea lies on the ground");
+            setDescription("This is the fourth test area"); 
+            addItem(new NoTea());
             setState("First",true);
        }
        
