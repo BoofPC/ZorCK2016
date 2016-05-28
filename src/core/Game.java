@@ -42,6 +42,7 @@ public class Game {
         
         Game game = new Game();
         
+        Player player = new Player(10,"Carlton");
         Area currentArea;
         World world = new World();
         
@@ -251,6 +252,29 @@ public class Game {
 			return currentArea;
 		}
 	}
+        
+        public void take(Item item, Area currentArea, Player player){
+            if(currentArea.ifItem(item)){
+                currentArea.removeItem(item);
+                player.addItem(item);
+            }
+        }
+        
+        public String[] look(Area currentArea){
+            String[] desc;
+            if(currentArea.listItems().length == 0){
+                desc = new String[1];
+                desc[0] = currentArea.getDescription();
+            }else{
+                desc = new String[currentArea.listItems().length +3];
+                desc[0] = currentArea.getDescription();
+                desc[2] = "This Area contains:";
+                for(int i = 0; i < currentArea.listItems().length; i++){
+                    desc[3+i] = currentArea.listItems()[i];
+                }
+            }
+            return desc;
+        }
 	
 	public Area getAreaById(String id, World world){
 		return world.getArea(id);
