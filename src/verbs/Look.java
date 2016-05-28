@@ -14,6 +14,8 @@ import core.Verb;
 public class Look extends Verb{
     
     public Look(){
-        super("look",null,new boolean[]{true,false,true});
+        super("look",
+                new String[] {"l"},
+                new boolean[]{true,false,true});
     }
 }

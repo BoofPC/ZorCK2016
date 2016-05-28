@@ -3,11 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import verbs.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
@@ -56,8 +52,13 @@ public class Game {
                 world.addArea(row, col, world.getAreaAt(row, col));
             }
         }
-        System.out.println("Welcome to ZorCK.");
-        System.out.println("");
+        System.out.println("Welcome to\n\n" +
+            "d8888888P                    a88888b. dP     dP\n" +
+            "     .d8'                   d8'   `88 88   .d8'\n" +
+            "   .d8'   .d8888b. 88d888b. 88        88aaa8P' \n" +
+            " .d8'     88'  `88 88'  `88 88        88   `8b.\n" +
+            "d8'       88.  .88 88       Y8.   .88 88     88\n" +
+            "Y8888888P `88888P' dP        Y88888P' dP     dP\n\n");
         int x = 1;
         int y = 1;
         Scanner reader = new Scanner(System.in);
@@ -114,7 +115,7 @@ public class Game {
     
     public Verb findVerb(String input){
         for(Verb item : this.verbList){
-            if(item.findMatching(input)) return item;
+            if(item.hasMatching(input)) return item;
         }
         return null;
     }
