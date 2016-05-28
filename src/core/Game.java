@@ -31,8 +31,11 @@ public class Game {
 	public Area currentRoom;
         public World world;
 	
-     /*public static void main(String[] args){
+        public static void main(String[] args){
         
+        World world = new World();
+        
+       /* 
        World world = new World(3);//creates World
         
         for (int row = 0; row < 3; row++){ 
@@ -100,8 +103,8 @@ public class Game {
                 System.out.print("That is an invalid choice.");
             }
         }
-        System.out.println("Quiting.");
-    }*/
+        System.out.println("Quiting.");*/
+    }
     
     public void listVerbs(){
         this.verbList.add(new Look());
@@ -116,8 +119,25 @@ public class Game {
         return null;
     }
     
-    public void parser(String input){
-        String verb = "";
+    public String[] parser(String input){
+        input = input.toLowerCase();
+        int s = 1;
+        for(int i = 0; i < input.length(); i++){
+            if(input.substring(i,i+1).equals(" ")) s++;
+        }
+        String[] inputArray = new String[s];
+        int n = 0;
+        for (String retval: input.split(" ")){
+            inputArray[n] = retval;
+            n++;
+        }
+        return inputArray;
+        
+        
+        
+        
+        
+        /*String verb = "";
         int s = 1;
         for(int i = 0; i < input.length(); i++){
             if(input.substring(i,i+1).equals(" ")) s++;
@@ -160,7 +180,7 @@ public class Game {
             }
         }
         //still need to finish the part where it takes a noun or direction
-        
+        */
     }
 	
 	public String move(int direction){

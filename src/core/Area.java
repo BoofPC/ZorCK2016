@@ -17,6 +17,7 @@ public abstract class Area{
     private final Portal[] portals; 
     private World world;
     private String title;
+    private String initialDescription;
     private String description;
     
     private HashMap<String,Boolean> state;
@@ -37,7 +38,7 @@ public abstract class Area{
     
     public abstract void exit(Player player);
     
-    public void setPortal(Portal portal, int direction){
+    public void setPortal(int direction, Portal portal){
         this.portals[direction] = portal;
     }
     //allow other classes to get the portal value where you can lock or unlock 
@@ -55,11 +56,27 @@ public abstract class Area{
         this.title = title;
     }
 	
+    public String getInitialDescription(){
+        return this.initialDescription;
+    }
+    
+    public void setInitialDescription(String description){
+        this.initialDescription = description;
+    }
+    
     public String getDescription(){
         return this.description;
     }
     
     public void setDescription(String description){
         this.description = description;
+    }
+	
+    public boolean getState(String name){
+        return this.state.get(name);
+    }
+	
+    public void setState(String name, boolean bool){
+	this.state.put(name,bool);
     }
 }
