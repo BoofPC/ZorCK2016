@@ -48,6 +48,7 @@ public class Game {
         world.addArea("Test9",new Test9(world));
         
         player.setCurrentArea(world.getArea("Test5"));
+        player.addItem(new NoTea());
         
         System.out.println("Welcome to\n\n" +
             "d8888888P                    a88888b. dP     dP\n" +
@@ -67,6 +68,7 @@ public class Game {
             }
             System.out.print("Enter a command: ");
             input = reader.nextLine();
+            System.out.println("");
             if (input.equals("n") || input.equals("north")){
                 game.move(0,player,world);
             }
@@ -111,13 +113,26 @@ public class Game {
                     }
                 }
             }*/
-            else{
+            else if(game.verbParser(input) != null){
                 String verb = game.verbParser(input).getTitle();
                 Item noun = game.nounParser(input,player);
+                int direction = game.directionParser(input);
+
                 if(verb.equals("take")){
-                    if(!noun.getName().equals("noItem")) game.take(noun,player);
-                    else System.out.println("Ya need a noun, ya dingus");
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.take(noun,player);
+                            System.out.println(player.getName() + " took the " + noun.getName());
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("That's no noun I know!");
+                    }
                 }else if(verb.equals("look")){ game.look(player); }
+                else if(verb.equals("move")){
+                    if(direction != -1) game.move(direction,player,world);
+                    else System.out.println("Ya need a direction, ya dingus");
+                }else if(verb.equals("inventory")){ game.inventory(player); }
                 
             }
             System.out.println("");
@@ -160,10 +175,7 @@ public class Game {
         }
         for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
             itemList.add(player.getCurrentArea().listItems()[i]);
-        }/*
-        for(Item item: itemList){
-            if(item.hasMatching(input)) return item;
-        }*/
+        }
         for(int i = 0; i < player.listInventory().length + player.getCurrentArea().listItems().length; i++){
             if(i<player.listInventory().length){
                 if(player.listInventory()[i].hasMatching(input))return player.listInventory()[i];
@@ -174,6 +186,20 @@ public class Game {
         }
         
         return null;
+    }
+    
+    public int findDirection(String input){
+        if(input.equals("north") || input.equals("n")) return 0;
+        else if(input.equals("east") || input.equals("e")) return 1;
+        else if(input.equals("south") || input.equals("s")) return 2;
+        else if(input.equals("west") || input.equals("w")) return 3;
+        else if(input.equals("northeast") || input.equals("ne")) return 4;
+        else if(input.equals("southeast") || input.equals("se")) return 5;
+        else if(input.equals("southwest") || input.equals("sw")) return 6;
+        else if(input.equals("northwest") || input.equals("nw")) return 7;
+        else if(input.equals("up") || input.equals("u")) return 8;
+        else if(input.equals("down") || input.equals("d")) return 9;
+        else return -1;
     }
     
     public Verb verbParser(String input){
@@ -209,7 +235,6 @@ public class Game {
         input = input.toLowerCase();
         int s = 1;
         int t = 0;
-        String verb = "";
         String noun = "";
         for(int i = 0; i < input.length(); i++){
             if(input.substring(i,i+1).equals(" ")) s++;
@@ -229,7 +254,6 @@ public class Game {
                 verbTest += inputArray[j];
             }
             if(findVerb(verbTest) != null){
-                verb = verbTest;
                 t = i;
                 inputArraySinVerbos = new String[inputArray.length - t];
                 break;
@@ -256,6 +280,42 @@ public class Game {
         }
         if(noun != null) return findNoun(noun, player);
         else return null;
+    }
+    
+    public int directionParser(String input){
+        input = input.toLowerCase();
+        int s = 1;
+        int t = 0;
+        for(int i = 0; i < input.length(); i++){
+            if(input.substring(i,i+1).equals(" ")) s++;
+        }
+        String[] inputArray = new String[s];
+        String[] inputArraySinVerbos = new String[0];
+        int n = 0;
+        for (String retval: input.split(" ")){
+            inputArray[n] = retval;
+            n++;
+        }
+        for(int i = inputArray.length; i > 0; i--){
+            String verbTest = "";
+            if(!inputArray[0].equals(null)) verbTest += inputArray[0];
+            for(int j = 1; j < i; j++){
+                verbTest += " ";
+                verbTest += inputArray[j];
+            }
+            if(findVerb(verbTest) != null){
+                t = i;
+                inputArraySinVerbos = new String[inputArray.length - t];
+                break;
+            }
+        }
+        if(inputArraySinVerbos.length == 0 || inputArraySinVerbos.length > 1){
+            return -1;
+        }
+        for(int i = 0; i < inputArraySinVerbos.length; i++){
+            inputArraySinVerbos[i] = inputArray[i + t];
+        }
+        return findDirection(inputArraySinVerbos[0]);
     }
 	
     public void move(int direction, Player player, World world){
@@ -312,6 +372,14 @@ public class Game {
         }
         for(String item: desc){
             System.out.println(item);
+        }
+    }
+    
+    public void inventory(Player player){
+        System.out.println(player.getName() + " has:");
+        if(player.listInventory().length == 0) System.out.println("\tNothing!");
+        for(int i = 0; i < player.listInventory().length; i++){
+            System.out.println("\t" + player.listInventory()[i].getName());
         }
     }
 }

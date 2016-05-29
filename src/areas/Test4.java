@@ -9,7 +9,6 @@ import core.Area;
 import core.Player;
 import core.Portal;
 import core.World;
-import items.NoTea;
 
 /**
  *
@@ -24,10 +23,8 @@ public class Test4 extends Area{
             setPortal(2, new Portal(false, "Test7"));
             setTitle("Test Area 4");
             setInitialDescription("This is the fourth test area, there are paths"
-                    + " to the east and south and a locked door to the north. "
-                    + "No tea lies on the ground");
+                    + " to the east and south and a locked door to the north.");
             setDescription("This is the fourth test area"); 
-            addItem(new NoTea());
             setState("First",true);
        }
        
