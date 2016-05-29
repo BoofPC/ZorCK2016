@@ -13,7 +13,7 @@ public class Taste extends Verb {
     
     public Taste(){
         super("taste",
-                new String[]{"lick","eat","savor","sample","consume","devour"},
+                new String[]{"lick","sample"},
                 new boolean[]{true, true, false});
     }
 }

@@ -14,6 +14,6 @@ public class Listen extends Verb {
     public Listen(){
         super("listen",
                 new String[]{"hear","pay attention"},
-                new boolean[]{true, false, false});
+                new boolean[]{true, true, false});
     }
 }

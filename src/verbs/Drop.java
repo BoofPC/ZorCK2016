@@ -13,7 +13,7 @@ public class Drop extends Verb{
     
     public Drop(){
         super("drop",
-                new String[] {"release"},
+                new String[] {"release", "throw out", "toss"},
                 new boolean[] {false, true, false});
     }
 }
