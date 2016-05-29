@@ -63,7 +63,7 @@ public class Game {
                 System.out.println(player.getCurrentArea().getInitialDescription());
                 player.getCurrentArea().setState("First",false);
             }
-            System.out.print("Enter a direction: ");
+            System.out.print("Enter a command: ");
             input = reader.nextLine();
             if (input.equals("n") || input.equals("north")){
                 game.move(0,player,world);
@@ -98,7 +98,14 @@ public class Game {
             else if(game.verbParser(input) != null){
                 System.out.println(game.verbParser(input).getTitle());
                 if(game.verbParser(input).getUsageKey(1)){
-                    System.out.println(game.nounParser(input,player).getName());
+                    if(game.nounParser(input,player) != null){
+                        if(!game.nounParser(input,player).getName().equals("noItem"))
+                            System.out.println(game.nounParser(input,player).getName());
+                        else if(!game.verbParser(input).getUsageKey(0))
+                            System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("That's no noun I know!");
+                    }
                 }
             }
             else if (!input.equals("q") || input.equals("quit")){
@@ -136,10 +143,19 @@ public class Game {
         }
         for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
             itemList.add(player.getCurrentArea().listItems()[i]);
-        }
+        }/*
         for(Item item: itemList){
             if(item.hasMatching(input)) return item;
+        }*/
+        for(int i = 0; i < player.listInventory().length + player.getCurrentArea().listItems().length; i++){
+            if(i<player.listInventory().length){
+                if(player.listInventory()[i].hasMatching(input))return player.listInventory()[i];
+            }
+            else{
+                if(player.getCurrentArea().listItems()[i+player.listInventory().length].hasMatching(input)) return player.getCurrentArea().listItems()[i + player.listInventory().length];
+            }
         }
+        
         return null;
     }
     
@@ -175,7 +191,7 @@ public class Game {
     public Item nounParser(String input, Player player){
         input = input.toLowerCase();
         int s = 1;
-        int t;
+        int t = 0;
         String verb = "";
         String noun = "";
         for(int i = 0; i < input.length(); i++){
@@ -205,13 +221,17 @@ public class Game {
         if(inputArraySinVerbos.length == 0){
             return new NoItem();
         }
+        for(int i = 0; i < inputArraySinVerbos.length; i++){
+            inputArraySinVerbos[i] = inputArray[i + t];
+        }
         for(int i = inputArraySinVerbos.length; i > 0; i--){
             String nounTest = "";
-            if(!inputArray[0].equals(null)) nounTest += inputArray[0];
+            if(!inputArraySinVerbos[0].equals(null)) nounTest += inputArraySinVerbos[0];
             for(int j = 1; j < i; j++){
                 nounTest += " ";
-                nounTest += inputArray[j];
+                nounTest += inputArraySinVerbos[j];
             }
+            //System.out.println(nounTest);
             if(findNoun(nounTest, player) != null){
                 noun = nounTest;
                 break;

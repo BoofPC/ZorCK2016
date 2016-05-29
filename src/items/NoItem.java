@@ -21,6 +21,7 @@ public class NoItem extends Item{
     
     public NoItem(){
         super();
+        setName("noItem");
         setUsageKey(0,2);
     }
 }
