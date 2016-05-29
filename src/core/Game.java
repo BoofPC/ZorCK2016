@@ -35,6 +35,8 @@ public class Game {
         
         game.listVerbs();
         
+        int quit = 0;
+        
         world.addArea("Test1",new Test1(world));
         world.addArea("Test2",new Test2(world));
         world.addArea("Test3",new Test3(world));
@@ -57,7 +59,7 @@ public class Game {
         
         Scanner reader = new Scanner(System.in);
         String input = "";
-        while(input != "q" && input != "quit"){
+        while(quit == 0){
             System.out.println("You are in room " + player.getCurrentArea().getTitle());
             if(player.getCurrentArea().getState("First") == true){
                 System.out.println(player.getCurrentArea().getInitialDescription());
@@ -95,7 +97,8 @@ public class Game {
             else if (input.equals("d") || input.equals("down")){
                 game.move(9,player,world);
             }
-            else if(game.verbParser(input) != null){
+            //code to test parsers
+            /*else if(game.verbParser(input) != null){
                 System.out.println(game.verbParser(input).getTitle());
                 if(game.verbParser(input).getUsageKey(1)){
                     if(game.nounParser(input,player) != null){
@@ -107,22 +110,36 @@ public class Game {
                         System.out.println("That's no noun I know!");
                     }
                 }
+            }*/
+            else{
+                String verb = game.verbParser(input).getTitle();
+                Item noun = game.nounParser(input,player);
+                if(verb.equals("take")){
+                    if(!noun.getName().equals("noItem")) game.take(noun,player);
+                    else System.out.println("Ya need a noun, ya dingus");
+                }else if(verb.equals("look")){ game.look(player); }
+                
             }
-            else if (!input.equals("q") || input.equals("quit")){
-                System.out.println("That command has no verb?");
-            }
+            System.out.println("");
         }
         System.out.println("Quiting.");
     }
     
     public void listVerbs(){
         
+        this.verbList.add(new Close());
+        this.verbList.add(new Drop());
         this.verbList.add(new Examine());
+        this.verbList.add(new Inventory());
+        this.verbList.add(new Listen());
         this.verbList.add(new Look());
         this.verbList.add(new Move());
         this.verbList.add(new Open());
+        this.verbList.add(new Poke());
         this.verbList.add(new Shout());
+        this.verbList.add(new Sniff());
         this.verbList.add(new Take());
+        this.verbList.add(new Taste());
         this.verbList.add(new TurnOff());
         this.verbList.add(new TurnOn());
         //...
@@ -271,26 +288,30 @@ public class Game {
         }
     }
         
-    public void take(Item item, Area currentArea, Player player){
-        if(currentArea.ifItem(item)){
-            currentArea.removeItem(item);
+    public void take(Item item, Player player){
+        if(player.getCurrentArea().ifItem(item)){
+            player.getCurrentArea().removeItem(item);
             player.addItem(item);
         }
+        else System.out.println("Where do you expect to find one of those?");
     }
 
-    public String[] look(Area currentArea){
+    public void look(Player player){
         String[] desc;
-        if(currentArea.listItems().length == 0){
+        if(player.getCurrentArea().listItems().length == 0){
             desc = new String[1];
-            desc[0] = currentArea.getDescription();
+            desc[0] = player.getCurrentArea().getDescription();
         }else{
-            desc = new String[currentArea.listItems().length +3];
-            desc[0] = currentArea.getDescription();
+            desc = new String[player.getCurrentArea().listItems().length +3];
+            desc[0] = player.getCurrentArea().getDescription();
+            desc[1] = "";
             desc[2] = "This Area contains:";
-            for(int i = 0; i < currentArea.listItems().length; i++){
-                desc[3+i] = currentArea.listItems()[i].getName();
+            for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
+                desc[3+i] = player.getCurrentArea().listItems()[i].getName();
             }
         }
-        return desc;
+        for(String item: desc){
+            System.out.println(item);
+        }
     }
 }
