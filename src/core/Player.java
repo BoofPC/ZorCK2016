@@ -39,17 +39,17 @@ public class Player {
         this.inventory.remove(item);
     }
     
-    public boolean ifItem(Item item){
+    public boolean hasItem(Item item){
         for(Item item2: this.inventory){
             if(item == item2) return true;
         }
         return false;
     }
     
-    public String[] listInventory(){
-        String[] list = new String[this.inventory.size()];
+    public Item[] listInventory(){
+        Item[] list = new Item[this.inventory.size()];
         for(int i = 0; i < this.inventory.size(); i++){
-            list[i] = this.inventory.get(i).getName();
+            list[i] = this.inventory.get(i);
         }
         return list;
     }

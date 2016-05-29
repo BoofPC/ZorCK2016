@@ -141,7 +141,7 @@ public class Item {
         this.synonyms.add(str);
     }
     
-    public boolean ifMatching(String str){
+    public boolean hasMatching(String str){
         for(String item: this.synonyms){
             if(item.equals(str)) return true;
         }

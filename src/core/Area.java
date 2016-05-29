@@ -94,10 +94,10 @@ public abstract class Area{
         return false;
     }
     
-    public String[] listItems(){
-        String[] list = new String[this.items.size()];
+    public Item[] listItems(){
+        Item[] list = new Item[this.items.size()];
         for(int i = 0; i < this.items.size(); i++){
-            list[i] = this.items.get(i).getName();
+            list[i] = this.items.get(i);
         }
         return list;
     }

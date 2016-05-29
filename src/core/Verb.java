@@ -46,7 +46,7 @@ public class Verb {
         return false;
     }
     
-    public boolean checkUsageKey(int key){
+    public boolean getUsageKey(int key){
         if(this.usage.length > key) return this.usage[key];
         else return false;
     }

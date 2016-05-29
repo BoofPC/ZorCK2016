@@ -1,18 +1,8 @@
 package core;
 import java.util.ArrayList;
 import verbs.*;
-
 import areas.*;
-//import areas.Test1;
-//import areas.Test2;
-//import areas.Test3;
-//import areas.Test4;
-//import areas.Test5;
-//import areas.Test6;
-//import areas.Test7;
-//import areas.Test8;
-//import areas.Test9;
-
+import items.*;
 import java.util.Scanner;
 
 /**
@@ -24,7 +14,7 @@ import java.util.Scanner;
 public class Game {
     
     public ArrayList<Verb> verbList = new ArrayList<Verb>();
-	
+    
     private int NORTH = 0;
     private int EAST  = 1;
     private int SOUTH = 2;
@@ -105,91 +95,17 @@ public class Game {
             else if (input.equals("d") || input.equals("down")){
                 game.move(9,player,world);
             }
-            /*else if (!input.equals("q") || input.equals("quit")){
-                System.out.println("That is an invalid choice.");
-            }*/else{
-                System.out.println(game.parser(input).getTitle());
+            else if(game.verbParser(input) != null){
+                System.out.println(game.verbParser(input).getTitle());
+                if(game.verbParser(input).getUsageKey(1)){
+                    System.out.println(game.nounParser(input,player).getName());
+                }
             }
-            
+            else if (!input.equals("q") || input.equals("quit")){
+                System.out.println("That command has no verb?");
+            }
         }
         System.out.println("Quiting.");
-        
-        
-        
-       /* 
-       World world = new World(3);//creates World
-        
-        for (int row = 0; row < 3; row++){ 
-            for (int col = 0; col < 3; col++){
-                if ((col == 1 && row == 0)||(col == 0 && row == 1)||(col == 2 && row == 1)||(col == 1 && row == 2)){
-                    world.setAccessibilityNorth(row, col, true);
-                    world.setAccessibilitySouth(row, col, true);
-                    world.setAccessibilityEast(row, col, true);
-                    world.setAccessibilityWest(row, col, true);
-                    
-                }
-                else{
-                    world.setAccessibilityNorth(row, col, false);
-                    world.setAccessibilitySouth(row, col, false);
-                    world.setAccessibilityEast(row, col, false);
-                    world.setAccessibilityWest(row, col, false);
-                }
-                world.addArea(row, col, world.getAreaAt(row, col));
-            }
-        }
-        System.out.println("Welcome to\n\n" +
-            "d8888888P                    a88888b. dP     dP\n" +
-            "     .d8'                   d8'   `88 88   .d8'\n" +
-            "   .d8'   .d8888b. 88d888b. 88        88aaa8P' \n" +
-            " .d8'     88'  `88 88'  `88 88        88   `8b.\n" +
-            "d8'       88.  .88 88       Y8.   .88 88     88\n" +
-            "Y8888888P `88888P' dP        Y88888P' dP     dP\n\n");
-        int x = 1;
-        int y = 1;
-        Scanner reader = new Scanner(System.in);
-        char letter = 'a';
-        while(letter != 'q'){
-            System.out.println("You are in room " + x + ", " + y + ".");
-            world.getAreaAt(x, y);
-            System.out.print("Enter a direction: ");
-            letter = reader.next().charAt(0);
-            if (letter == 'n'){
-                if (y == 0){
-                    System.out.println("You can't go that way.");
-                }
-                else {
-                    y--;
-                }
-            }
-            else if (letter == 'e'){
-                if (x == 2){
-                    System.out.println("You can't go that way.");
-                }
-                else {
-                    x++;
-                }
-            }
-            else if (letter == 's'){
-                if (y == 2){
-                    System.out.println("You can't go that way.");
-                }
-                else {
-                    y++;
-                }
-            }
-            else if (letter == 'w'){
-                if (x == 0){
-                    System.out.println("You can't go that way.");
-                }
-                else {
-                    x--;
-                }
-            }
-            else if (letter != 'q'){
-                System.out.print("That is an invalid choice.");
-            }
-        }
-        System.out.println("Quiting.");*/
     }
     
     public void listVerbs(){
@@ -213,7 +129,21 @@ public class Game {
         return null;
     }
     
-    public Verb parser(String input){
+    public Item findNoun(String input, Player player){
+        ArrayList<Item> itemList = new ArrayList<Item>();
+        for(int i = 0; i < player.listInventory().length; i++){
+            itemList.add(player.listInventory()[i]);
+        }
+        for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
+            itemList.add(player.getCurrentArea().listItems()[i]);
+        }
+        for(Item item: itemList){
+            if(item.hasMatching(input)) return item;
+        }
+        return null;
+    }
+    
+    public Verb verbParser(String input){
         input = input.toLowerCase();
         int s = 1;
         String verb = "";
@@ -241,12 +171,13 @@ public class Game {
         if(verb != null) return findVerb(verb);
         else return null;
     }
-        
-        
-        
-        
-        /*String verb = "";
+    
+    public Item nounParser(String input, Player player){
+        input = input.toLowerCase();
         int s = 1;
+        int t;
+        String verb = "";
+        String noun = "";
         for(int i = 0; i < input.length(); i++){
             if(input.substring(i,i+1).equals(" ")) s++;
         }
@@ -257,39 +188,38 @@ public class Game {
             inputArray[n] = retval;
             n++;
         }
-        outerLoop:
         for(int i = inputArray.length; i > 0; i--){
-            for(int j = 0; j <= inputArray.length - i; j++){
-                String verbTest = "";
-                if(!inputArray[0].equals(null)) verbTest += inputArray[0];
-                for(int k = 1; k < i; k++){
-                    verbTest += " ";
-                    verbTest += inputArray[k];
-                }
-                if(findVerb(verbTest) != null){
-                    verb = verbTest;
-                    inputArraySinVerbos = new String[inputArray.length - i - j];
-                    int q = 0;
-                    for(int k = i+j; k < inputArray.length; k++){
-                        inputArraySinVerbos[q] = inputArray[k];
-                    }
-                    break outerLoop;
-                }
+            String verbTest = "";
+            if(!inputArray[0].equals(null)) verbTest += inputArray[0];
+            for(int j = 1; j < i; j++){
+                verbTest += " ";
+                verbTest += inputArray[j];
             }
-            throw new IllegalArgumentException("NO VERB");
-        }
-        if(findVerb(verb).checkUsageKey(0) && inputArraySinVerbos.length == 0){
-            
-        }else{
-            if(findVerb(verb).checkUsageKey(1) && inputArraySinVerbos.length > 0){
-                
-            }else if(findVerb(verb).checkUsageKey(2) && inputArraySinVerbos.length > 0){
-                
+            if(findVerb(verbTest) != null){
+                verb = verbTest;
+                t = i;
+                inputArraySinVerbos = new String[inputArray.length - t];
+                break;
             }
         }
-        //still need to finish the part where it takes a noun or direction
-        
-    }*/
+        if(inputArraySinVerbos.length == 0){
+            return new NoItem();
+        }
+        for(int i = inputArraySinVerbos.length; i > 0; i--){
+            String nounTest = "";
+            if(!inputArray[0].equals(null)) nounTest += inputArray[0];
+            for(int j = 1; j < i; j++){
+                nounTest += " ";
+                nounTest += inputArray[j];
+            }
+            if(findNoun(nounTest, player) != null){
+                noun = nounTest;
+                break;
+            }
+        }
+        if(noun != null) return findNoun(noun, player);
+        else return null;
+    }
 	
     public void move(int direction, Player player, World world){
         if(player.getCurrentArea().getPortal(direction).isLocked()){
@@ -321,35 +251,26 @@ public class Game {
         }
     }
         
-        public void take(Item item, Area currentArea, Player player){
-            if(currentArea.ifItem(item)){
-                currentArea.removeItem(item);
-                player.addItem(item);
+    public void take(Item item, Area currentArea, Player player){
+        if(currentArea.ifItem(item)){
+            currentArea.removeItem(item);
+            player.addItem(item);
+        }
+    }
+
+    public String[] look(Area currentArea){
+        String[] desc;
+        if(currentArea.listItems().length == 0){
+            desc = new String[1];
+            desc[0] = currentArea.getDescription();
+        }else{
+            desc = new String[currentArea.listItems().length +3];
+            desc[0] = currentArea.getDescription();
+            desc[2] = "This Area contains:";
+            for(int i = 0; i < currentArea.listItems().length; i++){
+                desc[3+i] = currentArea.listItems()[i].getName();
             }
         }
-        
-        public String[] look(Area currentArea){
-            String[] desc;
-            if(currentArea.listItems().length == 0){
-                desc = new String[1];
-                desc[0] = currentArea.getDescription();
-            }else{
-                desc = new String[currentArea.listItems().length +3];
-                desc[0] = currentArea.getDescription();
-                desc[2] = "This Area contains:";
-                for(int i = 0; i < currentArea.listItems().length; i++){
-                    desc[3+i] = currentArea.listItems()[i];
-                }
-            }
-            return desc;
-        }
-	
-/*	public boolean checkIdConflict(){
-		for(int i = 0; i < this.areas.length - 1; i++){
-			for(int j = i + 1; j < this.areas.length; j++){
-				if(this.areas.get(i) == this.areas.get(j))) return true;
-			}
-		}
-		return false;
-	}*/
+        return desc;
+    }
 }
