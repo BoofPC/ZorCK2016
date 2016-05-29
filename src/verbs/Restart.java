@@ -8,7 +8,7 @@ public class Restart extends Verb {
     
     public Restart() {
         super("restart",
-                new String[] {"reset", "start over"},
+                new String[] {"reset", "start over","restart game"},
                 new boolean[] {true, false, false});
     }
 }

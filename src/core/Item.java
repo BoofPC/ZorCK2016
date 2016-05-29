@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Item {
     private String name;
     public String description;
-    public int[] usage = new int[15]; 		//update this number as needed
+    public int[] usage = new int[16]; 		//update this number as needed
 			//usage is an array of ints which determines many
 			//characteristics of an item. Each item in the 
 			//array corresponds with an attribute of the item
@@ -22,8 +22,8 @@ public class Item {
 			//is invoked. 3 means the item is bolted down, etc.
 			//
 			//The meanings of each item is as follows:
-                        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14    
-			//{[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,smell,taste,press}
+                        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14   ,15 
+			//{[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,smell,taste,press,climb}
 			//feel free to add more
 			//the possible statuses of each are as follows:
 			//take -	0: unset (default, returns "not takable")
@@ -46,6 +46,10 @@ public class Item {
                         //              2: lockable, unlocked
                         //              3: lockable, locked
 			//
+                        //
+                        //climb -       0: unset (default, returns "not climbable")
+                        //              1: not climbable
+                        //              2: climbable
                         //someone should write the rest
                         //
                         //

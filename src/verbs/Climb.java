@@ -9,6 +9,6 @@ public class Climb extends Verb {
     public Climb() {
         super("climb",
                 new String[] {"scale"},
-                new boolean[] {false, true, false});
+                new boolean[] {true, true, false});
     }
 }

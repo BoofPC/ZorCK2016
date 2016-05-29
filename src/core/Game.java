@@ -35,7 +35,12 @@ public class Game {
         
         game.listVerbs();
         
-        int quit = 0;
+        int quit = 0;       //Possible quit statuses:
+                            //      0: not quit
+                            //      1: self-quit (typed command "quit")
+                            //      2: won game
+                            //      3: died
+                            //      4: suicide!
         
         world.addArea("Test1",new Test1(world));
         world.addArea("Test2",new Test2(world));
@@ -61,9 +66,11 @@ public class Game {
         Scanner reader = new Scanner(System.in);
         String input = "";
         while(quit == 0){
-            System.out.println("You are in room " + player.getCurrentArea().getTitle());
+            System.out.println("You are in room " 
+                    + player.getCurrentArea().getTitle());
             if(player.getCurrentArea().getState("First") == true){
-                System.out.println(player.getCurrentArea().getInitialDescription());
+                System.out.println(
+                        player.getCurrentArea().getInitialDescription());
                 player.getCurrentArea().setState("First",false);
             }
             System.out.print("Enter a command: ");
@@ -141,12 +148,37 @@ public class Game {
                     }else{
                         System.out.println("That's no noun I know!");
                     }
+                }else if(verb.equals("climb")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.climb(noun,player,world);
+                        }
+                        else game.climb(null,player,world);
+                    }else{
+                        System.out.println("That's no noun I know!");
+                    }
+                }else if(verb.equals("quit")){
+                    quit = game.quit();
+                }else if(verb.equals("score")){ game.score(player); }
+                else if(verb.equals("diagnostic")){ game.diagnostic(player); }
+                else if(verb.equals("eat")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.eat(noun,player);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("That's no noun I know!");
+                    }
                 }
+                
                 
             }
             System.out.println("");
         }
-        System.out.println("Quiting.");
+        game.score(player);
+        System.out.println("Goodbye!");
+        System.out.println("");
     }
     
     public void listVerbs(){
@@ -196,12 +228,17 @@ public class Game {
         for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
             itemList.add(player.getCurrentArea().listItems()[i]);
         }
-        for(int i = 0; i < player.listInventory().length + player.getCurrentArea().listItems().length; i++){
+        for(int i = 0; i < player.listInventory().length + 
+                player.getCurrentArea().listItems().length; i++){
             if(i<player.listInventory().length){
-                if(player.listInventory()[i].hasMatching(input))return player.listInventory()[i];
+                if(player.listInventory()[i].hasMatching(input))
+                    return player.listInventory()[i];
             }
             else{
-                if(player.getCurrentArea().listItems()[i-player.listInventory().length].hasMatching(input)) return player.getCurrentArea().listItems()[i - player.listInventory().length];
+                if(player.getCurrentArea().listItems()
+                        [i-player.listInventory().length].hasMatching(input)) 
+                    return player.getCurrentArea().listItems()
+                            [i - player.listInventory().length];
             }
         }
         
@@ -287,7 +324,8 @@ public class Game {
         }
         for(int i = inputArraySinVerbos.length; i > 0; i--){
             String nounTest = "";
-            if(!inputArraySinVerbos[0].equals(null)) nounTest += inputArraySinVerbos[0];
+            if(!inputArraySinVerbos[0].equals(null)) nounTest 
+                    += inputArraySinVerbos[0];
             for(int j = 1; j < i; j++){
                 nounTest += " ";
                 nounTest += inputArraySinVerbos[j];
@@ -341,7 +379,8 @@ public class Game {
         if(player.getCurrentArea().getPortal(direction).isLocked()){
             System.out.println("You can't go that way!");
         }else{
-            player.setCurrentArea(world.getArea(player.getCurrentArea().getPortal(direction).getTarget()));
+            player.setCurrentArea(world.getArea(player.getCurrentArea()
+                    .getPortal(direction).getTarget()));
             System.out.print(player.getName() + " moved ");
             if(direction == 0){
                 System.out.println("north");
@@ -368,13 +407,15 @@ public class Game {
     }
         
     public void take(Item item, Player player){
-        if(player.getCurrentArea().ifItem(item)){
+        if(player.getCurrentArea().hasMatching(item)){
             if(item.getUsageKey(1) == 1){
                 player.getCurrentArea().removeItem(item);
                 player.addItem(item);
-                System.out.println(player.getName() + " took the " + item.getName());
+                System.out.println(player.getName() + " took the " 
+                        + item.getName());
             }else if(item.getUsageKey(1) == 2){
-                System.out.println("The " + item.getName() + " is too heavy for that");
+                System.out.println("The " + item.getName() 
+                        + " is too heavy for that");
             }else if(item.getUsageKey(1) == 3){
                 System.out.println("The " + item.getName() + " is bolted down");
             }else{
@@ -412,9 +453,52 @@ public class Game {
     }
     
     public void examine(Item item){
-        System.out.println(item.getDescription());
+        if(item.getDescription() != null)
+            System.out.println(item.getDescription());
+        else System.out.println("It looks like every other " + item.getName() + 
+                " you've ever seen");
     }
     
+    public void climb(Item item,Player player,World world){
+        if(item == null){
+            move(8,player,world);
+        }else{
+            if(item.getUsageKey(15) == 2 && player.getCurrentArea().getPortal(8) 
+                    != null){
+                if(!player.getCurrentArea().getPortal(8).isLocked())
+                    move(8,player,world);
+                else System.out.println("You can't climb that!");
+            }else{
+                System.out.println("You can't climb that!");
+            }
+        }
+    }
     
+    public int quit(){
+        return 1;
+    }
+    
+    public void score(Player player){
+        System.out.println("Your score is: " + player.getScore());
+    }
+    
+    public void diagnostic(Player player){
+        System.out.println("Your hp is: " + player.getHp() + "/" + 
+                player.getMaxHp());
+    }
+    
+    public void eat(Item item, Player player){
+        if(item.getUsageKey(2) == 2){
+            if(player.getCurrentArea().hasMatching(item)) 
+                player.getCurrentArea().removeItem(item);
+            else if(player.hasMatching(item)) player.removeItem(item);
+            System.out.println(player.getName() + " ate the " + item.getName());
+            if(item.getTaste() != null) System.out.println(item.getTaste());
+            else System.out.println("It tastes like every other " + 
+                    item.getName() + " you've ever eaten");
+        }else{
+            System.out.println("I don't see how you expect to do that!");
+        }
+    }
     
 }

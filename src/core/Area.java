@@ -87,7 +87,7 @@ public abstract class Area{
         this.items.remove(item);
     }
     
-    public boolean ifItem(Item item){
+    public boolean hasMatching(Item item){
         for(Item item2: this.items){
             if(item == item2) return true;
         }

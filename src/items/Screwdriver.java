@@ -17,8 +17,6 @@ public class Screwdriver extends Item{
         super();
         setUsageKey(1,1);
         setName("Flathead Screwdriver");
-        setDescription("It looks like every other flathead screwdriver you've "
-                + "ever seen");
         addSynonym("flathead screwdriver");
         addSynonym("screwdriver");
     }

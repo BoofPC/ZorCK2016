@@ -15,7 +15,7 @@ public class Quit extends Verb{
     
     public Quit(){
         super("quit",
-                new String[] {"q"},
+                new String[] {"q","quit game"},
                 new boolean[]{true,false,false});
     }
 }
