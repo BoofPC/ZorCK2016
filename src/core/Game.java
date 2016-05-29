@@ -76,36 +76,8 @@ public class Game {
             System.out.print("Enter a command: ");
             input = reader.nextLine();
             System.out.println("");
-            if (input.equals("n") || input.equals("north")){
-                game.move(0,player,world);
-            }
-            else if (input.equals("e") || input.equals("east")){
-                game.move(1,player,world);
-            }
-            else if (input.equals("s") || input.equals("south")){
-                game.move(2,player,world);
-            }
-            else if (input.equals("w") || input.equals("west")){
-                game.move(3,player,world);
-            }
-            else if (input.equals("ne") || input.equals("northeast")){
-                game.move(4,player,world);
-            }
-            else if (input.equals("se") || input.equals("southeast")){
-                game.move(5,player,world);
-            }
-            else if (input.equals("sw") || input.equals("southwest")){
-                game.move(6,player,world);
-            }
-            else if (input.equals("nw") || input.equals("northwest")){
-                game.move(7,player,world);
-            }
-            else if (input.equals("u") || input.equals("up")){
-                game.move(8,player,world);
-            }
-            else if (input.equals("d") || input.equals("down")){
-                game.move(9,player,world);
-            }
+            if(game.findDirection(input) != -1)
+                game.move(game.findDirection(input),player,world);
             //code to test parsers
             /*else if(game.verbParser(input) != null){
                 System.out.println(game.verbParser(input).getTitle());
@@ -116,7 +88,7 @@ public class Game {
                         else if(!game.verbParser(input).getUsageKey(0))
                             System.out.println("Ya need a noun, ya dingus");
                     }else{
-                        System.out.println("That's no noun I know!");
+                        System.out.println("Where do you expect to find one of those?");
                     }
                 }
             }*/
@@ -132,7 +104,7 @@ public class Game {
                         }
                         else System.out.println("Ya need a noun, ya dingus");
                     }else{
-                        System.out.println("That's no noun I know!");
+                        System.out.println("Where do you expect to find one of those?");
                     }
                 }else if(verb.equals("look")){ game.look(player); }
                 else if(verb.equals("move")){
@@ -146,7 +118,7 @@ public class Game {
                         }
                         else System.out.println("Ya need a noun, ya dingus");
                     }else{
-                        System.out.println("That's no noun I know!");
+                        System.out.println("Where do you expect to find one of those?");
                     }
                 }else if(verb.equals("climb")){
                     if(noun != null){
@@ -155,7 +127,7 @@ public class Game {
                         }
                         else game.climb(null,player,world);
                     }else{
-                        System.out.println("That's no noun I know!");
+                        System.out.println("Where do you expect to find one of those?");
                     }
                 }else if(verb.equals("quit")){
                     quit = game.quit();
@@ -168,7 +140,16 @@ public class Game {
                         }
                         else System.out.println("Ya need a noun, ya dingus");
                     }else{
-                        System.out.println("That's no noun I know!");
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("taste")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.taste(noun);
+                        }
+                        else game.taste(player.getCurrentArea());
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
                     }
                 }
                 
@@ -499,6 +480,17 @@ public class Game {
         }else{
             System.out.println("I don't see how you expect to do that!");
         }
+    }
+    
+    public void taste(Item item){
+        if(item.getTaste() != null) System.out.println(item.getTaste());
+        else System.out.println("It tastes like every other " + 
+                item.getName() + " you've ever eaten");
+    }
+    
+    public void taste(Area area){
+        if(area.getTaste() != null) System.out.println(area.getTaste());
+        else System.out.println("It doesn't taste like anything");
     }
     
 }

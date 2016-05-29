@@ -15,6 +15,10 @@ public abstract class Area{
     private String title;
     private String initialDescription;
     private String description;
+    private String taste;
+    private String smell;
+    private String sound;
+    
     public ArrayList<Item> items;
     
     private HashMap<String,Boolean> state;
@@ -70,7 +74,31 @@ public abstract class Area{
     public void setDescription(String description){
         this.description = description;
     }
-	
+    
+    public String getTaste(){
+        return this.taste;
+    }
+    
+    private void setTaste(String input){
+        this.taste = input;
+    }
+    
+    public String getSmell(){
+        return this.smell;
+    }
+    
+    private void setSmell(String input){
+        this.smell = input;
+    }
+    
+    public String getSound(){
+        return this.sound;
+    }
+    
+    private void setSound(String input){
+        this.sound = input;
+    }
+    
     public boolean getState(String name){
         return this.state.get(name);
     }
