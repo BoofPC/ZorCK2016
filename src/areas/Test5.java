@@ -5,11 +5,8 @@
  */
 
 package areas;
-import core.Area;
-import core.Player;
-import core.Portal;
-import core.World;
-import items.Screwdriver;
+import core.*;
+import items.*;
 
 /**
  *
@@ -26,9 +23,9 @@ public class Test5 extends Area{
             setTitle("Test Area 5");
             setInitialDescription("This is the fifth test area, there is path "
                     + "leading east-west, a door to the north, and a path to "
-                    + "the south. There is a screwdriver on the ground");
+                    + "the south.");
             setDescription("This is the fifth test area");   
-            addItem(new Screwdriver());
+            addItem(new Door(false,"Northern Door"));
             setState("First",true);
        }
        

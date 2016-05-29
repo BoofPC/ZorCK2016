@@ -369,9 +369,17 @@ public class Game {
         
     public void take(Item item, Player player){
         if(player.getCurrentArea().ifItem(item)){
-            player.getCurrentArea().removeItem(item);
-            player.addItem(item);
-            System.out.println(player.getName() + " took the " + item.getName());
+            if(item.getUsageKey(1) == 1){
+                player.getCurrentArea().removeItem(item);
+                player.addItem(item);
+                System.out.println(player.getName() + " took the " + item.getName());
+            }else if(item.getUsageKey(1) == 2){
+                System.out.println("The " + item.getName() + " is too heavy for that");
+            }else if(item.getUsageKey(1) == 3){
+                System.out.println("The " + item.getName() + " is bolted down");
+            }else{
+                System.out.println("You can't take the " + item.getName());
+            }
         }
         else System.out.println("Where do you expect to find one of those?");
     }

@@ -25,7 +25,7 @@ public class Test1 extends Area{
             setInitialDescription("This is the first test area, there is path to "
                     + "the east and a locked door to the south");
             setDescription("This is the first test area");   
-            addItem(new Door(true));
+            addItem(new Door(true,"Southern Door"));
             setState("First",true);
        }
        

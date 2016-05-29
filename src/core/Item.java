@@ -63,6 +63,7 @@ public class Item {
     public String text; 	//if item is read
     public boolean active;	//if item can be turned on or pressed
     public String smell;
+    public String sound;
     public ArrayList<String> synonyms;
 	
     public Item(){
@@ -135,6 +136,14 @@ public class Item {
 	
     public void setSmell(String smell){
         this.smell = smell;
+    }
+    
+    public String getSound(){
+        return this.sound;
+    }
+	
+    public void setSound(String sound){
+        this.sound = sound;
     }
 
     public void addSynonym(String str){

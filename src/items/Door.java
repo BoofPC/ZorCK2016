@@ -13,7 +13,7 @@ import core.Item;
  */
 public class Door extends Item{
     
-    public Door(boolean locked){
+    public Door(boolean locked,String name){
         super();
         setUsageKey(1,3);
         setUsageKey(4,2);
@@ -26,6 +26,10 @@ public class Door extends Item{
             setUsageKey(5,2);
             setName("Door");
             setDescription("Whelp, that's a door alright!");
+        }
+        if(name != null){
+            setName(name);
+            addSynonym(name.toLowerCase());
         }
         addSynonym("door");
     }
