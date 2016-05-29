@@ -2,15 +2,17 @@ package core;
 import java.util.ArrayList;
 import verbs.*;
 
-import areas.Test1;
-import areas.Test2;
-import areas.Test3;
-import areas.Test4;
-import areas.Test5;
-import areas.Test6;
-import areas.Test7;
-import areas.Test8;
-import areas.Test9;
+import areas.*;
+//import areas.Test1;
+//import areas.Test2;
+//import areas.Test3;
+//import areas.Test4;
+//import areas.Test5;
+//import areas.Test6;
+//import areas.Test7;
+//import areas.Test8;
+//import areas.Test9;
+
 import java.util.Scanner;
 
 /**
@@ -21,7 +23,7 @@ import java.util.Scanner;
 
 public class Game {
     
-    public ArrayList<Verb> verbList;
+    public ArrayList<Verb> verbList = new ArrayList<Verb>();
 	
     private int NORTH = 0;
     private int EAST  = 1;
@@ -41,6 +43,8 @@ public class Game {
         Player player = new Player(10,"Carlton");
         World world = new World();
         
+        game.listVerbs();
+        
         world.addArea("Test1",new Test1(world));
         world.addArea("Test2",new Test2(world));
         world.addArea("Test3",new Test3(world));
@@ -53,8 +57,6 @@ public class Game {
         
         player.setCurrentArea(world.getArea("Test5"));
         
-        Area temp;
-        
         System.out.println("Welcome to\n\n" +
             "d8888888P                    a88888b. dP     dP\n" +
             "     .d8'                   d8'   `88 88   .d8'\n" +
@@ -65,33 +67,50 @@ public class Game {
         
         Scanner reader = new Scanner(System.in);
         String input = "";
-        while(input != "q"){
+        while(input != "q" && input != "quit"){
             System.out.println("You are in room " + player.getCurrentArea().getTitle());
-            temp = player.getCurrentArea();
             if(player.getCurrentArea().getState("First") == true){
                 System.out.println(player.getCurrentArea().getInitialDescription());
                 player.getCurrentArea().setState("First",false);
             }
             System.out.print("Enter a direction: ");
-            input = reader.next();
-            if (input.equals("n")){
+            input = reader.nextLine();
+            if (input.equals("n") || input.equals("north")){
                 game.move(0,player,world);
             }
-            else if (input.equals("e")){
+            else if (input.equals("e") || input.equals("east")){
                 game.move(1,player,world);
             }
-            else if (input.equals("s")){
+            else if (input.equals("s") || input.equals("south")){
                 game.move(2,player,world);
             }
-            else if (input.equals("w")){
+            else if (input.equals("w") || input.equals("west")){
                 game.move(3,player,world);
             }
-            else if (!input.equals("q")){
-                System.out.print("That is an invalid choice.");
+            else if (input.equals("ne") || input.equals("northeast")){
+                game.move(4,player,world);
             }
-            if(!input.equals("q") && temp == player.getCurrentArea()){
-                System.out.println("You can't go that way!");
+            else if (input.equals("se") || input.equals("southeast")){
+                game.move(5,player,world);
             }
+            else if (input.equals("sw") || input.equals("southwest")){
+                game.move(6,player,world);
+            }
+            else if (input.equals("nw") || input.equals("northwest")){
+                game.move(7,player,world);
+            }
+            else if (input.equals("u") || input.equals("up")){
+                game.move(8,player,world);
+            }
+            else if (input.equals("d") || input.equals("down")){
+                game.move(9,player,world);
+            }
+            /*else if (!input.equals("q") || input.equals("quit")){
+                System.out.println("That is an invalid choice.");
+            }*/else{
+                System.out.println(game.parser(input).getTitle());
+            }
+            
         }
         System.out.println("Quiting.");
         
@@ -194,9 +213,10 @@ public class Game {
         return null;
     }
     
-    public String[] parser(String input){
+    public Verb parser(String input){
         input = input.toLowerCase();
         int s = 1;
+        String verb = "";
         for(int i = 0; i < input.length(); i++){
             if(input.substring(i,i+1).equals(" ")) s++;
         }
@@ -206,7 +226,20 @@ public class Game {
             inputArray[n] = retval;
             n++;
         }
-        return inputArray;
+        for(int i = inputArray.length; i > 0; i--){
+            String verbTest = "";
+            if(!inputArray[0].equals(null)) verbTest += inputArray[0];
+            for(int j = 1; j < i; j++){
+                verbTest += " ";
+                verbTest += inputArray[j];
+            }
+            if(findVerb(verbTest) != null){
+                verb = verbTest;
+                break;
+            }
+        }
+        if(verb != null) return findVerb(verb);
+        else return null;
     }
         
         
@@ -258,12 +291,33 @@ public class Game {
         
     }*/
 	
-    public Area move(int direction, Player player, World world){
+    public void move(int direction, Player player, World world){
         if(player.getCurrentArea().getPortal(direction).isLocked()){
-            return player.getCurrentArea();
+            System.out.println("You can't go that way!");
         }else{
             player.setCurrentArea(world.getArea(player.getCurrentArea().getPortal(direction).getTarget()));
-            return player.getCurrentArea();
+            System.out.print(player.getName() + " moved ");
+            if(direction == 0){
+                System.out.println("north");
+            }else if(direction == 1){
+                System.out.println("east");
+            }else if(direction == 2){
+                System.out.println("south");
+            }else if(direction == 3){
+                System.out.println("west");
+            }else if(direction == 4){
+                System.out.println("northeast");
+            }else if(direction == 5){
+                System.out.println("southeast");
+            }else if(direction == 6){
+                System.out.println("southwest");
+            }else if(direction == 7){
+                System.out.println("northwest");
+            }else if(direction == 8){
+                System.out.println("up");
+            }else if(direction == 9){
+                System.out.println("down");
+            }
         }
     }
         

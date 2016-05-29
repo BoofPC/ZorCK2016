@@ -23,6 +23,10 @@ public class Player {
         this.inventory = new ArrayList<>();
     }
 
+    public String getName(){
+        return this.name;
+    }
+    
     public void rename(String name){
         this.name = name;
     }

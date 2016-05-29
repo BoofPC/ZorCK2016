@@ -28,6 +28,7 @@ public class Verb {
     
     public Verb(String title, String[] synonyms, boolean[] usage){
         this.title = title;
+        this.synonyms = new ArrayList<String>();
         this.synonyms.addAll(Arrays.asList(synonyms));
         this.usage = new boolean[usage.length];
         System.arraycopy(usage, 0, this.usage, 0, usage.length);
