@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import verbs.*;
 import areas.*;
 import items.*;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -151,7 +152,18 @@ public class Game {
                     }else{
                         System.out.println("Where do you expect to find one of those?");
                     }
-                }
+                }else if(verb.equals("smell")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.smell(noun);
+                        }
+                        else game.smell(player.getCurrentArea());
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("shout")){ game.shout(); }
+                else if(verb.equals("hello")){ game.hello(); }
+                
                 
                 
             }
@@ -171,6 +183,7 @@ public class Game {
         this.verbList.add(new Drop());
         this.verbList.add(new Eat());
         this.verbList.add(new Examine());
+        this.verbList.add(new Hello());
         this.verbList.add(new Hit());
         this.verbList.add(new Inventory());
         this.verbList.add(new Listen());
@@ -184,7 +197,7 @@ public class Game {
         this.verbList.add(new Restart());
         this.verbList.add(new Score());
         this.verbList.add(new Shout());
-        this.verbList.add(new Sniff());
+        this.verbList.add(new Smell());
         this.verbList.add(new Suicide());
         this.verbList.add(new Take());
         this.verbList.add(new Taste());
@@ -491,6 +504,29 @@ public class Game {
     public void taste(Area area){
         if(area.getTaste() != null) System.out.println(area.getTaste());
         else System.out.println("It doesn't taste like anything");
+    }
+    
+    public void smell(Item item){
+        if(item.getSmell() != null) System.out.println(item.getSmell());
+        else System.out.println("It smells like every other " + 
+                item.getName());
+    }
+    
+    public void smell(Area area){
+        if(area.getSmell() != null) System.out.println(area.getSmell());
+        else System.out.println("It doesn't smell like anything");
+    }
+    
+    public void shout(){
+        System.out.println("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!");
+    }
+    
+    public void hello(){
+        Random rand = new Random();
+        int n = rand.nextInt(3);
+        if(n == 0) System.out.println("Good day");
+        else if(n == 1) System.out.println("Hello");
+        else System.out.println("Nice weather we've been having lately");
     }
     
 }

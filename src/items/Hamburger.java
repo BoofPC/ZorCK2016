@@ -23,5 +23,6 @@ public class Hamburger extends Item{
         addSynonym("burger");
         addSynonym("cheeseburger");
         setTaste("It is the best burger you've ever tasted");
+        setSmell("It smells decadent");
     }
 }

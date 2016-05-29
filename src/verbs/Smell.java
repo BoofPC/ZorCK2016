@@ -9,11 +9,11 @@ import core.Verb;
  *
  * @author Alex Johnson
  */
-public class Sniff extends Verb  {
+public class Smell extends Verb  {
     
-    public Sniff() {
-        super("sniff",
-                new String[]{"smell"},
+    public Smell() {
+        super("smell",
+                new String[]{"sniff"},
                 new boolean[]{true, true, false});
         
     }
