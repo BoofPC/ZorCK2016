@@ -122,7 +122,6 @@ public class Game {
                     if(noun != null){
                         if(!noun.getName().equals("noItem")){
                             game.take(noun,player);
-                            System.out.println(player.getName() + " took the " + noun.getName());
                         }
                         else System.out.println("Ya need a noun, ya dingus");
                     }else{
@@ -133,6 +132,16 @@ public class Game {
                     if(direction != -1) game.move(direction,player,world);
                     else System.out.println("Ya need a direction, ya dingus");
                 }else if(verb.equals("inventory")){ game.inventory(player); }
+                else if(verb.equals("examine")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.examine(noun);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("That's no noun I know!");
+                    }
+                }
                 
             }
             System.out.println("");
@@ -142,17 +151,28 @@ public class Game {
     
     public void listVerbs(){
         
+        this.verbList.add(new Climb());
         this.verbList.add(new Close());
+        this.verbList.add(new Diagnostic());
+        this.verbList.add(new Drink());
         this.verbList.add(new Drop());
+        this.verbList.add(new Eat());
         this.verbList.add(new Examine());
+        this.verbList.add(new Hit());
         this.verbList.add(new Inventory());
         this.verbList.add(new Listen());
         this.verbList.add(new Look());
         this.verbList.add(new Move());
         this.verbList.add(new Open());
         this.verbList.add(new Poke());
+        this.verbList.add(new Pray());
+        this.verbList.add(new Quit());
+        this.verbList.add(new Read());
+        this.verbList.add(new Restart());
+        this.verbList.add(new Score());
         this.verbList.add(new Shout());
         this.verbList.add(new Sniff());
+        this.verbList.add(new Suicide());
         this.verbList.add(new Take());
         this.verbList.add(new Taste());
         this.verbList.add(new TurnOff());
@@ -181,7 +201,7 @@ public class Game {
                 if(player.listInventory()[i].hasMatching(input))return player.listInventory()[i];
             }
             else{
-                if(player.getCurrentArea().listItems()[i+player.listInventory().length].hasMatching(input)) return player.getCurrentArea().listItems()[i + player.listInventory().length];
+                if(player.getCurrentArea().listItems()[i-player.listInventory().length].hasMatching(input)) return player.getCurrentArea().listItems()[i - player.listInventory().length];
             }
         }
         
@@ -272,7 +292,6 @@ public class Game {
                 nounTest += " ";
                 nounTest += inputArraySinVerbos[j];
             }
-            //System.out.println(nounTest);
             if(findNoun(nounTest, player) != null){
                 noun = nounTest;
                 break;
@@ -352,6 +371,7 @@ public class Game {
         if(player.getCurrentArea().ifItem(item)){
             player.getCurrentArea().removeItem(item);
             player.addItem(item);
+            System.out.println(player.getName() + " took the " + item.getName());
         }
         else System.out.println("Where do you expect to find one of those?");
     }
@@ -382,4 +402,11 @@ public class Game {
             System.out.println("\t" + player.listInventory()[i].getName());
         }
     }
+    
+    public void examine(Item item){
+        System.out.println(item.getDescription());
+    }
+    
+    
+    
 }
