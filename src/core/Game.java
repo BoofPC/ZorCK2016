@@ -4,11 +4,13 @@ import verbs.*;
 import areas.*;
 import items.*;
 import java.util.Random;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  *
- * @author coons5457w & pedro
+ * @author coons5457w & pedro & Samantha
  */
 
 
@@ -24,7 +26,8 @@ public class Game {
     private int SOUTH_EAST = 5;
     private int SOUTH_WEST = 6;
     private int NORTH_WEST = 7;
-
+    private int UP = 8;
+    private int DOWN = 9;
     
 	
     public static void main(String[] args){
@@ -79,6 +82,10 @@ public class Game {
             System.out.println("");
             if(game.findDirection(input) != -1)
                 game.move(game.findDirection(input),player,world);
+            System.out.println(""); 
+            if(game.directionParser(input) != -1) {
+                game.move(game.directionParser(input), player, world);
+            }
             //code to test parsers
             /*else if(game.verbParser(input) != null){
                 System.out.println(game.verbParser(input).getTitle());
@@ -240,17 +247,40 @@ public class Game {
     }
     
     public int findDirection(String input){
-        if(input.equals("north") || input.equals("n")) return 0;
-        else if(input.equals("east") || input.equals("e")) return 1;
-        else if(input.equals("south") || input.equals("s")) return 2;
-        else if(input.equals("west") || input.equals("w")) return 3;
-        else if(input.equals("northeast") || input.equals("ne")) return 4;
-        else if(input.equals("southeast") || input.equals("se")) return 5;
-        else if(input.equals("southwest") || input.equals("sw")) return 6;
-        else if(input.equals("northwest") || input.equals("nw")) return 7;
-        else if(input.equals("up") || input.equals("u")) return 8;
-        else if(input.equals("down") || input.equals("d")) return 9;
-        else return -1;
+        switch (input) {
+            case "north":
+            case "n":
+                return NORTH;
+            case "east":
+            case "e":
+                return EAST;
+            case "south":
+            case "s":
+                return SOUTH;
+            case "west":
+            case "w":
+                return WEST;
+            case "northeast":
+            case "ne":
+                return NORTH_EAST;
+            case "southeast":
+            case "se":
+                return SOUTH_EAST;
+            case "southwest":
+            case "sw":
+                return SOUTH_WEST;
+            case "northwest":
+            case "nw":
+                return NORTH_WEST;
+            case "up":
+            case "u":
+                return UP;
+            case "down":
+            case "d":
+                return DOWN;
+            default:
+                return -1;
+        }
     }
     
     public Verb verbParser(String input){
@@ -335,38 +365,14 @@ public class Game {
     
     public int directionParser(String input){
         input = input.toLowerCase();
-        int s = 1;
-        int t = 0;
-        for(int i = 0; i < input.length(); i++){
-            if(input.substring(i,i+1).equals(" ")) s++;
-        }
-        String[] inputArray = new String[s];
-        String[] inputArraySinVerbos = new String[0];
-        int n = 0;
-        for (String retval: input.split(" ")){
-            inputArray[n] = retval;
-            n++;
-        }
-        for(int i = inputArray.length; i > 0; i--){
-            String verbTest = "";
-            if(!inputArray[0].equals(null)) verbTest += inputArray[0];
-            for(int j = 1; j < i; j++){
-                verbTest += " ";
-                verbTest += inputArray[j];
-            }
-            if(findVerb(verbTest) != null){
-                t = i;
-                inputArraySinVerbos = new String[inputArray.length - t];
-                break;
-            }
-        }
-        if(inputArraySinVerbos.length == 0 || inputArraySinVerbos.length > 1){
-            return -1;
-        }
-        for(int i = 0; i < inputArraySinVerbos.length; i++){
-            inputArraySinVerbos[i] = inputArray[i + t];
-        }
-        return findDirection(inputArraySinVerbos[0]);
+        
+        //convert String input to List, then filter out nulls and verbs
+        List<String> inputList = new ArrayList<>(Arrays.asList(input.split("\\s")));
+        inputList.removeIf(i -> (i == null || findVerb(i) != null));
+        
+        if (inputList.isEmpty() || inputList.size() > 1) return -1;
+        
+        return findDirection(inputList.get(0)); 
     }
 	
     public void move(int direction, Player player, World world){
@@ -441,8 +447,8 @@ public class Game {
     public void inventory(Player player){
         System.out.println(player.getName() + " has:");
         if(player.listInventory().length == 0) System.out.println("\tNothing!");
-        for(int i = 0; i < player.listInventory().length; i++){
-            System.out.println("\t" + player.listInventory()[i].getName());
+        for (Item listInventory : player.listInventory()) {
+            System.out.println("\t" + listInventory.getName());
         }
     }
     
