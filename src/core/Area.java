@@ -18,6 +18,7 @@ public abstract class Area{
     private String taste;
     private String smell;
     private String sound;
+    private boolean dark;
     
     public ArrayList<Item> items;
     
@@ -137,6 +138,11 @@ public abstract class Area{
         return list;
     }
     
+    public boolean getDark(){
+        return this.dark;
+    }
     
-    
+    public void setDark(boolean dark){
+        this.dark = dark;
+    }
 }

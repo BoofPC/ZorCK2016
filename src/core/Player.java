@@ -59,6 +59,13 @@ public class Player {
         return list;
     }
     
+    public Item getItem(String name){
+        for(Item item: this.inventory){
+            if(name.equals(item.getName())) return item;
+        }
+        return null;
+    }
+    
     public Area getCurrentArea(){
         return this.currentArea;
     }

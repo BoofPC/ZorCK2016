@@ -49,23 +49,23 @@ public class Item {
                         //                  1: not readable
                         //                  2: readable
                         //                  3: illegible
-                        //move (n = 7) -    0: unset (default, returns "not movable")
-                        //                  1: unmovable
-                        //                  2: movable
-                        //wear (n = 8) -    0: unset (default, returns "not wearable")
-                        //                  1: unwearable
-                        //                  2: wearable
-                        //close (n = 9) -   0: unset (default, returns "not closeable")
-                        //                  1: not closable
-                        //                  2: closable, open
-                        //                  3: closable, closed
-                        //stab (n = 10) -   0: unset (default, returns "not stabable")
-                        //                  1: not stabable
-                        //                  2: stabable
-                        //turnOn (n = 11) - 0: unset (default, returns "not turnOnable")
+                        //turnOn (n = 7) - 0: unset (default, returns "not turnOnable")
 			//                  1: not turnOnable
 			//                  2: turnOnable, off
                         //                  3: turnOnable, on
+                        //move (n = 8) -    0: unset (default, returns "not movable")
+                        //                  1: unmovable
+                        //                  2: movable
+                        //wear (n = 9) -    0: unset (default, returns "not wearable")
+                        //                  1: unwearable
+                        //                  2: wearable
+                        //close (n = 10) -   0: unset (default, returns "not closeable")
+                        //                  1: not closable
+                        //                  2: closable, open
+                        //                  3: closable, closed
+                        //stab (n = 11) -   0: unset (default, returns "not stabable")
+                        //                  1: not stabable
+                        //                  2: stabable
                         //press (n = 12) -  0: unset (default, returns "not pressable")
                         //                  1: not pressable
                         //                  2: pressable, unpressed
@@ -73,7 +73,7 @@ public class Item {
                         //climb (n = 13) -  0: unset (default, returns "not climbable")
                         //                  1: not climbable
                         //                  2: climbable
-                        //someone should write the rest
+                        //
                         //
                         //
 			//the first item, represented here as [duumy], refers to
@@ -152,11 +152,13 @@ public class Item {
     }
 	
     public boolean getActive(){
-        return this.active;
+        return getUsageKey(7) == 3;
     }
 	
     public void setActive(boolean active){
-        this.active = active;
+        if(active)
+            setUsageKey(7,3);
+        else setUsageKey(7,2);
     }
 	
     public String getSmell(){

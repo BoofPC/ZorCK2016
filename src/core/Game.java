@@ -56,6 +56,7 @@ public class Game {
         world.addArea("Test7",new Test7(world));
         world.addArea("Test8",new Test8(world));
         world.addArea("Test9",new Test9(world));
+        world.addArea("Test10",new Test10(world));
         
         player.setCurrentArea(world.getArea("Test5"));
         player.addItem(new NoTea());
@@ -73,10 +74,22 @@ public class Game {
         while(quit == 0){
             System.out.println("You are in room " 
                     + player.getCurrentArea().getTitle());
-            if(player.getCurrentArea().getState("First") == true){
+            if(player.getCurrentArea().getState("First") == true &&
+                    !player.getCurrentArea().getDark()){
                 System.out.println(
                         player.getCurrentArea().getInitialDescription());
                 player.getCurrentArea().setState("First",false);
+            }else if(player.getCurrentArea().getState("First") && 
+                    player.getItem("Lantern") != null){
+                if(player.getItem("Lantern").getActive()){
+                    System.out.println(
+                        player.getCurrentArea().getInitialDescription());
+                    player.getCurrentArea().setState("First",false);
+                }else{
+                    System.out.println("It's too dark to see!");
+                }
+            }else if(player.getCurrentArea().getState("First")){
+                System.out.println("It's too dark to see!");
             }
             System.out.print(">");
             input = reader.nextLine();
@@ -101,7 +114,6 @@ public class Game {
                 String verb = game.verbParser(input).getTitle();
                 Item noun = game.nounParser(input,player);
                 int direction = game.directionParser(input);
-
                 if(verb.equals("damn")){
                     game.curse();
                 }else if(verb.equals("take")){
@@ -564,8 +576,20 @@ public class Game {
                 desc[3+i] = player.getCurrentArea().listItems()[i].getName();
             }
         }
-        for(String item: desc){
-            System.out.println(item);
+        if(player.getCurrentArea().getDark() != true){
+            for(String item: desc){
+                System.out.println(item);
+            }
+        }else if(player.getItem("Lantern") != null){
+            if(player.getItem("Lantern").getActive()){
+                for(String item: desc){
+                    System.out.println(item);
+                }
+            }else{
+                System.out.println("It's too dark to see!");
+            }
+        }else{
+            System.out.println("It's too dark to see!");
         }
     }
     
