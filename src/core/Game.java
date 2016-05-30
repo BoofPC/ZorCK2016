@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -59,7 +60,7 @@ public class Game {
         player.setCurrentArea(world.getArea("Test5"));
         player.addItem(new NoTea());
         
-        System.out.println("Welcome to\n\n" +
+        System.out.println("Welcome to\n" +
             "d8888888P                    a88888b. dP     dP\n" +
             "     .d8'                   d8'   `88 88   .d8'\n" +
             "   .d8'   .d8888b. 88d888b. 88        88aaa8P' \n" +
@@ -170,7 +171,7 @@ public class Game {
                     }
                 }else if(verb.equals("shout")){ game.shout(); }
                 else if(verb.equals("hello")){ game.hello(); }
-                
+                else if(verb.equals("credits")){ game.credits(); }
                 
                 
             }
@@ -185,6 +186,7 @@ public class Game {
         
         this.verbList.add(new Climb());
         this.verbList.add(new Close());
+        this.verbList.add(new Credits());
         this.verbList.add(new Diagnostic());
         this.verbList.add(new Drink());
         this.verbList.add(new Drop());
@@ -504,7 +506,7 @@ public class Game {
     public void taste(Item item){
         if(item.getTaste() != null) System.out.println(item.getTaste());
         else System.out.println("It tastes like every other " + 
-                item.getName() + " you've ever eaten");
+                item.getName() + " you've ever tried");
     }
     
     public void taste(Area area){
@@ -533,6 +535,244 @@ public class Game {
         if(n == 0) System.out.println("Good day");
         else if(n == 1) System.out.println("Hello");
         else System.out.println("Nice weather we've been having lately");
+    }
+    
+    public void credits(){
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        pause(750);
+        System.out.println("d8888888P                    a88888b. dP     dP");
+        pause(750);
+        System.out.println("     .d8'                   d8'   `88 88   .d8'");
+        pause(750);
+        System.out.println("   .d8'   .d8888b. 88d888b. 88        88aaa8P' ");
+        pause(750);
+        System.out.println(" .d8'     88'  `88 88'  `88 88        88   `8b.");
+        pause(750);
+        System.out.println("d8'       88.  .88 88       Y8.   .88 88     88");
+        pause(750);
+        System.out.println("Y8888888P `88888P' dP        Y88888P' dP     dP");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("Created By Mr Booth's CompSci Classes");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("Core Programming:");
+        pause(750);
+        System.out.println("\tSamantha Miller");
+        pause(750);
+        System.out.println("\tHelen Keith");
+        pause(750);
+        System.out.println("\tPeter Mattsen");
+        pause(750);
+        System.out.println("\tCole Van Pelt");
+        pause(750);
+        System.out.println("\tAidan Anderson");
+        pause(750);
+        System.out.println("\tCody McCay");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("Story Writers:");
+        pause(750);
+        System.out.println("\tChaz McCarty");
+        pause(750);
+        System.out.println("\tJoy Clark");
+        pause(750);
+        System.out.println("\tBecca Dotson");
+        pause(750);
+        System.out.println("\tBrett Dayley");
+        pause(750);
+        System.out.println("\tKalo Antonio");
+        pause(750);
+        System.out.println("\tJacob Nelson");
+        pause(750);
+        System.out.println("\tCameron Kluge");
+        pause(750);
+        System.out.println("\tJason Gordon");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("Map and Item Designers:");
+        pause(750);
+        System.out.println("\tKevin White");
+        pause(750);
+        System.out.println("\tBailee Barrick");
+        pause(750);
+        System.out.println("\tCalvin Fischer");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("Content Programmers:");
+        pause(750);
+        System.out.println("\tAlex Johnson");
+        pause(750);
+        System.out.println("\tCurtis Holden");
+        pause(750);
+        System.out.println("\tWarren Coons");
+        pause(750);
+        System.out.println("\tMae Pontius");
+        pause(750);
+        System.out.println("\tGrace Smith");
+        pause(750);
+        System.out.println("\tEric Ma");
+        pause(750);
+        System.out.println("\tJosh Weston");
+        pause(750);
+        System.out.println("\tDavid Thomas");
+        pause(750);
+        System.out.println("\tBrayden Howard");
+        pause(750);
+        System.out.println("\tNick Slatton");
+        pause(750);
+        System.out.println("\tRyan Allen");
+        pause(750);
+        System.out.println("\tMadison Largey");
+        pause(750);
+        System.out.println("\tTrishana Place");
+        pause(750);
+        System.out.println("\tStone Van Beynum");
+        pause(750);
+        System.out.println("\tRachel Flowers");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("© 2016 - ");
+        pause(750);
+        System.out.println("\thttps://github.com/BoofPC/ZorCK2016");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("                   `..://+/+/.````               `");
+        pause(750);
+        System.out.println("              .:+ysdmdmmmNNNmNNNmmo-`             ");
+        pause(750);
+        System.out.println("            :+yddmdddmmmNNNNNNNNNNNNms`           ");
+        pause(750);
+        System.out.println("           :shdddhhhdmmNNNNNNNNNNNmmmmh/`         ");
+        pause(750);
+        System.out.println("           +ydddyyyhddmmmmmmmmdmmddhhdmNs`        ");
+        pause(750);
+        System.out.println("          :hddhso++ossohhhhhhhhyyhyo+odmmo        ");
+        pause(750);
+        System.out.println("         -hmmho+//////:/+ooosyo/os+/:/+hdh.       ");
+        pause(750);
+        System.out.println("         :smmy+///:::::--:-://::/:::/:/+hh:       ");
+        pause(750);
+        System.out.println("         :sddy+///:::::---------::::::::yy`       ");
+        pause(750);
+        System.out.println("         -syhs++//::::------------::::::+s        ");
+        pause(750);
+        System.out.println("         .hhs:+///++++++:-..-----:::::/::+        ");
+        pause(750);
+        System.out.println("         :yho:/+syssyhhhyoo/:-:+syhhhhyy/:        ");
+        pause(750);
+        System.out.println("        `+ss-:+osyhyyyssyys+//ossshhyyyo+/        ");
+        pause(750);
+        System.out.println("         :/+.:+syooooo+oo+yo::+ho+osoo++/:        ");
+        pause(750);
+        System.out.println("         -//-://+++++++++++/:-/ooo+o++///-        ");
+        pause(750);
+        System.out.println("         .///:///::----::///::://::::::::.        ");
+        pause(750);
+        System.out.println("          .//:///:---::/+///:--:://::::::.        ");
+        pause(750);
+        System.out.println("           .-+++///+////+o+++://++++++///.        ");
+        pause(750);
+        System.out.println("            .+o+//+o+++++o+++++oo+++o++//-        ");
+        pause(750);
+        System.out.println("             +oo+:/+oso+/////////oso/+///`        ");
+        pause(750);
+        System.out.println("             .sss+++++oo++/::://++//+soo`         ");
+        pause(750);
+        System.out.println("            `/+yyyso+++////:////////oss.          ");
+        pause(750);
+        System.out.println("          `+dN+shdhysoo+/+/+oo+++++oo:            ");
+        pause(750);
+        System.out.println("          +mNm+oshdmdhso+++//://++osso/           ");
+        pause(750);
+        System.out.println("        `/yNNmo++ooshddhyo++++o++osyMNNy          ");
+        pause(750);
+        System.out.println("     .+hmmmNNNy///+++osyhhysyyysyysyNMNNh/.       ");
+        pause(750);
+        System.out.println(" `.odNNNNNNNNNNy:::://++oooo+ooossssNMMNNNNmyo:`  ");
+        pause(750);
+        System.out.println("smmNNNNNNNNNNNNNh::-::::///+++/+ooooNMMNNNNNNNNNm+");
+        pause(750);
+        System.out.println("dNNNNNNNNMMMNNNNNd/-----::::///+++/+NMMNNNNNNNMMNd");
+        pause(750);
+        System.out.println("dNNNNNNNNMMMMNNNNNNs------::::::/:-hNNNNNNNMNNMMMd");
+        pause(750);
+        System.out.println("dNNNNNNNNNNMMMMNNNNNms-...-------.sNNNNMMMNNMMNMMd");
+        pause(750);
+        System.out.println("hmmmmmmmmmmmNNNNmmmmmmms-````````/mmmmmmNmmmmmmmmh");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+        System.out.println("");
+        pause(750);
+    }
+    
+    public void pause(int time){
+        try {
+            Thread.sleep(time);
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
     
 }
