@@ -1,5 +1,7 @@
 package core;
 
+import items.*;
+
 /**
  *
  * @author keith5387h & pedro & alexb
@@ -28,5 +30,12 @@ public class Portal {
     
     public String getTarget(){
         return this.target;
+    }
+    
+    public Item getDoor(Area currentArea){
+        for(int i = 0; i < currentArea.listItems().length; i++){
+            if(currentArea.listItems()[i].getPortal() == this) return currentArea.listItems()[i];
+        }
+        return null;
     }
 }

@@ -277,7 +277,7 @@ public class Game {
                 else if(verb.equals("lock")){
                     if(noun != null){
                         if(!noun.getName().equals("noItem")){
-                            game.lock(noun, player);
+                            game.lock(noun, player, world);
                         }
                         else System.out.println("Ya need a noun, ya dingus");
                     }else{
@@ -286,7 +286,7 @@ public class Game {
                 }else if(verb.equals("unlock")){
                     if(noun != null){
                         if(!noun.getName().equals("noItem")){
-                            game.unlock(noun, player);
+                            game.unlock(noun, player, world);
                         }
                         else System.out.println("Ya need a noun, ya dingus");
                     }else{
@@ -1027,7 +1027,7 @@ public class Game {
         System.out.println(player.getName() + " prayed!");
     }
     
-    public void lock(Item item, Player player){
+    public void lock(Item item, Player player,World world){
         Item key = item.getKey();
         if(key != null){
             boolean test = false;
@@ -1041,6 +1041,8 @@ public class Game {
                     System.out.println("You locked the " + item.getName());
                     if(item.getPortal() != null)
                         item.getPortal().lock();
+                    if(item.hasMatching("door"))
+                        item.synchronizeDoor(world,player.getCurrentArea());
                 }else{
                     System.out.println("You need a key for that");
                 }
@@ -1052,7 +1054,7 @@ public class Game {
         }
     }
     
-    public void unlock(Item item, Player player){
+    public void unlock(Item item, Player player, World world){
         Item key = item.getKey();
         if(key != null){
             boolean test = false;
@@ -1066,6 +1068,8 @@ public class Game {
                     System.out.println("You unlocked the " + item.getName());
                     if(item.getPortal() != null)
                         item.getPortal().unlock();
+                    if(item.hasMatching("door"))
+                        item.synchronizeDoor(world,player.getCurrentArea());
                 }else{
                     System.out.println("You need a key for that");
                 }

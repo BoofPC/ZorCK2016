@@ -209,4 +209,35 @@ public class Item {
         }
     }
     
+    
+    public void synchronizeDoor(World world, Area currentArea){
+        Portal portal;
+        portal = getPortal();
+        Area target;
+        target = world.getArea(portal.getTarget());
+        int oppDir;
+        if(currentArea.getDirection(portal) < 4){
+            oppDir = currentArea.getDirection(portal) - 2;
+            if(oppDir < 0) oppDir += 4;
+        }else if(currentArea.getDirection(portal) < 8){
+            oppDir = currentArea.getDirection(portal) - 2;
+            if(oppDir < 4) oppDir += 4;
+        }else{
+            if(currentArea.getDirection(portal) == 8) oppDir = 9;
+            else oppDir = 8;
+        }
+        
+        Item oppDoor;
+        oppDoor = target.getPortal(oppDir).getDoor(target);
+        
+        if(getUsageKey(5) == 3){
+            target.getPortal(oppDir).lock();
+            if(oppDoor != null)
+                oppDoor.setUsageKey(5,3);
+        }else{
+            target.getPortal(oppDir).unlock();
+            if(oppDoor != null)
+                oppDoor.setUsageKey(5,2);
+        }
+    }
 }

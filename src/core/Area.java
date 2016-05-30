@@ -50,6 +50,13 @@ public abstract class Area{
         if(this.portals[direction] == null) return new Portal(true,null);
         else return this.portals[direction];
     }
+    
+    public int getDirection(Portal portal){
+        for(int i = 0; i < this.portals.length; i++){
+            if(portal == this.portals[i]) return i;
+        }
+        return -1;
+    }
 	
     public String getTitle(){
 	return this.title;
