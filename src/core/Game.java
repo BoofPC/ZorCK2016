@@ -178,6 +178,16 @@ public class Game {
                         System.out.println("Where do you expect to find one of those?");
                     }
                 }
+                else if(verb.equals("close")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.close(noun);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }
                 else if(verb.equals("read")){
                     if(noun != null){
                         if(!noun.getName().equals("noItem")){
@@ -214,14 +224,40 @@ public class Game {
                     }else{
                         System.out.println("Where do you expect to find one of those?");
                     }
-                }
+                }else if(verb.equals("poke")){ 
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.poke(noun);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("listen")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.listen(noun);
+                        }
+                        else game.listen(player.getCurrentArea());
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("drink")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.drink(noun,player);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("suicide")){ quit = game.suicide(player); }
                 
                 
             }
             System.out.println("");
         }
         game.score(player);
-        System.out.println("Goodbye!");
         System.out.println("");
     }
     
@@ -520,6 +556,7 @@ public class Game {
     }
     
     public int quit(){
+        System.out.println("Goodbye!");
         return 1;
     }
     
@@ -546,6 +583,22 @@ public class Game {
         }
     }
     
+    public void drink(Item item, Player player){
+        if(item.getUsageKey(3) == 2){
+            if(player.getCurrentArea().hasMatching(item)) 
+                player.getCurrentArea().removeItem(item);
+            else if(player.hasMatching(item)) player.removeItem(item);
+            System.out.println(player.getName() + " drank the " + item.getName());
+            if(item.getTaste() != null) System.out.println(item.getTaste());
+            else System.out.println("It tastes like every other " + 
+                    item.getName() + " you've ever drank");
+        }else if(item.getUsageKey(3) == 4){
+            System.out.println("You need to open it first!");
+        }else{
+            System.out.println("I don't see how you expect to do that!");
+        }
+    }
+    
     public void taste(Item item){
         if(item.getTaste() != null) System.out.println(item.getTaste());
         else System.out.println("It tastes like every other " + 
@@ -566,6 +619,17 @@ public class Game {
     public void smell(Area area){
         if(area.getSmell() != null) System.out.println(area.getSmell());
         else System.out.println("It doesn't smell like anything");
+    }
+    
+    public void listen(Item item){
+        if(item.getSound() != null) System.out.println(item.getSound());
+        else System.out.println("It sounds like every other " + 
+                item.getName() + " you've ever heard");
+    }
+    
+    public void listen(Area area){
+        if(area.getSound() != null) System.out.println(area.getSound());
+        else System.out.println("It doesn't sound like anything");
     }
     
     public void shout(){
@@ -807,6 +871,17 @@ public class Game {
         }
     }
     
+    public void close(Item item){
+        if(item.getUsageKey(4) == 3){
+            item.setUsageKey(4,2);
+            System.out.println("You closed the " + item.getName());
+        }else if(item.getUsageKey(4) == 2){
+            System.out.println(item.getName() + " is already closed");
+        }else{
+            System.out.println("I don't see how you expect to do that");
+        }
+    }
+    
     public void turnOn(Item item){
         if(item.getUsageKey(7) == 2){
             item.setUsageKey(7,3);
@@ -853,6 +928,17 @@ public class Game {
         }else{
             System.out.println("You don't have the " + item.getName());
         }
+    }
+    
+    public void poke(Item item){
+        System.out.println("You poked the " + item.getName());
+        System.out.println("Good Job!");
+    }
+    
+    public int suicide(Player player){
+        System.out.println("Whelp, goodbye, I guess");
+        System.out.println(player.getName() + " commited suicide");
+        return 4;
     }
     
 }

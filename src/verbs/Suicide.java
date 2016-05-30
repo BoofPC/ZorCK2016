@@ -11,7 +11,8 @@ public class Suicide extends Verb {
     
     public Suicide() {
         super("suicide",
-                new String[] {"kill self", "orange monkey eagle"},
+                new String[] {"kill self", "orange monkey eagle"/*I'm old and 
+                        don't understand this -pedro*/,"commit suicide","stab self"},
                 new boolean[] {true, false, false});
     }
 }
