@@ -252,6 +252,26 @@ public class Game {
                         System.out.println("Where do you expect to find one of those?");
                     }
                 }else if(verb.equals("suicide")){ quit = game.suicide(player); }
+                else if(verb.equals("hit")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.hit(noun,player.getCurrentArea());
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }
+                else if(verb.equals("stab")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.stab(noun,player.getCurrentArea(),player, new Sword());
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }
                 
                 
             }
@@ -286,6 +306,7 @@ public class Game {
         this.verbList.add(new Score());
         this.verbList.add(new Shout());
         this.verbList.add(new Smell());
+        this.verbList.add(new Stab());
         this.verbList.add(new Suicide());
         this.verbList.add(new Take());
         this.verbList.add(new Taste());
@@ -544,7 +565,7 @@ public class Game {
         if(item == null){
             move(8,player,world);
         }else{
-            if(item.getUsageKey(15) == 2 && player.getCurrentArea().getPortal(8) 
+            if(item.getUsageKey(13) == 2 && player.getCurrentArea().getPortal(8) 
                     != null){
                 if(!player.getCurrentArea().getPortal(8).isLocked())
                     move(8,player,world);
@@ -939,6 +960,43 @@ public class Game {
         System.out.println("Whelp, goodbye, I guess");
         System.out.println(player.getName() + " commited suicide");
         return 4;
+    }
+    
+    public void hit(Item hitee, Area currentArea){
+        if(hitee.getUsageKey(11) == 2){
+            hitee.drop(currentArea);
+            System.out.println("You hit the " + hitee.getName());
+            if(hitee.getInside() != null) System.out.println("It dropped the " 
+                    + hitee.getInside().getName());
+            hitee.drop(currentArea);
+            currentArea.removeItem(hitee);
+        }else{
+            System.out.println("Now why would you do that?");
+        }
+        
+    }
+    
+    public void stab(Item stabee, Area currentArea, Player player, Item sword){
+        boolean test = false;
+        for(int i = 0; i < player.listInventory().length; i++){
+            if(player.listInventory()[i].getName().equals(sword.getName())) 
+                test = true;
+        }
+        if(test){
+            if(stabee.getUsageKey(11) == 2 || stabee.getUsageKey(11) == 3){
+                stabee.drop(currentArea);
+                System.out.println("You stabbed the " + stabee.getName());
+                if(stabee.getInside() != null) System.out.println("It dropped the " 
+                        + stabee.getInside().getName());
+                stabee.drop(currentArea);
+                currentArea.removeItem(stabee);
+            }else{
+                System.out.println("Now why would you do that?");
+            }
+        }else{
+            System.out.println("You need the " + sword.getName() 
+                    + " to stab the " + stabee.getName());
+        }
     }
     
 }

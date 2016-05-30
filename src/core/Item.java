@@ -26,38 +26,53 @@ public class Item {
 			//{[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb}
 			//feel free to add more
 			//the possible statuses of each are as follows:
-			//take -	0: unset (default, returns "not takable")
-			//		1: takable
-			//		2: too heavy
-			//		3: bolted down
-			//eat -		0: unset (default, returns "not eatable")
-			//		1: not eatable
-			//		2: eatable
-			//drink -	0: unset (default, returns "not drinkable")
-			//		1: not drinkable
-			//		2: drinkable
-			//		3: "You need to open it first!"
-			//open -	0: unset (default, returns "not openable")
-			//		1: not openable
-			//		2: openable, closed
-                        //              3: openable, open
-                        //lock -        0: unset {default, returns "not lockable")
-                        //              1: not lockable
-                        //              2: lockable, unlocked
-                        //              3: lockable, locked
-			//read -        0: unset (default, returns "not readable")
-                        //              1: not readable
-                        //              2: readable
-                        //              3: illegible
-                        //turnOn -	0: unset (default, returns "not turnOnable")
-			//		1: not turnOnable
-			//		2: turnOnable, off
-                        //              3: turnOnable, on
-                        //
-                        //
-                        //climb -       0: unset (default, returns "not climbable")
-                        //              1: not climbable
-                        //              2: climbable
+			//take (n = 1) -    0: unset (default, returns "not takable")
+			//                  1: takable
+			//                  2: too heavy
+			//                  3: bolted down
+			//eat (n = 2) -     0: unset (default, returns "not eatable")
+			//                  1: not eatable
+			//                  2: eatable
+			//drink (n = 3) -   0: unset (default, returns "not drinkable")
+			//                  1: not drinkable
+			//                  2: drinkable
+			//                  3: "You need to open it first!"
+			//open (n = 4) -    0: unset (default, returns "not openable")
+			//                  1: not openable
+			//                  2: openable, closed
+                        //                  3: openable, open
+                        //lock (n = 5) -    0: unset {default, returns "not lockable")
+                        //                  1: not lockable
+                        //                  2: lockable, unlocked
+                        //                  3: lockable, locked
+			//read (n = 6) -    0: unset (default, returns "not readable")
+                        //                  1: not readable
+                        //                  2: readable
+                        //                  3: illegible
+                        //move (n = 7) -    0: unset (default, returns "not movable")
+                        //                  1: unmovable
+                        //                  2: movable
+                        //wear (n = 8) -    0: unset (default, returns "not wearable")
+                        //                  1: unwearable
+                        //                  2: wearable
+                        //close (n = 9) -   0: unset (default, returns "not closeable")
+                        //                  1: not closable
+                        //                  2: closable, open
+                        //                  3: closable, closed
+                        //stab (n = 10) -   0: unset (default, returns "not stabable")
+                        //                  1: not stabable
+                        //                  2: stabable
+                        //turnOn (n = 11) - 0: unset (default, returns "not turnOnable")
+			//                  1: not turnOnable
+			//                  2: turnOnable, off
+                        //                  3: turnOnable, on
+                        //press (n = 12) -  0: unset (default, returns "not pressable")
+                        //                  1: not pressable
+                        //                  2: pressable, unpressed
+                        //                  3: pressable, pressed
+                        //climb (n = 13) -  0: unset (default, returns "not climbable")
+                        //                  1: not climbable
+                        //                  2: climbable
                         //someone should write the rest
                         //
                         //
@@ -66,7 +81,7 @@ public class Item {
                         //object which should be described when "look" is called
                         //(e.g. a screwdriver) or an item which should be hidden
                         //unless interacted with (e.g. a pocket on a gown
-                        //[dummy] -     0: unset (defaule, returns "real")
+                        //[dummy] -     0: unset (default, returns "real")
                         //              1: real
                         //              2: not real
 			
@@ -168,4 +183,12 @@ public class Item {
         }
         return false;
     }
+    
+    public void drop(Area area){
+        if(getInside() !=  null){
+            area.addItem(getInside());
+            setInside(null);
+        }
+    }
+    
 }
