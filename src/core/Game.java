@@ -271,7 +271,8 @@ public class Game {
                     }else{
                         System.out.println("Where do you expect to find one of those?");
                     }
-                }
+                }else if(verb.equals("pray")){ game.pray(player); }
+                
                 
                 
             }
@@ -997,6 +998,11 @@ public class Game {
             System.out.println("You need the " + sword.getName() 
                     + " to stab the " + stabee.getName());
         }
+    }
+    
+    public void pray(Player player){
+        player.setPrayer(true);
+        System.out.println(player.getName() + " prayed!");
     }
     
 }

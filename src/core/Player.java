@@ -14,6 +14,7 @@ public class Player {
     public String name;
     Area currentArea;
     public int score;
+    boolean prayer;
     
     private List<Item> inventory;
     
@@ -22,6 +23,7 @@ public class Player {
         this.hp = hp;
         this.maxHp = hp;
         this.name = name;
+        this.prayer = false;
         
         this.inventory = new ArrayList<>();
     }
@@ -95,5 +97,13 @@ public class Player {
     
     public int getMaxHp(){
         return this.maxHp;
+    }
+    
+    public void setPrayer(boolean bool){
+        this.prayer = bool;
+    }
+    
+    public boolean getPrayer(){
+        return this.prayer;
     }
 }
