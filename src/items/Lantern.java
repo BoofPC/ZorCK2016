@@ -11,12 +11,16 @@ import core.Item;
  *
  * @author pedro
  */
-public class NoTea extends Item{
+public class Lantern extends Item{
     
-    public NoTea(){
+    public Lantern(){
         super();
-        setName("No Tea");
-        setDescription("What? That makes no sense. Pull yourself together!");
-        addSynonym("no tea");
+        setUsageKey(1,1);
+        setUsageKey(7,2);
+        setName("Lantern");
+        addSynonym("lantern");
+        addSynonym("light");
+        addSynonym("flashlight");
+        
     }
 }

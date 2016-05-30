@@ -78,7 +78,7 @@ public class Game {
                         player.getCurrentArea().getInitialDescription());
                 player.getCurrentArea().setState("First",false);
             }
-            System.out.print("Enter a command: ");
+            System.out.print(">");
             input = reader.nextLine();
             System.out.println("");
             if(game.findDirection(input) != -1)
@@ -178,6 +178,44 @@ public class Game {
                         System.out.println("Where do you expect to find one of those?");
                     }
                 }
+                else if(verb.equals("read")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.read(noun);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("drop")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.drop(noun,player);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("turn on")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.turnOn(noun);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("turn off")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.turnOff(noun);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }
+                
                 
             }
             System.out.println("");
@@ -766,6 +804,54 @@ public class Game {
             System.out.println(item.getName() + " is already open");
         }else{
             System.out.println("I don't see how you expect to do that");
+        }
+    }
+    
+    public void turnOn(Item item){
+        if(item.getUsageKey(7) == 2){
+            item.setUsageKey(7,3);
+            System.out.println("You turned on the " + item.getName());
+        }else if(item.getUsageKey(7) == 3){
+            System.out.println(item.getName() + " is already on");
+        }else{
+            System.out.println("I don't see how you expect to do that");
+        }
+    }
+    
+    public void turnOff(Item item){
+        if(item.getUsageKey(7) == 3){
+            item.setUsageKey(7,2);
+            System.out.println("You turned off the " + item.getName());
+        }else if(item.getUsageKey(7) == 2){
+            System.out.println(item.getName() + " is already off");
+        }else{
+            System.out.println("I don't see how you expect to do that");
+        }
+    }
+    
+    public void read(Item item){
+        if(item.getUsageKey(6) == 2){
+            if(item.getText() != null) System.out.println(item.getText());
+            else System.out.println("It says nothing important");
+        }else if(item.getUsageKey(6) == 3){
+            System.out.println("You can't quite make it out");
+        }else{
+            System.out.println("I don't see how you expect to do that");
+        }
+    }
+    
+    public void drop(Item item, Player player){
+        if(player.hasMatching(item)){
+            if(item.getUsageKey(1) == 1){
+                player.removeItem(item);
+                player.getCurrentArea().addItem(item);
+                System.out.println("You dropped " + item.getName());
+            }else{
+                System.out.println("I'm sorry " + player.getName() + 
+                        ", I can't allow you to do that");
+            }
+        }else{
+            System.out.println("You don't have the " + item.getName());
         }
     }
     
