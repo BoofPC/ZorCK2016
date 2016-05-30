@@ -83,10 +83,6 @@ public class Game {
             System.out.println("");
             if(game.findDirection(input) != -1)
                 game.move(game.findDirection(input),player,world);
-            System.out.println(""); 
-            if(game.directionParser(input) != -1) {
-                game.move(game.directionParser(input), player, world);
-            }
             //code to test parsers
             /*else if(game.verbParser(input) != null){
                 System.out.println(game.verbParser(input).getTitle());
@@ -172,7 +168,16 @@ public class Game {
                 }else if(verb.equals("shout")){ game.shout(); }
                 else if(verb.equals("hello")){ game.hello(); }
                 else if(verb.equals("credits")){ game.credits(); }
-                
+                else if(verb.equals("open")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.open(noun);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }
                 
             }
             System.out.println("");
@@ -746,6 +751,21 @@ public class Game {
             Thread.sleep(time);
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
+        }
+    }
+    
+    public void open(Item item){
+        if(item.getUsageKey(4) == 2){
+            if(item.getUsageKey(5) != 3){
+                item.setUsageKey(4,3);
+                System.out.println("You opened the " + item.getName());
+            }else{
+                System.out.println(item.getName() + " is locked");
+            }
+        }else if(item.getUsageKey(4) == 3){
+            System.out.println(item.getName() + " is already open");
+        }else{
+            System.out.println("I don't see how you expect to do that");
         }
     }
     
