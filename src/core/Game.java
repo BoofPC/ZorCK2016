@@ -102,7 +102,9 @@ public class Game {
                 Item noun = game.nounParser(input,player);
                 int direction = game.directionParser(input);
 
-                if(verb.equals("take")){
+                if(verb.equals("damn")){
+                    game.curse();
+                }else if(verb.equals("take")){
                     if(noun != null){
                         if(!noun.getName().equals("noItem")){
                             game.take(noun,player);
@@ -305,6 +307,7 @@ public class Game {
         this.verbList.add(new Climb());
         this.verbList.add(new Close());
         this.verbList.add(new Credits());
+        this.verbList.add(new Curse());
         this.verbList.add(new Diagnostic());
         this.verbList.add(new Drink());
         this.verbList.add(new Drop());
@@ -1072,6 +1075,17 @@ public class Game {
         }else{
             System.out.println("Now, how do you expect to do that?");
         }
+    }
+    
+    public void curse(){
+        Random rand = new Random();
+        int n = rand.nextInt(4);
+        if(n == 0) System.out.println("Tough shit, asshole");
+        else if(n == 1) System.out.println("Its not so bad.  You could have "
+                + "been killed already.");
+        else if(n == 2) System.out.println("Oh, dear. Such language from a "
+                + "supposed winning adventurer!");
+        else System.out.println("Such language in a high-class establishment like this!");
     }
     
 }
