@@ -5,10 +5,8 @@
  */
 
 package areas;
-import core.Area;
-import core.Player;
-import core.Portal;
-import core.World;
+import core.*;
+import items.*;
 
 /**
  *
@@ -23,8 +21,10 @@ public class Test6 extends Area{
             setPortal(2, new Portal(false, "Test9"));
             setTitle("Test Area 6");
             setInitialDescription("This is the sixth test area, there is path "
-                    + "leading west and a path leading north-south");
+                    + "leading west and a path leading north-south. There is "
+                    + "a key on the ground");
             setDescription("This is the sixth test area"); 
+            addItem(new Key());
             setState("First",true);  
        }
        

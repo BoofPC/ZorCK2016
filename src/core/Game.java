@@ -272,7 +272,25 @@ public class Game {
                         System.out.println("Where do you expect to find one of those?");
                     }
                 }else if(verb.equals("pray")){ game.pray(player); }
-                
+                else if(verb.equals("lock")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.lock(noun, player);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }else if(verb.equals("unlock")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.unlock(noun, player);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
+                }
                 
                 
             }
@@ -296,6 +314,7 @@ public class Game {
         this.verbList.add(new Hit());
         this.verbList.add(new Inventory());
         this.verbList.add(new Listen());
+        this.verbList.add(new Lock());
         this.verbList.add(new Look());
         this.verbList.add(new Move());
         this.verbList.add(new Open());
@@ -303,7 +322,6 @@ public class Game {
         this.verbList.add(new Pray());
         this.verbList.add(new Quit());
         this.verbList.add(new Read());
-        this.verbList.add(new Restart());
         this.verbList.add(new Score());
         this.verbList.add(new Shout());
         this.verbList.add(new Smell());
@@ -313,6 +331,7 @@ public class Game {
         this.verbList.add(new Taste());
         this.verbList.add(new TurnOff());
         this.verbList.add(new TurnOn());
+        this.verbList.add(new Unlock());
         //...
         
     }
@@ -1003,6 +1022,56 @@ public class Game {
     public void pray(Player player){
         player.setPrayer(true);
         System.out.println(player.getName() + " prayed!");
+    }
+    
+    public void lock(Item item, Player player){
+        Item key = item.getKey();
+        if(key != null){
+            boolean test = false;
+            for(int i = 0; i < player.listInventory().length; i++){
+                if(player.listInventory()[i].getName().equals(key.getName())) 
+                    test = true;
+            }
+            if(item.getUsageKey(5) == 2){
+                if(test){
+                    item.setUsageKey(5,3);
+                    System.out.println("You locked the " + item.getName());
+                    if(item.getPortal() != null)
+                        item.getPortal().lock();
+                }else{
+                    System.out.println("You need a key for that");
+                }
+            }else if(item.getUsageKey(5) == 3){
+                System.out.println("The " + item.getName() + " is already locked!");
+            }
+        }else{
+            System.out.println("Now, how do you expect to do that?");
+        }
+    }
+    
+    public void unlock(Item item, Player player){
+        Item key = item.getKey();
+        if(key != null){
+            boolean test = false;
+            for(int i = 0; i < player.listInventory().length; i++){
+                if(player.listInventory()[i].getName().equals(key.getName())) 
+                    test = true;
+            }
+            if(item.getUsageKey(5) == 3){
+                if(test){
+                    item.setUsageKey(5,2);
+                    System.out.println("You unlocked the " + item.getName());
+                    if(item.getPortal() != null)
+                        item.getPortal().unlock();
+                }else{
+                    System.out.println("You need a key for that");
+                }
+            }else if(item.getUsageKey(5) == 2){
+                System.out.println("The " + item.getName() + " is already unlocked!");
+            }
+        }else{
+            System.out.println("Now, how do you expect to do that?");
+        }
     }
     
 }

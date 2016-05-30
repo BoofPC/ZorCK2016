@@ -5,7 +5,7 @@
  */
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -13,7 +13,7 @@ import core.Item;
  */
 public class Door extends Item{
     
-    public Door(boolean locked,String name){
+    public Door(boolean locked,String name,Item key,Portal portal){
         super();
         setUsageKey(1,3);
         setUsageKey(4,2);
@@ -32,5 +32,7 @@ public class Door extends Item{
             addSynonym(name.toLowerCase());
         }
         addSynonym("door");
+        setKey(key);
+        setPortal(portal);
     }
 }

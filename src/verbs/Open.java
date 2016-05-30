@@ -8,7 +8,7 @@ import core.Verb;
 public class Open extends Verb {
     public Open(){
         super("open", 
-                new String[]{"unseal", "unlock"}, 
+                new String[]{"unseal"}, 
                 new boolean[]{false,true,false});
     }
 }

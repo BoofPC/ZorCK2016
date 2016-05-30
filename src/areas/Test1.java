@@ -5,11 +5,8 @@
  */
 
 package areas;
-import core.Area;
-import core.Player;
-import core.Portal;
-import core.World;
-import items.Door;
+import core.*;
+import items.*;
 
 /**
  *
@@ -25,7 +22,7 @@ public class Test1 extends Area{
             setInitialDescription("This is the first test area, there is path to "
                     + "the east and a locked door to the south");
             setDescription("This is the first test area");   
-            addItem(new Door(true,"Southern Door"));
+            addItem(new Door(true,"Southern Door", new Key(),getPortal(2)));
             setState("First",true);
        }
        

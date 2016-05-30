@@ -25,7 +25,7 @@ public class Test5 extends Area{
                     + "leading east-west, a door to the north, and a path to "
                     + "the south.");
             setDescription("This is the fifth test area");   
-            addItem(new Door(false,"Northern Door"));
+            addItem(new Door(false,"Northern Door",new Key(),getPortal(0)));
             setState("First",true);
        }
        

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author alexb
+ * @author pedro
  */
 public class Item {
     private String name;
@@ -91,6 +91,8 @@ public class Item {
     public boolean active;	//if item can be turned on or pressed
     public String smell;
     public String sound;
+    public Item key;
+    public Portal portal;
     public ArrayList<String> synonyms;
 	
     public Item(){
@@ -172,7 +174,23 @@ public class Item {
     public void setSound(String sound){
         this.sound = sound;
     }
+    
+    public Item getKey(){
+        return this.key;
+    }
+	
+    public void setKey(Item key){
+        this.key = key;
+    }
 
+    public Portal getPortal(){
+        return this.portal;
+    }
+    
+    public void setPortal(Portal portal){
+        this.portal = portal;
+    }
+    
     public void addSynonym(String str){
         this.synonyms.add(str);
     }
