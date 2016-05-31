@@ -1,4 +1,4 @@
-# How to Git Good in 5 easy steps
+# How to Git in 5 easy steps
 
 ## Step 0
 Know that the [Git book](https://git-scm.com/book/en/v2) probably talks about
@@ -37,16 +37,16 @@ git commit -m "Short description of work"
 To merge your work into the master:
 ```sh
 git checkout master
-git pull --rebase
+git pull --ff-only
 git checkout $MY_BRANCH
 git rebase master # if you need to fix merge conflicts, let me know & I'll help
 git checkout master
-git pull --rebase # if anything changed in master, restart this step
+git pull --ff-only # if anything changed in master, restart this step
 git merge $MY_BRANCH # perform a final fast-forward merge of your branch with master
 ```
 
-Your branch is now be merged into `master`, you just need to push so everyone 
-can `pull` your changes.
+Your branch is now merged into `master`; you just need to push so everyone 
+can pull your changes.
 
 ```sh
 git push origin master
