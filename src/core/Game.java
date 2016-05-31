@@ -243,7 +243,7 @@ public class Game {
                     }else if(verb.equals("turn on")){
                         if(noun != null){
                             if(!noun.getName().equals("noItem")){
-                                game.turnOn(noun);
+                                game.turnOn(noun,player);
                             }
                             else System.out.println("Ya need a noun, ya dingus");
                         }else{
@@ -971,10 +971,11 @@ public class Game {
         }
     }
     
-    public void turnOn(Item item){
+    public void turnOn(Item item,Player player){
         if(item.getUsageKey(7) == 2){
             item.setUsageKey(7,3);
             System.out.println("You turned on the " + item.getName());
+            player.currentArea.enter(player);
         }else if(item.getUsageKey(7) == 3){
             System.out.println(item.getName() + " is already on");
         }else{

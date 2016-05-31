@@ -47,7 +47,7 @@ public abstract class Area{
        	   if(player.getItem("Lantern").getActive()){
                      System.out.println(
                          player.getCurrentArea().getInitialDescription());
-                     this.first = false;
+                     this.firstVisit = false;
                  }else{
                      System.out.println("It's too dark to see!");
                  }
