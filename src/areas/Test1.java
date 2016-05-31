@@ -20,9 +20,12 @@ public class Test1 extends Area{
             setPortal(2, new Portal(true, "Test4"));
             setTitle("Test Area 1");
             setInitialDescription("This is the first test area, there is path to "
-                    + "the east and a locked door to the south");
+                    + "the east and a locked door to the south. There is dark "
+                    + "and white chocolate on the ground");
             setDescription("This is the first test area");   
             addItem(new Door(true,"Southern Door", new Key(),getPortal(2)));
+            addItem(new DarkChocolate());
+            addItem(new WhiteChocolate());
             setState("First",true);
        }
        
