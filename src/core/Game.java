@@ -527,9 +527,12 @@ public class Game {
                 break;
             }
         }
-        Item nounArray[] = new Item[findNoun(noun, player).length];
-        for(int i = 0; i < findNoun(noun, player).length; i++){
-            nounArray[i] = findNoun(noun, player)[i];
+        Item[] nounArray = new Item[0];
+        if(findNoun(noun, player) != null){
+            nounArray = new Item[findNoun(noun, player).length];
+            for(int i = 0; i < findNoun(noun, player).length; i++){
+                nounArray[i] = findNoun(noun, player)[i];
+            }
         }
         if(nounArray.length > 0) return nounArray;
         else return null;
