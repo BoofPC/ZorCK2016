@@ -16,37 +16,57 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Game {
+    //Gameplay statuses
+    public static final int KEEP_PLAYING = 0;
+    public static final int SELF_QUIT = 1;
+    public static final int WIN = 2;
+    public static final int DIE = 3;
+    public static final int SUICIDE = 4;
     
     public ArrayList<Verb> verbList = new ArrayList<Verb>();
     
-    private int NORTH = 0;
-    private int EAST  = 1;
-    private int SOUTH = 2;
-    private int WEST  = 3;
-    private int NORTH_EAST = 4;
-    private int SOUTH_EAST = 5;
-    private int SOUTH_WEST = 6;
-    private int NORTH_WEST = 7;
-    private int UP = 8;
-    private int DOWN = 9;
-    
-	
     public static void main(String[] args){
-        
+        //self explanatory initialization
         Game game = new Game();
-        
         Player player = new Player(10,"Carlton");
         World world = new World();
         
-        game.listVerbs();
         
-        int quit = 0;       //Possible quit statuses:
-                            //      0: not quit
-                            //      1: self-quit (typed command "quit")
-                            //      2: won game
-                            //      3: died
-                            //      4: suicide!
+        //Register all verbs in the 
+        game.verbList.add(new Climb());
+        game.verbList.add(new Close());
+        game.verbList.add(new Credits());
+        game.verbList.add(new Curse());
+        game.verbList.add(new Diagnostic());
+        game.verbList.add(new Drink());
+        game.verbList.add(new Drop());
+        game.verbList.add(new Eat());
+        game.verbList.add(new Examine());
+        game.verbList.add(new Give());
+        game.verbList.add(new Hello());
+        game.verbList.add(new Hit());
+        game.verbList.add(new Inventory());
+        game.verbList.add(new Listen());
+        game.verbList.add(new Lock());
+        game.verbList.add(new Look());
+        game.verbList.add(new Move());
+        game.verbList.add(new Open());
+        game.verbList.add(new Poke());
+        game.verbList.add(new Pray());
+        game.verbList.add(new Quit());
+        game.verbList.add(new Read());
+        game.verbList.add(new Score());
+        game.verbList.add(new Shout());
+        game.verbList.add(new Smell());
+        game.verbList.add(new Stab());
+        game.verbList.add(new Suicide());
+        game.verbList.add(new Take());
+        game.verbList.add(new Taste());
+        game.verbList.add(new TurnOff());
+        game.verbList.add(new TurnOn());
+        game.verbList.add(new Unlock());
         
+        //Add all Areas to the new world
         world.addArea("Test1",new Test1(world));
         world.addArea("Test2",new Test2(world));
         world.addArea("Test3",new Test3(world));
@@ -58,9 +78,11 @@ public class Game {
         world.addArea("Test9",new Test9(world));
         world.addArea("Test10",new Test10(world));
         
+        //Setting initial area for player
         player.setCurrentArea(world.getArea("Test5"));
         player.addItem(new NoTea());
         
+        //Fun printed start stuff
         System.out.println("Welcome to\n" +
             "d8888888P                    a88888b. dP     dP\n" +
             "     .d8'                   d8'   `88 88   .d8'\n" +
@@ -69,28 +91,19 @@ public class Game {
             "d8'       88.  .88 88       Y8.   .88 88     88\n" +
             "Y8888888P `88888P' dP        Y88888P' dP     dP\n\n");
         
+        //'enter' first room to get things started
+        player.getCurrentArea().enter(player);
+        
+        //Initial prompt setup
         Scanner reader = new Scanner(System.in);
         String input = "";
-        while(quit == 0){
+        
+        //Main Game Loop
+        int status = KEEP_PLAYING;
+        while(status == KEEP_PLAYING){
             System.out.println("You are in room " 
                     + player.getCurrentArea().getTitle());
-            if(player.getCurrentArea().getState("First") == true &&
-                    !player.getCurrentArea().getDark()){
-                System.out.println(
-                        player.getCurrentArea().getInitialDescription());
-                player.getCurrentArea().setState("First",false);
-            }else if(player.getCurrentArea().getState("First") && 
-                    player.getItem("Lantern") != null){
-                if(player.getItem("Lantern").getActive()){
-                    System.out.println(
-                        player.getCurrentArea().getInitialDescription());
-                    player.getCurrentArea().setState("First",false);
-                }else{
-                    System.out.println("It's too dark to see!");
-                }
-            }else if(player.getCurrentArea().getState("First")){
-                System.out.println("It's too dark to see!");
-            }
+            
             System.out.print(">");
             input = reader.nextLine();
             System.out.println("");
@@ -156,7 +169,7 @@ public class Game {
                             System.out.println("Where do you expect to find one of those?");
                         }
                     }else if(verb.equals("quit")){
-                        quit = game.quit();
+                        status = game.quit();
                     }else if(verb.equals("score")){ game.score(player); }
                     else if(verb.equals("diagnostic")){ game.diagnostic(player); }
                     else if(verb.equals("eat")){
@@ -272,7 +285,7 @@ public class Game {
                         }else{
                             System.out.println("Where do you expect to find one of those?");
                         }
-                    }else if(verb.equals("suicide")){ quit = game.suicide(player); }
+                    }else if(verb.equals("suicide")){ status = game.suicide(player); }
                     else if(verb.equals("hit")){
                         if(noun != null){
                             if(!noun.getName().equals("noItem")){
@@ -342,40 +355,9 @@ public class Game {
         System.out.println("");
     }
     
-    public void listVerbs(){
+    public void registerVerbs(){
         
-        this.verbList.add(new Climb());
-        this.verbList.add(new Close());
-        this.verbList.add(new Credits());
-        this.verbList.add(new Curse());
-        this.verbList.add(new Diagnostic());
-        this.verbList.add(new Drink());
-        this.verbList.add(new Drop());
-        this.verbList.add(new Eat());
-        this.verbList.add(new Examine());
-        this.verbList.add(new Give());
-        this.verbList.add(new Hello());
-        this.verbList.add(new Hit());
-        this.verbList.add(new Inventory());
-        this.verbList.add(new Listen());
-        this.verbList.add(new Lock());
-        this.verbList.add(new Look());
-        this.verbList.add(new Move());
-        this.verbList.add(new Open());
-        this.verbList.add(new Poke());
-        this.verbList.add(new Pray());
-        this.verbList.add(new Quit());
-        this.verbList.add(new Read());
-        this.verbList.add(new Score());
-        this.verbList.add(new Shout());
-        this.verbList.add(new Smell());
-        this.verbList.add(new Stab());
-        this.verbList.add(new Suicide());
-        this.verbList.add(new Take());
-        this.verbList.add(new Taste());
-        this.verbList.add(new TurnOff());
-        this.verbList.add(new TurnOn());
-        this.verbList.add(new Unlock());
+       
         //...
         
     }
@@ -418,34 +400,34 @@ public class Game {
         switch (input) {
             case "north":
             case "n":
-                return NORTH;
+                return World.NORTH;
             case "east":
             case "e":
-                return EAST;
+                return World.EAST;
             case "south":
             case "s":
-                return SOUTH;
+                return World.SOUTH;
             case "west":
             case "w":
-                return WEST;
+                return World.WEST;
             case "northeast":
             case "ne":
-                return NORTH_EAST;
+                return World.NORTHEAST;
             case "southeast":
             case "se":
-                return SOUTH_EAST;
+                return World.SOUTHEAST;
             case "southwest":
             case "sw":
-                return SOUTH_WEST;
+                return World.SOUTHWEST;
             case "northwest":
             case "nw":
-                return NORTH_WEST;
+                return World.NORTHWEST;
             case "up":
             case "u":
-                return UP;
+                return World.UP;
             case "down":
             case "d":
-                return DOWN;
+                return World.DOWN;
             default:
                 return -1;
         }
@@ -578,6 +560,7 @@ public class Game {
             }else if(direction == 9){
                 System.out.println("down");
             }
+            player.getCurrentArea().enter(player);
         }
     }
         

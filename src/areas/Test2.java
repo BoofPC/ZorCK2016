@@ -34,7 +34,7 @@ public class Test2 extends Area{
         }
     
         public void enter(Player player){
-                
+            
         }
     
         public void exit(Player player){

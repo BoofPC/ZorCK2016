@@ -7,7 +7,8 @@ import items.*;
  * @author keith5387h & pedro & alexb
  */
 public class Portal {
-   
+    public static final boolean UNLOCKED = false;
+    public static final boolean LOCKED = true;
     boolean locked;
     String target; //Should be the id of an area to go to
     

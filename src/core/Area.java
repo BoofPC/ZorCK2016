@@ -19,6 +19,7 @@ public abstract class Area{
     private String smell;
     private String sound;
     private boolean dark;
+    private boolean firstVisit;
     
     public ArrayList<Item> items;
     
@@ -29,6 +30,7 @@ public abstract class Area{
        this.world = containingWorld;
        this.state = new HashMap<>();
        this.items = new ArrayList<Item>();
+       this.firstVisit = true;
     }
     
     public World getContainingWorld(){
@@ -37,9 +39,13 @@ public abstract class Area{
     
     public abstract void interact(String command, Player player);
     
-    public abstract void enter(Player player);
-    
-    public abstract void exit(Player player);
+    public void enter(Player player){
+       if(this.firstVisit){
+           System.out.println(this.initialDescription);
+           this.firstVisit = false;
+       }
+       else System.out.println(this.description);
+    }
     
     public void setPortal(int direction, Portal portal){
         this.portals[direction] = portal;
