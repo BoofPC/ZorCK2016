@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Item {
     private String name;
     public String description;
-    public int[] usage = new int[14]; 		//update this number as needed
+    public int[] usage = new int[15]; 		//update this number as needed
 			//usage is an array of ints which determines many
 			//characteristics of an item. Each item in the 
 			//array corresponds with an attribute of the item
@@ -21,9 +21,9 @@ public class Item {
 			//heavy to take, and will return an appropriate message if "take (item)" 
 			//is invoked. 3 means the item is bolted down, etc.
 			//
-			//The meanings of each item is as follows:
-                        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13    
-			//{[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb}
+                        //The meanings of each item is as follows:
+                        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14 
+                        //{[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive}
 			//feel free to add more
 			//the possible statuses of each are as follows:
 			//take (n = 1) -    0: unset (default, returns "not takable")
@@ -73,6 +73,10 @@ public class Item {
                         //climb (n = 13) -  0: unset (default, returns "not climbable")
                         //                  1: not climbable
                         //                  2: climbable
+                        //receive (n = 14) -0: unset (default, returns "cannot receive")
+                        //                  1: cannot receive items
+                        //                  2: can recieve items
+                        //
                         //
                         //
                         //
@@ -91,6 +95,7 @@ public class Item {
     public boolean active;	//if item can be turned on or pressed
     public String smell;
     public String sound;
+    public ArrayList<Item> received;
     public Item key;
     public Portal portal;
     public ArrayList<String> synonyms;
@@ -211,6 +216,17 @@ public class Item {
         }
     }
     
+    public void receive(Item item){
+        this.received.add(item);
+    }
+    
+    
+    public boolean hasReceived(String name){
+        for(Item item: this.received){
+            if(item.getName().equals(name)) return true;
+        }
+        return false;
+    }
     
     public void synchronizeDoor(World world, Area currentArea){
         Portal portal;

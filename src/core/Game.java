@@ -304,6 +304,15 @@ public class Game {
                     }else{
                         System.out.println("Where do you expect to find one of those?");
                     }
+                }else if(verb.equals("give")){
+                    if(noun != null){
+                        if(!noun.getName().equals("noItem")){
+                            game.give(noun, player);
+                        }
+                        else System.out.println("Ya need a noun, ya dingus");
+                    }else{
+                        System.out.println("Where do you expect to find one of those?");
+                    }
                 }
                 
                 
@@ -325,6 +334,7 @@ public class Game {
         this.verbList.add(new Drop());
         this.verbList.add(new Eat());
         this.verbList.add(new Examine());
+        this.verbList.add(new Give());
         this.verbList.add(new Hello());
         this.verbList.add(new Hit());
         this.verbList.add(new Inventory());
@@ -1114,6 +1124,29 @@ public class Game {
         else if(n == 2) System.out.println("Oh, dear. Such language from a "
                 + "supposed winning adventurer!");
         else System.out.println("Such language in a high-class establishment like this!");
+    }
+    
+    public void give(Item item, Player player){
+        if(player.hasMatching(item)){
+            Item receiver;
+            receiver = null;
+            for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
+                if(player.getCurrentArea().listItems()[i].getUsageKey(14) == 2){
+                    receiver = player.getCurrentArea().listItems()[i];
+                    break;
+                }
+            }
+            if(receiver != null){
+                receiver.receive(item);
+                player.removeItem(item);
+                System.out.println("You gave the " + item.getName() + " to "
+                + receiver.getName());
+            }else{
+                System.out.println("I don't see who you'd want to give that to");
+            }
+        }else{
+            System.out.println("You don't even have a " + item.getName());
+        }
     }
     
 }
