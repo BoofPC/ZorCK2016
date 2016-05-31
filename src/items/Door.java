@@ -6,6 +6,7 @@
 package items;
 
 import core.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,7 +33,9 @@ public class Door extends Item{
             addSynonym(name.toLowerCase());
         }
         addSynonym("door");
-        setKey(key);
+        ArrayList<Item> keys = new ArrayList<Item>();
+        keys.add(new Key());
+        setKey(keys);
         setPortal(portal);
     }
 }

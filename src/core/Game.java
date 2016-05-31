@@ -1062,11 +1062,11 @@ public class Game {
     }
     
     public void lock(Item item, Player player,World world){
-        Item key = item.getKey();
-        if(key != null){
+        ArrayList<Item> keys = item.getKey();
+        if(keys != null){
             boolean test = false;
             for(int i = 0; i < player.listInventory().length; i++){
-                if(player.listInventory()[i].getName().equals(key.getName())) 
+                if(player.listInventory()[i].getName().equals(keys.get(0).getName())) 
                     test = true;
             }
             if(item.getUsageKey(5) == 2){
@@ -1089,11 +1089,11 @@ public class Game {
     }
     
     public void unlock(Item item, Player player, World world){
-        Item key = item.getKey();
-        if(key != null){
+        ArrayList<Item> keys = item.getKey();
+        if(keys != null){
             boolean test = false;
             for(int i = 0; i < player.listInventory().length; i++){
-                if(player.listInventory()[i].getName().equals(key.getName())) 
+                if(player.listInventory()[i].getName().equals(keys.get(0).getName())) 
                     test = true;
             }
             if(item.getUsageKey(5) == 3){

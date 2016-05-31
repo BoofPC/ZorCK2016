@@ -96,7 +96,7 @@ public class Item {
     public String smell;
     public String sound;
     public ArrayList<Item> received;
-    public Item key;
+    public ArrayList<Item> keys;
     public Portal portal;
     public ArrayList<String> synonyms;
 	
@@ -182,12 +182,12 @@ public class Item {
         this.sound = sound;
     }
     
-    public Item getKey(){
-        return this.key;
+    public ArrayList<Item> getKey(){
+        return this.keys;
     }
 	
-    public void setKey(Item key){
-        this.key = key;
+    public void setKey(ArrayList<Item> keys){
+        this.keys = keys;
     }
 
     public Portal getPortal(){
