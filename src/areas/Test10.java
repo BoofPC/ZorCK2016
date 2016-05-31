@@ -28,13 +28,5 @@ public class Test10 extends Area{
         public void interact(String command, Player player){
                 
         }
-    
-        public void enter(Player player){
-                
-        }
-    
-        public void exit(Player player){
-                
-        }
-       
+
 }
