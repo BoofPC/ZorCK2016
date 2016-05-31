@@ -13,7 +13,7 @@ import core.Verb;
 public class Talk extends Verb {
     public Talk(){
         super("talk", 
-                new String[]{"talk to","converse",""},
+                new String[]{"talk to","converse"},
                 new boolean[]{true, true, false});
     }
 }
