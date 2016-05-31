@@ -40,11 +40,20 @@ public abstract class Area{
     public abstract void interact(String command, Player player);
     
     public void enter(Player player){
-       if(this.firstVisit){
+       if(this.firstVisit && !this.dark){
            System.out.println(this.initialDescription);
            this.firstVisit = false;
-       }
-       else System.out.println(this.description);
+       }else if (this.firstVisit && player.getItem("Lantern") != null){
+       	   if(player.getItem("Lantern").getActive()){
+                     System.out.println(
+                         player.getCurrentArea().getInitialDescription());
+                     this.first = false;
+                 }else{
+                     System.out.println("It's too dark to see!");
+                 }
+       }else if(this.firstVisit){
+       	   System.out.println("It's too dark to see!");
+       }else System.out.println(this.description);
     }
     
     public void setPortal(int direction, Portal portal){
