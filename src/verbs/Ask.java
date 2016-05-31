@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package verbs;
 import core.Verb;
 /**
  *
- * @author Alex Johnson
+ * @author johnson5951a
  */
-public class Drop extends Verb{
+public class Ask extends Verb{
     
-    public Drop(){
-        super("drop",
-                new String[] {"release", "throw out", "toss", "leave"},
-                new boolean[] {false, true, false});
+    public Ask(){
+        super("ask",
+                new String[]{"inquire", "question", "interrogate"},
+                new boolean[]{false, true, false});
     }
 }

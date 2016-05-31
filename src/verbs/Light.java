@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package verbs;
 import core.Verb;
 /**
  *
- * @author Alex Johnson
+ * @author johnson5951a
  */
-public class Drop extends Verb{
+public class Light extends Verb {
     
-    public Drop(){
-        super("drop",
-                new String[] {"release", "throw out", "toss", "leave"},
-                new boolean[] {false, true, false});
+    public Light(){
+        super("light",
+                new String[]{"ignite","illuminate"},
+                new boolean[]{false, true, false});
     }
 }
