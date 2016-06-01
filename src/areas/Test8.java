@@ -23,9 +23,10 @@ public class Test8 extends Area{
             setTitle("Test Area 8");
             setInitialDescription("This is the eighth test area, there is path "
                     + "leading east-west and path leading north. There is a cave"
-                    + " to the south");
+                    + " to the south. There is a magic orb on the ground");
             setDescription("This is the eighth test area");
             setState("First",true);
+            addItem(new MagicOrb());
        }
        
         public void interact(Command command, PlayerConstruct construct){
