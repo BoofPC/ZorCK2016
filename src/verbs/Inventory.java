@@ -1,8 +1,7 @@
 package verbs;
-import core.Command;
-import core.PlayerConstruct;
+import core.*;
 import java.util.ArrayList;
-import core.Verb;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,6 +21,16 @@ public class Inventory extends Verb{
     }
     
     public void run(Command command, PlayerConstruct construct){
+        int direction = command.getDirection();
+        Item noun = command.getNoun();
         
+        Player player = construct.getPlayer();
+        World world = construct.getWorld();
+        
+        System.out.println(player.getName() + " has:");
+        if(player.listInventory().length == 0) System.out.println("\tNothing!");
+        for (Item listInventory : player.listInventory()) {
+            System.out.println("\t" + listInventory.getName());
+        }
     }
 }

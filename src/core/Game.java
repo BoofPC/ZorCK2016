@@ -32,11 +32,14 @@ public class Game {
         World world = new World();
         
         
-        //Register all verbs in the 
-        game.verbList.add(new Climb());
-        game.verbList.add(new Close());
-        game.verbList.add(new Credits());
-        game.verbList.add(new Curse());
+        //Register all verbs in the verbList
+        
+        //When a verb is updated to the new verb scheme, add  /**/ to show completion
+        
+        /**/game.verbList.add(new Climb());             
+        /**/game.verbList.add(new Close());
+        /**/game.verbList.add(new Credits());
+        /**/game.verbList.add(new Curse());
         game.verbList.add(new Diagnostic());
         game.verbList.add(new Drink());
         game.verbList.add(new Drop());
@@ -45,12 +48,12 @@ public class Game {
         game.verbList.add(new Give());
         game.verbList.add(new Hello());
         game.verbList.add(new Hit());
-        game.verbList.add(new Inventory());
+        /**/game.verbList.add(new Inventory());
         game.verbList.add(new Listen());
         game.verbList.add(new Lock());
-        game.verbList.add(new Look());
-        game.verbList.add(new Move());
-        game.verbList.add(new Open());
+        /**/game.verbList.add(new Look());
+        /**/game.verbList.add(new Move());
+        /**/game.verbList.add(new Open());
         game.verbList.add(new Poke());
         game.verbList.add(new Pray());
         game.verbList.add(new Quit());
@@ -60,7 +63,7 @@ public class Game {
         game.verbList.add(new Smell());
         game.verbList.add(new Stab());
         game.verbList.add(new Suicide());
-        game.verbList.add(new Take());
+        /**/game.verbList.add(new Take());
         game.verbList.add(new Taste());
         game.verbList.add(new TurnOff());
         game.verbList.add(new TurnOn());
@@ -110,7 +113,8 @@ public class Game {
             input = reader.nextLine();
             System.out.println("");
             if(game.findDirection(input) != -1)
-                game.move(game.findDirection(input),player,world);
+                player.getCurrentArea().interact(new Command(new Move(), null,
+                        game.findDirection(input)),constr);
             //code to test parsers
             /*else if(game.verbParser(input) != null){
                 System.out.println(game.verbParser(input).getTitle());
@@ -536,117 +540,12 @@ public class Game {
         
         return findDirection(inputList.get(0)); 
     }
-	
-    public void move(int direction, Player player, World world){
-        if(player.getCurrentArea().getPortal(direction).isLocked()){
-            System.out.println("You can't go that way!");
-        }else{
-            player.setCurrentArea(world.getArea(player.getCurrentArea()
-                    .getPortal(direction).getTarget()));
-            System.out.print(player.getName() + " moved ");
-            if(direction == 0){
-                System.out.println("north");
-            }else if(direction == 1){
-                System.out.println("east");
-            }else if(direction == 2){
-                System.out.println("south");
-            }else if(direction == 3){
-                System.out.println("west");
-            }else if(direction == 4){
-                System.out.println("northeast");
-            }else if(direction == 5){
-                System.out.println("southeast");
-            }else if(direction == 6){
-                System.out.println("southwest");
-            }else if(direction == 7){
-                System.out.println("northwest");
-            }else if(direction == 8){
-                System.out.println("up");
-            }else if(direction == 9){
-                System.out.println("down");
-            }
-            player.getCurrentArea().enter(player);
-        }
-    }
-        
-    public void take(Item item, Player player){
-        if(player.getCurrentArea().hasMatching(item)){
-            if(item.getUsageKey(1) == 1){
-                player.getCurrentArea().removeItem(item);
-                player.addItem(item);
-                System.out.println(player.getName() + " took the " 
-                        + item.getName());
-            }else if(item.getUsageKey(1) == 2){
-                System.out.println("The " + item.getName() 
-                        + " is too heavy for that");
-            }else if(item.getUsageKey(1) == 3){
-                System.out.println("The " + item.getName() + " is bolted down");
-            }else{
-                System.out.println("You can't take the " + item.getName());
-            }
-        }
-        else System.out.println("Where do you expect to find one of those?");
-    }
-
-    public void look(Player player){
-        String[] desc;
-        if(player.getCurrentArea().listItems().length == 0){
-            desc = new String[1];
-            desc[0] = player.getCurrentArea().getDescription();
-        }else{
-            desc = new String[player.getCurrentArea().listItems().length +3];
-            desc[0] = player.getCurrentArea().getDescription();
-            desc[1] = "";
-            desc[2] = "This Area contains:";
-            for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
-                desc[3+i] = player.getCurrentArea().listItems()[i].getName();
-            }
-        }
-        if(player.getCurrentArea().getDark() != true){
-            for(String item: desc){
-                System.out.println(item);
-            }
-        }else if(player.getItem("Lantern") != null){
-            if(player.getItem("Lantern").getActive()){
-                for(String item: desc){
-                    System.out.println(item);
-                }
-            }else{
-                System.out.println("It's too dark to see!");
-            }
-        }else{
-            System.out.println("It's too dark to see!");
-        }
-    }
-    
-    public void inventory(Player player){
-        System.out.println(player.getName() + " has:");
-        if(player.listInventory().length == 0) System.out.println("\tNothing!");
-        for (Item listInventory : player.listInventory()) {
-            System.out.println("\t" + listInventory.getName());
-        }
-    }
     
     public void examine(Item item){
         if(item.getDescription() != null)
             System.out.println(item.getDescription());
         else System.out.println("It looks like every other " + item.getName() + 
                 " you've ever seen");
-    }
-    
-    public void climb(Item item,Player player,World world){
-        if(item == null){
-            move(8,player,world);
-        }else{
-            if(item.getUsageKey(13) == 2 && player.getCurrentArea().getPortal(8) 
-                    != null){
-                if(!player.getCurrentArea().getPortal(8).isLocked())
-                    move(8,player,world);
-                else System.out.println("You can't climb that!");
-            }else{
-                System.out.println("You can't climb that!");
-            }
-        }
     }
     
     public int quit(){
@@ -736,218 +635,6 @@ public class Game {
         if(n == 0) System.out.println("Good day");
         else if(n == 1) System.out.println("Hello");
         else System.out.println("Nice weather we've been having lately");
-    }
-    
-    public void credits(){
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        pause(750);
-        System.out.println("d8888888P                    a88888b. dP     dP");
-        pause(750);
-        System.out.println("     .d8'                   d8'   `88 88   .d8'");
-        pause(750);
-        System.out.println("   .d8'   .d8888b. 88d888b. 88        88aaa8P' ");
-        pause(750);
-        System.out.println(" .d8'     88'  `88 88'  `88 88        88   `8b.");
-        pause(750);
-        System.out.println("d8'       88.  .88 88       Y8.   .88 88     88");
-        pause(750);
-        System.out.println("Y8888888P `88888P' dP        Y88888P' dP     dP");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("Created By Mr Booth's CompSci Classes");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("Core Programming:");
-        pause(750);
-        System.out.println("\tSamantha Miller");
-        pause(750);
-        System.out.println("\tHelen Keith");
-        pause(750);
-        System.out.println("\tPeter Mattsen");
-        pause(750);
-        System.out.println("\tCole Van Pelt");
-        pause(750);
-        System.out.println("\tAidan Anderson");
-        pause(750);
-        System.out.println("\tCody McCay");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("Story Writers:");
-        pause(750);
-        System.out.println("\tChaz McCarty");
-        pause(750);
-        System.out.println("\tJoy Clark");
-        pause(750);
-        System.out.println("\tBecca Dotson");
-        pause(750);
-        System.out.println("\tBrett Dayley");
-        pause(750);
-        System.out.println("\tKalo Antonio");
-        pause(750);
-        System.out.println("\tJacob Nelson");
-        pause(750);
-        System.out.println("\tCameron Kluge");
-        pause(750);
-        System.out.println("\tJason Gordon");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("Map and Item Designers:");
-        pause(750);
-        System.out.println("\tKevin White");
-        pause(750);
-        System.out.println("\tBailee Barrick");
-        pause(750);
-        System.out.println("\tCalvin Fischer");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("Content Programmers:");
-        pause(750);
-        System.out.println("\tAlex Johnson");
-        pause(750);
-        System.out.println("\tCurtis Holden");
-        pause(750);
-        System.out.println("\tWarren Coons");
-        pause(750);
-        System.out.println("\tMae Pontius");
-        pause(750);
-        System.out.println("\tGrace Smith");
-        pause(750);
-        System.out.println("\tEric Ma");
-        pause(750);
-        System.out.println("\tJosh Weston");
-        pause(750);
-        System.out.println("\tDavid Thomas");
-        pause(750);
-        System.out.println("\tBrayden Howard");
-        pause(750);
-        System.out.println("\tNick Slatton");
-        pause(750);
-        System.out.println("\tRyan Allen");
-        pause(750);
-        System.out.println("\tMadison Largey");
-        pause(750);
-        System.out.println("\tTrishana Place");
-        pause(750);
-        System.out.println("\tStone Van Beynum");
-        pause(750);
-        System.out.println("\tRachel Flowers");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("© 2016 - ");
-        pause(750);
-        System.out.println("\thttps://github.com/BoofPC/ZorCK2016");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("         `-:+osyyo++-         ");
-        pause(750);
-        System.out.println("       :sddddmNNNNNNNdo       ");
-        pause(750);
-        System.out.println("      .yddyhdmmmmmmmmhmm:     ");
-        pause(750);
-        System.out.println("     `sdyo++o+yyyhsss++hd`    ");
-        pause(750);
-        System.out.println("     .hmo//:::-::/:/:::/h:    ");
-        pause(750);
-        System.out.println("     .sho//:::------::::s`    ");
-        pause(750);
-        System.out.println("     .ho/+oosso/:-:/+ooo/     ");
-        pause(750);
-        System.out.println("     :s:+ssssosso/osyyso+     ");
-        pause(750);
-        System.out.println("     ./-/++++++++:+o+++//     ");
-        pause(750);
-        System.out.println("     `:///:--:///::/::::-     ");
-        pause(750);
-        System.out.println("      `-++/++/+++//++++/:     ");
-        pause(750);
-        System.out.println("       `o+/+oo//////o++/:     ");
-        pause(750);
-        System.out.println("        +yso++++/:///+s+      ");
-        pause(750);
-        System.out.println("      :dysdhso+++++++o:       ");
-        pause(750);
-        System.out.println("    `:hNy+oshhyo++++sdNh`     ");
-        pause(750);
-        System.out.println(" `/ymNNNm+///+ssssssshMNmy+-  ");
-        pause(750);
-        System.out.println("hmNNNNNNNNo:-::////+oyMNNNNNNy");
-        pause(750);
-        System.out.println("mNNNNMMMNNNy:--::::/:dNNNNNNMm");
-        pause(750);
-        System.out.println("dNNNNNNNNNNmmy-.````sNNNNNNNNm");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-        System.out.println("");
-        pause(750);
-    }
-    
-    public void pause(int time){
-        try {
-            Thread.sleep(time);
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
     }
     
     public void open(Item item){
@@ -1131,18 +818,7 @@ public class Game {
             System.out.println("Now, how do you expect to do that?");
         }
     }
-    
-    public void curse(){
-        Random rand = new Random();
-        int n = rand.nextInt(4);
-        if(n == 0) System.out.println("Tough shit, asshole");
-        else if(n == 1) System.out.println("Its not so bad.  You could have "
-                + "been killed already.");
-        else if(n == 2) System.out.println("Oh, dear. Such language from a "
-                + "supposed winning adventurer!");
-        else System.out.println("Such language in a high-class establishment like this!");
-    }
-    
+
     public void give(Item item, Player player){
         if(player.hasMatching(item)){
             Item receiver;
