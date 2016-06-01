@@ -1,5 +1,5 @@
 package verbs;
-import core.Verb;
+import core.*;
 /**
  *
  * @author Samantha
@@ -10,5 +10,12 @@ public class Diagnostic extends Verb {
         super("diagnostic",
                 new String[] {"status","health"},
                 new boolean[] {true, false, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        Player player = construct.getPlayer();
+        
+        System.out.println("\tHealth: " + player.getHp() + " / " 
+                + player.getMaxHp());
     }
 }

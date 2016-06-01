@@ -2,4 +2,4 @@ Map Spreadsheet: 	https://goo.gl/3qOxS2
 Doc: 			https://goo.gl/OBuWeQ
 core Design Doc:	https://goo.gl/7ZO40Z
 Item Sheet:             https://goo.gl/cqlyfX
-Rooms Assignment        https://docs.google.com/a/ckstudents.org/document/d/1wB83aX5Lm8yVczJkq4BdS5-zt3v0zGzvfMtTVuaHlE0/edit?usp=sharing
+Rooms Assignment        https://goo.gl/y4wh8V

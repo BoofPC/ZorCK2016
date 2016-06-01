@@ -19,6 +19,7 @@ public abstract class Area{
     private String smell;
     private String sound;
     private boolean dark;
+    private boolean firstVisit;
     
     public ArrayList<Item> items;
     
@@ -29,17 +30,31 @@ public abstract class Area{
        this.world = containingWorld;
        this.state = new HashMap<>();
        this.items = new ArrayList<Item>();
+       this.firstVisit = true;
     }
     
     public World getContainingWorld(){
         return this.world;
     }
     
-    public abstract void interact(String command, Player player);
+    public abstract void interact(Command command, PlayerConstruct construct);
     
-    public abstract void enter(Player player);
-    
-    public abstract void exit(Player player);
+    public void enter(Player player){
+       if(this.firstVisit && !this.dark){
+           System.out.println(this.initialDescription);
+           this.firstVisit = false;
+       }else if (this.firstVisit && player.getItem("Lantern") != null){
+       	   if(player.getItem("Lantern").getActive()){
+                     System.out.println(
+                         player.getCurrentArea().getInitialDescription());
+                     this.firstVisit = false;
+                 }else{
+                     System.out.println("It's too dark to see!");
+                 }
+       }else if(this.firstVisit){
+       	   System.out.println("It's too dark to see!");
+       }else System.out.println(this.description);
+    }
     
     public void setPortal(int direction, Portal portal){
         this.portals[direction] = portal;
@@ -144,5 +159,9 @@ public abstract class Area{
     
     public void setDark(boolean dark){
         this.dark = dark;
+    }
+    
+    public boolean getFirstVisit(){
+        return this.firstVisit;
     }
 }

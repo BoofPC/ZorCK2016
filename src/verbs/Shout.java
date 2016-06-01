@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -10,5 +12,9 @@ public class Shout extends Verb {
         super("shout",
                 new String[] {"scream", "yell"},
                 new boolean[] {true, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        System.out.println("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!");
     }
 }

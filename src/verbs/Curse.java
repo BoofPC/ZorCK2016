@@ -1,5 +1,8 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
+import java.util.Random;
 /**
  *
  * @author pedro
@@ -71,5 +74,16 @@ public class Curse extends Verb {
                                 "wank",
                                 "whore"},
                 new boolean[] {true, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        Random rand = new Random();
+        int n = rand.nextInt(4);
+        if(n == 0) System.out.println("Tough shit, asshole");
+        else if(n == 1) System.out.println("Its not so bad.  You could have "
+                + "been killed already.");
+        else if(n == 2) System.out.println("Oh, dear. Such language from a "
+                + "supposed winning adventurer!");
+        else System.out.println("Such language in a high-class establishment like this!");
     }
 }
