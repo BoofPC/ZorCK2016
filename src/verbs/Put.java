@@ -5,6 +5,8 @@
  */
 
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -15,5 +17,9 @@ public class Put extends Verb {
         super("put",
                 new String[]{"place", "set"},
                 new boolean[]{false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

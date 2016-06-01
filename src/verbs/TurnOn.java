@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -10,6 +12,10 @@ public class TurnOn extends Verb{
         super("turn on", 
                 new String[] {"activate"}, 
                 new boolean[] {false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
     
 }

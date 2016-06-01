@@ -5,11 +5,8 @@
  */
 
 package areas;
-import core.Area;
-import core.Player;
-import core.Portal;
-import core.World;
-import items.Door;
+import core.*;
+import items.*;
 
 /**
  *
@@ -31,8 +28,8 @@ public class Test8 extends Area{
             setState("First",true);
        }
        
-        public void interact(String command, Player player){
-                
+        public void interact(Command command, PlayerConstruct construct){
+                command.getVerb().run(command, construct);
         }
 
 }

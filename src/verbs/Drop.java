@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -15,5 +17,9 @@ public class Drop extends Verb{
         super("drop",
                 new String[] {"release", "throw out", "toss", "leave"},
                 new boolean[] {false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

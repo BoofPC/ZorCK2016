@@ -5,6 +5,8 @@
  */
 
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -16,5 +18,9 @@ public class Write extends Verb{
         super("write",
                 new String[]{"inscribe", "draw", "transcribe"},
                 new boolean[]{true, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

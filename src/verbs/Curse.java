@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -71,5 +73,9 @@ public class Curse extends Verb {
                                 "wank",
                                 "whore"},
                 new boolean[] {true, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

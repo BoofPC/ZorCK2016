@@ -5,7 +5,7 @@
  */
 
 package verbs;
-import core.Verb;
+import core.*;
 /**
  *
  * @author johnson5951a
@@ -17,4 +17,9 @@ public class Ask extends Verb{
                 new String[]{"inquire", "question", "interrogate"},
                 new boolean[]{false, true, false});
     }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
+    }
+    
 }

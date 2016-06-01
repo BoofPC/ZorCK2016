@@ -5,7 +5,7 @@
  */
 
 package verbs;
-import core.Verb;
+import core.*;
 /**
  *
  * @author johnson5951a
@@ -16,5 +16,9 @@ public class Break extends Verb{
         super("break",
                 new String[]{"shatter", "destroy"},
                 new boolean[]{false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

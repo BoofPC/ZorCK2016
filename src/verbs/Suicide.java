@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -14,5 +16,9 @@ public class Suicide extends Verb {
                 new String[] {"kill self", "orange monkey eagle"/*I'm old and 
                         don't understand this -pedro*/,"commit suicide","stab self"},
                 new boolean[] {true, false, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

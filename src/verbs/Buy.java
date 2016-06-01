@@ -5,7 +5,7 @@
  */
 
 package verbs;
-import core.Verb;
+import core.*;
 /**
  *
  * @author johnson5951a
@@ -16,5 +16,9 @@ public class Buy extends Verb{
         super("buy",
                 new String[]{"purchase"},
                 new boolean[]{false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

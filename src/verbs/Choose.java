@@ -5,7 +5,7 @@
  */
 
 package verbs;
-import core.Verb;
+import core.*;
 /**
  *
  * @author johnson5951a
@@ -16,5 +16,9 @@ public class Choose extends Verb{
         super("choose",
                 new String[]{"select"},
                 new boolean[]{false, true, true});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

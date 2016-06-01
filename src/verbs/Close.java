@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package verbs;
-import core.Verb;
+import core.*;
 /**
  *
  * @author Alex Johnson
@@ -15,6 +15,10 @@ public class Close extends Verb {
         super("close", 
                 new String[]{"shut"},
                 new boolean[]{false, true, false});
+        
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
         
     }
 }

@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -10,5 +12,9 @@ public class Diagnostic extends Verb {
         super("diagnostic",
                 new String[] {"status","health"},
                 new boolean[] {true, false, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

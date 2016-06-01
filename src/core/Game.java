@@ -81,6 +81,8 @@ public class Game {
         //Setting initial area for player
         player.setCurrentArea(world.getArea("Test5"));
         player.addItem(new NoTea());
+        PlayerConstruct constr = new PlayerConstruct(player, world);
+        Command com;
         
         //Fun printed start stuff
         System.out.println("Welcome to\n" +
@@ -124,7 +126,8 @@ public class Game {
                 }
             }*/
             else if(game.verbParser(input) != null){
-                String verb = game.verbParser(input).getTitle();
+                //String verb = game.verbParser(input).getTitle();
+                Verb verb = game.verbParser(input);
                 boolean conflict = false;
                 Item noun = null;
                 Item[] nounArray = game.nounParser(input,player);
@@ -134,7 +137,15 @@ public class Game {
                 }
                 if(!conflict){
                     int direction = game.directionParser(input);
-                    if(verb.equals("damn")){
+                    com = new Command(verb, noun, direction);
+                    player.getCurrentArea().interact(com,constr);
+                    
+                    
+                    
+                    
+                    
+                    
+                    /*if(verb.equals("damn")){
                         game.curse();
                     }else if(verb.equals("take")){
                         if(noun != null){
@@ -333,7 +344,7 @@ public class Game {
                         }else{
                             System.out.println("Where do you expect to find one of those?");
                         }
-                    }
+                    }*/
                 }else{
                     if(nounArray.length > 3){
                         System.out.print("Did you mean the ");
@@ -354,13 +365,7 @@ public class Game {
         game.score(player);
         System.out.println("");
     }
-    
-    public void registerVerbs(){
-        
-       
-        //...
-        
-    }
+   
     
     public Verb findVerb(String input){
         for(Verb item : this.verbList){

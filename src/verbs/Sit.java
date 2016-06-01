@@ -5,6 +5,8 @@
  */
 
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -16,5 +18,9 @@ public class Sit extends Verb{
         super("sit",
                 new String[]{"lie down", "prone", "criss-cross applesauce"},
                 new boolean[]{true, false, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

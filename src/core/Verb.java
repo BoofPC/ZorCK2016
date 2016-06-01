@@ -8,7 +8,7 @@ import java.util.Arrays;
  *
  * @author Pedro
  */
-public class Verb {
+public abstract class Verb {
     public String title;
     public ArrayList<String> synonyms;
     public boolean[] usage;    //Usage is a series of boolean statments
@@ -50,4 +50,7 @@ public class Verb {
         if(this.usage.length > key) return this.usage[key];
         else return false;
     }
+    
+    public abstract void run(Command command, PlayerConstruct construct);
+    
 }
