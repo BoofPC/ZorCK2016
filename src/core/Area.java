@@ -102,7 +102,7 @@ public abstract class Area{
         return this.taste;
     }
     
-    private void setTaste(String input){
+    public void setTaste(String input){
         this.taste = input;
     }
     
@@ -110,7 +110,7 @@ public abstract class Area{
         return this.smell;
     }
     
-    private void setSmell(String input){
+    public void setSmell(String input){
         this.smell = input;
     }
     
@@ -118,7 +118,7 @@ public abstract class Area{
         return this.sound;
     }
     
-    private void setSound(String input){
+    public void setSound(String input){
         this.sound = input;
     }
     
