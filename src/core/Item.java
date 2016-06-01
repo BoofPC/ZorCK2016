@@ -22,7 +22,7 @@ public class Item {
 			//is invoked. 3 means the item is bolted down, etc.
 			//
                         //The meanings of each item is as follows:
-                        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14     ,16
+                        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14     ,15
                         //{[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive,break}
 			//feel free to add more
 			//the possible statuses of each are as follows:
