@@ -1,7 +1,5 @@
 package verbs;
-import core.Command;
-import core.PlayerConstruct;
-import core.Verb;
+import core.*;
 /**
  *
  * @author Samantha
@@ -15,6 +13,9 @@ public class Diagnostic extends Verb {
     }
     
     public void run(Command command, PlayerConstruct construct){
+        Player player = construct.getPlayer();
         
+        System.out.println("\tHealth: " + player.getHp() + " / " 
+                + player.getMaxHp());
     }
 }

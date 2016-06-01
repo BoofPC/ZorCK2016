@@ -37,6 +37,7 @@ public class Item {
 			//                  1: not drinkable
 			//                  2: drinkable
 			//                  3: "You need to open it first!"
+                        //                  4: drinkable, already drank
 			//open (n = 4) -    0: unset (default, returns "not openable")
 			//                  1: not openable
 			//                  2: openable, closed

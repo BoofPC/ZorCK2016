@@ -14,6 +14,7 @@ public class Break extends Verb{
     
     public void run(Command command, PlayerConstruct construct) {
         Item noun = command.getNoun();
+        Player player = construct.getPlayer();
         
         if(noun != null) {
             if (!noun.getName().equals("noItem")) {
