@@ -81,7 +81,7 @@ public class Game {
         //Setting initial area for player
         player.setCurrentArea(world.getArea("Test5"));
         player.addItem(new NoTea());
-        PlayerConstruct constr = new PlayerConstruct(player, world);
+        Context constr = new Context(player, world);
         Command com;
         
         //Fun printed start stuff

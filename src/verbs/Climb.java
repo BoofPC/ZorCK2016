@@ -12,7 +12,7 @@ public class Climb extends Verb {
                 new boolean[] {true, true, false});
     }
     
-    public void run(Command command, PlayerConstruct construct){
+    public void run(Command command, Context construct){
         int direction = command.getDirection();
         Item noun = command.getNoun();
         

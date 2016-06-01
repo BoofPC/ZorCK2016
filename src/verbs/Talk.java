@@ -1,6 +1,6 @@
 package verbs;
 import core.Command;
-import core.PlayerConstruct;
+import core.Context;
 import core.Verb;
 /**
  *
@@ -17,7 +17,7 @@ public class Talk extends Verb {
                 new boolean[]{false, true, false});
     }
     
-    public void run(Command command, PlayerConstruct construct){
+    public void run(Command command, Context construct){
         
     }
 }

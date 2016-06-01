@@ -14,7 +14,7 @@ public class Examine extends Verb {
                 new boolean[]{false, true, false});
     }
 
-    public void run(Command command, PlayerConstruct construct) {
+    public void run(Command command, Context construct) {
         Item noun = command.getNoun();
 
         if (noun != null) {

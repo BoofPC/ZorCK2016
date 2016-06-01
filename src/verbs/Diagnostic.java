@@ -12,7 +12,7 @@ public class Diagnostic extends Verb {
                 new boolean[] {true, false, false});
     }
     
-    public void run(Command command, PlayerConstruct construct){
+    public void run(Command command, Context construct){
         Player player = construct.getPlayer();
         
         System.out.println("\tHealth: " + player.getHp() + " / " 

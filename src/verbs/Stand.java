@@ -6,7 +6,7 @@
 
 package verbs;
 import core.Command;
-import core.PlayerConstruct;
+import core.Context;
 import core.Verb;
 /**
  *
@@ -20,7 +20,7 @@ public class Stand extends Verb{
                 new boolean[]{true, false, false});
     }
     
-    public void run(Command command, PlayerConstruct construct){
+    public void run(Command command, Context construct){
         
     }
 }

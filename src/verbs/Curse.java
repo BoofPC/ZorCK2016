@@ -1,6 +1,6 @@
 package verbs;
 import core.Command;
-import core.PlayerConstruct;
+import core.Context;
 import core.Verb;
 import java.util.Random;
 /**
@@ -76,7 +76,7 @@ public class Curse extends Verb {
                 new boolean[] {true, true, false});
     }
     
-    public void run(Command command, PlayerConstruct construct){
+    public void run(Command command, Context construct){
         Random rand = new Random();
         int n = rand.nextInt(4);
         if(n == 0) System.out.println("Tough shit, asshole");

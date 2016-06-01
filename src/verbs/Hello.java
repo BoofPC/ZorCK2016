@@ -15,7 +15,7 @@ public class Hello extends Verb  {
         
     }
     
-    public void run(Command command, PlayerConstruct construct){
+    public void run(Command command, Context construct){
         int n = new Random().nextInt(10);
         switch (n) {
             case 0:
