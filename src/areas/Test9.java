@@ -27,7 +27,7 @@ public class Test9 extends Area{
             addItem(new Hamburger());
        }
        
-        public void interact(Command command, PlayerConstruct construct){
+        public void interact(Command command, Context construct){
                 command.getVerb().run(command, construct);
         }
 

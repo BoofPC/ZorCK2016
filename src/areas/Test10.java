@@ -25,7 +25,7 @@ public class Test10 extends Area{
             setDark(true);
        }
        
-        public void interact(Command command, PlayerConstruct construct){
+        public void interact(Command command, Context construct){
                 command.getVerb().run(command, construct);
         }
 

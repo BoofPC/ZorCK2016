@@ -12,7 +12,7 @@ public class Break extends Verb{
                 new boolean[]{false, true, false});
     }
     
-    public void run(Command command, PlayerConstruct construct) {
+    public void run(Command command, Context construct) {
         Item noun = command.getNoun();
         Player player = construct.getPlayer();
         

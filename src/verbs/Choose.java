@@ -18,7 +18,7 @@ public class Choose extends Verb{
                 new boolean[]{false, true, true});
     }
     
-    public void run(Command command, PlayerConstruct construct){
+    public void run(Command command, Context construct){
         
     }
 }
