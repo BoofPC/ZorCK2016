@@ -14,11 +14,13 @@ public class Suicide extends Verb {
     public Suicide() {
         super("suicide",
                 new String[] {"kill self", "orange monkey eagle"/*I'm old and 
-                        don't understand this -pedro*/,"commit suicide","stab self"},
+                        don't understand this -pedro https://youtu.be/4QQmXoR5t9I?t=55s*/,"commit suicide","stab self"},
                 new boolean[] {true, false, false});
     }
     
     public void run(Command command, PlayerConstruct construct){
-        
+        if (command.getNoun().getUsageKey(15) == 2) {
+            
+        }
     }
 }
