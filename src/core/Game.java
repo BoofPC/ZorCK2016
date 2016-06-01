@@ -33,13 +33,10 @@ public class Game {
         
         
         //Register all verbs in the verbList
-        
-        //When a verb is updated to the new verb scheme, add  /**/ to show completion
-        
-        /**/game.verbList.add(new Climb());             
-        /**/game.verbList.add(new Close());
-        /**/game.verbList.add(new Credits());
-        /**/game.verbList.add(new Curse());
+        game.verbList.add(new Climb());             
+        game.verbList.add(new Close());
+        game.verbList.add(new Credits());
+        game.verbList.add(new Curse());
         game.verbList.add(new Diagnostic());
         game.verbList.add(new Drink());
         game.verbList.add(new Drop());
@@ -47,27 +44,27 @@ public class Game {
         game.verbList.add(new Examine());
         game.verbList.add(new Give());
         game.verbList.add(new Hello());
-        /**/game.verbList.add(new Hit());
-        /**/game.verbList.add(new Inventory());
-        /**/game.verbList.add(new Listen());
-        /**/game.verbList.add(new Lock());
-        /**/game.verbList.add(new Look());
-        /**/game.verbList.add(new Move());
-        /**/game.verbList.add(new Open());
-        /**/game.verbList.add(new Poke());
-        /**/game.verbList.add(new Pray());
+        game.verbList.add(new Hit());
+        game.verbList.add(new Inventory());
+        game.verbList.add(new Listen());
+        game.verbList.add(new Lock());
+        game.verbList.add(new Look());
+        game.verbList.add(new Move());
+        game.verbList.add(new Open());
+        game.verbList.add(new Poke());
+        game.verbList.add(new Pray());
         game.verbList.add(new Quit());
-        /**/game.verbList.add(new Read());
-        /**/game.verbList.add(new Score());
-        /**/game.verbList.add(new Shout());
-        /**/game.verbList.add(new Smell());
-        /**/game.verbList.add(new Stab());
+        game.verbList.add(new Read());
+        game.verbList.add(new Score());
+        game.verbList.add(new Shout());
+        game.verbList.add(new Smell());
+        game.verbList.add(new Stab());
         game.verbList.add(new Suicide());
-        /**/game.verbList.add(new Take());
-        /**/game.verbList.add(new Taste());
-        /**/game.verbList.add(new TurnOff());
-        /**/game.verbList.add(new TurnOn());
-        /**/game.verbList.add(new Unlock());
+        game.verbList.add(new Take());
+        game.verbList.add(new Taste());
+        game.verbList.add(new TurnOff());
+        game.verbList.add(new TurnOn());
+        game.verbList.add(new Unlock());
         
         //Add all Areas to the new world
         world.addArea("Test1",new Test1(world));
@@ -149,206 +146,12 @@ public class Game {
                     
                     
                     
-                    /*if(verb.equals("damn")){
-                        game.curse();
-                    }else if(verb.equals("take")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.take(noun,player);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("look")){ game.look(player); }
-                    else if(verb.equals("move")){
-                        if(direction != -1) game.move(direction,player,world);
-                        else System.out.println("Ya need a direction, ya dingus");
-                    }else if(verb.equals("inventory")){ game.inventory(player); }
-                    else if(verb.equals("examine")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.examine(noun);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("climb")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.climb(noun,player,world);
-                            }
-                            else game.climb(null,player,world);
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
+                    /*
                     }else if(verb.equals("quit")){
                         status = game.quit();
-                    }else if(verb.equals("score")){ game.score(player); }
-                    else if(verb.equals("diagnostic")){ game.diagnostic(player); }
-                    else if(verb.equals("eat")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.eat(noun,player);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("taste")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.taste(noun);
-                            }
-                            else game.taste(player.getCurrentArea());
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("smell")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.smell(noun);
-                            }
-                            else game.smell(player.getCurrentArea());
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("shout")){ game.shout(); }
-                    else if(verb.equals("hello")){ game.hello(); }
-                    else if(verb.equals("credits")){ game.credits(); }
-                    else if(verb.equals("open")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.open(noun);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }
-                    else if(verb.equals("close")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.close(noun);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }
-                    else if(verb.equals("read")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.read(noun);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("drop")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.drop(noun,player);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("turn on")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.turnOn(noun,player);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("turn off")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.turnOff(noun);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("poke")){ 
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.poke(noun);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("listen")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.listen(noun);
-                            }
-                            else game.listen(player.getCurrentArea());
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("drink")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.drink(noun,player);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
+                    
                     }else if(verb.equals("suicide")){ status = game.suicide(player); }
-                    else if(verb.equals("hit")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.hit(noun,player.getCurrentArea());
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }
-                    else if(verb.equals("stab")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.stab(noun,player.getCurrentArea(),player, new Sword());
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("pray")){ game.pray(player); }
-                    else if(verb.equals("lock")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.lock(noun, player, world);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("unlock")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.unlock(noun, player, world);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }else if(verb.equals("give")){
-                        if(noun != null){
-                            if(!noun.getName().equals("noItem")){
-                                game.give(noun, player);
-                            }
-                            else System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }*/
+                   */
                 }else{
                     if(nounArray.length > 3){
                         System.out.print("Did you mean the ");
@@ -541,116 +344,14 @@ public class Game {
         return findDirection(inputList.get(0)); 
     }
     
-    public void examine(Item item){
-        if(item.getDescription() != null)
-            System.out.println(item.getDescription());
-        else System.out.println("It looks like every other " + item.getName() + 
-                " you've ever seen");
-    }
-    
     public int quit(){
         System.out.println("Goodbye!");
         return 1;
     }
 
-    public void diagnostic(Player player){
-        System.out.println("Your hp is: " + player.getHp() + "/" + 
-                player.getMaxHp());
-    }
-    
-    public void eat(Item item, Player player){
-        if(item.getUsageKey(2) == 2){
-            if(player.getCurrentArea().hasMatching(item)) 
-                player.getCurrentArea().removeItem(item);
-            else if(player.hasMatching(item)) player.removeItem(item);
-            System.out.println(player.getName() + " ate the " + item.getName());
-            if(item.getTaste() != null) System.out.println(item.getTaste());
-            else System.out.println("It tastes like every other " + 
-                    item.getName() + " you've ever eaten");
-        }else{
-            System.out.println("I don't see how you expect to do that!");
-        }
-    }
-    
-    public void drink(Item item, Player player){
-        if(item.getUsageKey(3) == 2){
-            if(player.getCurrentArea().hasMatching(item)) 
-                player.getCurrentArea().removeItem(item);
-            else if(player.hasMatching(item)) player.removeItem(item);
-            System.out.println(player.getName() + " drank the " + item.getName());
-            if(item.getTaste() != null) System.out.println(item.getTaste());
-            else System.out.println("It tastes like every other " + 
-                    item.getName() + " you've ever drank");
-        }else if(item.getUsageKey(3) == 4){
-            System.out.println("You need to open it first!");
-        }else{
-            System.out.println("I don't see how you expect to do that!");
-        }
-    }
-
-    public void hello(){
-        Random rand = new Random();
-        int n = rand.nextInt(3);
-        if(n == 0) System.out.println("Good day");
-        else if(n == 1) System.out.println("Hello");
-        else System.out.println("Nice weather we've been having lately");
-    }
-
-    
-    public void close(Item item){
-        if(item.getUsageKey(4) == 3){
-            item.setUsageKey(4,2);
-            System.out.println("You closed the " + item.getName());
-        }else if(item.getUsageKey(4) == 2){
-            System.out.println(item.getName() + " is already closed");
-        }else{
-            System.out.println("I don't see how you expect to do that");
-        }
-    }
-
-    
-    public void drop(Item item, Player player){
-        if(player.hasMatching(item)){
-            if(item.getUsageKey(1) == 1){
-                player.removeItem(item);
-                player.getCurrentArea().addItem(item);
-                System.out.println("You dropped " + item.getName());
-            }else{
-                System.out.println("I'm sorry " + player.getName() + 
-                        ", I can't allow you to do that");
-            }
-        }else{
-            System.out.println("You don't have the " + item.getName());
-        }
-    }
-    
     public int suicide(Player player){
         System.out.println("Whelp, goodbye, I guess");
         System.out.println(player.getName() + " commited suicide");
         return 4;
     }
-
-    public void give(Item item, Player player){
-        if(player.hasMatching(item)){
-            Item receiver;
-            receiver = null;
-            for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
-                if(player.getCurrentArea().listItems()[i].getUsageKey(14) == 2){
-                    receiver = player.getCurrentArea().listItems()[i];
-                    break;
-                }
-            }
-            if(receiver != null){
-                receiver.receive(item);
-                player.removeItem(item);
-                System.out.println("You gave the " + item.getName() + " to "
-                + receiver.getName());
-            }else{
-                System.out.println("I don't see who you'd want to give that to");
-            }
-        }else{
-            System.out.println("You don't even have a " + item.getName());
-        }
-    }
-    
 }
