@@ -5,6 +5,8 @@
  */
 
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -16,5 +18,9 @@ public class Make extends Verb {
         super("make", 
                 new String[]{"create","build","construct"},
                 new boolean[]{false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

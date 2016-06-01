@@ -1,5 +1,7 @@
 package verbs;
 
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -10,5 +12,9 @@ public class Open extends Verb {
         super("open", 
                 new String[]{"unseal"}, 
                 new boolean[]{false,true,false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

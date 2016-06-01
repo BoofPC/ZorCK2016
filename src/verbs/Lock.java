@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -10,6 +12,10 @@ public class Lock extends Verb{
         super("lock", 
                 new String[] {}, 
                 new boolean[] {false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
     
 }

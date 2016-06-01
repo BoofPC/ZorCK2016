@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -21,5 +23,9 @@ public class Give extends Verb {
         super("give",
                 new String[] {"gift", "pay"},
                 new boolean[] {false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

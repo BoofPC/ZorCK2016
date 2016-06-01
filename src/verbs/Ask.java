@@ -5,22 +5,21 @@
  */
 
 package verbs;
-import core.Command;
-import core.PlayerConstruct;
-import core.Verb;
+import core.*;
 /**
  *
  * @author johnson5951a
  */
-public class Sit extends Verb{
+public class Ask extends Verb{
     
-    public Sit(){
-        super("sit",
-                new String[]{"lie down", "prone", "criss-cross applesauce"},
-                new boolean[]{true, false, false});
+    public Ask(){
+        super("ask",
+                new String[]{"inquire", "question", "interrogate"},
+                new boolean[]{false, true, false});
     }
     
     public void run(Command command, PlayerConstruct construct){
         
     }
+    
 }

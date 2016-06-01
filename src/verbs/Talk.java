@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -13,5 +15,9 @@ public class Talk extends Verb {
                 //with items. The fact that it only works with a noun is what
                 //distinguishes it from Shout.
                 new boolean[]{false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

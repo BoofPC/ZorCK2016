@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -15,5 +17,9 @@ public class Listen extends Verb {
         super("listen",
                 new String[]{"hear","pay attention","listen to"},
                 new boolean[]{true, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import java.util.ArrayList;
 import core.Verb;
 /*
@@ -17,5 +19,9 @@ public class Look extends Verb{
         super("look",
                 new String[] {"l"},
                 new boolean[]{true,false,true});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

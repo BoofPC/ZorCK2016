@@ -37,7 +37,7 @@ public abstract class Area{
         return this.world;
     }
     
-    public abstract void interact(String command, Player player);
+    public abstract void interact(Command command, PlayerConstruct construct);
     
     public void enter(Player player){
        if(this.firstVisit && !this.dark){

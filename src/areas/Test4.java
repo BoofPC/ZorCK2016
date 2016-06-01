@@ -27,7 +27,7 @@ public class Test4 extends Area{
             setState("First",true);
        }
        
-        public void interact(String command, Player player){
-                
+        public void interact(Command command, PlayerConstruct construct){
+                command.getVerb().run(command, construct);
         }
 }

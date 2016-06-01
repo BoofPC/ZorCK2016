@@ -5,6 +5,8 @@
  */
 
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -16,5 +18,9 @@ public class Run extends Verb{
         super("run",
                 new String[]{"sprint", "jog", "gallop"},
                 new boolean[]{true, false, true});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

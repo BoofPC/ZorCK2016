@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -10,5 +12,9 @@ public class Pray extends Verb {
         super("pray",
                 new String[] {"worship"},
                 new boolean[] {true, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

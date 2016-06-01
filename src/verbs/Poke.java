@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import core.Verb;
 /**
  *
@@ -15,5 +17,9 @@ public class Poke extends Verb{
         super("poke", 
                 new String[]{"touch", "prod", "tap","feel"}, 
                 new boolean[]{false, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

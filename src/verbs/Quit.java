@@ -1,4 +1,6 @@
 package verbs;
+import core.Command;
+import core.PlayerConstruct;
 import java.util.ArrayList;
 import core.Verb;
 /*
@@ -17,5 +19,9 @@ public class Quit extends Verb{
         super("quit",
                 new String[] {"q","quit game"},
                 new boolean[]{true,false,false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }

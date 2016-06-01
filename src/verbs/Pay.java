@@ -6,10 +6,17 @@
 
 package verbs;
 
+import core.Command;
+import core.PlayerConstruct;
+
 /**
  *
  * @author johnson5951a
  */
 public class Pay {
     
+    
+    public void run(Command command, PlayerConstruct construct){
+        
+    }
 }

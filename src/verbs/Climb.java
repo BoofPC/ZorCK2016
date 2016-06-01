@@ -1,5 +1,5 @@
 package verbs;
-import core.Verb;
+import core.*;
 /**
  *
  * @author Samantha
@@ -10,5 +10,9 @@ public class Climb extends Verb {
         super("climb",
                 new String[] {"scale"},
                 new boolean[] {true, true, false});
+    }
+    
+    public void run(Command command, PlayerConstruct construct){
+        
     }
 }
