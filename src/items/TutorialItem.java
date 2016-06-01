@@ -121,6 +121,9 @@ public class TutorialItem extends Item{
         //receive (n = 14) -0: unset (default, returns "cannot receive")
         //                  1: cannot receive items
         //                  2: can recieve items
+        //break (n = 15) -  0: unset (default, returns "cannot break")
+        //                  1: cannot break item
+        //                  2: breakable
         //
         //
         //the first item, represented here as [duumy], refers to
