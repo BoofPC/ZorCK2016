@@ -160,4 +160,8 @@ public abstract class Area{
     public void setDark(boolean dark){
         this.dark = dark;
     }
+    
+    public boolean getFirstVisit(){
+        return this.firstVisit;
+    }
 }

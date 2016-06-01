@@ -15,6 +15,6 @@ public class Shout extends Verb {
     }
     
     public void run(Command command, PlayerConstruct construct){
-        
+        System.out.println("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!");
     }
 }

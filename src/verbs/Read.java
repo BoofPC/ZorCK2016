@@ -1,7 +1,5 @@
 package verbs;
-import core.Command;
-import core.PlayerConstruct;
-import core.Verb;
+import core.*;
 /**
  *
  * @author Samantha
@@ -15,6 +13,26 @@ public class Read extends Verb {
     }
     
     public void run(Command command, PlayerConstruct construct){
+        int direction = command.getDirection();
+        Item noun = command.getNoun();
         
+        Player player = construct.getPlayer();
+        World world = construct.getWorld();
+
+        if(noun != null){
+            if(!noun.getName().equals("noItem")){
+                if(noun.getUsageKey(6) == 2){
+                    if(noun.getText() != null) System.out.println(noun.getText());
+                    else System.out.println("It says nothing important");
+                }else if(noun.getUsageKey(6) == 3){
+                    System.out.println("You can't quite make it out");
+                }else{
+                    System.out.println("I don't see how you expect to do that");
+                }
+            }
+            else System.out.println("Ya need a noun, ya dingus");
+        }else{
+            System.out.println("Where do you expect to find one of those?");
+        }
     }
 }

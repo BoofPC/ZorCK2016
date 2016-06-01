@@ -1,7 +1,5 @@
 package verbs;
-import core.Command;
-import core.PlayerConstruct;
-import core.Verb;
+import core.*;
 /**
  *
  * @author Samantha
@@ -15,7 +13,29 @@ public class TurnOn extends Verb{
     }
     
     public void run(Command command, PlayerConstruct construct){
+        int direction = command.getDirection();
+        Item noun = command.getNoun();
         
+        Player player = construct.getPlayer();
+        World world = construct.getWorld();
+        
+        if(noun != null){
+            if(!noun.getName().equals("noItem")){
+                if(noun.getUsageKey(7) == 2){
+                    noun.setUsageKey(7,3);
+                    System.out.println("You turned on the " + noun.getName());
+                    if(player.getCurrentArea().getFirstVisit())
+                        player.getCurrentArea().enter(player);
+                }else if(noun.getUsageKey(7) == 3){
+                    System.out.println(noun.getName() + " is already on");
+                }else{
+                    System.out.println("I don't see how you expect to do that");
+                }
+            }
+            else System.out.println("Ya need a noun, ya dingus");
+        }else{
+            System.out.println("Where do you expect to find one of those?");
+        }
     }
     
 }

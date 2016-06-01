@@ -1,7 +1,5 @@
 package verbs;
-import core.Command;
-import core.PlayerConstruct;
-import core.Verb;
+import core.*;
 /**
  *
  * @author Samantha
@@ -15,6 +13,13 @@ public class Pray extends Verb {
     }
     
     public void run(Command command, PlayerConstruct construct){
+        int direction = command.getDirection();
+        Item noun = command.getNoun();
         
+        Player player = construct.getPlayer();
+        World world = construct.getWorld();
+        
+        player.setPrayer(true);
+        System.out.println(player.getName() + " prayed!");
     }
 }

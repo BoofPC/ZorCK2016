@@ -1,7 +1,5 @@
 package verbs;
-import core.Command;
-import core.PlayerConstruct;
-import core.Verb;
+import core.*;
 
 /**
  *
@@ -16,6 +14,12 @@ public class Score extends Verb {
     }
     
     public void run(Command command, PlayerConstruct construct){
+        int direction = command.getDirection();
+        Item noun = command.getNoun();
         
+        Player player = construct.getPlayer();
+        World world = construct.getWorld();
+        
+        System.out.println("Your score is: " + player.getScore());
     }
 }

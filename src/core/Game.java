@@ -47,27 +47,27 @@ public class Game {
         game.verbList.add(new Examine());
         game.verbList.add(new Give());
         game.verbList.add(new Hello());
-        game.verbList.add(new Hit());
+        /**/game.verbList.add(new Hit());
         /**/game.verbList.add(new Inventory());
-        game.verbList.add(new Listen());
-        game.verbList.add(new Lock());
+        /**/game.verbList.add(new Listen());
+        /**/game.verbList.add(new Lock());
         /**/game.verbList.add(new Look());
         /**/game.verbList.add(new Move());
         /**/game.verbList.add(new Open());
-        game.verbList.add(new Poke());
-        game.verbList.add(new Pray());
+        /**/game.verbList.add(new Poke());
+        /**/game.verbList.add(new Pray());
         game.verbList.add(new Quit());
-        game.verbList.add(new Read());
-        game.verbList.add(new Score());
-        game.verbList.add(new Shout());
-        game.verbList.add(new Smell());
-        game.verbList.add(new Stab());
+        /**/game.verbList.add(new Read());
+        /**/game.verbList.add(new Score());
+        /**/game.verbList.add(new Shout());
+        /**/game.verbList.add(new Smell());
+        /**/game.verbList.add(new Stab());
         game.verbList.add(new Suicide());
         /**/game.verbList.add(new Take());
-        game.verbList.add(new Taste());
-        game.verbList.add(new TurnOff());
-        game.verbList.add(new TurnOn());
-        game.verbList.add(new Unlock());
+        /**/game.verbList.add(new Taste());
+        /**/game.verbList.add(new TurnOff());
+        /**/game.verbList.add(new TurnOn());
+        /**/game.verbList.add(new Unlock());
         
         //Add all Areas to the new world
         world.addArea("Test1",new Test1(world));
@@ -366,7 +366,7 @@ public class Game {
             }
             System.out.println("");
         }
-        game.score(player);
+        player.getCurrentArea().interact(new Command(new Score(),null,-1),constr);
         System.out.println("");
     }
    
@@ -552,11 +552,7 @@ public class Game {
         System.out.println("Goodbye!");
         return 1;
     }
-    
-    public void score(Player player){
-        System.out.println("Your score is: " + player.getScore());
-    }
-    
+
     public void diagnostic(Player player){
         System.out.println("Your hp is: " + player.getHp() + "/" + 
                 player.getMaxHp());
@@ -591,44 +587,7 @@ public class Game {
             System.out.println("I don't see how you expect to do that!");
         }
     }
-    
-    public void taste(Item item){
-        if(item.getTaste() != null) System.out.println(item.getTaste());
-        else System.out.println("It tastes like every other " + 
-                item.getName() + " you've ever tried");
-    }
-    
-    public void taste(Area area){
-        if(area.getTaste() != null) System.out.println(area.getTaste());
-        else System.out.println("It doesn't taste like anything");
-    }
-    
-    public void smell(Item item){
-        if(item.getSmell() != null) System.out.println(item.getSmell());
-        else System.out.println("It smells like every other " + 
-                item.getName());
-    }
-    
-    public void smell(Area area){
-        if(area.getSmell() != null) System.out.println(area.getSmell());
-        else System.out.println("It doesn't smell like anything");
-    }
-    
-    public void listen(Item item){
-        if(item.getSound() != null) System.out.println(item.getSound());
-        else System.out.println("It sounds like every other " + 
-                item.getName() + " you've ever heard");
-    }
-    
-    public void listen(Area area){
-        if(area.getSound() != null) System.out.println(area.getSound());
-        else System.out.println("It doesn't sound like anything");
-    }
-    
-    public void shout(){
-        System.out.println("Aaaarrrrrrrrgggggggggggggghhhhhhhhhhhhhh!");
-    }
-    
+
     public void hello(){
         Random rand = new Random();
         int n = rand.nextInt(3);
@@ -636,21 +595,7 @@ public class Game {
         else if(n == 1) System.out.println("Hello");
         else System.out.println("Nice weather we've been having lately");
     }
-    
-    public void open(Item item){
-        if(item.getUsageKey(4) == 2){
-            if(item.getUsageKey(5) != 3){
-                item.setUsageKey(4,3);
-                System.out.println("You opened the " + item.getName());
-            }else{
-                System.out.println(item.getName() + " is locked");
-            }
-        }else if(item.getUsageKey(4) == 3){
-            System.out.println(item.getName() + " is already open");
-        }else{
-            System.out.println("I don't see how you expect to do that");
-        }
-    }
+
     
     public void close(Item item){
         if(item.getUsageKey(4) == 3){
@@ -662,40 +607,7 @@ public class Game {
             System.out.println("I don't see how you expect to do that");
         }
     }
-    
-    public void turnOn(Item item,Player player){
-        if(item.getUsageKey(7) == 2){
-            item.setUsageKey(7,3);
-            System.out.println("You turned on the " + item.getName());
-            player.currentArea.enter(player);
-        }else if(item.getUsageKey(7) == 3){
-            System.out.println(item.getName() + " is already on");
-        }else{
-            System.out.println("I don't see how you expect to do that");
-        }
-    }
-    
-    public void turnOff(Item item){
-        if(item.getUsageKey(7) == 3){
-            item.setUsageKey(7,2);
-            System.out.println("You turned off the " + item.getName());
-        }else if(item.getUsageKey(7) == 2){
-            System.out.println(item.getName() + " is already off");
-        }else{
-            System.out.println("I don't see how you expect to do that");
-        }
-    }
-    
-    public void read(Item item){
-        if(item.getUsageKey(6) == 2){
-            if(item.getText() != null) System.out.println(item.getText());
-            else System.out.println("It says nothing important");
-        }else if(item.getUsageKey(6) == 3){
-            System.out.println("You can't quite make it out");
-        }else{
-            System.out.println("I don't see how you expect to do that");
-        }
-    }
+
     
     public void drop(Item item, Player player){
         if(player.hasMatching(item)){
@@ -712,111 +624,10 @@ public class Game {
         }
     }
     
-    public void poke(Item item){
-        System.out.println("You poked the " + item.getName());
-        System.out.println("Good Job!");
-    }
-    
     public int suicide(Player player){
         System.out.println("Whelp, goodbye, I guess");
         System.out.println(player.getName() + " commited suicide");
         return 4;
-    }
-    
-    public void hit(Item hitee, Area currentArea){
-        if(hitee.getUsageKey(11) == 2){
-            hitee.drop(currentArea);
-            System.out.println("You hit the " + hitee.getName());
-            if(hitee.getInside() != null) System.out.println("It dropped the " 
-                    + hitee.getInside().getName());
-            hitee.drop(currentArea);
-            currentArea.removeItem(hitee);
-        }else{
-            System.out.println("Now why would you do that?");
-        }
-        
-    }
-    
-    public void stab(Item stabee, Area currentArea, Player player, Item sword){
-        boolean test = false;
-        for(int i = 0; i < player.listInventory().length; i++){
-            if(player.listInventory()[i].getName().equals(sword.getName())) 
-                test = true;
-        }
-        if(test){
-            if(stabee.getUsageKey(11) == 2 || stabee.getUsageKey(11) == 3){
-                stabee.drop(currentArea);
-                System.out.println("You stabbed the " + stabee.getName());
-                if(stabee.getInside() != null) System.out.println("It dropped the " 
-                        + stabee.getInside().getName());
-                stabee.drop(currentArea);
-                currentArea.removeItem(stabee);
-            }else{
-                System.out.println("Now why would you do that?");
-            }
-        }else{
-            System.out.println("You need the " + sword.getName() 
-                    + " to stab the " + stabee.getName());
-        }
-    }
-    
-    public void pray(Player player){
-        player.setPrayer(true);
-        System.out.println(player.getName() + " prayed!");
-    }
-    
-    public void lock(Item item, Player player,World world){
-        ArrayList<Item> keys = item.getKey();
-        if(keys != null){
-            boolean test = false;
-            for(int i = 0; i < player.listInventory().length; i++){
-                if(player.listInventory()[i].getName().equals(keys.get(0).getName())) 
-                    test = true;
-            }
-            if(item.getUsageKey(5) == 2){
-                if(test){
-                    item.setUsageKey(5,3);
-                    System.out.println("You locked the " + item.getName());
-                    if(item.getPortal() != null)
-                        item.getPortal().lock();
-                    if(item.hasMatching("door"))
-                        item.synchronizeDoor(world,player.getCurrentArea());
-                }else{
-                    System.out.println("You need a key for that");
-                }
-            }else if(item.getUsageKey(5) == 3){
-                System.out.println("The " + item.getName() + " is already locked!");
-            }
-        }else{
-            System.out.println("Now, how do you expect to do that?");
-        }
-    }
-    
-    public void unlock(Item item, Player player, World world){
-        ArrayList<Item> keys = item.getKey();
-        if(keys != null){
-            boolean test = false;
-            for(int i = 0; i < player.listInventory().length; i++){
-                if(player.listInventory()[i].getName().equals(keys.get(0).getName())) 
-                    test = true;
-            }
-            if(item.getUsageKey(5) == 3){
-                if(test){
-                    item.setUsageKey(5,2);
-                    System.out.println("You unlocked the " + item.getName());
-                    if(item.getPortal() != null)
-                        item.getPortal().unlock();
-                    if(item.hasMatching("door"))
-                        item.synchronizeDoor(world,player.getCurrentArea());
-                }else{
-                    System.out.println("You need a key for that");
-                }
-            }else if(item.getUsageKey(5) == 2){
-                System.out.println("The " + item.getName() + " is already unlocked!");
-            }
-        }else{
-            System.out.println("Now, how do you expect to do that?");
-        }
     }
 
     public void give(Item item, Player player){
