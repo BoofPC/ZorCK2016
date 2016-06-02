@@ -26,7 +26,7 @@ public class Bless extends Verb {
     }
 
     public void run(Command command, Context context) {
-        Player player = context.getPlayer()
+        Player player = context.getPlayer();
         Random rand = new Random();
         int n = rand.nextInt(10);
         if (n == 0) {
