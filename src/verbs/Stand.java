@@ -1,0 +1,20 @@
+package verbs;
+
+import core.*;
+
+/**
+ *
+ * @author johnson5951a
+ */
+public class Stand extends Verb {
+
+    public Stand() {
+        super("stand",
+                new String[]{"rise"},
+                new boolean[]{true, false, false});
+    }
+
+    public void run(Command command, Context construct) {
+
+    }
+}

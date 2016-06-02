@@ -51,6 +51,6 @@ public abstract class Verb {
         else return false;
     }
     
-    public void run(Command command, Context construct) {}
+    public abstract void run(Command command, Context construct);
     
 }
