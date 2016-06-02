@@ -1,7 +1,7 @@
 
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -54,7 +54,14 @@ public class TutorialItem extends Item{
         //setActive(boolean)    -       if the item can be turned on/off
         //                              e.g. a lantern
         //setSound(String)      -       if the item can be heard
+        
+
     }
+    
+    public void interact(Command command, Context context){
+        
+    }
+    
 }
 
         //usage is an array of ints which determines many

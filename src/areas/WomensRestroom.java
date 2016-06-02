@@ -40,7 +40,10 @@ public class WomensRestroom extends Area {
         if (verb.equals("examine") && noun.equals("Adamson Poster")) {
             new Read().run(command, context);
         } else {
-            command.getVerb().run(command, context);
+            if(command.getNoun() !=  null)
+                command.getNoun().interact(command,context);
+            if(!context.getSkipGeneral())
+                command.getVerb().run(command, context);
         }
     }
     

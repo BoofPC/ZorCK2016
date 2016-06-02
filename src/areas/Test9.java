@@ -27,8 +27,15 @@ public class Test9 extends Area{
             addItem(new Hamburger());
        }
        
-        public void interact(Command command, Context construct){
-                command.getVerb().run(command, construct);
-        }
+    @Override
+    public void interact(Command command, Context context){
+        Item noun;
+        noun = command.getNoun();
+        //if you don't have any special interactions, just put this:
+        if(command.getNoun() !=  null)
+            noun.interact(command,context);
+        if(!context.getSkipGeneral())
+            command.getVerb().run(command, context);
+    }
 
 }

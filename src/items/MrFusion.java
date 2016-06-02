@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -17,5 +17,9 @@ public class MrFusion extends Item {
                 + " machine!");
         addSynonym("mr fusion");
         addSynonym("mr. fusion");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -19,5 +19,9 @@ public class Hamburger extends Item{
         addSynonym("cheeseburger");
         setTaste("It is the best burger you've ever tasted");
         setSmell("It smells decadent");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

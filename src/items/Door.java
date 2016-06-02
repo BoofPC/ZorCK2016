@@ -33,4 +33,8 @@ public class Door extends Item{
         setKey(keys);
         setPortal(portal);
     }
+    
+    public void interact(Command command, Context context){
+        
+    }
 }

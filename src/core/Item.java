@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author pedro
  */
-public class Item {
+public abstract class Item {
     private String name;
     public String description;
     public static final int TAKE =      1;
@@ -278,4 +278,7 @@ public class Item {
                 oppDoor.setUsageKey(5,2);
         }
     }
+    
+    public abstract void interact(Command command, Context context);
+    
 }

@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -16,6 +16,10 @@ public class Lantern extends Item{
         addSynonym("lantern");
         addSynonym("light");
         addSynonym("flashlight");
+        
+    }
+    
+    public void interact(Command command, Context context){
         
     }
 }

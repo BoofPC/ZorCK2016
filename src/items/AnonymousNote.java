@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -22,5 +22,9 @@ public class AnonymousNote extends Item {
                 + " tomorrow the world will look very different from what"
                 + " you see now... I'm running out of paper so I'll have to"
                 + " be quick. Find the Time machine and...");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

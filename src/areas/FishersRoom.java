@@ -24,7 +24,9 @@ public class FishersRoom extends Area {
     }
 
     @Override
-    public void interact(Command command, Context construct) {
+    public void interact(Command command, Context context) {
+        Item noun;
+        noun = command.getNoun();
         if(command.getVerb().equals("look")){
             System.out.println("You see scattered papers around the room, some"
                     + " saying 'You can get it if you really want' and others"
@@ -40,7 +42,10 @@ public class FishersRoom extends Area {
         }
         
         else{
-            System.out.println("You can't" + command.getVerb() + command.getNoun() + "in here!");
+            if(command.getNoun() !=  null)
+                noun.interact(command,context);
+            if(!context.getSkipGeneral())
+                command.getVerb().run(command, context);
         }
     }
     

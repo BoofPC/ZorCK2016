@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 /**
  * This is an ASCII art poster of Adamson. To view the image, the player must
  * read the poster.
@@ -52,4 +52,9 @@ public class AdamsonPoster extends Item {
                 ".....----/ddhhds/MMMM+ ```  -hddddddddddhddddddddd\n" +
                 "......---sdhhdyoNMMMMN.`   /ddddhhddddddddddhhdddh");
     }
+    
+    public void interact(Command command, Context context){
+        
+    }
+    
 }

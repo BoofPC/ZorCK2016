@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -13,5 +13,9 @@ public class NoTea extends Item{
         setName("No Tea");
         setDescription("What? That makes no sense. Pull yourself together!");
         addSynonym("no tea");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

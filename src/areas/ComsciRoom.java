@@ -18,10 +18,16 @@ public class ComsciRoom extends Area{
         
     }
 
-    @Override
-    public void interact(Command command, Context context) {
-        
-    }
+        @Override
+        public void interact(Command command, Context context){
+            Item noun;
+            noun = command.getNoun();
+            //if you don't have any special interactions, just put this:
+            if(command.getNoun() !=  null)
+                noun.interact(command,context);
+            if(!context.getSkipGeneral())
+                command.getVerb().run(command, context);
+        }
 
    
     

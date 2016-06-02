@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package items;
-import core.Item;
+import core.*;
 /**
  *
  * @author Alex Johnson
@@ -19,5 +19,9 @@ public class BananaPeel extends Item{
         setDescription("This is one of the parts of the time"
                 + " machine!");
         addSynonym("banana peel");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

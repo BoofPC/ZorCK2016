@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -26,5 +26,9 @@ public class MagicOrb extends Item{
         addSynonym("magic ball");
         setDescription("It looks like it would do something special if "
                 + "you took it");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

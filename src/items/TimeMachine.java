@@ -1,5 +1,5 @@
 package items;
-import core.Item;
+import core.*;
 import java.util.ArrayList;
 
 /**
@@ -27,5 +27,9 @@ public class TimeMachine extends Item {
         keys.add(new BananaPeel());
         keys.add(new FluxCapacitor());
         setKey(keys);
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 /**
  * Located on Roof.
  * @author Samantha
@@ -18,5 +18,9 @@ public class Crow extends Item {
         
         setDescription("It's a crow with a key tied to it's leg. It turns "
                 + "aggressive when you try to take it.");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

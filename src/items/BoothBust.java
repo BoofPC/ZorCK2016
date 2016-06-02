@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 /**
  *
  * @author Samantha
@@ -19,5 +19,9 @@ public class BoothBust extends Item {
         addSynonym("bust of booth");
         
         setDescription("It's a well-made bronze likeness of Mr. Booth.");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

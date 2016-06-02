@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -18,5 +18,9 @@ public class NoItem extends Item{
         super();
         setName("noItem");
         setUsageKey(0,2);
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

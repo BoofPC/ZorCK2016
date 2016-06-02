@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 /**
  * 
  * @author Samantha
@@ -19,5 +19,9 @@ public class Cracker extends Item {
         setDescription("It's a stale cracker.");
         
         setTaste("It tastes slightly salty, with a hint of carpet.");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

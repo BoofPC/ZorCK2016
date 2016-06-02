@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -23,6 +23,10 @@ public class Key extends Item{
         setName("Key");
         addSynonym("key");
         setDescription("A small, yellow key");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
     
 }

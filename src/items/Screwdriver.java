@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -14,5 +14,9 @@ public class Screwdriver extends Item{
         setName("Flathead Screwdriver");
         addSynonym("flathead screwdriver");
         addSynonym("screwdriver");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

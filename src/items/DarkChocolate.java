@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -18,5 +18,9 @@ public class DarkChocolate extends Item{
         addSynonym("chocolate");
         addSynonym("chocolate bar");
         setTaste("It tastes like heaven");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }

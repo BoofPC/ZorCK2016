@@ -54,7 +54,10 @@ public class Roof extends Area {
                                 +" a label that reads 'Secret Passage'"));
             }
         } else {
-            command.getVerb().run(command, context);
+            if(command.getNoun() !=  null)
+                command.getNoun().interact(command,context);
+            if(!context.getSkipGeneral())
+                command.getVerb().run(command, context);
         }
     }
 }

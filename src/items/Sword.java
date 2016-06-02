@@ -1,6 +1,6 @@
 package items;
 
-import core.Item;
+import core.*;
 
 /**
  *
@@ -14,5 +14,9 @@ public class Sword extends Item{
         setName("Elvish Sword");
         addSynonym("elvish sword");
         addSynonym("sword");
+    }
+    
+    public void interact(Command command, Context context){
+        
     }
 }
