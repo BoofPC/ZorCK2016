@@ -37,7 +37,7 @@ public abstract class Area{
         return this.world;
     }
     
-    public abstract void interact(Command command, Context construct);
+    public abstract void interact(Command command, Context context);
     
     public void enter(Player player){
        if(this.firstVisit && !this.dark){
@@ -151,6 +151,15 @@ public abstract class Area{
             list[i] = this.items.get(i);
         }
         return list;
+    }
+    
+    public Item getItem(String title) {
+        for (Item item : this.items) {
+            if (item.getName().equals(title)) {
+                return item;
+            }
+        }
+        return null;
     }
     
     public boolean getDark(){
