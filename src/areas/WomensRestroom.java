@@ -38,6 +38,7 @@ public class WomensRestroom extends Area {
         
         //read the poster, in case the player looks at it instead
         if (verb.equals("examine") && noun.equals("Adamson Poster")) {
+            //prepare your eyes for the beautiful sight
             new Read().run(command, context);
         } else {
             if(command.getNoun() !=  null)
