@@ -33,6 +33,9 @@ public class Game {
         
         
         //Register all verbs in the verbList
+        game.verbList.add(new Break());
+        game.verbList.add(new Buy());
+        game.verbList.add(new Choose());
         game.verbList.add(new Climb());             
         game.verbList.add(new Close());
         game.verbList.add(new Credits());
@@ -46,25 +49,34 @@ public class Game {
         game.verbList.add(new Hello());
         game.verbList.add(new Hit());
         game.verbList.add(new Inventory());
+        game.verbList.add(new Light());
         game.verbList.add(new Listen());
         game.verbList.add(new Lock());
         game.verbList.add(new Look());
+        game.verbList.add(new Make());
         game.verbList.add(new Move());
         game.verbList.add(new Open());
         game.verbList.add(new Poke());
         game.verbList.add(new Pray());
+        game.verbList.add(new Put());
         game.verbList.add(new Quit());
         game.verbList.add(new Read());
+        game.verbList.add(new Run());
         game.verbList.add(new Score());
+        game.verbList.add(new Sell());
         game.verbList.add(new Shout());
+        game.verbList.add(new Sit());
         game.verbList.add(new Smell());
         game.verbList.add(new Stab());
+        game.verbList.add(new Stand());
         game.verbList.add(new Suicide());
         game.verbList.add(new Take());
+        game.verbList.add(new Talk());
         game.verbList.add(new Taste());
         game.verbList.add(new TurnOff());
         game.verbList.add(new TurnOn());
         game.verbList.add(new Unlock());
+        game.verbList.add(new Write());
         
         //Add all Areas to the new world
         world.addArea("Test1",new Test1(world));
