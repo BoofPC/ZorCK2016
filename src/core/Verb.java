@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.BiConsumer;
 
 
 /**
@@ -53,4 +54,11 @@ public abstract class Verb {
     
     public abstract void run(Command command, Context construct);
     
+    public static Verb fromLambda(String title, String[] synonyms, boolean[] usage, BiConsumer<Command, Context> f) {
+        return new Verb(title, synonyms, usage) {
+            public void run(Command command, Context construct) {
+                f.accept(command, construct);
+            }
+        };
+    }
 }
