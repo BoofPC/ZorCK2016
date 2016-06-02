@@ -50,9 +50,9 @@ public class Move extends Verb {
                     System.out.println("down");
                 }
                 player.getCurrentArea().enter(player);
+            }else if(player.getSit()){
+                System.out.println("Ya gotta stand up first, stupid");
             }
-        } else if(player.getSit()){
-            System.out.println("Ya gotta stand up first, stupid");
         } else {
             System.out.println("Ya need a direction, ya dingus");
         }
