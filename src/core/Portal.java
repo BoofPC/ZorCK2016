@@ -1,7 +1,5 @@
 package core;
 
-import items.*;
-
 /**
  *
  * @author keith5387h & pedro & alexb
