@@ -19,7 +19,7 @@ public class MagicOrb extends Item{
     
     public MagicOrb (){
         super();
-        setUsageKey(1,1);                   //The object can be taken
+        setUsageKey(Item.TAKE,1);                   //The object can be taken
         setName("Magic Orb");
         addSynonym("magic orb");
         addSynonym("orb");

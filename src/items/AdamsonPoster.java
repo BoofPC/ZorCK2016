@@ -10,10 +10,8 @@ public class AdamsonPoster extends Item {
     
     public AdamsonPoster() {
         super();
-        //can take
-        setUsageKey(1, 1);
-        //can read
-        setUsageKey(6, 2);
+        setUsageKey(Item.TAKE, 1);
+        setUsageKey(Item.READ, 2);
         
         setName("Adamson Poster");
         addSynonym("adamson poster");

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package items;
 
 import core.Item;
@@ -15,8 +10,8 @@ public class Lantern extends Item{
     
     public Lantern(){
         super();
-        setUsageKey(1,1);
-        setUsageKey(7,2);
+        setUsageKey(Item.TAKE,1);
+        setUsageKey(Item.TURN_ON,2);
         setName("Lantern");
         addSynonym("lantern");
         addSynonym("light");

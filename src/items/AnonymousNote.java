@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package items;
+
 import core.Item;
+
 /**
  *
  * @author Alex Johnson
  */
 public class AnonymousNote extends Item {
-    public AnonymousNote(){
+
+    public AnonymousNote() {
         super();
-        setUsageKey(2,2);
-        setUsageKey(6,2);
+        setUsageKey(Item.EAT, 2);
+        setUsageKey(Item.READ, 2);
         setName("Anonymous Note");
         setDescription("It's a note from an unknown author...");
         addSynonym("anonymous note");

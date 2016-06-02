@@ -12,9 +12,9 @@ import core.Item;
 public class BananaPeel extends Item{
     public BananaPeel(){
         super();
-        setUsageKey(1, 1);
-        setUsageKey(8, 2);
-        setUsageKey(9, 2);
+        setUsageKey(Item.TAKE, 1);
+        setUsageKey(Item.MOVE, 2);
+        setUsageKey(Item.WEAR, 2);
         setName("Banana Peel");
         setDescription("This is one of the parts of the time"
                 + " machine!");

@@ -19,8 +19,8 @@ public class TutorialItem extends Item{
     
     public TutorialItem(){
         super();
-        setUsageKey(1,1);   //This key means the player can pick out the item
-        setUsageKey(2,2);   //This key means the player can eat the item
+        setUsageKey(Item.TAKE,1);   //This key means the player can pick out the item
+        setUsageKey(Item.EAT,2);   //This key means the player can eat the item
         //Full explanation of usage keys can be found at the bottom
         
         setName("Potato Chip");   //This is the item's name, in this case, it is

@@ -9,10 +9,8 @@ public class Cracker extends Item {
     
     public Cracker() {
         super();
-        //can take
-        setUsageKey(1, 1);
-        //can eat
-        setUsageKey(2, 2);
+        setUsageKey(Item.TAKE, 1);
+        setUsageKey(Item.EAT, 2);
         //can't break it. it's an indestructable cracker!
         
         setName("Cracker");

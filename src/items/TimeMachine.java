@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package items;
 import core.Item;
 import java.util.ArrayList;
@@ -14,9 +9,9 @@ import java.util.ArrayList;
 public class TimeMachine extends Item {
     public TimeMachine(){
         super();
-        setUsageKey(7, 2);
-        setUsageKey(1, 2);
-        setUsageKey(14, 2);
+        setUsageKey(Item.TURN_ON, 2);
+        setUsageKey(Item.TAKE, 2);
+        setUsageKey(Item.RECEIVE, 2);
         //We need to have different texts for different
         //if the user has different items needed for the
         //time machine, for now I will just keep it as it
