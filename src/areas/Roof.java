@@ -15,25 +15,39 @@ public class Roof extends Area {
         
         setTitle("Roof");
         setInitialDescription("The roof is largely empty. Smatterings of bird " 
-                + "poop litter the ground, and an especially large pile rests " 
-                + "in front of you. Past the pile is the edge of the roof.");
+                + "poop litter the ground, and amongst the poop lies a " 
+                + "calculator. An agitated crow is perched atop a bronze bust of " 
+                + "Mr. Booth. Past the crow is the edge of the roof.");
         setDescription("This is the roof.");
         
-        addItem(new Calculator());
-        addItem(new KeySecretPassage());
-        //With the new Key() class, you should be able to just use
-        //Item keySecretPassage = new Key("Key to Secret Passage","It's a 
-        //      simple looking key attached to a keychain with a label that 
-        //      reads 'Secret Passage'");
-        //keySecretPassage.addSynonym("secret passage key")
-        //addItem(keySecretPassage);
-        //
-        //But I haven't tested any of that yet
+        setSound("The only sound you hear is the caws of the crow.");
+        setSmell("It smells delicious.");
         
+        addItem(new Calculator());
+        addItem(new Crow());
     }
 
     @Override
-    public void interact(Command command, Context construct) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void interact(Command command, Context context) {
+        String verb = command.getVerb().getTitle();
+        String noun = command.getNoun().getName();
+        
+        if (verb.equals("take")) {
+            if (noun.equals("Key to Secret Passage")) {
+                System.out.println("The crow is alarmed and pecks you!");
+                System.out.println("It looks a little bit hungry...");
+                context.getPlayer().addHp(-1);
+            }
+        }
+        if (verb.equals("give")) {
+            if (noun.equals("Crow")) {
+                command.getVerb().run(command, context);
+                System.out.println("The crow seems happy now. It gives you the " 
+                        + "key.");
+                context.getPlayer().addItem(new Key("Key to Secret Passage",
+                        "It's a simple-looking key attached to a keychain with " 
+                                +" a label that reads 'Secret Passage'"));
+            }
+        }
     }
 }
