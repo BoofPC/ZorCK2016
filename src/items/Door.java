@@ -3,10 +3,6 @@ package items;
 import core.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author pedro
- */
 public class Door extends Item{
     
     public Door(boolean locked,String name,Item key,Portal portal){

@@ -1,9 +1,9 @@
 package items;
 
 import core.*;
+
 /**
  * Located on Roof.
- * @author Samantha
  */
 public class Crow extends Item {
     

@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author keith5387h
- */
 public class Move extends Verb {
 
     public Move() {

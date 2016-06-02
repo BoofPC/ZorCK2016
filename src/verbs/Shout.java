@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Samantha
- */
 public class Shout extends Verb {
 
     public Shout() {

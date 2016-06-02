@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author johnson5951a & Samantha
- */
 public class Break extends Verb {
 
     public Break() {

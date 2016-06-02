@@ -1,9 +1,9 @@
 package items;
 
 import core.*;
+
 /**
  * This is a special item needed to complete the game.
- * @author Samantha
  */
 public class Calculator extends Item {
     

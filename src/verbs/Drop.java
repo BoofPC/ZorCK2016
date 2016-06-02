@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Alex Johnson & Samantha
- */
 public class Drop extends Verb {
 
     public Drop() {

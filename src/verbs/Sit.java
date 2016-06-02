@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author johnson5951a
- */
 public class Sit extends Verb {
 
     public Sit() {

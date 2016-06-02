@@ -3,10 +3,6 @@ package verbs;
 import core.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author pedro
- */
 public class Unlock extends Verb {
 
     public Unlock() {

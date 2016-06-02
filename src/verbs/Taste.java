@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Alex Johnson
- */
 public class Taste extends Verb {
 
     public Taste() {

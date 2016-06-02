@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Alex Johnson
- */
 public class Smell extends Verb {
 
     public Smell() {

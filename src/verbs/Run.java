@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author johnson5951a
- */
 public class Run extends Verb {
 
     public Run() {

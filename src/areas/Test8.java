@@ -1,11 +1,8 @@
 package areas;
+
 import core.*;
 import items.*;
 
-/**
- *
- * @author pedro
- */
 public class Test8 extends Area{
 
        public Test8(World containingWorld){

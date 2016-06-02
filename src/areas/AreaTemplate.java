@@ -1,11 +1,8 @@
 package areas;
+
 import core.*;
 import items.*;
 
-/**
- *
- * @author pedro
- */
  
 //This is a template for Area
 //For a more thorough explanation, see TutorialArea

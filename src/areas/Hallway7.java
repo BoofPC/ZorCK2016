@@ -2,10 +2,7 @@ package areas;
 
 import core.*;
 import items.*;
-/**
- *
- * @author Samantha
- */
+
 public class Hallway7 extends Area {
     
     public Hallway7(World containingWorld) {

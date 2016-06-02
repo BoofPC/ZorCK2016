@@ -4,10 +4,6 @@ import core.Command;
 import core.Context;
 import core.Verb;
 
-/**
- *
- * @author johnson5951a
- */
 public class Light extends Verb {
 
     public Light() {

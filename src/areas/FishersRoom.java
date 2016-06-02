@@ -1,10 +1,8 @@
 package areas;
+
 import core.*;
 import items.*;
-/**
- *
- * @author johnson5951a
- */
+
 public class FishersRoom extends Area {
 
     public FishersRoom(World containingWorld) {

@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Samantha
- */
 public class Diagnostic extends Verb {
 
     public Diagnostic() {

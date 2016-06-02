@@ -2,11 +2,11 @@ package areas;
 
 import core.*;
 import items.*;
+
 /**
  * This area contains two important items: the Calculator and a key to the
  * Secret Passage. To get the key, the player must give the crow the cracker
  * (found in Hallway7).
- * @author Samantha
  */
 public class Roof extends Area {
     

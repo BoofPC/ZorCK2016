@@ -2,11 +2,6 @@ package core;
 
 import java.util.ArrayList;
 
-
-/**
- *
- * @author pedro
- */
 public abstract class Item {
     private String name;
     public String description;

@@ -2,10 +2,6 @@ package items;
 
 import core.*;
 
-/**
- *
- * @author pedro
- */
 public class Key extends Item{
     
     public Key(String name, String description){

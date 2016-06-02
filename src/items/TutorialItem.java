@@ -1,12 +1,7 @@
-
 package items;
 
 import core.*;
 
-/**
- *
- * @author pedro
- */
 public class TutorialItem extends Item{
 
     //This is a tutorial to create a unique item.

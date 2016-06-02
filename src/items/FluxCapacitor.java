@@ -1,10 +1,7 @@
 package items;
 
 import core.*;
-/**
- *
- * @author Alex Johnson
- */
+
 public class FluxCapacitor extends Item{
     
     public FluxCapacitor(){

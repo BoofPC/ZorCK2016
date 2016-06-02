@@ -1,10 +1,7 @@
 package items;
 
 import core.*;
-/**
- *
- * @author Samantha
- */
+
 public class BoothBust extends Item {
     
     public BoothBust() {

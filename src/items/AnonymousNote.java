@@ -2,10 +2,6 @@ package items;
 
 import core.*;
 
-/**
- *
- * @author Alex Johnson
- */
 public class AnonymousNote extends Item {
 
     public AnonymousNote() {

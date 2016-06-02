@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Pedro
- */
 public class Quit extends Verb {
 
     public Quit() {

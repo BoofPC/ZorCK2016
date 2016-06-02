@@ -2,10 +2,6 @@ package core;
 
 import java.util.HashMap;
 
-/**
- *
- * @author pedro
- */
 public final class Context {
     
     private final Player player;

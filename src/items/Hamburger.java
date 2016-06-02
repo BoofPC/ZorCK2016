@@ -2,10 +2,6 @@ package items;
 
 import core.*;
 
-/**
- *
- * @author pedro
- */
 public class Hamburger extends Item{
     
     public Hamburger(){

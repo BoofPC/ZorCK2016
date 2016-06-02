@@ -2,18 +2,12 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Samantha
- */
-
-//killing yourself is a feature in the actual Zork game
-//if you are offended by this, feel free to delete this class
+// Killing yourself is a feature. They asked for it.
 public class Suicide extends Verb {
 
     public Suicide() {
         super("suicide",
-                new String[]{"kill self", "kill yourslef","orange monkey eagle", "commit suicide", "stab self"},
+                new String[]{"kill self", "kill yourself","orange monkey eagle", "commit suicide", "stab self"},
                 new boolean[]{true, false, false});
     }
 

@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package areas;
+
 import core.*;
 import items.*;
 
-/**
- *
- * @author pedro
- */
 public class Test7 extends Area{
 
        public Test7(World containingWorld){

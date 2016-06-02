@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Cody
- */
 public class Open extends Verb {
 
     public Open() {

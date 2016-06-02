@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Pedro
- */
 public class Look extends Verb {
 
     public Look() {

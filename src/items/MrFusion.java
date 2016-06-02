@@ -2,10 +2,6 @@ package items;
 
 import core.*;
 
-/**
- *
- * @author Alex Johnson
- */
 public class MrFusion extends Item {
 
     public MrFusion(){

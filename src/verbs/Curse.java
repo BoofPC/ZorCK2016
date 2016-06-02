@@ -3,10 +3,6 @@ package verbs;
 import core.*;
 import java.util.Random;
 
-/**
- *
- * @author pedro
- */
 public class Curse extends Verb {
 
     public Curse() {

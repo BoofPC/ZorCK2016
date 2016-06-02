@@ -1,13 +1,11 @@
 package areas;
+
 import core.*;
 import items.*;
 
 /**
- *
- * @author pedro
+ * Tutorial area based on {@link Test1}.
  */
- 
-//This is a tutorial area based on Area Test1
 public class TutorialArea extends Area{
 
    public TutorialArea(World containingWorld){

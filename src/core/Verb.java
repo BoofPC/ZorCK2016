@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 
-
-/**
- *
- * @author Pedro
- */
 public abstract class Verb {
     public String title;
     public ArrayList<String> synonyms;

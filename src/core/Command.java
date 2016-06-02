@@ -1,9 +1,5 @@
 package core;
 
-/**
- *
- * @author pedro
- */
 public final class Command {
     
     private final Verb verb;

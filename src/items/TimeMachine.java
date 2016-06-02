@@ -1,11 +1,8 @@
 package items;
+
 import core.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author Alex Johnson
- */
 public class TimeMachine extends Item {
     public TimeMachine(){
         super();

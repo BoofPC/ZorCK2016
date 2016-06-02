@@ -1,10 +1,7 @@
 package items;
 
 import core.*;
-/**
- * 
- * @author Samantha
- */
+
 public class Cracker extends Item {
     
     public Cracker() {

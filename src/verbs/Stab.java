@@ -3,10 +3,6 @@ package verbs;
 import core.*;
 import items.*;
 
-/**
- *
- * @author Samantha
- */
 public class Stab extends Verb {
 
     public Stab() {

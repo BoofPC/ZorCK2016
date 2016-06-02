@@ -1,12 +1,8 @@
 package core;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-/**
- *
- * @author alexb & pedro
- */
 public abstract class Area{
     //this is a 10 element array that has portals in 
     //each of the cardinal and half-cardinal directions as well as up and down.

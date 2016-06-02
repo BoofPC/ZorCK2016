@@ -3,11 +3,6 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- *
- * @author alexb & pedro
- */
 public class Player {
     private int hp;
     private int maxHp;

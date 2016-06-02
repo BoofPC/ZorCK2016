@@ -1,10 +1,7 @@
 package areas;
+
 import core.*;
-import items.*;
-/**
- *
- * @author allen3368r
- */
+
 public class ComsciRoom extends Area{
 
     public ComsciRoom(World containingWorld) {

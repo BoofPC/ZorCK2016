@@ -2,10 +2,6 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author johnson5951a
- */
 public class Write extends Verb {
 
     public Write() {

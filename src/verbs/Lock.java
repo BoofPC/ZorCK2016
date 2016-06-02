@@ -3,10 +3,6 @@ package verbs;
 import core.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author pedro
- */
 public class Lock extends Verb {
 
     public Lock() {
