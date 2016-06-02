@@ -2,13 +2,12 @@ package core;
 
 import java.util.ArrayList;
 import verbs.*;
+import verbs.Verbs.*;
 import areas.*;
 import items.*;
-import java.util.Random;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -164,7 +163,7 @@ public class Game {
                                     + " or the " + nounArray[1].getName() + "?");
                         }
                     }
-
+                    status = player.getDeath();
                 }
                 System.out.println("");
             }
@@ -273,8 +272,7 @@ public class Game {
                 break;
             }
         }
-        if(verb != null) return findVerb(verb);
-        else return null;
+        return findVerb(verb);
     }
 
     public Item[] nounParser(String input, Player player) {
@@ -355,11 +353,5 @@ public class Game {
     public int quit() {
         System.out.println("Goodbye!");
         return 1;
-    }
-
-    public int suicide(Player player) {
-        System.out.println("Whelp, goodbye, I guess");
-        System.out.println(player.getName() + " commited suicide");
-        return 4;
     }
 }

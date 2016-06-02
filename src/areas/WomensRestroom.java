@@ -2,7 +2,7 @@ package areas;
 
 import core.*;
 import items.*;
-import verbs.Read;
+import verbs.Verbs.Read;
 /**
  * This area has a window that leads to the roof. There's nothing else here,
  * except for a poster on the door of a stall.
