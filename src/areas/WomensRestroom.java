@@ -13,6 +13,7 @@ public class WomensRestroom extends Area {
     public WomensRestroom(World containingWorld) {
         super(containingWorld);
         
+        //TODO: add way to unlock portal by opening window
         setPortal(World.EAST, new Portal(Portal.LOCKED, "Roof"));
         setPortal(World.SOUTH, new Portal(Portal.UNLOCKED, "Hallway7"));
         

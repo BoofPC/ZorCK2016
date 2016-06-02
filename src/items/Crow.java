@@ -9,6 +9,9 @@ public class Crow extends Item {
     
     public Crow() {
         super();
+        
+        setUsageKey(Item.RECEIVE, 2);
+        
         setName("Crow");
         addSynonym("crow");
         addSynonym("bird");

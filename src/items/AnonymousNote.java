@@ -10,7 +10,7 @@ public class AnonymousNote extends Item {
 
     public AnonymousNote() {
         super();
-        setUsageKey(Item.EAT, 2);
+        setUsageKey(Item.TAKE, 2);
         setUsageKey(Item.READ, 2);
         setName("Anonymous Note");
         setDescription("It's a note from an unknown author...");
