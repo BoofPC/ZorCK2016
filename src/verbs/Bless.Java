@@ -25,7 +25,8 @@ public class Bless extends Verb {
                 new boolean[]{true, true, false});
     }
 
-    public void run(Command command, Context construct) {
+    public void run(Command command, Context context) {
+        Player player = context.getPlayer()
         Random rand = new Random();
         int n = rand.nextInt(10);
         if (n == 0) {
@@ -34,18 +35,13 @@ public class Bless extends Verb {
             System.out.println("Nothing happens . . .");
         } else if (n == 2 || n == 4) {
             System.out.println("A duck appered. You feel compelled to pick it up." +  "you look right into it's beady red eyes");
-                    player.addItem(DuckOfDoom);
+                    player.addItem(new DuckOfDoom());
         } else if (n == 3 || n == 6) {
             System.out.println("You hear the dark chuckling of evil overlord Booth");
         } else if (n == 3 || n == 6) {
-            System.out.println("Good idea blessing is super effective"
-                     );
+            System.out.println("Good idea blessing is super effective");
         } else if (n == 7 || n == 8) {
-            System.out.println("May your goats grow and prosper."
-                    + );
-        } else if (n == 7 || n == 8) {
-            System.out.println("You recieved a blessed sword");
-            player.addItem(sword);
+            System.out.println("May your goats grow and prosper.");
         } else {
             System.out.println("You hear a very powerful sneeze");
         }
