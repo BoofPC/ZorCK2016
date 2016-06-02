@@ -2,13 +2,12 @@ package core;
 
 import java.util.ArrayList;
 import verbs.*;
+import verbs.Verbs.*;
 import areas.*;
 import items.*;
-import java.util.Random;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -33,6 +32,9 @@ public class Game {
 
 
         //Register all verbs in the verbList
+	game.verbList.add(new Break());
+	game.verbList.add(new Buy());
+	game.verbList.add(new Choose());
         game.verbList.add(new Climb());
         game.verbList.add(new Close());
         game.verbList.add(new Credits());
@@ -73,6 +75,7 @@ public class Game {
         game.verbList.add(new TurnOff());
         game.verbList.add(new TurnOn());
         game.verbList.add(new Unlock());
+        game.verbList.add(new Write());
 
         //Add all Areas to the new world
         world.addArea("Test1", new Test1(world));
@@ -172,7 +175,7 @@ public class Game {
                                     + " or the " + nounArray[1].getName() + "?");
                         }
                     }
-
+                    status = player.getDeath();
                 }
                 System.out.println("");
             }
@@ -281,8 +284,7 @@ public class Game {
                 break;
             }
         }
-        if(verb != null) return findVerb(verb);
-        else return null;
+        return findVerb(verb);
     }
 
     public Item[] nounParser(String input, Player player) {
@@ -363,11 +365,5 @@ public class Game {
     public int quit() {
         System.out.println("Goodbye!");
         return 1;
-    }
-
-    public int suicide(Player player) {
-        System.out.println("Whelp, goodbye, I guess");
-        System.out.println(player.getName() + " commited suicide");
-        return 4;
     }
 }
