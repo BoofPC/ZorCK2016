@@ -10,6 +10,22 @@ import java.util.ArrayList;
 public class Item {
     private String name;
     public String description;
+    public static final int TAKE =      1;
+    public static final int EAT =       2;
+    public static final int DRINK =     3;
+    public static final int OPEN =      4;
+    public static final int LOCK =      5;
+    public static final int READ =      6;
+    public static final int TURN_ON =   7;
+    public static final int MOVE =      8;
+    public static final int WEAR =      9;
+    public static final int CLOSE =     10;
+    public static final int STAB =      11;
+    public static final int PRESS =     12;
+    public static final int CLIMB =     13;
+    public static final int RECEIVE =   14;
+    public static final int BREAK =     15;
+    
     public int[] usage = new int[16]; 		//update this number as needed
 			//usage is an array of ints which determines many
 			//characteristics of an item. Each item in the 

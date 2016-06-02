@@ -45,14 +45,15 @@ public class TutorialItem extends Item{
         
         setTaste("It tastes greasy and fattening. Delicious!");   //If you want,
         setSmell("It smells decadent"); //set additional descriptors here
-                            //Other possible descriptors:
-            //setInside(Item)       -       if another item is inside this one,
-            //                              e.g. a bottle of water
-            //setText(String)       -       if the item can be read
-            //                              e.g. a note
-            //setActive(boolean)    -       if the item can be turned on/off
-            //                              e.g. a lantern
-            //setSound(String)      -       if the item can be heard
+        
+        //Other possible descriptors:
+        //setInside(Item)       -       if another item is inside this one,
+        //                              e.g. a bottle of water
+        //setText(String)       -       if the item can be read
+        //                              e.g. a note
+        //setActive(boolean)    -       if the item can be turned on/off
+        //                              e.g. a lantern
+        //setSound(String)      -       if the item can be heard
     }
 }
 
@@ -135,3 +136,20 @@ public class TutorialItem extends Item{
         //[dummy] -     0: unset (default, returns "real")
         //              1: real
         //              2: not real
+        //You can use these variables in place of the first number in setUsageKey()
+        //and in place of the number in getUsageKey() to make things more readable
+            //Item.TAKE =      1;
+            //Item.EAT =       2;
+            //Item.DRINK =     3;
+            //Item.OPEN =      4;
+            //Item.LOCK =      5;
+            //Item.READ =      6;
+            //Item.TURN_ON =   7;
+            //Item.MOVE =      8;
+            //Item.WEAR =      9;
+            //Item.CLOSE =     10;
+            //Item.STAB =      11;
+            //Item.PRESS =     12;
+            //Item.CLIMB =     13;
+            //Item.RECEIVE =   14;
+            //Item.BREAK =     15;
