@@ -1,27 +1,20 @@
 package verbs;
-import core.Command;
-import core.Context;
-import java.util.ArrayList;
-import core.Verb;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+import core.*;
 
 /**
  *
  * @author Pedro
  */
-public class Quit extends Verb{
-    
-    public Quit(){
+public class Quit extends Verb {
+
+    public Quit() {
         super("quit",
-                new String[] {"q","quit game"},
-                new boolean[]{true,false,false});
+                new String[]{"q", "quit game"},
+                new boolean[]{true, false, false});
     }
-    
-    public void run(Command command, Context construct){
-        
+
+    public void run(Command command, Context construct) {
+
     }
 }

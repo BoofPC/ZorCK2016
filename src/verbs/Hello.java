@@ -1,21 +1,23 @@
 package verbs;
+
 import core.*;
 import java.util.Random;
+
 /**
  *
  * @author pedro
  */
-public class Hello extends Verb  {
-    
+public class Hello extends Verb {
+
     public Hello() {
         super("hello",
-                new String[]{"hi","good day","good morning","good afternoon",
+                new String[]{"hi", "good day", "good morning", "good afternoon",
                     "good evening"},
                 new boolean[]{true, true, false});
-        
+
     }
-    
-    public void run(Command command, Context construct){
+
+    public void run(Command command, Context construct) {
         int n = new Random().nextInt(10);
         switch (n) {
             case 0:

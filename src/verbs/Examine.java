@@ -22,7 +22,7 @@ public class Examine extends Verb {
                 if (noun.getDescription() != null) {
                     System.out.println(noun.getDescription());
                 } else {
-                    System.out.println("It looks like every other " 
+                    System.out.println("It looks like every other "
                             + noun.getName() + " you've ever seen");
                 }
             } else {

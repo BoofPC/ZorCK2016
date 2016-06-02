@@ -1,31 +1,26 @@
 package verbs;
+
 import core.*;
-import java.util.ArrayList;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author Pedro
  */
-public class Credits extends Verb{
-    
-    public Credits(){
+public class Credits extends Verb {
+
+    public Credits() {
         super("credits",
-                new String[] {"c"},
-                new boolean[]{true,false,false});
+                new String[]{"c"},
+                new boolean[]{true, false, false});
     }
-    
-    public void run(Command command, Context construct){
+
+    public void run(Command command, Context construct) {
         int direction = command.getDirection();
         Item noun = command.getNoun();
-        
+
         Player player = construct.getPlayer();
         World world = construct.getWorld();
-        
+
         System.out.println("");
         System.out.println("");
         System.out.println("");
@@ -228,11 +223,11 @@ public class Credits extends Verb{
         System.out.println("");
         pause(750);
     }
-    
-    public void pause(int time){
+
+    public void pause(int time) {
         try {
             Thread.sleep(time);
-        } catch(InterruptedException ex) {
+        } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
     }
