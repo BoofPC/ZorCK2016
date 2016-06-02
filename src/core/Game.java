@@ -165,7 +165,7 @@ public class Game {
                                 " or the " + nounArray[1].getName() + "?");
                     }
                 }
-                
+                status = player.getDeath();
             }
             System.out.println("");
         }
@@ -349,9 +349,4 @@ public class Game {
         return 1;
     }
 
-    public int suicide(Player player){
-        System.out.println("Whelp, goodbye, I guess");
-        System.out.println(player.getName() + " commited suicide");
-        return 4;
-    }
 }

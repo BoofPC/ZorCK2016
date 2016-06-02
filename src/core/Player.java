@@ -9,12 +9,13 @@ import java.util.List;
  * @author alexb & pedro
  */
 public class Player {
-    public int hp;
-    public int maxHp;
-    public String name;
-    Area currentArea;
-    public int score;
-    boolean prayer;
+    private int hp;
+    private int maxHp;
+    private String name;
+    private Area currentArea;
+    private int score;
+    private boolean prayer;
+    private int death;
     
     private List<Item> inventory;
     
@@ -24,6 +25,7 @@ public class Player {
         this.maxHp = hp;
         this.name = name;
         this.prayer = false;
+        this.death = 0;
         
         this.inventory = new ArrayList<>();
     }
@@ -112,5 +114,13 @@ public class Player {
     
     public boolean getPrayer(){
         return this.prayer;
+    }
+    
+    public void setDeath(int death){
+        this.death = death;
+    }
+    
+    public int getDeath(){
+        return this.death;
     }
 }

@@ -14,7 +14,9 @@ public class Quit extends Verb {
                 new boolean[]{true, false, false});
     }
 
-    public void run(Command command, Context construct) {
-
+    public void run(Command command, Context context) {
+        Player player = context.getPlayer();
+        System.out.println("Goodbye!");
+        player.setDeath(Game.SELF_QUIT);
     }
 }
