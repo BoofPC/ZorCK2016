@@ -13,6 +13,7 @@ public class Calculator extends Item {
         setUsageKey(1, 1);
         //can turn on, off by default
         setUsageKey(7, 2);
+        //TODO: make the calculator do something when it's on
         
         setName("Calculator");
         addSynonym("calculator");

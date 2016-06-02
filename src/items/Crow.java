@@ -11,7 +11,6 @@ public class Crow extends Item {
         super();
         setName("Crow");
         addSynonym("crow");
-        addSynonym("Bird");
         addSynonym("bird");
         
         setDescription("It's a crow with a key tied to it's leg. It turns "
