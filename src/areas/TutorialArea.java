@@ -1,4 +1,3 @@
-
 package areas;
 import core.*;
 import items.*;
@@ -28,7 +27,7 @@ public class TutorialArea extends Area{
         public void interact(Command command, Context construct){
                 //if you don't have any special interactions, just put this
                 //to see how special interactions work, see Test8
-                command.verb.run(command, construct);
+                command.getVerb().run(command, construct);
         }
        
 }

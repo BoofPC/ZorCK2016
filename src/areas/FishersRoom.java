@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package areas;
 import core.*;
 import items.*;
@@ -31,7 +25,7 @@ public class FishersRoom extends Area {
 
     @Override
     public void interact(Command command, Context construct) {
-        if(command.verb.equals("look")){
+        if(command.getVerb().equals("look")){
             System.out.println("You see scattered papers around the room, some"
                     + " saying 'You can get it if you really want' and others"
                     + " discussing the extent to which the Kyoto Protocol assisted"
@@ -39,14 +33,14 @@ public class FishersRoom extends Area {
                     + " Nothing seems to be of interest in this room.");
         }
         
-        if((command.verb.equals("get") || command.verb.equals("pick up")) && (command.noun.equals("paper") || command.noun.equals("papers"))){
+        if((command.getVerb().equals("get") || command.getVerb().equals("pick up")) && (command.getNoun().equals("paper") || command.getNoun().equals("papers"))){
             System.out.println("You feel a burning sensation as your legs and arms feel as if they"
                     + " are on fire. A faint voice in the distance yells 'Plagarism!'. You immediately"
                     + " drop the papers due to fright.");
         }
         
         else{
-            System.out.println("You can't" + command.verb + command.noun + "in here!");
+            System.out.println("You can't" + command.getVerb() + command.getNoun() + "in here!");
         }
     }
     

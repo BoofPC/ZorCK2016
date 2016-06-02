@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package areas;
 import core.*;
 import items.*;
@@ -30,19 +24,19 @@ public class Test8 extends Area{
        }
        
         public void interact(Command command, Context context){
-            if(command.verb.getTitle().equals("take") && 
-                    command.noun.getName().equals("Magic Orb")){
-                context.player.setMaxHp(context.player.getMaxHp() + 10);
-                context.player.setHp(context.player.getHp() + 10);
-                context.player.getCurrentArea().removeItem(command.noun);
+            if(command.getVerb().getTitle().equals("take") && 
+                    command.getNoun().getName().equals("Magic Orb")){
+                context.getPlayer().setMaxHp(context.getPlayer().getMaxHp() + 10);
+                context.getPlayer().setHp(context.getPlayer().getHp() + 10);
+                context.getPlayer().getCurrentArea().removeItem(command.getNoun());
                 //
                 System.out.println("The orb seeps into your skin");
                 System.out.println("Your max HP just went up by 10!");
             }else{
-                command.verb.run(command, context);
+                command.getVerb().run(command, context);
             }
             
-            command.verb.run(command, context);
+            command.getVerb().run(command, context);
                 
         }
 
