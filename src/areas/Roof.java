@@ -21,6 +21,14 @@ public class Roof extends Area {
         
         addItem(new Calculator());
         addItem(new KeySecretPassage());
+        //With the new Key() class, you should be able to just use
+        //Item keySecretPassage = new Key("Key to Secret Passage","It's a 
+        //      simple looking key attached to a keychain with a label that 
+        //      reads 'Secret Passage'");
+        //keySecretPassage.addSynonym("secret passage key")
+        //addItem(keySecretPassage);
+        //
+        //But I haven't tested any of that yet
         
     }
 
