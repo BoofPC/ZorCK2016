@@ -13,17 +13,20 @@ public class Roof extends Area {
     public Roof(World containingWorld) {
         super(containingWorld);
         
-        setPortal(World.WEST, new Portal(Portal.UNLOCKED, "WomensRestroom"));
+        setPortal(World.WEST, new Portal(Portal.UNLOCKED, "Women's Restroom"));
         
         setTitle("Roof");
         setInitialDescription("The roof is largely empty. Smatterings of bird " 
                 + "poop litter the ground, and amongst the poop lies a " 
                 + "calculator. An agitated crow is perched atop a bronze bust of " 
-                + "Mr. Booth. Past the crow is the edge of the roof.");
+                + "Mr. Booth. Past the crow is the edge of the roof. To the " 
+                + "west is a window leading to the Women's Restroom.");
+        //TODO: add a verb to jump off of the roof
         setDescription("This is the roof.");
         
         setSound("The only sound you hear is the caws of the crow.");
-        setSmell("It smells delicious.");
+        setSmell("It smells like nothing here is going to further your progress"
+                + " in the game!");
         
         addItem(new BoothBust());
         addItem(new Calculator());

@@ -17,7 +17,6 @@ public class MrFusion extends Item {
         setName("Mr.Fusion");
         setDescription("This is one of the parts of the time"
                 + " machine!");
-        addSynonym("Mr Fusion");
         addSynonym("mr fusion");
         addSynonym("mr. fusion");
     }
