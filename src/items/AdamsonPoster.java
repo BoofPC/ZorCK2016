@@ -16,6 +16,7 @@ public class AdamsonPoster extends Item {
         setUsageKey(6, 2);
         
         setName("Adamson Poster");
+        addSynonym("adamson poster");
         addSynonym("poster");
         addSynonym("flier");
         addSynonym("picture");

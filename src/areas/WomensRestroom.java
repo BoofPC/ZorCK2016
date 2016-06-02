@@ -36,7 +36,7 @@ public class WomensRestroom extends Area {
         String noun = command.getNoun().getName();
         
         //read the poster, in case the player looks at it instead
-        if (verb.equals("look") && noun.equals("Adamson Poster")) {
+        if (verb.equals("examine") && noun.equals("Adamson Poster")) {
             new Read().run(command, context);
         } else {
             command.getVerb().run(command, context);
