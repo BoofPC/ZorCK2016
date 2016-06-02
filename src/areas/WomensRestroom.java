@@ -2,6 +2,7 @@ package areas;
 
 import core.*;
 import items.*;
+import verbs.Read;
 /**
  * This area has a window that leads to the roof. There's nothing else here,
  * except for a poster on the door of a stall.
@@ -25,12 +26,21 @@ public class WomensRestroom extends Area {
         setSound("You hear an incessant dripping sound coming from a faucet.");
         setSmell("It smells like flowers.");
         
+        addItem(new AdamsonPoster());
         
     }
     
     @Override
     public void interact(Command command, Context context) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String verb = command.getVerb().getTitle();
+        String noun = command.getNoun().getName();
+        
+        //read the poster, in case the player looks at it instead
+        if (verb.equals("look") && noun.equals("Adamson Poster")) {
+            new Read().run(command, context);
+        } else {
+            command.getVerb().run(command, context);
+        }
     }
     
 }
