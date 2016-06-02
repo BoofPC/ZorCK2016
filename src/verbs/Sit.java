@@ -16,5 +16,11 @@ public class Sit extends Verb {
 
     public void run(Command command, Context construct) {
 
+
+        Player player = construct.getPlayer();
+        World world = construct.getWorld();
+
+        player.setSit(true);
+        System.out.println(player.getName() + " sat!");
     }
 }

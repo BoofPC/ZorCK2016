@@ -16,6 +16,7 @@ public class Player {
     private int score;
     private boolean prayer;
     private int death;
+    private boolean sit;
     
     private List<Item> inventory;
     
@@ -26,6 +27,7 @@ public class Player {
         this.name = name;
         this.prayer = false;
         this.death = 0;
+        this.sit = false;
         
         this.inventory = new ArrayList<>();
     }
@@ -112,8 +114,17 @@ public class Player {
         this.prayer = bool;
     }
     
+    
     public boolean getPrayer(){
         return this.prayer;
+    }
+    
+    public void setSit(boolean bool){
+        this.sit = bool;
+    }
+    
+    public boolean getSit(){
+        return this.sit;
     }
     
     public void setDeath(int death){

@@ -24,7 +24,7 @@ public class Move extends Verb {
         if (direction != -1) {
             if (player.getCurrentArea().getPortal(direction).isLocked()) {
                 System.out.println("You can't go that way!");
-            } else {
+            } else if(!player.getSit()){
                 player.setCurrentArea(world.getArea(player.getCurrentArea()
                         .getPortal(direction).getTarget()));
                 System.out.print(player.getName() + " moved ");
@@ -51,6 +51,8 @@ public class Move extends Verb {
                 }
                 player.getCurrentArea().enter(player);
             }
+        } else if(player.getSit()){
+            System.out.println("Ya gotta stand up first, stupid");
         } else {
             System.out.println("Ya need a direction, ya dingus");
         }
