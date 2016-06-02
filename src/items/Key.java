@@ -13,11 +13,21 @@ import core.Item;
  */
 public class Key extends Item{
     
-    public Key(){
+    public Key(String name, String description){
+        super();
+        setUsageKey(1,1);
+        setName(name);
+        if(!name.equals("key)")) addSynonym(name);
+        addSynonym("key");
+        setDescription(description);
+    }
+    
+        public Key(){
         super();
         setUsageKey(1,1);
         setName("Key");
         addSynonym("key");
         setDescription("A small, yellow key");
     }
+    
 }
