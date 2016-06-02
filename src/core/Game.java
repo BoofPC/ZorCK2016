@@ -1,19 +1,17 @@
 package core;
 import java.util.ArrayList;
 import verbs.*;
+import verbs.Verbs.*;
 import areas.*;
 import items.*;
-import java.util.Random;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author coons5457w & pedro & Samantha
  */
-
 
 public class Game {
     //Gameplay statuses
@@ -270,8 +268,7 @@ public class Game {
                 break;
             }
         }
-        if(verb != null) return findVerb(verb);
-        else return null;
+        return findVerb(verb);
     }
     
     public Item[] nounParser(String input, Player player){
