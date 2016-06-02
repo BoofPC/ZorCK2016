@@ -12,7 +12,7 @@ public class Lock extends Verb {
     }
 
     public void run(Command command, Context construct) {
-        int direction = command.getDirection();
+        command.getDirection();
         Item noun = command.getNoun();
 
         Player player = construct.getPlayer();

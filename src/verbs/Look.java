@@ -11,11 +11,11 @@ public class Look extends Verb {
     }
 
     public void run(Command command, Context construct) {
-        int direction = command.getDirection();
-        Item noun = command.getNoun();
+        command.getDirection();
+        command.getNoun();
 
         Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        construct.getWorld();
 
         String[] desc;
         if (player.getCurrentArea().listItems().length == 0) {

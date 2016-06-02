@@ -102,80 +102,81 @@ public class Game {
         player.getCurrentArea().enter(player);
         
         //Initial prompt setup
-        Scanner reader = new Scanner(System.in);
-        String input = "";
-        
-        //Main Game Loop
-        int status = KEEP_PLAYING;
-        while(status == KEEP_PLAYING){
-            System.out.println("You are in room " 
-                    + player.getCurrentArea().getTitle());
+        try (Scanner reader = new Scanner(System.in)) {
+            String input = "";
             
-            System.out.print(">");
-            input = reader.nextLine();
-            System.out.println("");
-            if(game.findDirection(input) != -1)
-                player.getCurrentArea().interact(new Command(new Move(), null,
-                        game.findDirection(input)),constr);
-            //code to test parsers
-            /*else if(game.verbParser(input) != null){
-                System.out.println(game.verbParser(input).getTitle());
-                if(game.verbParser(input).getUsageKey(1)){
-                    if(game.nounParser(input,player) != null){
-                        if(!game.nounParser(input,player).getName().equals("noItem"))
-                            System.out.println(game.nounParser(input,player).getName());
-                        else if(!game.verbParser(input).getUsageKey(0))
-                            System.out.println("Ya need a noun, ya dingus");
-                    }else{
-                        System.out.println("Where do you expect to find one of those?");
-                    }
-                }
-            }*/
-            else if(game.verbParser(input) != null){
-                //String verb = game.verbParser(input).getTitle();
-                Verb verb = game.verbParser(input);
-                boolean conflict = false;
-                Item noun = null;
-                Item[] nounArray = game.nounParser(input,player);
-                if(nounArray != null){
-                    if(nounArray.length == 1) noun = nounArray[0];
-                    else conflict = true;
-                }
-                if(!conflict){
-                    int direction = game.directionParser(input);
-                    com = new Command(verb, noun, direction);
-                    player.getCurrentArea().interact(com,constr);
-                    
-                    
-                    
-                    
-                    
-                    
-                    /*
-                    }else if(verb.equals("quit")){
-                        status = game.quit();
-                    
-                    }else if(verb.equals("suicide")){ status = game.suicide(player); }
-                   */
-                }else{
-                    if(nounArray.length > 3){
-                        System.out.print("Did you mean the ");
-                        for(int i = 0; i < nounArray.length - 1; i++){
-                            System.out.print(nounArray[i].getName() + ", the ");
+            //Main Game Loop
+            int status = KEEP_PLAYING;
+            while(status == KEEP_PLAYING){
+                System.out.println("You are in room " 
+                        + player.getCurrentArea().getTitle());
+                
+                System.out.print(">");
+                input = reader.nextLine();
+                System.out.println("");
+                if(game.findDirection(input) != -1)
+                    player.getCurrentArea().interact(new Command(new Move(), null,
+                            game.findDirection(input)),constr);
+                //code to test parsers
+                /*else if(game.verbParser(input) != null){
+                    System.out.println(game.verbParser(input).getTitle());
+                    if(game.verbParser(input).getUsageKey(1)){
+                        if(game.nounParser(input,player) != null){
+                            if(!game.nounParser(input,player).getName().equals("noItem"))
+                                System.out.println(game.nounParser(input,player).getName());
+                            else if(!game.verbParser(input).getUsageKey(0))
+                                System.out.println("Ya need a noun, ya dingus");
+                        }else{
+                            System.out.println("Where do you expect to find one of those?");
                         }
-                        System.out.println(", or the " 
-                                + nounArray[nounArray.length - 1].getName() + "?");
-                    }else{
-                        System.out.print("Did you mean the " + nounArray[0].getName() +
-                                " or the " + nounArray[1].getName() + "?");
                     }
+                }*/
+                else if(game.verbParser(input) != null){
+                    //String verb = game.verbParser(input).getTitle();
+                    Verb verb = game.verbParser(input);
+                    boolean conflict = false;
+                    Item noun = null;
+                    Item[] nounArray = game.nounParser(input,player);
+                    if(nounArray != null){
+                        if(nounArray.length == 1) noun = nounArray[0];
+                        else conflict = true;
+                    }
+                    if(!conflict){
+                        int direction = game.directionParser(input);
+                        com = new Command(verb, noun, direction);
+                        player.getCurrentArea().interact(com,constr);
+                        
+                        
+                        
+                        
+                        
+                        
+                        /*
+                        }else if(verb.equals("quit")){
+                            status = game.quit();
+                        
+                        }else if(verb.equals("suicide")){ status = game.suicide(player); }
+                       */
+                    }else{
+                        if(nounArray.length > 3){
+                            System.out.print("Did you mean the ");
+                            for(int i = 0; i < nounArray.length - 1; i++){
+                                System.out.print(nounArray[i].getName() + ", the ");
+                            }
+                            System.out.println(", or the " 
+                                    + nounArray[nounArray.length - 1].getName() + "?");
+                        }else{
+                            System.out.print("Did you mean the " + nounArray[0].getName() +
+                                    " or the " + nounArray[1].getName() + "?");
+                        }
+                    }
+                    status = player.getDeath();
                 }
-                status = player.getDeath();
+                System.out.println("");
             }
+            player.getCurrentArea().interact(new Command(new Score(),null,-1),constr);
             System.out.println("");
         }
-        player.getCurrentArea().interact(new Command(new Score(),null,-1),constr);
-        System.out.println("");
     }
    
     
@@ -275,8 +276,7 @@ public class Game {
                 break;
             }
         }
-        if(verb != null) return findVerb(verb);
-        else return null;
+        return findVerb(verb);
     }
     
     public Item[] nounParser(String input, Player player){

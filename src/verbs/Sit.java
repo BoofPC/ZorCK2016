@@ -14,7 +14,7 @@ public class Sit extends Verb {
 
 
         Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        construct.getWorld();
 
         player.setSit(true);
         System.out.println(player.getName() + " sat!");

@@ -11,11 +11,11 @@ public class Taste extends Verb {
     }
 
     public void run(Command command, Context construct) {
-        int direction = command.getDirection();
+        command.getDirection();
         Item noun = command.getNoun();
 
         Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        construct.getWorld();
         Area area = player.getCurrentArea();
 
         if (noun != null) {

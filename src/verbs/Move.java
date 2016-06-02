@@ -12,7 +12,7 @@ public class Move extends Verb {
 
     public void run(Command command, Context construct) {
         int direction = command.getDirection();
-        Item noun = command.getNoun();
+        command.getNoun();
 
         Player player = construct.getPlayer();
         World world = construct.getWorld();

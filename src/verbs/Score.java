@@ -11,11 +11,11 @@ public class Score extends Verb {
     }
 
     public void run(Command command, Context construct) {
-        int direction = command.getDirection();
-        Item noun = command.getNoun();
+        command.getDirection();
+        command.getNoun();
 
         Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        construct.getWorld();
 
         System.out.println("Your score is: " + player.getScore());
     }

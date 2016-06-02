@@ -11,10 +11,10 @@ public class Stand extends Verb {
     }
 
     public void run(Command command, Context construct) {
-        int direction = command.getDirection();
+        command.getDirection();
 
         Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        construct.getWorld();
 
         player.setSit(false);
         System.out.println(player.getName() + " stood!");

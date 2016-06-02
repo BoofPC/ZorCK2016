@@ -1,6 +1,8 @@
 package verbs;
 
 import core.*;
+import items.DuckOfDoom;
+
 import java.util.Random;
 
 public class Bless extends Verb {

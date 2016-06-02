@@ -11,11 +11,11 @@ public class Pray extends Verb {
     }
 
     public void run(Command command, Context construct) {
-        int direction = command.getDirection();
-        Item noun = command.getNoun();
+        command.getDirection();
+        command.getNoun();
 
         Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        construct.getWorld();
 
         player.setPrayer(true);
         System.out.println(player.getName() + " prayed!");
