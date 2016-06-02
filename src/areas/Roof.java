@@ -23,6 +23,7 @@ public class Roof extends Area {
         setSound("The only sound you hear is the caws of the crow.");
         setSmell("It smells delicious.");
         
+        addItem(new BoothBust());
         addItem(new Calculator());
         addItem(new Crow());
     }
@@ -38,9 +39,8 @@ public class Roof extends Area {
                 System.out.println("It looks a little bit hungry...");
                 context.getPlayer().addHp(-1);
             }
-        }
-        if (verb.equals("give")) {
-            if (noun.equals("Crow")) {
+        } else if (verb.equals("give")) {
+            if (noun.equals("Cracker")) {
                 command.getVerb().run(command, context);
                 System.out.println("The crow seems happy now. It gives you the " 
                         + "key.");
@@ -48,6 +48,8 @@ public class Roof extends Area {
                         "It's a simple-looking key attached to a keychain with " 
                                 +" a label that reads 'Secret Passage'"));
             }
+        } else {
+            command.getVerb().run(command, context);
         }
     }
 }
