@@ -16,7 +16,7 @@ public class Give extends Verb {
 
     public Give() {
         super("give",
-                new String[]{"gift", "pay"},
+                new String[]{"gift"},
                 new boolean[]{false, true, false});
     }
 
