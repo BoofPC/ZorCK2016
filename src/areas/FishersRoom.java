@@ -34,19 +34,20 @@ public class FishersRoom extends Area {
                     + " Nothing seems to be of interest in this room.");
         }
 
-        if(command.getVerb().getTitle().equals("take") && (command.getNoun().equals("paper") || command.getNoun().equals("papers"))){
+        else if(command.getVerb().getTitle().equals("take") && (command.getNoun().equals("paper") || command.getNoun().equals("papers"))){
             System.out.println("You feel a burning sensation as your legs and arms feel as if they"
                     + " are on fire. A faint voice in the distance yells 'Plagarism!'. You immediately"
                     + " drop the papers due to fright.");
         }
 
-        if((command.getVerb().getTitle().equals("hello"))){
+        else if((command.getVerb().getTitle().equals("hello"))){
             System.out.println("Fisher says, 'Bring me some coffee.'");
         }
 
-        if(command.getVerb().getTitle().equals("take") && command.getNoun().equals("lantern")){
+        else if(command.getVerb().getTitle().equals("take") && command.getNoun().equals("lantern")){
             if(this.hasMatching(new Lantern())){
                 System.out.println("You picked up the lantern!");
+                //Add addition to Inventory later
                 this.removeItem(new Lantern());
             }
             else{

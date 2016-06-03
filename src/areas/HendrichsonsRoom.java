@@ -34,12 +34,12 @@ public class HendrichsonsRoom extends Area{
             System.out.println(this.getDescription());
         }
 
-        if(command.getVerb().getTitle().equals("take") && command.getNoun().equals("balloon")){
+        else if(command.getVerb().getTitle().equals("take") && command.getNoun().equals("balloon")){
             System.out.println("The saliva from the previous user of the balloon "
                     + "acts as adhesive to keep the balloon on the ground.");
         }
 
-        if(command.getVerb().getTitle().equals("drink") && (command.getNoun().equals("chemical") || command.getNoun().equals("chemicals"))){
+        else if(command.getVerb().getTitle().equals("drink") && (command.getNoun().equals("chemical") || command.getNoun().equals("chemicals"))){
             final Player player = context.getPlayer();
             System.out.println("Bad choice. You have died.");
             player.setDeath(Game.Status.SUICIDE);
