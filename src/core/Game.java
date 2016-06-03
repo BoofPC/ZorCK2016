@@ -6,6 +6,7 @@ import areas.*;
 import core.World.Direction;
 import items.*;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -104,7 +105,7 @@ public class Game {
         //Setting initial area for player
         player.setCurrentArea(world.getArea("CompSciRoom"));
         player.addItem(new NoTea());
-        final Context constr = new Context(player, world);
+        final Context construct = new Context(player, world);
         Command com;
 
         //Fun printed start stuff
@@ -120,7 +121,7 @@ public class Game {
 
         //Initial prompt setup
         try (Scanner reader = new Scanner(System.in)) {
-            String input = "";
+            String rawInput = "";
 
             //Main Game Loop
             Status status = Status.KEEP_PLAYING;
@@ -137,11 +138,21 @@ public class Game {
                 }
 
                 System.out.print(">");
-                input = reader.nextLine();
+                rawInput = reader.nextLine();
                 System.out.println("");
-                if (Game.findDirection(input) != null) {
+
+                final List<String> inputs =
+                        new ArrayList<>(Arrays.asList(rawInput.toLowerCase().split("\\s+")));
+                final List<List<String>> inputsPower = Game.powerset(inputs);
+                final List<String> inputsConcat = inputsPower.stream()
+                        .map(l -> l.stream().map(StringBuilder::new).reduce(new StringBuilder(),
+                                (a, b) -> a.append(" ").append(b)))
+                        .map(StringBuilder::toString)
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+                if (Game.findDirection(rawInput) != null) {
                     player.getCurrentArea().interact(
-                            new Command(new Move(), null, Game.findDirection(input)), constr);
+                            new Command(new Move(), null, Game.findDirection(rawInput)), construct);
                     //code to test parsers
                     /*else if(game.verbParser(input) != null){
                     System.out.println(game.verbParser(input).getTitle());
@@ -156,12 +167,12 @@ public class Game {
                         }
                     }
                     }*/
-                } else if (game.verbParser(input) != null) {
+                } else if (Game.verbParser(inputsConcat, game.verbList) != null) {
                     //String verb = game.verbParser(input).getTitle();
-                    final Verb verb = game.verbParser(input);
+                    final Verb verb = Game.verbParser(inputsConcat, game.verbList);
                     boolean conflict = false;
                     Item noun = null;
-                    final List<Item> nouns = game.nounParser(input, player);
+                    final List<Item> nouns = Game.nounParser(inputsConcat, player);
                     if (nouns != null) {
                         if (nouns.size() == 1) {
                             noun = nouns.get(0);
@@ -170,12 +181,9 @@ public class Game {
                         }
                     }
                     if (!conflict) {
-                        final Direction direction = game.directionParser(input);
+                        final Direction direction = Game.directionParser(inputsConcat);
                         com = new Command(verb, noun, direction);
-                        player.getCurrentArea().interact(com, constr);
-
-
-
+                        player.getCurrentArea().interact(com, construct);
                         /*
                         }else if(verb.equals("quit")){
                             status = game.quit();
@@ -185,7 +193,9 @@ public class Game {
                     } else {
                         if (nouns.size() > 3) {
                             System.out.print("Did you mean the ");
-                            nouns.forEach(n -> System.out.println(n.name() + ", the "));
+                            for (int i = 0; i < nouns.size() - 1; i++) {
+                                System.out.println(nouns.get(i).name() + ", the ");
+                            }
                             System.out.println(
                                     ", or the " + nouns.get(nouns.size() - 1).name() + "?");
                         } else {
@@ -197,17 +207,17 @@ public class Game {
                 }
                 System.out.println("");
             }
-            player.getCurrentArea().interact(new Command(new Score(), null, null), constr);
+            player.getCurrentArea().interact(new Command(new Score(), null, null), construct);
             System.out.println("");
         }
     }
 
 
-    public Verb findVerb(final String input) {
-        return this.verbList.stream().filter(i -> i.hasMatching(input)).findAny().orElse(null);
+    public static Verb findVerb(final String input, final List<Verb> verbList) {
+        return verbList.stream().filter(i -> i.hasMatching(input)).findAny().orElse(null);
     }
 
-    public List<Item> findNoun(final String input, final Player player) {
+    public static List<Item> findNoun(final String input, final Player player) {
         return Stream
                 .concat(player.getInventory().stream(), player.getCurrentArea().getItems().stream())
                 .filter(item -> item.hasMatching(input))
@@ -251,27 +261,56 @@ public class Game {
         }
     }
 
-    public Verb verbParser(final String input) {
-        return Arrays.stream(input.toLowerCase().split("\\s+")).map(this::findVerb)
-                .filter(i -> i != null).findFirst().orElse(null);
+    public static Verb verbParser(final List<String> input, final List<Verb> verbList) {
+        return input.stream().map(v -> Game.findVerb(v, verbList)).filter(i -> i != null)
+                .findFirst().orElse(null);
     }
 
-    public List<Item> nounParser(final String input, final Player player) {
-        return Arrays.stream(input.toLowerCase().split("\\s+")).map(i -> {
+    public static List<Item> nounParser(final List<String> inputs, final Player player) {
+        final List<Item> output = inputs.stream().map(i -> {
             final Item pItem = player.getItem(i);
             if (pItem != null)
                 return pItem;
             return player.getCurrentArea().getItem(i);
         }).filter(i -> i != null).collect(Collectors.toCollection(ArrayList::new));
+        if (output.isEmpty()) {
+            output.add(new NoItem());
+        }
+        return output;
     }
 
-    public Direction directionParser(String input) {
-        return Arrays.stream(input.toLowerCase().split("\\s+")).map(Game::findDirection)
-                .filter(i -> i != null).findFirst().orElse(null);
+    public static Direction directionParser(final List<String> input) {
+        return input.stream().map(Game::findDirection).filter(i -> i != null).findFirst()
+                .orElse(null);
     }
 
-    public int quit() {
+    public static int quit() {
         System.out.println("Goodbye!");
         return 1;
+    }
+
+    // From http://rosettacode.org/wiki/Power_Set ; under GNU FDL 1.2
+    public static <T> List<List<T>> powerset(Collection<T> list) {
+        List<List<T>> ps = new ArrayList<List<T>>();
+        ps.add(new ArrayList<T>()); // add the empty set
+
+        // for every item in the original list
+        for (T item : list) {
+            List<List<T>> newPs = new ArrayList<List<T>>();
+
+            for (List<T> subset : ps) {
+                // copy all of the current powerset's subsets
+                newPs.add(subset);
+
+                // plus the subsets appended with the current item
+                List<T> newSubset = new ArrayList<T>(subset);
+                newSubset.add(item);
+                newPs.add(newSubset);
+            }
+
+            // powerset is now powerset of list.subList(0, list.indexOf(item)+1)
+            ps = newPs;
+        }
+        return ps;
     }
 }
