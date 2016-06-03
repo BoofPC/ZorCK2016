@@ -159,8 +159,8 @@ public class Game {
                     }else{
                         if(nouns.size() > 3){
                             System.out.print("Did you mean the ");
-                            for(int i = 0; i < nouns.size() - 1; i++){
-                                System.out.print(nouns.get(i).getName() + ", the ");
+                            for (final Item n : nouns) {
+                                System.out.print(n.getName() + ", the ");
                             }
                             System.out.println(", or the " 
                                     + nouns.get(nouns.size() - 1).getName() + "?");

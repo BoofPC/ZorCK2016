@@ -1,5 +1,8 @@
 package verbs;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import core.*;
 
 public class Look extends Verb {
@@ -17,17 +20,15 @@ public class Look extends Verb {
         Player player = construct.getPlayer();
         construct.getWorld();
 
-        String[] desc;
+        List<String> desc = new ArrayList<>();
         if (player.getCurrentArea().getItems().size() == 0) {
-            desc = new String[1];
-            desc[0] = player.getCurrentArea().getDescription();
+            desc.add(player.getCurrentArea().getDescription());
         } else {
-            desc = new String[player.getCurrentArea().getItems().size() + 3];
-            desc[0] = player.getCurrentArea().getDescription();
-            desc[1] = "";
-            desc[2] = "This Area contains:";
-            for (int i = 0; i < player.getCurrentArea().getItems().size(); i++) {
-                desc[3 + i] = player.getCurrentArea().getItems().get(i).getName();
+            desc.add(player.getCurrentArea().getDescription());
+            desc.add("");
+            desc.add("This Area contains:");
+            for (final Item item : player.getCurrentArea().getItems()) {
+                desc.add(item.getName());
             }
         }
         if (player.getCurrentArea().getDark() != true) {
