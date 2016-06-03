@@ -10,9 +10,9 @@ public class CompSciRoom extends Area{
             .south(new Portal(false, "Wachtman's room"));
         //change the portal to go to hallway when hallway is made
         this.setTitle("CompSci Room");
-        this.setInitialDescription("This is the CompSci room, Room 317.");
-        this.setDescription("This is the CompSci Room, room 317");
-
+        this.setInitialDescription("This is the CompSci room, Room 317. MrBooth is here in his chair,"
+                +"infornt of his computer. on, his computer is power school. You see Your Grade is an F");
+        this.setDescription("This is the CompSci Room, room 317");   
     }
 
         @Override
@@ -25,6 +25,7 @@ public class CompSciRoom extends Area{
             }
             if(!context.getSkipGeneral()) {
                 command.getVerb().run(command, context);
+                //todo:have a function
             }
         }
 
