@@ -327,7 +327,7 @@ public abstract class Item {
             UNEDIBLE, EDIBLE
         }
         public static enum Drink {
-            UNDRINKABLE, DRINKABLE, CLOSED, EMPTY
+            UNDRINKABLE, DRINKABLE, CLOSED_DRINK, EMPTY
         }
         public static enum Open {
             UNOPENABLE, CLOSED, OPEN
@@ -362,11 +362,9 @@ public abstract class Item {
         public static enum Breakable {
             UNBREAKABLE, UNBROKEN, BROKEN
         }
-        
         public static enum Talk {
             NO_TALK, TALK
         }
-        
         public Visible visible() {
             return this.visible;
         }
@@ -480,4 +478,47 @@ public abstract class Item {
             return this;
         }
     }
+    
+    public static final Usage.Visible VISIBLE = Usage.Visible.VISIBLE;
+    public static final Usage.Visible HIDDEN = Usage.Visible.HIDDEN;
+    public static final Usage.Take UNTAKABLE = Usage.Take.UNTAKABLE;
+    public static final Usage.Take TAKABLE = Usage.Take.TAKABLE;
+    public static final Usage.Take TOO_HEAVY = Usage.Take.TOO_HEAVY;
+    public static final Usage.Take BOLTED_DOWN = Usage.Take.BOLTED_DOWN;
+    public static final Usage.Food UNEDIBLE = Usage.Food.UNEDIBLE;
+    public static final Usage.Food EDIBLE = Usage.Food.EDIBLE;
+    public static final Usage.Drink UNDRINKABLE = Usage.Drink.UNDRINKABLE;
+    public static final Usage.Drink DRINKABLE = Usage.Drink.DRINKABLE;
+    public static final Usage.Drink CLOSED_DRINK = Usage.Drink.CLOSED_DRINK;
+    public static final Usage.Drink EMPTY = Usage.Drink.EMPTY;
+    public static final Usage.Open UNOPENABLE = Usage.Open.UNOPENABLE;
+    public static final Usage.Open CLOSED = Usage.Open.CLOSED;
+    public static final Usage.Open OPEN = Usage.Open.OPEN;
+    public static final Usage.Lock NO_LOCK = Usage.Lock.NO_LOCK;
+    public static final Usage.Lock UNLOCKED = Usage.Lock.UNLOCKED;
+    public static final Usage.Lock LOCKED = Usage.Lock.LOCKED;
+    public static final Usage.Read UNREADABLE = Usage.Read.UNREADABLE;
+    public static final Usage.Read READABLE = Usage.Read.READABLE;
+    public static final Usage.Read ILLEGIBLE = Usage.Read.ILLEGIBLE;
+    public static final Usage.Active STATIC = Usage.Active.STATIC;
+    public static final Usage.Active OFF = Usage.Active.OFF;
+    public static final Usage.Active ON = Usage.Active.ON;
+    public static final Usage.Move IMMOVABLE = Usage.Move.IMMOVABLE;
+    public static final Usage.Move MOVABLE = Usage.Move.MOVABLE;
+    public static final Usage.Wear UNWEARABLE = Usage.Wear.UNWEARABLE;
+    public static final Usage.Wear WEARABLE = Usage.Wear.WEARABLE;
+    public static final Usage.Stab UNSTABBABLE = Usage.Stab.UNSTABBABLE;
+    public static final Usage.Stab STABABBLE = Usage.Stab.STABABBLE;
+    public static final Usage.Press UNPRESSABLE = Usage.Press.UNPRESSABLE;
+    public static final Usage.Press UNPRESSED = Usage.Press.UNPRESSED;
+    public static final Usage.Press PRESSED = Usage.Press.PRESSED;
+    public static final Usage.Climb UNCLIMBABLE = Usage.Climb.UNCLIMBABLE;
+    public static final Usage.Climb CLIMABLE = Usage.Climb.CLIMABLE;
+    public static final Usage.Recieve NO_RECIEVE = Usage.Recieve.NO_RECIEVE;
+    public static final Usage.Recieve RECIEVE = Usage.Recieve.RECIEVE;
+    public static final Usage.Breakable UNBREAKABLE = Usage.Breakable.UNBREAKABLE;
+    public static final Usage.Breakable UNBROKEN = Usage.Breakable.UNBROKEN;
+    public static final Usage.Breakable BROKEN = Usage.Breakable.BROKEN;
+    public static final Usage.Talk NO_TALK = Usage.Talk.NO_TALK;
+    public static final Usage.Talk TALK = Usage.Talk.TALK;
 }

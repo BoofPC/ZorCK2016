@@ -5,7 +5,7 @@ import core.*;
 public class EagleOfBlessing extends Item{
     public EagleOfBlessing(){
         super();
-        this.usage().take(Usage.Take.TAKABLE);
+        this.usage().take(Item.TAKABLE);
         this.name("Eagle")
             .synonym("Eagleofblessing")
             .synonym("Eagle of blessing")

@@ -23,7 +23,7 @@ public class Hit extends Verb {
 
         if (noun != null) {
             if (!noun.name().equals("noItem")) {
-                if (noun.usage().stab() == Item.Usage.Stab.STABABBLE) {
+                if (noun.usage().stab() == Item.STABABBLE) {
                     noun.drop(area);
                     System.out.println("You hit the " + noun.name());
                     if (noun.inside() != null) {

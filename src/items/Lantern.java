@@ -6,7 +6,7 @@ public class Lantern extends Item{
 
     public Lantern(){
         super();
-        this.usage().take(Usage.Take.TAKABLE).active(Usage.Active.OFF);
+        this.usage().take(Item.TAKABLE).active(Item.OFF);
         this.name("Lantern")
             .synonym("lantern")
             .synonym("light")

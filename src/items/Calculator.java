@@ -9,7 +9,7 @@ public class Calculator extends Item {
 
     public Calculator() {
         super();
-        this.usage().take(Usage.Take.TAKABLE).active(Usage.Active.OFF);
+        this.usage().take(Item.TAKABLE).active(Item.OFF);
         //TODO: make the calculator do something when it's on
 
         this.name("Calculator")

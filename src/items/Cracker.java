@@ -6,7 +6,7 @@ public class Cracker extends Item {
 
     public Cracker() {
         super();
-        this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
+        this.usage().take(Item.TAKABLE).food(Item.EDIBLE);
         //can't break it. it's an indestructable cracker!
 
         this.name("Cracker")

@@ -22,13 +22,13 @@ public class TurnOn extends Verb {
 
         if (noun != null) {
             if (!noun.name().equals("noItem")) {
-                if (noun.usage().active() == Item.Usage.Active.OFF) {
-                    noun.usage().active(Item.Usage.Active.ON);
+                if (noun.usage().active() == Item.OFF) {
+                    noun.usage().active(Item.ON);
                     System.out.println("You turned on the " + noun.name());
                     if (player.getCurrentArea().getFirstVisit()) {
                         player.getCurrentArea().enter(player);
                     }
-                } else if (noun.usage().active() == Item.Usage.Active.ON) {
+                } else if (noun.usage().active() == Item.ON) {
                     System.out.println(noun.name() + " is already on");
                 } else {
                     System.out.println("I don't see how you expect to do that");

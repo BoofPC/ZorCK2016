@@ -24,10 +24,10 @@ public class Drink extends Verb {
             if (!noun.name().equals("noItem")) {
                 switch (noun.usage().drink()) {
                     case DRINKABLE:
-                        noun.usage().drink(Item.Usage.Drink.EMPTY);
+                        noun.usage().drink(Item.EMPTY);
                         System.out.println("You drank the " + noun.name());
                         break;
-                    case CLOSED:
+                    case CLOSED_DRINK:
                         System.out.println("You need to open it first!");
                         break;
                     case EMPTY:

@@ -6,7 +6,7 @@ public class Hamburger extends Item{
 
     public Hamburger(){
         super();
-        this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
+        this.usage().take(Item.TAKABLE).food(Item.EDIBLE);
         this.name("Hamburger")
             .description("Its meat looks succulent and buns look fluffy")
             .synonym("hamburger")

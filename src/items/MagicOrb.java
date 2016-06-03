@@ -16,7 +16,7 @@ public class MagicOrb extends Item{
     public MagicOrb (){
         super();
         // The object can be taken
-        this.usage().take(Usage.Take.TAKABLE);
+        this.usage().take(Item.TAKABLE);
         this.name("Magic Orb")
             .synonym("magic orb")
             .synonym("orb")

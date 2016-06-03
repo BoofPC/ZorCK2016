@@ -22,10 +22,10 @@ public class Close extends Verb {
 
         if (noun != null) {
             if (!noun.name().equals("noItem")) {
-                if (noun.usage().open() == Item.Usage.Open.OPEN) {
-                    noun.usage().open(Item.Usage.Open.CLOSED);
+                if (noun.usage().open() == Item.OPEN) {
+                    noun.usage().open(Item.CLOSED);
                     System.out.println("You closed the " + noun.name());
-                } else if (noun.usage().open() == Item.Usage.Open.CLOSED) {
+                } else if (noun.usage().open() == Item.CLOSED) {
                     System.out.println(noun.name() + " is already closed");
                 } else {
                     System.out.println("I don't see how you expect to do that");

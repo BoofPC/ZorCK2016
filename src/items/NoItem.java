@@ -13,7 +13,7 @@ public class NoItem extends Item{
     public NoItem(){
         super();
         this.name("noItem")
-            .usage().visible(Usage.Visible.HIDDEN);
+            .usage().visible(Item.HIDDEN);
     }
 
     @Override

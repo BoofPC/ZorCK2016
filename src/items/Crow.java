@@ -9,7 +9,7 @@ public class Crow extends Item {
 
     public Crow() {
         super();
-        this.usage().recieve(Usage.Recieve.RECIEVE);
+        this.usage().recieve(Item.RECIEVE);
 
         this.name("Crow")
             .synonym("crow")

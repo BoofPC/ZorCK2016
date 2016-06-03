@@ -19,12 +19,12 @@ public class Break extends Verb {
 
         if (noun != null) {
             if (!noun.name().equals("noItem")) {
-                if (noun.usage().breakable() == Item.Usage.Breakable.UNBROKEN) {
+                if (noun.usage().breakable() == Item.UNBROKEN) {
                     // TODO: find a better way to destroy something
-                    noun.usage().visible(Item.Usage.Visible.HIDDEN)
-                        .breakable(Item.Usage.Breakable.BROKEN);
+                    noun.usage().visible(Item.HIDDEN)
+                        .breakable(Item.BROKEN);
                     System.out.println("You broke the " + noun.name());
-                } else if (noun.usage().breakable() == Item.Usage.Breakable.BROKEN) {
+                } else if (noun.usage().breakable() == Item.BROKEN) {
                     System.out.println("The " + noun.name()
                             + " is already broken.");
                 } else {

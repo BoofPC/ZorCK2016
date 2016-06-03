@@ -9,7 +9,7 @@ public class AdamsonPoster extends Item {
 
     public AdamsonPoster() {
         super();
-        this.usage().take(Usage.Take.TAKABLE).read(Usage.Read.READABLE);
+        this.usage().take(Item.TAKABLE).read(Item.READABLE);
 
         this.name("Adamson Poster")
             .synonym("adamson poster")

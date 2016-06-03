@@ -6,7 +6,7 @@ public class WhiteChocolate extends Item{
 
     public WhiteChocolate(){
         super();
-        this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
+        this.usage().take(Item.TAKABLE).food(Item.EDIBLE);
         this.name("White Chocolate")
             .description("Its looks light and disgusting")
             .synonym("white chocolate")

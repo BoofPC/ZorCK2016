@@ -22,14 +22,14 @@ public class Open extends Verb {
 
         if (noun != null) {
             if (!noun.name().equals("noItem")) {
-                if (noun.usage().open() == Item.Usage.Open.CLOSED) {
-                    if (noun.usage().lock() != Item.Usage.Lock.LOCKED) {
-                        noun.usage().open(Item.Usage.Open.OPEN);
+                if (noun.usage().open() == Item.CLOSED) {
+                    if (noun.usage().lock() != Item.LOCKED) {
+                        noun.usage().open(Item.OPEN);
                         System.out.println("You opened the " + noun.name());
                     } else {
                         System.out.println(noun.name() + " is locked");
                     }
-                } else if (noun.usage().open() == Item.Usage.Open.OPEN) {
+                } else if (noun.usage().open() == Item.OPEN) {
                     System.out.println(noun.name() + " is already open");
                 } else {
                     System.out.println("I don't see how you expect to do that");

@@ -23,13 +23,13 @@ public class Read extends Verb {
 
         if (noun != null) {
             if (!noun.name().equals("noItem")) {
-                if (noun.usage().read() == Item.Usage.Read.READABLE) {
+                if (noun.usage().read() == Item.READABLE) {
                     if (noun.text() != null) {
                         System.out.println(noun.text());
                     } else {
                         System.out.println("It says nothing important");
                     }
-                } else if (noun.usage().read() == Item.Usage.Read.ILLEGIBLE) {
+                } else if (noun.usage().read() == Item.ILLEGIBLE) {
                     System.out.println("You can't quite make it out");
                 } else {
                     System.out.println("I don't see how you expect to do that");
