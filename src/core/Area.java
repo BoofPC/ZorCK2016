@@ -6,8 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public abstract class Area{
-    //this is a 10 element array that has portals in
-    //each of the cardinal and half-cardinal directions as well as up and down.
+    /**
+     *  This stores portals in each {@link World.Direction}.
+     */
     private final Portals portals;
     private final World world;
     private String title;
@@ -19,7 +20,7 @@ public abstract class Area{
     private boolean dark;
     private boolean firstVisit;
 
-    private List<Item> items;
+    private final List<Item> items;
 
     private final HashMap<String,Boolean> state;
 

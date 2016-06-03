@@ -9,7 +9,7 @@ public class Portal {
         }
     }
     private State locked;
-    private String target; //Should be the id of an area to go to
+    private final String target; //Should be the id of an area to go to
 
     public Portal(final State locked, final String target){
         this.locked = locked;

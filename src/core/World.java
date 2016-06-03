@@ -3,8 +3,9 @@ package core;
 import java.util.HashMap;
 
 public class World {
-
-    //Direction constants for use by Areas when assigning portals.
+    /**
+     * Direction constants for use in world traversal.
+     */
     public static enum Direction {
         NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST, UP, DOWN
     }
