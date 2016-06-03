@@ -14,8 +14,8 @@ public class WomensRestroom extends Area {
         super(containingWorld);
         
         //TODO: add way to unlock portal by opening window
-        getPortals().east(new Portal(Portal.LOCKED, "Roof"))
-            .south(new Portal(Portal.UNLOCKED, "Hallway7"));
+        getPortals().east(new Portal(Portal.State.LOCKED, "Roof"))
+            .south(new Portal(Portal.State.UNLOCKED, "Hallway7"));
         
         setTitle("Women's Restroom");
         setInitialDescription("The room is dimly lit, illuminated only by the "

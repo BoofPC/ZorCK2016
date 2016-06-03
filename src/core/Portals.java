@@ -19,7 +19,7 @@ public final class Portals {
     
     public Portal getPortal(final Direction direction) {
         final Portal portal = portals[direction.ordinal()];
-        return portal == null ? new Portal(true, null) : portal;
+        return portal == null ? new Portal(Portal.State.LOCKED, null) : portal;
     }
     
     public Portals setPortal(final Direction direction, final Portal portal) {

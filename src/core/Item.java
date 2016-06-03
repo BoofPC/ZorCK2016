@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import core.World.Direction;
 
@@ -112,10 +113,10 @@ public abstract class Item {
     public boolean active;	//if item can be turned on or pressed
     public String smell;
     public String sound;
-    public ArrayList<Item> received;
-    public ArrayList<Item> keys;
+    public List<Item> received;
+    public List<Item> keys;
     public Portal portal;
-    public ArrayList<String> synonyms;
+    public List<String> synonyms;
 	
     public Item(){
         for(int i = 0; i < this.usage.length; i++){
@@ -199,11 +200,11 @@ public abstract class Item {
         this.sound = sound;
     }
     
-    public ArrayList<Item> getKey(){
+    public List<Item> getKey(){
         return this.keys;
     }
 	
-    public void setKey(ArrayList<Item> keys){
+    public void setKey(List<Item> keys){
         this.keys = keys;
     }
 

@@ -17,7 +17,7 @@ public class Game {
     public static final int DIE = 3;
     public static final int SUICIDE = 4;
     
-    public ArrayList<Verb> verbList = new ArrayList<Verb>();
+    public List<Verb> verbList = new ArrayList<Verb>();
     
     public static void main(String[] args){
         //self explanatory initialization
@@ -189,14 +189,14 @@ public class Game {
     }
     
     public Item[] findNoun(String input, Player player){
-        ArrayList<Item> itemList = new ArrayList<Item>();
+        List<Item> itemList = new ArrayList<Item>();
         for(int i = 0; i < player.listInventory().length; i++){
             itemList.add(player.listInventory()[i]);
         }
         for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
             itemList.add(player.getCurrentArea().listItems()[i]);
         }
-        ArrayList<Item> returns = new ArrayList<Item>();
+        List<Item> returns = new ArrayList<Item>();
         for(int i = 0; i < player.listInventory().length + 
                 player.getCurrentArea().listItems().length; i++){
             if(i<player.listInventory().length){

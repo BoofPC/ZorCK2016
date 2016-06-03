@@ -7,7 +7,7 @@ public class FishersRoom extends Area {
 
     public FishersRoom(World containingWorld) {
         super(containingWorld);
-        getPortals().north(new Portal(Portal.UNLOCKED, "Hallway17"));
+        getPortals().north(new Portal(Portal.State.UNLOCKED, "Hallway17"));
         setInitialDescription("You are in Fisher's room as various papers on "
                 + "the downfall of the Ming Empire and essays as well as Silk "
                 + "Roads trading changed China while a Reggae-sounding song "

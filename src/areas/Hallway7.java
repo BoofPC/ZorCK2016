@@ -8,8 +8,8 @@ public class Hallway7 extends Area {
     public Hallway7(World containingWorld) {
         super(containingWorld);
         
-        getPortals().north(new Portal(Portal.UNLOCKED, "WomensRestroom"))
-            .west(new Portal(Portal.UNLOCKED, "Hallway8"));
+        getPortals().north(new Portal(Portal.State.UNLOCKED, "WomensRestroom"))
+            .west(new Portal(Portal.State.UNLOCKED, "Hallway8"));
         
         setTitle("Hallway");
         setInitialDescription("This is the end of the hallway. To the north is "

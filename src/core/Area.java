@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public abstract class Area{
     //this is a 10 element array that has portals in 
@@ -17,7 +18,7 @@ public abstract class Area{
     private boolean dark;
     private boolean firstVisit;
     
-    public ArrayList<Item> items;
+    public List<Item> items;
     
     private HashMap<String,Boolean> state;
     
@@ -57,7 +58,7 @@ public abstract class Area{
     }
     
     public World.Direction getDirection(Portal portal){
-        for(World.Direction d: World.Direction.values()){
+        for(World.Direction d : World.Direction.values()){
             if(portal == this.portals.getPortal(d)) return d;
         }
         return null;
@@ -135,11 +136,7 @@ public abstract class Area{
     }
     
     public Item[] listItems(){
-        Item[] list = new Item[this.items.size()];
-        for(int i = 0; i < this.items.size(); i++){
-            list[i] = this.items.get(i);
-        }
-        return list;
+        return (Item[]) this.items.toArray();
     }
     
     public Item getItem(String title) {

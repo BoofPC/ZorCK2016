@@ -2,11 +2,12 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiConsumer;
 
 public abstract class Verb {
     public String title;
-    public ArrayList<String> synonyms;
+    public List<String> synonyms;
     public boolean[] usage;    //Usage is a series of boolean statments
                                 //determining which verbs can 'take' what other
                                 //parts of speech. Right now commands can only

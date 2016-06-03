@@ -10,8 +10,8 @@ public class TutorialArea extends Area{
 
    public TutorialArea(World containingWorld){
         super(containingWorld);                                                       //Always have this
-        getPortals().east(new Portal(Portal.UNLOCKED, "Test2")) //Portals leading east to Test2 and south to Test4
-            .south(new Portal(Portal.LOCKED, "Test4"));         //The way to Test4 is blocked
+        getPortals().east(new Portal(Portal.State.UNLOCKED, "Test2")) //Portals leading east to Test2 and south to Test4
+            .south(new Portal(Portal.State.LOCKED, "Test4"));         //The way to Test4 is blocked
         setTitle("Test Area 1");                                                      //This is the title of the area, it appears every move for which the player is in the area
         setInitialDescription("This is the first test area, there is path to "        //This is the description of the area which appears when the player initially enters
                 + "the east and a locked door to the south. There is dark "       

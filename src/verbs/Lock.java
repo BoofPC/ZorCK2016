@@ -2,6 +2,7 @@ package verbs;
 
 import core.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Lock extends Verb {
 
@@ -20,7 +21,7 @@ public class Lock extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                ArrayList<Item> keys = noun.getKey();
+                List<Item> keys = noun.getKey();
                 if (keys != null) {
                     boolean test = false;
                     for (int i = 0; i < player.listInventory().length; i++) {

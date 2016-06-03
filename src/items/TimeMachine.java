@@ -2,6 +2,7 @@ package items;
 
 import core.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TimeMachine extends Item {
     public TimeMachine(){
@@ -19,7 +20,7 @@ public class TimeMachine extends Item {
                 + " needs a flux capaciator, Mr.Fusion, and"
                 + " a banana peel. It allows you to travel"
                 + " back in time!");
-        ArrayList<Item> keys = new ArrayList<Item>();
+        List<Item> keys = new ArrayList<Item>();
         keys.add(new MrFusion());
         keys.add(new BananaPeel());
         keys.add(new FluxCapacitor());
