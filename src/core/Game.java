@@ -19,13 +19,12 @@ public class Game {
     private final List<Verb> verbList = new ArrayList<Verb>();
 
     public static void main(final String[] args){
-        //self explanatory initialization
         final Game game = new Game();
         final Player player = new Player(10,"Carlton");
         final World world = new World();
 
 
-        //Register all verbs in the verbList
+        // Register all verbs
         game.verbList.add(new Break());
         game.verbList.add(new Buy());
         game.verbList.add(new Choose());
