@@ -12,10 +12,6 @@ public final class Portals {
     public Portals() {
         portals = new Portal[PORTAL_SIZE];
     }
-
-    public Portal[] getPortals() {
-        return portals;
-    }
     
     public Portal getPortal(final Direction direction) {
         final Portal portal = portals[direction.ordinal()];

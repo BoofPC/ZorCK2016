@@ -23,8 +23,8 @@ public class Unlock extends Verb {
                 List<Item> keys = noun.getKey();
                 if (keys != null) {
                     boolean test = false;
-                    for (int i = 0; i < player.listInventory().length; i++) {
-                        if (player.listInventory()[i].getName().equals(keys.get(0).getName())) {
+                    for (int i = 0; i < player.listInventory().size(); i++) {
+                        if (player.listInventory().get(i).getName().equals(keys.get(0).getName())) {
                             test = true;
                         }
                     }

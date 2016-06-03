@@ -23,8 +23,8 @@ public class Stab extends Verb {
             if (!noun.getName().equals("noItem")) {
                 Item sword = new Sword();
                 boolean test = false;
-                for (int i = 0; i < player.listInventory().length; i++) {
-                    if (player.listInventory()[i].getName().equals(sword.getName())) {
+                for (int i = 0; i < player.listInventory().size(); i++) {
+                    if (player.listInventory().get(i).getName().equals(sword.getName())) {
                         test = true;
                     }
                 }

@@ -37,8 +37,8 @@ public class Portal {
     }
     
     public Item getDoor(Area currentArea){
-        for(int i = 0; i < currentArea.listItems().length; i++){
-            if(currentArea.listItems()[i].getPortal() == this) return currentArea.listItems()[i];
+        for(final Item i : currentArea.getItems()){
+            if(i.getPortal() == this) return i;
         }
         return null;
     }

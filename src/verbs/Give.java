@@ -25,9 +25,9 @@ public class Give extends Verb {
         if (player.hasMatching(noun)) {
             Item receiver;
             receiver = null;
-            for (int i = 0; i < player.getCurrentArea().listItems().length; i++) {
-                if (player.getCurrentArea().listItems()[i].getUsageKey(14) == 2) {
-                    receiver = player.getCurrentArea().listItems()[i];
+            for (int i = 0; i < player.getCurrentArea().getItems().size(); i++) {
+                if (player.getCurrentArea().getItems().get(i).getUsageKey(14) == 2) {
+                    receiver = player.getCurrentArea().getItems().get(i);
                     break;
                 }
             }

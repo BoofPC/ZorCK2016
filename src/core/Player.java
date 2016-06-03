@@ -50,12 +50,8 @@ public class Player {
         return false;
     }
     
-    public Item[] listInventory(){
-        Item[] list = new Item[this.inventory.size()];
-        for(int i = 0; i < this.inventory.size(); i++){
-            list[i] = this.inventory.get(i);
-        }
-        return list;
+    public List<Item> listInventory(){
+        return this.inventory;
     }
     
     public Item getItem(String name){

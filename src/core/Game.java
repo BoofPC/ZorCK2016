@@ -6,6 +6,7 @@ import areas.*;
 import core.World.Direction;
 import items.*;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -134,9 +135,9 @@ public class Game {
                     Verb verb = game.verbParser(input);
                     boolean conflict = false;
                     Item noun = null;
-                    Item[] nounArray = game.nounParser(input,player);
-                    if(nounArray != null){
-                        if(nounArray.length == 1) noun = nounArray[0];
+                    List<Item> nouns = game.nounParser(input,player);
+                    if(nouns != null){
+                        if(nouns.size() == 1) noun = nouns.get(0);
                         else conflict = true;
                     }
                     if(!conflict){
@@ -156,16 +157,16 @@ public class Game {
                         }else if(verb.equals("suicide")){ status = game.suicide(player); }
                        */
                     }else{
-                        if(nounArray.length > 3){
+                        if(nouns.size() > 3){
                             System.out.print("Did you mean the ");
-                            for(int i = 0; i < nounArray.length - 1; i++){
-                                System.out.print(nounArray[i].getName() + ", the ");
+                            for(int i = 0; i < nouns.size() - 1; i++){
+                                System.out.print(nouns.get(i).getName() + ", the ");
                             }
                             System.out.println(", or the " 
-                                    + nounArray[nounArray.length - 1].getName() + "?");
+                                    + nouns.get(nouns.size() - 1).getName() + "?");
                         }else{
-                            System.out.print("Did you mean the " + nounArray[0].getName() +
-                                    " or the " + nounArray[1].getName() + "?");
+                            System.out.print("Did you mean the " + nouns.get(0).getName() +
+                                    " or the " + nouns.get(1).getName() + "?");
                         }
                     }
                     status = player.getDeath();
@@ -185,31 +186,29 @@ public class Game {
         return null;
     }
     
-    public Item[] findNoun(String input, Player player){
+    public List<Item> findNoun(String input, Player player){
         List<Item> itemList = new ArrayList<Item>();
-        for(int i = 0; i < player.listInventory().length; i++){
-            itemList.add(player.listInventory()[i]);
+        for(final Item i : player.listInventory()){
+            itemList.add(i);
         }
-        for(int i = 0; i < player.getCurrentArea().listItems().length; i++){
-            itemList.add(player.getCurrentArea().listItems()[i]);
+        for (final Item i : player.getCurrentArea().getItems()) {
+            itemList.add(i);
         }
         List<Item> returns = new ArrayList<Item>();
-        for(int i = 0; i < player.listInventory().length + 
-                player.getCurrentArea().listItems().length; i++){
-            if(i<player.listInventory().length){
-                if(player.listInventory()[i].hasMatching(input))
-                    returns.add(player.listInventory()[i]);
+        for(int i = 0; i < player.listInventory().size() + 
+                player.getCurrentArea().getItems().size(); i++){
+            if(i<player.listInventory().size()){
+                if(player.listInventory().get(i).hasMatching(input))
+                    returns.add(player.listInventory().get(i));
             }
             else{
-                if(player.getCurrentArea().listItems()
-                        [i-player.listInventory().length].hasMatching(input)) 
-                    returns.add(player.getCurrentArea().listItems()
-                            [i - player.listInventory().length]);
+                if(player.getCurrentArea().getItems().get
+                        (i-player.listInventory().size()).hasMatching(input)) 
+                    returns.add(player.getCurrentArea().getItems().get
+                            (i - player.listInventory().size()));
             }
         }
-        Item[] itemArray = new Item[returns.size()];
-        if(returns.size() > 0) return returns.toArray(itemArray);
-        return null;
+        return returns.size() > 0 ? returns : null;
     }
     
     public Direction findDirection(String input){
@@ -251,23 +250,15 @@ public class Game {
     
     public Verb verbParser(String input){
         input = input.toLowerCase();
-        int s = 1;
         String verb = "";
-        for(int i = 0; i < input.length(); i++){
-            if(input.substring(i,i+1).equals(" ")) s++;
-        }
-        String[] inputArray = new String[s];
-        int n = 0;
-        for (String retval: input.split(" ")){
-            inputArray[n] = retval;
-            n++;
-        }
-        for(int i = inputArray.length; i > 0; i--){
+        List<String> inputs = new ArrayList<>();
+        inputs.addAll(Arrays.asList(input.split(" ")));
+        for(int i = inputs.size(); i > 0; i--){
             String verbTest = "";
-            if(!inputArray[0].equals(null)) verbTest += inputArray[0];
+            if(!inputs.get(0).equals(null)) verbTest += inputs.get(0);
             for(int j = 1; j < i; j++){
                 verbTest += " ";
-                verbTest += inputArray[j];
+                verbTest += inputs.get(j);
             }
             if(findVerb(verbTest) != null){
                 verb = verbTest;
@@ -277,7 +268,7 @@ public class Game {
         return findVerb(verb);
     }
     
-    public Item[] nounParser(String input, Player player){
+    public List<Item> nounParser(String input, Player player){
         input = input.toLowerCase();
         int s = 1;
         int t = 0;
@@ -306,7 +297,7 @@ public class Game {
             }
         }
         if(inputArraySinVerbos.length == 0){
-            return new Item[]{new NoItem()};
+            return Arrays.asList(new NoItem());
         }
         for(int i = 0; i < inputArraySinVerbos.length; i++){
             inputArraySinVerbos[i] = inputArray[i + t];
@@ -326,12 +317,12 @@ public class Game {
         }
         Item[] nounArray = new Item[0];
         if(findNoun(noun, player) != null){
-            nounArray = new Item[findNoun(noun, player).length];
-            for(int i = 0; i < findNoun(noun, player).length; i++){
-                nounArray[i] = findNoun(noun, player)[i];
+            nounArray = new Item[findNoun(noun, player).size()];
+            for(int i = 0; i < findNoun(noun, player).size(); i++){
+                nounArray[i] = findNoun(noun, player).get(i);
             }
         }
-        if(nounArray.length > 0) return nounArray;
+        if(nounArray.length > 0) return Arrays.asList(nounArray);
         else return null;
     }
     

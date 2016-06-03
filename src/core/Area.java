@@ -135,8 +135,8 @@ public abstract class Area{
         return false;
     }
     
-    public Item[] listItems(){
-        return (Item[]) this.items.toArray();
+    public List<Item> getItems(){
+        return this.items;
     }
     
     public Item getItem(String title) {

@@ -18,7 +18,7 @@ public class Inventory extends Verb {
         construct.getWorld();
 
         System.out.println(player.getName() + " has:");
-        if (player.listInventory().length == 0) {
+        if (player.listInventory().size() == 0) {
             System.out.println("\tNothing!");
         }
         for (Item listInventory : player.listInventory()) {

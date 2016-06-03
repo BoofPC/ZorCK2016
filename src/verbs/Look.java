@@ -18,16 +18,16 @@ public class Look extends Verb {
         construct.getWorld();
 
         String[] desc;
-        if (player.getCurrentArea().listItems().length == 0) {
+        if (player.getCurrentArea().getItems().size() == 0) {
             desc = new String[1];
             desc[0] = player.getCurrentArea().getDescription();
         } else {
-            desc = new String[player.getCurrentArea().listItems().length + 3];
+            desc = new String[player.getCurrentArea().getItems().size() + 3];
             desc[0] = player.getCurrentArea().getDescription();
             desc[1] = "";
             desc[2] = "This Area contains:";
-            for (int i = 0; i < player.getCurrentArea().listItems().length; i++) {
-                desc[3 + i] = player.getCurrentArea().listItems()[i].getName();
+            for (int i = 0; i < player.getCurrentArea().getItems().size(); i++) {
+                desc[3 + i] = player.getCurrentArea().getItems().get(i).getName();
             }
         }
         if (player.getCurrentArea().getDark() != true) {
