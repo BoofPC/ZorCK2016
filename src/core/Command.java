@@ -1,12 +1,14 @@
 package core;
 
+import core.World.Direction;
+
 public final class Command {
     
     private final Verb verb;
     private final Item noun;
-    private final int direction;
+    private final Direction direction;
     
-    public Command(Verb verb, Item noun, int direction){
+    public Command(Verb verb, Item noun, Direction direction){
         this.verb = verb;
         this.noun = noun;
         this.direction = direction;
@@ -20,7 +22,7 @@ public final class Command {
         return noun;
     }
 
-    public int getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 }

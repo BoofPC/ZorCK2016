@@ -1,22 +1,23 @@
 package areas;
 
 import core.*;
+import core.World.Direction;
 import items.*;
 
 public class Test5 extends Area{
 
        public Test5(World containingWorld){
             super(containingWorld);
-            getPortals().setPortal(0, new Portal(false, "Test2"));
-            getPortals().setPortal(3, new Portal(false, "Test4"));
-            getPortals().setPortal(1, new Portal(false, "Test6"));
-            getPortals().setPortal(2, new Portal(false, "Test8"));
+            getPortals().setPortal(Direction.NORTH, new Portal(false, "Test2"));
+            getPortals().setPortal(Direction.WEST, new Portal(false, "Test4"));
+            getPortals().setPortal(Direction.EAST, new Portal(false, "Test6"));
+            getPortals().setPortal(Direction.SOUTH, new Portal(false, "Test8"));
             setTitle("Test Area 5");
             setInitialDescription("This is the fifth test area, there is path "
                     + "leading east-west, a door to the north, and a path to "
                     + "the south.");
             setDescription("This is the fifth test area");   
-            addItem(new Door(false,"Northern Door",new Key(),getPortals().getPortal(0)));
+            addItem(new Door(false,"Northern Door",new Key(),getPortals().getPortal(Direction.NORTH)));
             setState("First",true);
        }
        

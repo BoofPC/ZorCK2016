@@ -1,16 +1,17 @@
 package areas;
 
 import core.*;
+import core.World.Direction;
 import items.*;
 
 public class Test8 extends Area{
 
        public Test8(World containingWorld){
             super(containingWorld);
-            getPortals().setPortal(3, new Portal(false, "Test7"));
-            getPortals().setPortal(1, new Portal(false, "Test9"));
-            getPortals().setPortal(0, new Portal(false, "Test5"));
-            getPortals().setPortal(2, new Portal(false, "Test10"));
+            getPortals().setPortal(Direction.WEST, new Portal(false, "Test7"));
+            getPortals().setPortal(Direction.EAST, new Portal(false, "Test9"));
+            getPortals().setPortal(Direction.NORTH, new Portal(false, "Test5"));
+            getPortals().setPortal(Direction.SOUTH, new Portal(false, "Test10"));
             setTitle("Test Area 8");
             setInitialDescription("This is the eighth test area, there is path "
                     + "leading east-west and path leading north. There is a cave"

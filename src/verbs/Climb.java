@@ -1,6 +1,7 @@
 package verbs;
 
 import core.*;
+import core.World.Direction;
 
 public class Climb extends Verb {
 
@@ -19,10 +20,10 @@ public class Climb extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                if (noun.getUsageKey(13) == 2 && player.getCurrentArea().getPortals().getPortal(8)
+                if (noun.getUsageKey(13) == 2 && player.getCurrentArea().getPortals().getPortal(Direction.UP)
                         != null) {
-                    if (!player.getCurrentArea().getPortals().getPortal(8).isLocked()) {
-                        construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, 8), construct);
+                    if (!player.getCurrentArea().getPortals().getPortal(Direction.UP).isLocked()) {
+                        construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, Direction.UP), construct);
                     } else {
                         System.out.println("You can't climb that!");
                     }
@@ -30,7 +31,7 @@ public class Climb extends Verb {
                     System.out.println("You can't climb that!");
                 }
             } else {
-                construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, 8), construct);
+                construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, Direction.UP), construct);
             }
         } else {
             System.out.println("Where do you expect to find one of those?");

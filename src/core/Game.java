@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import verbs.*;
 import areas.*;
+import core.World.Direction;
 import items.*;
 import java.util.Arrays;
 import java.util.List;
@@ -114,7 +115,7 @@ public class Game {
                 System.out.print(">");
                 input = reader.nextLine();
                 System.out.println("");
-                if(game.findDirection(input) != -1)
+                if(game.findDirection(input) != null)
                     player.getCurrentArea().interact(new Command(new Move(), null,
                             game.findDirection(input)),constr);
                 //code to test parsers
@@ -142,7 +143,7 @@ public class Game {
                         else conflict = true;
                     }
                     if(!conflict){
-                        int direction = game.directionParser(input);
+                        Direction direction = game.directionParser(input);
                         com = new Command(verb, noun, direction);
                         player.getCurrentArea().interact(com,constr);
                         
@@ -174,7 +175,7 @@ public class Game {
                 }
                 System.out.println("");
             }
-            player.getCurrentArea().interact(new Command(new Score(),null,-1),constr);
+            player.getCurrentArea().interact(new Command(new Score(),null,null),constr);
             System.out.println("");
         }
     }
@@ -214,40 +215,40 @@ public class Game {
         return null;
     }
     
-    public int findDirection(String input){
+    public Direction findDirection(String input){
         switch (input) {
             case "north":
             case "n":
-                return World.NORTH;
+                return Direction.NORTH;
             case "east":
             case "e":
-                return World.EAST;
+                return Direction.EAST;
             case "south":
             case "s":
-                return World.SOUTH;
+                return Direction.SOUTH;
             case "west":
             case "w":
-                return World.WEST;
+                return Direction.WEST;
             case "northeast":
             case "ne":
-                return World.NORTHEAST;
+                return Direction.NORTHEAST;
             case "southeast":
             case "se":
-                return World.SOUTHEAST;
+                return Direction.SOUTHEAST;
             case "southwest":
             case "sw":
-                return World.SOUTHWEST;
+                return Direction.SOUTHWEST;
             case "northwest":
             case "nw":
-                return World.NORTHWEST;
+                return Direction.NORTHWEST;
             case "up":
             case "u":
-                return World.UP;
+                return Direction.UP;
             case "down":
             case "d":
-                return World.DOWN;
+                return Direction.DOWN;
             default:
-                return -1;
+                return null;
         }
     }
     
@@ -337,14 +338,14 @@ public class Game {
         else return null;
     }
     
-    public int directionParser(String input){
+    public Direction directionParser(String input){
         input = input.toLowerCase();
         
         //convert String input to List, then filter out nulls and verbs
         List<String> inputList = new ArrayList<>(Arrays.asList(input.split("\\s")));
         inputList.removeIf(i -> (i == null || findVerb(i) != null));
         
-        if (inputList.isEmpty() || inputList.size() > 1) return -1;
+        if (inputList.isEmpty() || inputList.size() > 1) return null;
         
         return findDirection(inputList.get(0)); 
     }

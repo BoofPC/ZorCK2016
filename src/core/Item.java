@@ -2,6 +2,8 @@ package core;
 
 import java.util.ArrayList;
 
+import core.World.Direction;
+
 public abstract class Item {
     private String name;
     public String description;
@@ -243,32 +245,37 @@ public abstract class Item {
         return false;
     }
     
+    // Documentation here would be appreciated.
     public void synchronizeDoor(World world, Area currentArea){
         Portal portal;
         portal = getPortal();
         Area target;
         target = world.getArea(portal.getTarget());
+        // TODO Rewrite with switch
         int oppDir;
-        if(currentArea.getDirection(portal) < 4){
-            oppDir = currentArea.getDirection(portal) - 2;
+        final Direction direction = currentArea.getDirection(portal);
+        final int dirOrd = direction.ordinal();
+        if(dirOrd < 4) {
+            oppDir = dirOrd - 2;
             if(oppDir < 0) oppDir += 4;
-        }else if(currentArea.getDirection(portal) < 8){
-            oppDir = currentArea.getDirection(portal) - 2;
+        }else if(dirOrd < 8){
+            oppDir = dirOrd - 2;
             if(oppDir < 4) oppDir += 4;
         }else{
-            if(currentArea.getDirection(portal) == 8) oppDir = 9;
+            if(direction == Direction.UP) oppDir = 9;
             else oppDir = 8;
         }
         
         Item oppDoor;
-        oppDoor = target.getPortals().getPortal(oppDir).getDoor(target);
+        final Direction oppPortal = Direction.values()[oppDir];
+        oppDoor = target.getPortals().getPortal(oppPortal).getDoor(target);
         
         if(getUsageKey(5) == 3){
-            target.getPortals().getPortal(oppDir).lock();
+            target.getPortals().getPortal(oppPortal).lock();
             if(oppDoor != null)
                 oppDoor.setUsageKey(5,3);
         }else{
-            target.getPortals().getPortal(oppDir).unlock();
+            target.getPortals().getPortal(oppPortal).unlock();
             if(oppDoor != null)
                 oppDoor.setUsageKey(5,2);
         }

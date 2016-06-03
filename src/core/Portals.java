@@ -1,5 +1,7 @@
 package core;
 
+import core.World.Direction;
+
 /**
  * A convenience class to make setting and getting portals nicer. 
  */
@@ -15,94 +17,94 @@ public final class Portals {
         return portals;
     }
     
-    public Portal getPortal(final int direction) {
-        final Portal portal = portals[direction];
+    public Portal getPortal(final Direction direction) {
+        final Portal portal = portals[direction.ordinal()];
         return portal == null ? new Portal(true, null) : portal;
     }
     
-    public Portals setPortal(final int direction, final Portal portal) {
-        portals[direction] = portal;
+    public Portals setPortal(final Direction direction, final Portal portal) {
+        portals[direction.ordinal()] = portal;
         return this;
     }
     
     public Portal down() {
-        return portals[World.DOWN];
+        return portals[Direction.DOWN.ordinal()];
     }
     
     public Portals down(final Portal p) {
-        portals[World.DOWN] = p;
+        portals[Direction.DOWN.ordinal()] = p;
         return this;
     }
     
     public Portal east() {
-        return portals[World.EAST];
+        return portals[Direction.EAST.ordinal()];
     }
     
     public Portals east(final Portal p) {
-        portals[World.EAST] = p;
+        portals[Direction.EAST.ordinal()] = p;
         return this;
     }
     
     public Portal north() {
-        return portals[World.NORTH];
+        return portals[Direction.NORTH.ordinal()];
     }
     
     public Portals north(final Portal p) {
-        portals[World.NORTH] = p;
+        portals[Direction.NORTH.ordinal()] = p;
         return this;
     }
     
     public Portal northeast() {
-        return portals[World.NORTHEAST];
+        return portals[Direction.NORTHEAST.ordinal()];
     }
     
     public Portals northeast(final Portal p) {
-        portals[World.NORTHEAST] = p;
+        portals[Direction.NORTHEAST.ordinal()] = p;
         return this;
     }
     
     public Portal south() {
-        return portals[World.SOUTH];
+        return portals[Direction.SOUTH.ordinal()];
     }
     
     public Portals south(final Portal p) {
-        portals[World.SOUTH] = p;
+        portals[Direction.SOUTH.ordinal()] = p;
         return this;
     }
     
     public Portal southeast() {
-        return portals[World.SOUTHEAST];
+        return portals[Direction.SOUTHEAST.ordinal()];
     }
     
     public Portals southeast(final Portal p) {
-        portals[World.SOUTHEAST] = p;
+        portals[Direction.SOUTHEAST.ordinal()] = p;
         return this;
     }
     
     public Portal southwest() {
-        return portals[World.SOUTHWEST];
+        return portals[Direction.SOUTHWEST.ordinal()];
     }
     
     public Portals southwest(final Portal p) {
-        portals[World.SOUTHWEST] = p;
+        portals[Direction.SOUTHWEST.ordinal()] = p;
         return this;
     }
     
     public Portal up() {
-        return portals[World.UP];
+        return portals[Direction.UP.ordinal()];
     }
     
     public Portals up(final Portal p) {
-        portals[World.UP] = p;
+        portals[Direction.UP.ordinal()] = p;
         return this;
     }
     
     public Portal west() {
-        return portals[World.WEST];
+        return portals[Direction.WEST.ordinal()];
     }
     
     public Portals west(final Portal p) {
-        portals[World.WEST] = p;
+        portals[Direction.WEST.ordinal()] = p;
         return this;
     }
 }

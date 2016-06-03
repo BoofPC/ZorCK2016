@@ -1,6 +1,7 @@
 package verbs;
 
 import core.*;
+import core.World.Direction;
 
 public class Move extends Verb {
 
@@ -11,39 +12,50 @@ public class Move extends Verb {
     }
 
     public void run(Command command, Context construct) {
-        int direction = command.getDirection();
+        Direction direction = command.getDirection();
         command.getNoun();
 
         Player player = construct.getPlayer();
         World world = construct.getWorld();
 
-        if (direction != -1) {
+        if (direction != null) {
             if (player.getCurrentArea().getPortals().getPortal(direction).isLocked()) {
                 System.out.println("You can't go that way!");
             } else if(!player.getSit()){
                 player.setCurrentArea(world.getArea(player.getCurrentArea()
                         .getPortals().getPortal(direction).getTarget()));
                 System.out.print(player.getName() + " moved ");
-                if (direction == 0) {
-                    System.out.println("north");
-                } else if (direction == 1) {
-                    System.out.println("east");
-                } else if (direction == 2) {
-                    System.out.println("south");
-                } else if (direction == 3) {
-                    System.out.println("west");
-                } else if (direction == 4) {
-                    System.out.println("northeast");
-                } else if (direction == 5) {
-                    System.out.println("southeast");
-                } else if (direction == 6) {
-                    System.out.println("southwest");
-                } else if (direction == 7) {
-                    System.out.println("northwest");
-                } else if (direction == 8) {
-                    System.out.println("up");
-                } else if (direction == 9) {
-                    System.out.println("down");
+                switch (direction) {
+                    case NORTH:
+                        System.out.println("north");
+                        break;
+                    case EAST:
+                        System.out.println("east");
+                        break;
+                    case SOUTH:
+                        System.out.println("south");
+                        break;
+                    case WEST:
+                        System.out.println("west");
+                        break;
+                    case NORTHEAST:
+                        System.out.println("northeast");
+                        break;
+                    case SOUTHEAST:
+                        System.out.println("southeast");
+                        break;
+                    case SOUTHWEST:
+                        System.out.println("southwest");
+                        break;
+                    case NORTHWEST:
+                        System.out.println("northwest");
+                        break;
+                    case UP:
+                        System.out.println("up");
+                        break;
+                    case DOWN:
+                        System.out.println("down");
+                        break;
                 }
                 player.getCurrentArea().enter(player);
             }else if(player.getSit()){

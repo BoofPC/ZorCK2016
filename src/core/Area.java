@@ -56,11 +56,11 @@ public abstract class Area{
         return this.portals;
     }
     
-    public int getDirection(Portal portal){
-        for(int i = 0; i < Portals.PORTAL_SIZE; i++){
-            if(portal == this.portals.getPortal(i)) return i;
+    public World.Direction getDirection(Portal portal){
+        for(World.Direction d: World.Direction.values()){
+            if(portal == this.portals.getPortal(d)) return d;
         }
-        return -1;
+        return null;
     }
 	
     public String getTitle(){
