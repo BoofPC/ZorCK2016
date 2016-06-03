@@ -107,8 +107,7 @@ public abstract class Item {
     private Portal portal;
     private final List<String> synonyms = new ArrayList<>();
 
-    public Item() {
-    }
+    public Item() {}
 
     public Usage usage() {
         return this.usage;
@@ -193,7 +192,7 @@ public abstract class Item {
     public List<String> keys() {
         return this.keys;
     }
-    
+
     public Item key(final String key) {
         this.keys.add(key);
         return this;
@@ -211,7 +210,7 @@ public abstract class Item {
     public List<String> synonyms() {
         return this.synonyms;
     }
-    
+
     public Item synonym(final String str) {
         this.synonyms.add(str);
         return this;
@@ -314,9 +313,9 @@ public abstract class Item {
         private Recieve recieve = Recieve.NO_RECIEVE;
         private Breakable breakable = Breakable.UNBREAKABLE;
         private Talk talk = Talk.NO_TALK;
-        
+
         public Usage() {}
-        
+
         public static enum Visible {
             VISIBLE, HIDDEN
         }
@@ -365,120 +364,153 @@ public abstract class Item {
         public static enum Talk {
             NO_TALK, TALK
         }
+
         public Visible visible() {
             return this.visible;
         }
+
         public Usage visible(final Visible o) {
             this.visible = Visible.VISIBLE;
             return this;
         }
+
         public Take take() {
             return this.take;
         }
+
         public Usage take(final Take o) {
             this.take = o;
             return this;
         }
+
         public Food food() {
             return this.food;
         }
+
         public Usage food(final Food o) {
             this.food = o;
             return this;
         }
+
         public Drink drink() {
             return this.drink;
         }
+
         public Usage drink(final Drink o) {
             this.drink = o;
             return this;
         }
+
         public Open open() {
             return this.open;
         }
+
         public Usage open(final Open o) {
             this.open = o;
             return this;
         }
+
         public Lock lock() {
             return this.lock;
         }
+
         public Usage lock(final Lock o) {
             this.lock = o;
             return this;
         }
+
         public Read read() {
             return this.read;
         }
+
         public Usage read(final Read o) {
             this.read = o;
             return this;
         }
+
         public Active active() {
             return this.active;
         }
+
         public Usage active(final Active o) {
             this.active = o;
             return this;
         }
+
         public Move move() {
             return this.move;
         }
+
         public Usage move(final Move o) {
             this.move = o;
             return this;
         }
+
         public Wear wear() {
             return this.wear;
         }
+
         public Usage wear(final Wear o) {
             this.wear = o;
             return this;
         }
+
         public Stab stab() {
             return this.stab;
         }
+
         public Usage stab(final Stab o) {
             this.stab = o;
             return this;
         }
+
         public Press press() {
             return this.press;
         }
+
         public Usage press(final Press o) {
             this.press = o;
             return this;
         }
+
         public Climb climb() {
             return this.climb;
         }
+
         public Usage climb(final Climb o) {
             this.climb = o;
             return this;
         }
+
         public Recieve recieve() {
             return this.recieve;
         }
+
         public Usage recieve(final Recieve o) {
             this.recieve = o;
             return this;
         }
+
         public Breakable breakable() {
             return this.breakable;
         }
+
         public Usage breakable(final Breakable o) {
             this.breakable = o;
             return this;
         }
-        public Talk talk(){
+
+        public Talk talk() {
             return this.talk;
         }
-        public Usage talk(final Talk o){
+
+        public Usage talk(final Talk o) {
             this.talk = o;
             return this;
         }
     }
-    
+
+    // java: i cry everytim
     public static final Usage.Visible VISIBLE = Usage.Visible.VISIBLE;
     public static final Usage.Visible HIDDEN = Usage.Visible.HIDDEN;
     public static final Usage.Take UNTAKABLE = Usage.Take.UNTAKABLE;

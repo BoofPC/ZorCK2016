@@ -12,7 +12,7 @@ public class EagleOfBlessing extends Item{
             .synonym("Eaglet")
             .synonym("Amurica")
             .synonym("America");
-    
+
     }
 
     @Override

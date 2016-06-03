@@ -119,7 +119,7 @@ public abstract class Area{
     }
 
     public void setState(final String name, final boolean bool){
-	this.state.put(name,bool);
+        this.state.put(name,bool);
     }
 
     public void addItem(final Item item){
