@@ -31,7 +31,7 @@ public class Stab extends Verb {
                     }
                 }
                 if (test) {
-                    if (noun.getUsageKey(11) == 2 || noun.getUsageKey(11) == 3) {
+                    if (noun.usage.stab() == Item.Usage.Stab.STABABBLE) {
                         noun.drop(area);
                         System.out.println("You stabbed the " + noun.getName());
                         if (noun.getInside() != null) {

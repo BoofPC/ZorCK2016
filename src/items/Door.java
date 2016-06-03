@@ -8,15 +8,14 @@ public class Door extends Item{
 
     public Door(final boolean locked,final String name,final String key,final Portal portal){
         super();
-        this.setUsageKey(Item.TAKE,3);
-        this.setUsageKey(Item.OPEN,2);
+        this.usage.take(Usage.Take.BOLTED_DOWN).open(Usage.Open.CLOSED);
         if(locked){
-            this.setUsageKey(Item.LOCK,3);
+            this.usage.lock(Usage.Lock.LOCKED);
             this.setName("Locked Door");
             this.setDescription("You gotta find some way to unlock it!");
             this.addSynonym("locked door");
         }else{
-            this.setUsageKey(Item.LOCK,2);
+            this.usage.lock(Usage.Lock.UNLOCKED);
             this.setName("Door");
             this.setDescription("Whelp, that's a door alright!");
         }

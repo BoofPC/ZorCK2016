@@ -6,8 +6,7 @@ public class DarkChocolate extends Item{
 
     public DarkChocolate(){
         super();
-        this.setUsageKey(Item.TAKE,1);
-        this.setUsageKey(Item.EAT,2);
+        this.usage.take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
         this.setName("Dark Chocolate");
         this.setDescription("Its looks dark and tasty");
         this.addSynonym("dark chocolate");

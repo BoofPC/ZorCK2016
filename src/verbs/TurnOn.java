@@ -20,13 +20,13 @@ public class TurnOn extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                if (noun.getUsageKey(7) == 2) {
-                    noun.setUsageKey(7, 3);
+                if (noun.usage.active() == Item.Usage.Active.OFF) {
+                    noun.usage.active(Item.Usage.Active.ON);
                     System.out.println("You turned on the " + noun.getName());
                     if (player.getCurrentArea().getFirstVisit()) {
                         player.getCurrentArea().enter(player);
                     }
-                } else if (noun.getUsageKey(7) == 3) {
+                } else if (noun.usage.active() == Item.Usage.Active.ON) {
                     System.out.println(noun.getName() + " is already on");
                 } else {
                     System.out.println("I don't see how you expect to do that");

@@ -6,8 +6,7 @@ public class AnonymousNote extends Item {
 
     public AnonymousNote() {
         super();
-        this.setUsageKey(Item.TAKE, 2);
-        this.setUsageKey(Item.READ, 2);
+        this.usage.take(Usage.Take.TOO_HEAVY).read(Usage.Read.READABLE);
         this.setName("Anonymous Note");
         this.setDescription("It's a note from an unknown author...");
         this.addSynonym("anonymous note");

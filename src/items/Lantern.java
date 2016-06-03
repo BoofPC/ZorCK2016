@@ -6,8 +6,7 @@ public class Lantern extends Item{
 
     public Lantern(){
         super();
-        this.setUsageKey(Item.TAKE,1);
-        this.setUsageKey(Item.TURN_ON,2);
+        this.usage.take(Usage.Take.TAKABLE).active(Usage.Active.OFF);
         this.setName("Lantern");
         this.addSynonym("lantern");
         this.addSynonym("light");

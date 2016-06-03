@@ -17,12 +17,12 @@ public class Break extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                if (noun.getUsageKey(15) == 2) {
+                if (noun.usage.breakable() == Item.Usage.Breakable.UNBROKEN) {
                     // TODO: find a better way to destroy something
-                    noun.setUsageKey(0, 2);
-                    noun.setUsageKey(15, 3);
+                    noun.usage.visible(Item.Usage.Visible.HIDDEN)
+                        .breakable(Item.Usage.Breakable.BROKEN);
                     System.out.println("You broke the " + noun.getName());
-                } else if (noun.getUsageKey(0) == 3) {
+                } else if (noun.usage.breakable() == Item.Usage.Breakable.BROKEN) {
                     System.out.println("The " + noun.getName()
                             + " is already broken.");
                 } else {

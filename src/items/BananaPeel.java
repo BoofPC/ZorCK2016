@@ -5,9 +5,7 @@ import core.*;
 public class BananaPeel extends Item{
     public BananaPeel(){
         super();
-        this.setUsageKey(Item.TAKE, 1);
-        this.setUsageKey(Item.MOVE, 2);
-        this.setUsageKey(Item.WEAR, 2);
+        this.usage.take(Usage.Take.TAKABLE).move(Usage.Move.MOVABLE).wear(Usage.Wear.WEARABLE);
         this.setName("Banana Peel");
         this.setDescription("This is one of the parts of the time"
                 + " machine!");

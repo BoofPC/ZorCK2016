@@ -24,7 +24,8 @@ public abstract class Item {
     public static final int RECEIVE = 14;
     public static final int BREAK = 15;
 
-    public int[] usage = new int[16];
+    public Usage usage = Item.usage();
+    // TODO Update description
     /*
      * update this number as needed
      * usage is an array of ints which determines many
@@ -124,9 +125,6 @@ public abstract class Item {
     public List<String> synonyms;
 
     public Item() {
-        for (int i = 0; i < this.usage.length; i++) {
-            this.usage[i] = 0;
-        }
         this.synonyms = new ArrayList<String>();
     }
 
@@ -144,19 +142,6 @@ public abstract class Item {
 
     public void setDescription(final String description) {
         this.description = description;
-    }
-
-    public int getUsageKey(final int n) {
-        if (n < this.usage.length)
-            return this.usage[n];
-        else
-            return -1;
-    }
-
-    public void setUsageKey(final int n, final int state) {
-        if (n < this.usage.length) {
-            this.usage[n] = state;
-        }
     }
 
     public String getTaste() {
@@ -184,14 +169,14 @@ public abstract class Item {
     }
 
     public boolean getActive() {
-        return this.getUsageKey(7) == 3;
+        return this.usage.active() == Usage.Active.ON;
     }
 
     public void setActive(final boolean active) {
         if (active) {
-            this.setUsageKey(7, 3);
+            this.usage.active(Usage.Active.ON);
         } else {
-            this.setUsageKey(7, 2);
+            this.usage.active(Usage.Active.OFF);
         }
     }
 
@@ -296,18 +281,219 @@ public abstract class Item {
         final Portal oppPortal = target.getPortals().getPortal(oppDir);
         final Item oppDoor = oppPortal.getDoor(target);
 
-        if (this.getUsageKey(5) == 3) {
+        if (this.usage.lock() == Usage.Lock.LOCKED) {
             oppPortal.lock();
             if (oppDoor != null) {
-                oppDoor.setUsageKey(5, 3);
+                oppDoor.usage.lock(Usage.Lock.LOCKED);
             }
         } else {
             oppPortal.unlock();
             if (oppDoor != null) {
-                oppDoor.setUsageKey(5, 2);
+                oppDoor.usage.lock(Usage.Lock.UNLOCKED);
             }
         }
     }
 
     public abstract void interact(Command command, Context context);
+
+    public static Usage usage() {
+        return null;
+    }
+
+    public static final class Usage {
+        private Visible visible;
+        private Take take;
+        private Food food;
+        private Drink drink;
+        private Open open;
+        private Lock lock;
+        private Read read;
+        private Active active;
+        private Move move;
+        private Wear wear;
+        private Close close;
+        private Stab stab;
+        private Press press;
+        private Climb climb;
+        private Recieve recieve;
+        private Breakable breakable;
+        public Usage() {
+            this.visible = Visible.VISIBLE;
+            this.take = Take.UNTAKABLE;
+            this.food = Food.UNEDIBLE;
+            this.drink = Drink.UNDRINKABLE;
+            this.open = Open.UNOPENABLE;
+            this.lock = Lock.NO_LOCK;
+            this.read = Read.UNREADABLE;
+            this.active = Active.STATIC;
+            this.move = Move.IMMOVABLE;
+            this.wear = Wear.UNWEARABLE;
+            this.close = Close.UNCLOSABLE;
+            this.stab = Stab.UNSTABBABLE;
+            this.press = Press.UNPRESSABLE;
+            this.climb = Climb.UNCLIMBABLE;
+            this.recieve = Recieve.NO_RECIEVE;
+            this.breakable = Breakable.UNBREAKABLE;
+        }
+        public static enum Visible {
+            VISIBLE, HIDDEN
+        }
+        public static enum Take {
+            UNTAKABLE, TAKABLE, TOO_HEAVY, BOLTED_DOWN
+        }
+        public static enum Food {
+            UNEDIBLE, EDIBLE
+        }
+        public static enum Drink {
+            UNDRINKABLE, DRINKABLE, CLOSED, EMPTY
+        }
+        public static enum Open {
+            UNOPENABLE, CLOSED, OPEN
+        }
+        public static enum Lock {
+            NO_LOCK, UNLOCKED, LOCKED
+        }
+        public static enum Read {
+            UNREADABLE, READABLE, ILLEGIBLE
+        }
+        public static enum Active {
+            STATIC, OFF, ON
+        }
+        public static enum Move {
+            IMMOVABLE, MOVABLE
+        }
+        public static enum Wear {
+            UNWEARABLE, WEARABLE
+        }
+        public static enum Close {
+            UNCLOSABLE, OPEN, CLOSED
+        }
+        public static enum Stab {
+            UNSTABBABLE, STABABBLE
+        }
+        public static enum Press {
+            UNPRESSABLE, UNPRESSED, PRESSED
+        }
+        public static enum Climb {
+            UNCLIMBABLE, CLIMABLE
+        }
+        public static enum Recieve {
+            NO_RECIEVE, RECIEVE
+        }
+        public static enum Breakable {
+            UNBREAKABLE, UNBROKEN, BROKEN
+        }
+        public Visible visible() {
+            return this.visible;
+        }
+        public Usage visible(final Visible o) {
+            this.visible = Visible.VISIBLE;
+            return this;
+        }
+        public Take take() {
+            return this.take;
+        }
+        public Usage take(final Take o) {
+            this.take = o;
+            return this;
+        }
+        public Food food() {
+            return this.food;
+        }
+        public Usage food(final Food o) {
+            this.food = o;
+            return this;
+        }
+        public Drink drink() {
+            return this.drink;
+        }
+        public Usage drink(final Drink o) {
+            this.drink = o;
+            return this;
+        }
+        public Open open() {
+            return this.open;
+        }
+        public Usage open(final Open o) {
+            this.open = o;
+            return this;
+        }
+        public Lock lock() {
+            return this.lock;
+        }
+        public Usage lock(final Lock o) {
+            this.lock = o;
+            return this;
+        }
+        public Read read() {
+            return this.read;
+        }
+        public Usage read(final Read o) {
+            this.read = o;
+            return this;
+        }
+        public Active active() {
+            return this.active;
+        }
+        public Usage active(final Active o) {
+            this.active = o;
+            return this;
+        }
+        public Move move() {
+            return this.move;
+        }
+        public Usage move(final Move o) {
+            this.move = o;
+            return this;
+        }
+        public Wear wear() {
+            return this.wear;
+        }
+        public Usage wear(final Wear o) {
+            this.wear = o;
+            return this;
+        }
+        public Close close() {
+            return this.close;
+        }
+        public Usage close(final Close o) {
+            this.close = o;
+            return this;
+        }
+        public Stab stab() {
+            return this.stab;
+        }
+        public Usage stab(final Stab o) {
+            this.stab = o;
+            return this;
+        }
+        public Press press() {
+            return this.press;
+        }
+        public Usage press(final Press o) {
+            this.press = o;
+            return this;
+        }
+        public Climb climb() {
+            return this.climb;
+        }
+        public Usage climb(final Climb o) {
+            this.climb = o;
+            return this;
+        }
+        public Recieve recieve() {
+            return this.recieve;
+        }
+        public Usage recieve(final Recieve o) {
+            this.recieve = o;
+            return this;
+        }
+        public Breakable breakable() {
+            return this.breakable;
+        }
+        public Usage breakable(final Breakable o) {
+            this.breakable = o;
+            return this;
+        }
+    }
 }

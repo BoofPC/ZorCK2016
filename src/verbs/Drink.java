@@ -20,15 +20,15 @@ public class Drink extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                switch (noun.getUsageKey(3)) {
-                    case 2:
-                        noun.setUsageKey(3, 4);
+                switch (noun.usage.drink()) {
+                    case DRINKABLE:
+                        noun.usage.drink(Item.Usage.Drink.EMPTY);
                         System.out.println("You drank the " + noun.getName());
                         break;
-                    case 3:
+                    case CLOSED:
                         System.out.println("You need to open it first!");
                         break;
-                    case 4:
+                    case EMPTY:
                         System.out.println("You already drank that!");
                         break;
                     default:

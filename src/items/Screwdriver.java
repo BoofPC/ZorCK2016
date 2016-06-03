@@ -6,7 +6,7 @@ public class Screwdriver extends Item{
 
     public Screwdriver(){
         super();
-        this.setUsageKey(Item.TAKE,1);
+        this.usage.take(Usage.Take.TAKABLE);
         this.setName("Flathead Screwdriver");
         this.addSynonym("flathead screwdriver");
         this.addSynonym("screwdriver");

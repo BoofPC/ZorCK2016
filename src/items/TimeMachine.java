@@ -7,9 +7,8 @@ import java.util.List;
 public class TimeMachine extends Item {
     public TimeMachine(){
         super();
-        this.setUsageKey(Item.TURN_ON, 2);
-        this.setUsageKey(Item.TAKE, 2);
-        this.setUsageKey(Item.RECEIVE, 2);
+        this.usage.active(Usage.Active.OFF).take(Usage.Take.TOO_HEAVY)
+            .recieve(Usage.Recieve.RECIEVE);
         //We need to have different texts for different
         //if the user has different items needed for the
         //time machine, for now I will just keep it as it

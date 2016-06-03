@@ -9,9 +9,7 @@ public class Calculator extends Item {
 
     public Calculator() {
         super();
-        this.setUsageKey(Item.TAKE, 1);
-        //turned off by default
-        this.setUsageKey(Item.TURN_ON, 2);
+        this.usage.take(Usage.Take.TAKABLE).active(Usage.Active.OFF);
         //TODO: make the calculator do something when it's on
 
         this.setName("Calculator");
