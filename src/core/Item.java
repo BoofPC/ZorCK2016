@@ -261,14 +261,14 @@ public abstract class Item {
         }
         
         Item oppDoor;
-        oppDoor = target.getPortal(oppDir).getDoor(target);
+        oppDoor = target.getPortals().getPortal(oppDir).getDoor(target);
         
         if(getUsageKey(5) == 3){
-            target.getPortal(oppDir).lock();
+            target.getPortals().getPortal(oppDir).lock();
             if(oppDoor != null)
                 oppDoor.setUsageKey(5,3);
         }else{
-            target.getPortal(oppDir).unlock();
+            target.getPortals().getPortal(oppDir).unlock();
             if(oppDoor != null)
                 oppDoor.setUsageKey(5,2);
         }

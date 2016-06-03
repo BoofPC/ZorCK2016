@@ -6,7 +6,7 @@ import java.util.HashMap;
 public abstract class Area{
     //this is a 10 element array that has portals in 
     //each of the cardinal and half-cardinal directions as well as up and down.
-    private final Portal[] portals; 
+    private final Portals portals; 
     private World world;
     private String title;
     private String initialDescription;
@@ -22,7 +22,7 @@ public abstract class Area{
     private HashMap<String,Boolean> state;
     
     public Area(World containingWorld){
-       this.portals = new Portal[10];
+       this.portals = new Portals();
        this.world = containingWorld;
        this.state = new HashMap<>();
        this.items = new ArrayList<Item>();
@@ -52,20 +52,13 @@ public abstract class Area{
        }else System.out.println(this.description);
     }
     
-    public void setPortal(int direction, Portal portal){
-        this.portals[direction] = portal;
-    }
-    //allow other classes to get the portal value where you can lock or unlock 
-    //it, and check its state. This is ideal because it is more direct than 
-    //having Portal helper methods in Area
-    public Portal getPortal(int direction){
-        if(this.portals[direction] == null) return new Portal(true,null);
-        else return this.portals[direction];
+    public Portals getPortals() {
+        return this.portals;
     }
     
     public int getDirection(Portal portal){
-        for(int i = 0; i < this.portals.length; i++){
-            if(portal == this.portals[i]) return i;
+        for(int i = 0; i < Portals.PORTAL_SIZE; i++){
+            if(portal == this.portals.getPortal(i)) return i;
         }
         return -1;
     }

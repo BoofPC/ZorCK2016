@@ -13,7 +13,7 @@ public class Roof extends Area {
     public Roof(World containingWorld) {
         super(containingWorld);
         
-        setPortal(World.WEST, new Portal(Portal.UNLOCKED, "WomensRestroom"));
+        getPortals().setPortal(World.WEST, new Portal(Portal.UNLOCKED, "WomensRestroom"));
         
         setTitle("Roof");
         setInitialDescription("The roof is largely empty. Smatterings of bird " 

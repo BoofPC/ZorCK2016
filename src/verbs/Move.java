@@ -18,11 +18,11 @@ public class Move extends Verb {
         World world = construct.getWorld();
 
         if (direction != -1) {
-            if (player.getCurrentArea().getPortal(direction).isLocked()) {
+            if (player.getCurrentArea().getPortals().getPortal(direction).isLocked()) {
                 System.out.println("You can't go that way!");
             } else if(!player.getSit()){
                 player.setCurrentArea(world.getArea(player.getCurrentArea()
-                        .getPortal(direction).getTarget()));
+                        .getPortals().getPortal(direction).getTarget()));
                 System.out.print(player.getName() + " moved ");
                 if (direction == 0) {
                     System.out.println("north");

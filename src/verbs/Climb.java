@@ -19,9 +19,9 @@ public class Climb extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                if (noun.getUsageKey(13) == 2 && player.getCurrentArea().getPortal(8)
+                if (noun.getUsageKey(13) == 2 && player.getCurrentArea().getPortals().getPortal(8)
                         != null) {
-                    if (!player.getCurrentArea().getPortal(8).isLocked()) {
+                    if (!player.getCurrentArea().getPortals().getPortal(8).isLocked()) {
                         construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, 8), construct);
                     } else {
                         System.out.println("You can't climb that!");

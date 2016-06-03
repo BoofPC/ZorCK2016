@@ -21,7 +21,7 @@ public class AreaTemplate extends Area{     //Be sure to replace this
             setDescription("");
             //Add any necessary doors
             addItem(new Door(false,"DOORNAME", null,
-                    getPortal(World.SOUTH/*DIRECTION THE DOOR IS FACING*/)));
+                    getPortals().getPortal(World.SOUTH/*DIRECTION THE DOOR IS FACING*/)));
             
             
             //Add these if you want

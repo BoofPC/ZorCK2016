@@ -7,8 +7,8 @@ public class Test3 extends Area{
 
        public Test3(World containingWorld){
             super(containingWorld);
-            setPortal(3, new Portal(false, "Test2"));
-            setPortal(2, new Portal(false, "Test6"));
+            getPortals().setPortal(3, new Portal(false, "Test2"));
+            getPortals().setPortal(2, new Portal(false, "Test6"));
             setTitle("Test Area 3");
             setInitialDescription("This is the third test area, there is path "
                     + "leading west and a path leading south. There is a sword"

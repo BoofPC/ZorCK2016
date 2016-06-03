@@ -7,6 +7,9 @@ import java.util.HashMap;
 public class World {
 
     //Direction constants for use by Areas when assigning portals.
+    public static enum Directions {
+        NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST, UP, DOWN
+    }
     public static final int NORTH = 0;
     public static final int EAST = 1;
     public static final int SOUTH = 2;
