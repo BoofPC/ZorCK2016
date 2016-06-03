@@ -90,6 +90,15 @@ public final class Portals {
         return this;
     }
     
+    public Portal northwest() {
+        return portals[Direction.NORTHWEST.ordinal()];
+    }
+    
+    public Portals northwest(final Portal p) {
+        portals[Direction.NORTHWEST.ordinal()] = p;
+        return this;
+    }
+    
     public Portal up() {
         return portals[Direction.UP.ordinal()];
     }

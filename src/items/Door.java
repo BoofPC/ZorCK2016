@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Door extends Item{
     
-    public Door(boolean locked,String name,Item key,Portal portal){
+    public Door(boolean locked,String name,String key,Portal portal){
         super();
         setUsageKey(Item.TAKE,3);
         setUsageKey(Item.OPEN,2);
@@ -25,9 +25,9 @@ public class Door extends Item{
             addSynonym(name.toLowerCase());
         }
         addSynonym("door");
-        List<Item> keys = new ArrayList<Item>();
-        keys.add(new Key());
-        setKey(keys);
+        List<String> keys = new ArrayList<String>();
+        keys.add(key);
+        setKeys(keys);
         setPortal(portal);
     }
     

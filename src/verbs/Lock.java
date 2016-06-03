@@ -20,11 +20,11 @@ public class Lock extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                List<Item> keys = noun.getKey();
+                List<String> keys = noun.getKeys();
                 if (keys != null) {
                     boolean test = false;
                     for (final Item item : player.getInventory()) {
-                        if (item.getName().equals(keys.get(0).getName())) {
+                        if (item.getName().equals(keys.get(0))) {
                             test = true;
                         }
                     }

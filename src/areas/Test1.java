@@ -14,7 +14,7 @@ public class Test1 extends Area{
                     + "the east and a locked door to the south. There is dark "
                     + "and white chocolate on the ground");
             setDescription("This is the first test area");   
-            addItem(new Door(true,"Southern Door", new Key(),getPortals().south()));
+            addItem(new Door(true,"Southern Door", "Key",getPortals().south()));
             addItem(new DarkChocolate());
             addItem(new WhiteChocolate());
             setState("First",true);

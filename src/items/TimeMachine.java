@@ -20,11 +20,11 @@ public class TimeMachine extends Item {
                 + " needs a flux capaciator, Mr.Fusion, and"
                 + " a banana peel. It allows you to travel"
                 + " back in time!");
-        List<Item> keys = new ArrayList<Item>();
-        keys.add(new MrFusion());
-        keys.add(new BananaPeel());
-        keys.add(new FluxCapacitor());
-        setKey(keys);
+        List<String> keys = new ArrayList<String>();
+        keys.add(new MrFusion().getName());
+        keys.add(new BananaPeel().getName());
+        keys.add(new FluxCapacitor().getName());
+        setKeys(keys);
     }
     
     public void interact(Command command, Context context){

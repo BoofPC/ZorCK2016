@@ -18,7 +18,7 @@ public class FishersRoom extends Area {
         setSmell("It smells like teen spirit (or in other words perspiration)");
         setTaste("You taste good ol' oxygen");
         setSound("Blaring reggae music pounds through your ear drums");
-        addItem(new Door(false, "Northern Door", new Key(), getPortals().north()));
+        addItem(new Door(false, "Northern Door", null, getPortals().north()));
         addItem(new Lantern());
     }
 

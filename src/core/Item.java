@@ -114,7 +114,7 @@ public abstract class Item {
     public String smell;
     public String sound;
     public List<Item> received;
-    public List<Item> keys;
+    public List<String> keys;
     public Portal portal;
     public List<String> synonyms;
 	
@@ -200,11 +200,11 @@ public abstract class Item {
         this.sound = sound;
     }
     
-    public List<Item> getKey(){
+    public List<String> getKeys(){
         return this.keys;
     }
 	
-    public void setKey(List<Item> keys){
+    public void setKeys(List<String> keys){
         this.keys = keys;
     }
 

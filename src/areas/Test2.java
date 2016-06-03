@@ -15,7 +15,7 @@ public class Test2 extends Area{
                     + "leading east-west and a door to the south. There is a "
                     + "screwdriver on the ground");
             setDescription("This is the second test area");
-            addItem(new Door(false,"Southern Door",new Key(),getPortals().south()));
+            addItem(new Door(false,"Southern Door","Key",getPortals().south()));
             addItem(new Screwdriver());
             setState("First",true);
        }

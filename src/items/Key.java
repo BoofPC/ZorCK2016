@@ -8,7 +8,7 @@ public class Key extends Item{
         super();
         setUsageKey(Item.TAKE,1);
         setName(name);
-        if(!name.equals("key)")) addSynonym(name);
+        if(!name.equals("key")) addSynonym(name.toLowerCase());
         addSynonym("key");
         setDescription(description);
     }

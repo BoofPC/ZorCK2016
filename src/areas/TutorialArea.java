@@ -17,8 +17,10 @@ public class TutorialArea extends Area{
                 + "the east and a locked door to the south. There is dark "       
                 + "and white chocolate on the ground");
         setDescription("This is the first test area");                                //This is the description of the area which appears when the player inputs LOOK
-        addItem(new Door(true,"Southern Door", new Key(),getPortals().south()));      //The way to the south is blocked by a door, named "Southern Door", which uses the Key() item as a key and is connected to the southern portal
-        addItem(new DarkChocolate());                                                 //This room contains both dark and white chocolate
+        addItem(new Door(true,"Southern Door", "Key",getPortals().south()));          //The way to the south is blocked by a door, named "Southern Door", which uses the Key() item 
+                                                                                      //named "Key" as a key and is connected to the southern portal. Set "Key" to the name of the 
+                                                                                      //corresponding key, or to null
+        addItem(new DarkChocolate());                           //This room contains both dark and white chocolate
         addItem(new WhiteChocolate());
    }
    

@@ -23,7 +23,7 @@ public class HendrichsonsRoom extends Area{
         setSmell("It smells like sodium chloride.");
         setTaste("It doesn't taste like anything.");
         setSound("You don't hear anything. It is eerie...");
-        addItem(new Door(false, "Western Door", new Key(), getPortals().west()));
+        addItem(new Door(false, "Western Door", null, getPortals().west()));
     }
 
     @Override
