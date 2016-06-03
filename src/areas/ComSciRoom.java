@@ -2,9 +2,9 @@ package areas;
 
 import core.*;
 
-public class ComsciRoom extends Area{
+public class ComSciRoom extends Area{
 
-    public ComsciRoom(World containingWorld) {
+    public ComSciRoom(World containingWorld) {
         super(containingWorld);
         getPortals().east(new Portal(false, "Hallway5"))
             .south(new Portal(false, "Wachtman's room"));
