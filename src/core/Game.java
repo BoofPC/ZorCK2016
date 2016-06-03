@@ -72,7 +72,7 @@ public class Game {
         game.verbList.add(new Write());
         
         //Add all Areas to the new world
-        world.addArea("Test01",new Test01(world));
+        /*world.addArea("Test01",new Test01(world));
         world.addArea("Test02",new Test02(world));
         world.addArea("Test03",new Test03(world));
         world.addArea("Test04",new Test04(world));
@@ -81,10 +81,32 @@ public class Game {
         world.addArea("Test07",new Test07(world));
         world.addArea("Test08",new Test08(world));
         world.addArea("Test09",new Test09(world));
-        world.addArea("Test10",new Test10(world));
+        world.addArea("Test10",new Test10(world));*/
+        world.addArea("Hallway1",new Hallway01(world));
+        world.addArea("Hallway2",new Hallway02(world));
+        world.addArea("Hallway3",new Hallway03(world));
+        world.addArea("Hallway4",new Hallway04(world));
+        world.addArea("Hallway5",new Hallway05(world));
+        world.addArea("Hallway6",new Hallway06(world));
+        world.addArea("Hallway7",new Hallway07(world));
+        world.addArea("Hallway8",new Hallway08(world));
+        world.addArea("Hallway9",new Hallway09(world));
+        world.addArea("Hallway10",new Hallway10(world));
+        world.addArea("Hallway11",new Hallway11(world));
+        world.addArea("Hallway12",new Hallway12(world));
+        world.addArea("Hallway13",new Hallway13(world));
+        world.addArea("Hallway14",new Hallway14(world));
+        world.addArea("Hallway15",new Hallway15(world));
+        world.addArea("Hallway16",new Hallway16(world));
+        world.addArea("Hallway17",new Hallway17(world));
+        world.addArea("CompSciRoom",new CompSciRoom(world));
+        world.addArea("FishersRoom",new FishersRoom(world));
+        world.addArea("HendrichsonsRoom",new HendrichsonsRoom(world));
+        world.addArea("Roof",new Roof(world));
+        world.addArea("WomensRestroom",new WomensRestroom(world));
         
         //Setting initial area for player
-        player.setCurrentArea(world.getArea("Test05"));
+        player.setCurrentArea(world.getArea("CompSciRoom"));
         player.addItem(new NoTea());
         Context constr = new Context(player, world);
         Command com;
@@ -108,8 +130,17 @@ public class Game {
             //Main Game Loop
             Status status = Status.KEEP_PLAYING;
             while(status == Status.KEEP_PLAYING){
-                System.out.println("You are in room " 
-                        + player.getCurrentArea().getTitle());
+                if(player.getCurrentArea().getTitle().equals("Hallway") || 
+                        player.getCurrentArea().getTitle().equals("Women's Restroom") ||
+                        player.getCurrentArea().getTitle().equals("Men's Restroom") ||
+                        player.getCurrentArea().getTitle().equals("Security Room") ||
+                        player.getCurrentArea().getTitle().equals("Chemical Storage Room"))
+                        //...
+                    System.out.println("You are in the " 
+                            + player.getCurrentArea().getTitle());
+                else
+                    System.out.println("You are in " 
+                            + player.getCurrentArea().getTitle());
                 
                 System.out.print(">");
                 input = reader.nextLine();

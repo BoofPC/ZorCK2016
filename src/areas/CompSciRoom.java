@@ -2,16 +2,16 @@ package areas;
 
 import core.*;
 
-public class ComSciRoom extends Area{
+public class CompSciRoom extends Area{
 
-    public ComSciRoom(World containingWorld) {
+    public CompSciRoom(World containingWorld) {
         super(containingWorld);
         getPortals().east(new Portal(false, "Hallway5"))
             .south(new Portal(false, "Wachtman's room"));
         //change the portal to go to hallway when hallway is made
-        setTitle("Comsci Room");
-        setInitialDescription("This is the Comsci room, Room 317.");
-        setDescription("This is the Comsci Room, room 317");
+        setTitle("CompSci Room");
+        setInitialDescription("This is the CompSci Room, Room 317.");
+        setDescription("This is the CompSci Room, Room 317");
         
     }
 
