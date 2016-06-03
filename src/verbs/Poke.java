@@ -21,8 +21,8 @@ public class Poke extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                System.out.println("You poked the " + noun.getName());
+            if (!noun.name().equals("noItem")) {
+                System.out.println("You poked the " + noun.name());
                 System.out.println("Good Job!");
             } else {
                 System.out.println("Ya need a noun, ya dingus");

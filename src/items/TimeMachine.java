@@ -20,9 +20,9 @@ public class TimeMachine extends Item {
                 + " a banana peel. It allows you to travel"
                 + " back in time!");
         final List<String> keys = new ArrayList<String>();
-        keys.add(new MrFusion().getName());
-        keys.add(new BananaPeel().getName());
-        keys.add(new FluxCapacitor().getName());
+        keys.add(new MrFusion().name());
+        keys.add(new BananaPeel().name());
+        keys.add(new FluxCapacitor().name());
         this.keys(keys);
     }
 

@@ -36,7 +36,7 @@ public class Roof extends Area {
     @Override
     public void interact(final Command command, final Context context) {
         final String verb = command.getVerb().getTitle();
-        final String noun = command.getNoun().getName();
+        final String noun = command.getNoun().name();
 
         if (verb.equals("take")) {
             if (noun.equals("Key to Secret Passage")) {

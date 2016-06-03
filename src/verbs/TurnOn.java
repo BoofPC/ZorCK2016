@@ -21,15 +21,15 @@ public class TurnOn extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (noun.usage().active() == Item.Usage.Active.OFF) {
                     noun.usage().active(Item.Usage.Active.ON);
-                    System.out.println("You turned on the " + noun.getName());
+                    System.out.println("You turned on the " + noun.name());
                     if (player.getCurrentArea().getFirstVisit()) {
                         player.getCurrentArea().enter(player);
                     }
                 } else if (noun.usage().active() == Item.Usage.Active.ON) {
-                    System.out.println(noun.getName() + " is already on");
+                    System.out.println(noun.name() + " is already on");
                 } else {
                     System.out.println("I don't see how you expect to do that");
                 }

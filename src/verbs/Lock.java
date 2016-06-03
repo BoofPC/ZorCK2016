@@ -22,19 +22,19 @@ public class Lock extends Verb {
         final World world = construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                final List<String> keys = noun.getKeys();
+            if (!noun.name().equals("noItem")) {
+                final List<String> keys = noun.keys();
                 if (keys != null) {
                     boolean test = false;
                     for (final Item item : player.getInventory()) {
-                        if (item.getName().equals(keys.get(0))) {
+                        if (item.name().equals(keys.get(0))) {
                             test = true;
                         }
                     }
                     if (noun.usage().lock() == Item.Usage.Lock.UNLOCKED) {
                         if (test) {
                             noun.usage().lock(Item.Usage.Lock.LOCKED);
-                            System.out.println("You locked the " + noun.getName());
+                            System.out.println("You locked the " + noun.name());
                             if (noun.getPortal() != null) {
                                 noun.getPortal().lock();
                             }
@@ -45,7 +45,7 @@ public class Lock extends Verb {
                             System.out.println("You need a key for that");
                         }
                     } else if (noun.usage().lock() == Item.Usage.Lock.LOCKED) {
-                        System.out.println("The " + noun.getName() + " is already locked!");
+                        System.out.println("The " + noun.name() + " is already locked!");
                     }
                 } else {
                     System.out.println("Now, how do you expect to do that?");

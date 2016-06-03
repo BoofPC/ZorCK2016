@@ -36,13 +36,13 @@ public class Give extends Verb {
             if (receiver != null) {
                 receiver.receive(noun);
                 player.removeItem(noun);
-                System.out.println("You gave the " + noun.getName() + " to "
-                        + receiver.getName());
+                System.out.println("You gave the " + noun.name() + " to "
+                        + receiver.name());
             } else {
                 System.out.println("I don't see who you'd want to give that to");
             }
         } else {
-            System.out.println("You don't even have a " + noun.getName());
+            System.out.println("You don't even have a " + noun.name());
         }
     }
 }

@@ -30,13 +30,13 @@ public class Look extends Verb {
             desc.add("");
             desc.add("This Area contains:");
             for (final Item item : player.getCurrentArea().getItems()) {
-                desc.add(item.getName());
+                desc.add(item.name());
             }
         }
         if (player.getCurrentArea().getDark() != true) {
             desc.forEach(System.out::println);
         } else if (player.getItem("Lantern") != null) {
-            if (player.getItem("Lantern").getActive()) {
+            if (player.getItem("Lantern").active()) {
                 for (final String line : desc) {
                     System.out.println(line);
                 }

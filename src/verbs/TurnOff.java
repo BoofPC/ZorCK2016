@@ -21,12 +21,12 @@ public class TurnOff extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (noun.usage().active() == Item.Usage.Active.ON) {
                     noun.usage().active(Item.Usage.Active.OFF);
-                    System.out.println("You turned off the " + noun.getName());
+                    System.out.println("You turned off the " + noun.name());
                 } else if (noun.usage().active() == Item.Usage.Active.OFF) {
-                    System.out.println(noun.getName() + " is already off");
+                    System.out.println(noun.name() + " is already off");
                 } else {
                     System.out.println("I don't see how you expect to do that");
                 }

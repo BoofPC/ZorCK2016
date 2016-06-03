@@ -23,7 +23,7 @@ public class Test08 extends Area{
         @Override
         public void interact(final Command command, final Context context){
             if(command.getVerb().getTitle().equals("take") &&
-                    command.getNoun().getName().equals("Magic Orb")){
+                    command.getNoun().name().equals("Magic Orb")){
                 context.getPlayer().setMaxHp(context.getPlayer().getMaxHp() + 10);
                 context.getPlayer().setHp(context.getPlayer().getHp() + 10);
                 context.getPlayer().getCurrentArea().removeItem(command.getNoun());

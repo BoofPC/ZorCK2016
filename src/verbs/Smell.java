@@ -23,12 +23,12 @@ public class Smell extends Verb {
         final Area area = player.getCurrentArea();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                if (noun.getSmell() != null) {
-                    System.out.println(noun.getSmell());
+            if (!noun.name().equals("noItem")) {
+                if (noun.smell() != null) {
+                    System.out.println(noun.smell());
                 } else {
                     System.out.println("It smells like every other "
-                            + noun.getName() + " you've ever smelled");
+                            + noun.name() + " you've ever smelled");
                 }
             } else if (area.getSmell() != null) {
                 System.out.println(area.getSmell());

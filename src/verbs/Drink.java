@@ -21,11 +21,11 @@ public class Drink extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 switch (noun.usage().drink()) {
                     case DRINKABLE:
                         noun.usage().drink(Item.Usage.Drink.EMPTY);
-                        System.out.println("You drank the " + noun.getName());
+                        System.out.println("You drank the " + noun.name());
                         break;
                     case CLOSED:
                         System.out.println("You need to open it first!");

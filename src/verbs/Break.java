@@ -18,17 +18,17 @@ public class Break extends Verb {
         construct.getPlayer();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (noun.usage().breakable() == Item.Usage.Breakable.UNBROKEN) {
                     // TODO: find a better way to destroy something
                     noun.usage().visible(Item.Usage.Visible.HIDDEN)
                         .breakable(Item.Usage.Breakable.BROKEN);
-                    System.out.println("You broke the " + noun.getName());
+                    System.out.println("You broke the " + noun.name());
                 } else if (noun.usage().breakable() == Item.Usage.Breakable.BROKEN) {
-                    System.out.println("The " + noun.getName()
+                    System.out.println("The " + noun.name()
                             + " is already broken.");
                 } else {
-                    System.out.println("You can't break the " + noun.getName());
+                    System.out.println("You can't break the " + noun.name());
                 }
             } else {
                 System.out.println("Ya need a noun, ya dingus.");

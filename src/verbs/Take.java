@@ -21,20 +21,20 @@ public class Take extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (player.getCurrentArea().hasMatching(noun)) {
                     if (noun.usage().take() == Item.Usage.Take.TAKABLE) {
                         player.getCurrentArea().removeItem(noun);
                         player.addItem(noun);
                         System.out.println(player.getName() + " took the "
-                                + noun.getName());
+                                + noun.name());
                     } else if (noun.usage().take() == Item.Usage.Take.TOO_HEAVY) {
-                        System.out.println("The " + noun.getName()
+                        System.out.println("The " + noun.name()
                                 + " is too heavy for that");
                     } else if (noun.usage().take() == Item.Usage.Take.BOLTED_DOWN) {
-                        System.out.println("The " + noun.getName() + " is bolted down");
+                        System.out.println("The " + noun.name() + " is bolted down");
                     } else {
-                        System.out.println("You can't take the " + noun.getName());
+                        System.out.println("You can't take the " + noun.name());
                     }
                 } else {
                     System.out.println("Where do you expect to find one of those?");

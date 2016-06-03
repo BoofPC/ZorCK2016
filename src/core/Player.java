@@ -52,7 +52,7 @@ public class Player {
     }
 
     public Item getItem(final String name){
-        return this.inventory.stream().filter(i -> i.getName().equals(name)).findAny().orElse(null);
+        return this.inventory.stream().filter(i -> i.name().equals(name)).findAny().orElse(null);
     }
 
     public Area getCurrentArea(){

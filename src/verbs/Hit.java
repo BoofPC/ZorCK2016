@@ -22,13 +22,13 @@ public class Hit extends Verb {
         final Area area = player.getCurrentArea();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (noun.usage().stab() == Item.Usage.Stab.STABABBLE) {
                     noun.drop(area);
-                    System.out.println("You hit the " + noun.getName());
-                    if (noun.getInside() != null) {
+                    System.out.println("You hit the " + noun.name());
+                    if (noun.inside() != null) {
                         System.out.println("It dropped the "
-                                + noun.getInside().getName());
+                                + noun.inside().name());
                     }
                     noun.drop(area);
                     area.removeItem(noun);

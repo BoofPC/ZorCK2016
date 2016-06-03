@@ -22,12 +22,12 @@ public class Taste extends Verb {
         final Area area = player.getCurrentArea();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                if (noun.getTaste() != null) {
-                    System.out.println(noun.getTaste());
+            if (!noun.name().equals("noItem")) {
+                if (noun.taste() != null) {
+                    System.out.println(noun.taste());
                 } else {
                     System.out.println("It tastes like every other "
-                            + noun.getName() + " you've ever tried");
+                            + noun.name() + " you've ever tried");
                 }
             } else if (area.getTaste() != null) {
                 System.out.println(area.getTaste());

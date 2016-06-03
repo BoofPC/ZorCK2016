@@ -43,7 +43,7 @@ public abstract class Area{
            System.out.println(this.initialDescription);
            this.firstVisit = false;
        }else if (this.firstVisit && player.getItem("Lantern") != null){
-       	   if(player.getItem("Lantern").getActive()){
+       	   if(player.getItem("Lantern").active()){
                      System.out.println(
                          player.getCurrentArea().getInitialDescription());
                      this.firstVisit = false;
@@ -139,7 +139,7 @@ public abstract class Area{
     }
 
     public Item getItem(final String title) {
-        return this.items.stream().filter(i -> i.getName().equals(title)).findFirst().orElse(null);
+        return this.items.stream().filter(i -> i.name().equals(title)).findFirst().orElse(null);
     }
 
     public boolean getDark(){

@@ -21,16 +21,16 @@ public class Open extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (noun.usage().open() == Item.Usage.Open.CLOSED) {
                     if (noun.usage().lock() != Item.Usage.Lock.LOCKED) {
                         noun.usage().open(Item.Usage.Open.OPEN);
-                        System.out.println("You opened the " + noun.getName());
+                        System.out.println("You opened the " + noun.name());
                     } else {
-                        System.out.println(noun.getName() + " is locked");
+                        System.out.println(noun.name() + " is locked");
                     }
                 } else if (noun.usage().open() == Item.Usage.Open.OPEN) {
-                    System.out.println(noun.getName() + " is already open");
+                    System.out.println(noun.name() + " is already open");
                 } else {
                     System.out.println("I don't see how you expect to do that");
                 }

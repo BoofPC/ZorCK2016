@@ -22,10 +22,10 @@ public class Read extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (noun.usage().read() == Item.Usage.Read.READABLE) {
-                    if (noun.getText() != null) {
-                        System.out.println(noun.getText());
+                    if (noun.text() != null) {
+                        System.out.println(noun.text());
                     } else {
                         System.out.println("It says nothing important");
                     }

@@ -24,6 +24,6 @@ public class Inventory extends Verb {
         if (player.getInventory().size() == 0) {
             System.out.println("\tNothing!");
         }
-        player.getInventory().forEach(i -> System.out.println("\t" + i.getName()));
+        player.getInventory().forEach(i -> System.out.println("\t" + i.name()));
     }
 }

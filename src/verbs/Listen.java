@@ -22,12 +22,12 @@ public class Listen extends Verb {
         final Area area = player.getCurrentArea();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                if (noun.getSound() != null) {
-                    System.out.println(noun.getSound());
+            if (!noun.name().equals("noItem")) {
+                if (noun.sound() != null) {
+                    System.out.println(noun.sound());
                 } else {
                     System.out.println("It sounds like every other "
-                            + noun.getName() + " you've ever heard");
+                            + noun.name() + " you've ever heard");
                 }
             } else if (area.getSound() != null) {
                 System.out.println(area.getSound());

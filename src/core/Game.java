@@ -191,12 +191,12 @@ public class Game {
                     }else{
                         if(nouns.size() > 3){
                             System.out.print("Did you mean the ");
-                            nouns.forEach(n -> System.out.println(n.getName() + ", the "));
+                            nouns.forEach(n -> System.out.println(n.name() + ", the "));
                             System.out.println(", or the "
-                                    + nouns.get(nouns.size() - 1).getName() + "?");
+                                    + nouns.get(nouns.size() - 1).name() + "?");
                         }else{
-                            System.out.print("Did you mean the " + nouns.get(0).getName() +
-                                    " or the " + nouns.get(1).getName() + "?");
+                            System.out.print("Did you mean the " + nouns.get(0).name() +
+                                    " or the " + nouns.get(1).name() + "?");
                         }
                     }
                     status = player.getDeath();

@@ -17,12 +17,12 @@ public class Examine extends Verb {
         final Item noun = command.getNoun();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                if (noun.getDescription() != null) {
-                    System.out.println(noun.getDescription());
+            if (!noun.name().equals("noItem")) {
+                if (noun.description() != null) {
+                    System.out.println(noun.description());
                 } else {
                     System.out.println("It looks like every other "
-                            + noun.getName() + " you've ever seen");
+                            + noun.name() + " you've ever seen");
                 }
             } else {
                 System.out.println("Ya need a noun, ya dingus");

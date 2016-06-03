@@ -23,22 +23,22 @@ public class Stab extends Verb {
         final Area area = player.getCurrentArea();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 final Item sword = new Sword();
                 boolean test = false;
-                final String swordName = sword.getName();
+                final String swordName = sword.name();
                 for (final Item item : player.getInventory()) {
-                    if (item.getName().equals(swordName)) {
+                    if (item.name().equals(swordName)) {
                         test = true;
                     }
                 }
                 if (test) {
                     if (noun.usage().stab() == Item.Usage.Stab.STABABBLE) {
                         noun.drop(area);
-                        System.out.println("You stabbed the " + noun.getName());
-                        if (noun.getInside() != null) {
+                        System.out.println("You stabbed the " + noun.name());
+                        if (noun.inside() != null) {
                             System.out.println("It dropped the "
-                                    + noun.getInside().getName());
+                                    + noun.inside().name());
                         }
                         noun.drop(area);
                         area.removeItem(noun);
@@ -47,7 +47,7 @@ public class Stab extends Verb {
                     }
                 } else {
                     System.out.println("You need the " + swordName
-                            + " to stab the " + noun.getName());
+                            + " to stab the " + noun.name());
                 }
             } else {
                 System.out.println("Ya need a noun, ya dingus");

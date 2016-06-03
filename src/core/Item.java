@@ -115,7 +115,7 @@ public abstract class Item {
         return this.usage;
     }
 
-    public String getName() {
+    public String name() {
         return this.name;
     }
 
@@ -124,7 +124,7 @@ public abstract class Item {
         return this;
     }
 
-    public String getDescription() {
+    public String description() {
         return this.description;
     }
 
@@ -133,7 +133,7 @@ public abstract class Item {
         return this;
     }
 
-    public String getTaste() {
+    public String taste() {
         return this.taste;
     }
 
@@ -142,7 +142,7 @@ public abstract class Item {
         return this;
     }
 
-    public Item getInside() {
+    public Item inside() {
         return this.inside;
     }
 
@@ -151,7 +151,7 @@ public abstract class Item {
         return this;
     }
 
-    public String getText() {
+    public String text() {
         return this.text;
     }
 
@@ -160,7 +160,7 @@ public abstract class Item {
         return this;
     }
 
-    public boolean getActive() {
+    public boolean active() {
         return this.usage().active() == Usage.Active.ON;
     }
 
@@ -173,7 +173,7 @@ public abstract class Item {
         return this;
     }
 
-    public String getSmell() {
+    public String smell() {
         return this.smell;
     }
 
@@ -182,7 +182,7 @@ public abstract class Item {
         return this;
     }
 
-    public String getSound() {
+    public String sound() {
         return this.sound;
     }
 
@@ -191,12 +191,17 @@ public abstract class Item {
         return this;
     }
 
-    public List<String> getKeys() {
+    public List<String> keys() {
         return this.keys;
     }
 
     public Item keys(final List<String> keys) {
         this.keys = keys;
+        return this;
+    }
+    
+    public Item key(final String key) {
+        this.keys.add(key);
         return this;
     }
 
@@ -209,6 +214,10 @@ public abstract class Item {
         return this;
     }
 
+    public List<String> synonyms() {
+        return this.synonyms;
+    }
+    
     public Item synonym(final String str) {
         this.synonyms.add(str);
         return this;
@@ -219,8 +228,8 @@ public abstract class Item {
     }
 
     public void drop(final Area area) {
-        if (this.getInside() != null) {
-            area.addItem(this.getInside());
+        if (this.inside() != null) {
+            area.addItem(this.inside());
             this.inside(null);
         }
     }

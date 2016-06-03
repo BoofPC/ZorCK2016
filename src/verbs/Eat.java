@@ -24,12 +24,12 @@ public class Eat extends Verb {
             } else if (player.hasMatching(noun)) {
                 player.removeItem(noun);
             }
-            System.out.println(player.getName() + " ate the " + noun.getName());
-            if (noun.getTaste() != null) {
-                System.out.println(noun.getTaste());
+            System.out.println(player.getName() + " ate the " + noun.name());
+            if (noun.taste() != null) {
+                System.out.println(noun.taste());
             } else {
                 System.out.println("It tastes like every other "
-                        + noun.getName() + " you've ever eaten");
+                        + noun.name() + " you've ever eaten");
             }
         } else {
             System.out.println("I don't see how you expect to do that!");

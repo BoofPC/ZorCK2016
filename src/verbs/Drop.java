@@ -22,13 +22,13 @@ public class Drop extends Verb {
             if (noun.usage().take() == Item.Usage.Take.TAKABLE) {
                 player.removeItem(noun);
                 player.getCurrentArea().addItem(noun);
-                System.out.println("You dropped " + noun.getName());
+                System.out.println("You dropped " + noun.name());
             } else {
                 System.out.println("I'm sorry " + player.getName()
                         + ", I can't allow you to do that");
             }
         } else {
-            System.out.println("You don't have the " + noun.getName());
+            System.out.println("You don't have the " + noun.name());
         }
     }
 }

@@ -21,12 +21,12 @@ public class Close extends Verb {
         construct.getWorld();
 
         if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
+            if (!noun.name().equals("noItem")) {
                 if (noun.usage().open() == Item.Usage.Open.OPEN) {
                     noun.usage().open(Item.Usage.Open.CLOSED);
-                    System.out.println("You closed the " + noun.getName());
+                    System.out.println("You closed the " + noun.name());
                 } else if (noun.usage().open() == Item.Usage.Open.CLOSED) {
-                    System.out.println(noun.getName() + " is already closed");
+                    System.out.println(noun.name() + " is already closed");
                 } else {
                     System.out.println("I don't see how you expect to do that");
                 }
