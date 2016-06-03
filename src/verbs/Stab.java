@@ -22,13 +22,8 @@ public class Stab extends Verb {
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
                 Item sword = new Sword();
-                boolean test = false;
-                for (final Item item : player.listInventory()) {
-                    if (item.getName().equals(sword.getName())) {
-                        test = true;
-                        break;
-                    }
-                }
+                boolean test = player.getInventory().stream().anyMatch(i -> i.getName()
+                        .equals(sword.getName()));
                 if (test) {
                     if (noun.getUsageKey(11) == 2 || noun.getUsageKey(11) == 3) {
                         noun.drop(area);

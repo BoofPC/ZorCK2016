@@ -37,10 +37,7 @@ public abstract class Verb {
     
     public boolean hasMatching(String input){
         if(this.title.equals(input)) return true;
-        for(String item : this.synonyms){
-            if(item.equals(input)) return true;
-        }
-        return false;
+        return this.synonyms.contains(input);
     }
     
     public boolean getUsageKey(int key){

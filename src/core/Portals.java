@@ -13,6 +13,10 @@ public final class Portals {
         portals = new Portal[PORTAL_SIZE];
     }
     
+    public Portal[] getPortals() {
+        return portals;
+    }
+    
     public Portal getPortal(final Direction direction) {
         final Portal portal = portals[direction.ordinal()];
         return portal == null ? new Portal(Portal.State.LOCKED, null) : portal;

@@ -221,10 +221,7 @@ public abstract class Item {
     }
     
     public boolean hasMatching(String str){
-        for(String item: this.synonyms){
-            if(item.equals(str)) return true;
-        }
-        return false;
+        return this.synonyms.contains(str);
     }
     
     public void drop(Area area){
@@ -240,10 +237,7 @@ public abstract class Item {
     
     
     public boolean hasReceived(String name){
-        for(Item item: this.received){
-            if(item.getName().equals(name)) return true;
-        }
-        return false;
+        return this.received.contains(name);
     }
     
     // Documentation here would be appreciated.

@@ -37,9 +37,7 @@ public class Portal {
     }
     
     public Item getDoor(Area currentArea){
-        for(final Item i : currentArea.getItems()){
-            if(i.getPortal() == this) return i;
-        }
-        return null;
+        return currentArea.getItems().stream().filter(i -> i.getPortal() == this).findAny()
+                .orElse(null);
     }
 }

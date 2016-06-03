@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -58,10 +59,8 @@ public abstract class Area{
     }
     
     public World.Direction getDirection(Portal portal){
-        for(World.Direction d : World.Direction.values()){
-            if(portal == this.portals.getPortal(d)) return d;
-        }
-        return null;
+        return Arrays.stream(World.Direction.values())
+                .filter(d -> portal == this.portals.getPortal(d)).findAny().orElse(null);
     }
 	
     public String getTitle(){
@@ -129,10 +128,7 @@ public abstract class Area{
     }
     
     public boolean hasMatching(Item item){
-        for(Item item2: this.items){
-            if(item == item2) return true;
-        }
-        return false;
+        return this.items.stream().anyMatch(i -> i == item);
     }
     
     public List<Item> getItems(){
@@ -140,12 +136,7 @@ public abstract class Area{
     }
     
     public Item getItem(String title) {
-        for (Item item : this.items) {
-            if (item.getName().equals(title)) {
-                return item;
-            }
-        }
-        return null;
+        return this.items.stream().filter(i -> i.getName().equals(title)).findFirst().orElse(null);
     }
     
     public boolean getDark(){

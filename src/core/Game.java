@@ -6,7 +6,6 @@ import areas.*;
 import core.World.Direction;
 import items.*;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -159,9 +158,7 @@ public class Game {
                     }else{
                         if(nouns.size() > 3){
                             System.out.print("Did you mean the ");
-                            for (final Item n : nouns) {
-                                System.out.print(n.getName() + ", the ");
-                            }
+                            nouns.forEach(n -> System.out.println(n.getName() + ", the "));
                             System.out.println(", or the " 
                                     + nouns.get(nouns.size() - 1).getName() + "?");
                         }else{
@@ -180,32 +177,25 @@ public class Game {
    
     
     public Verb findVerb(String input){
-        for(Verb item : this.verbList){
-            if(item.hasMatching(input)) return item;
-        }
-        return null;
+        return this.verbList.stream().filter(i -> i.hasMatching(input)).findAny().orElse(null);
     }
     
     public List<Item> findNoun(String input, Player player){
         List<Item> itemList = new ArrayList<Item>();
-        for(final Item i : player.listInventory()){
-            itemList.add(i);
-        }
-        for (final Item i : player.getCurrentArea().getItems()) {
-            itemList.add(i);
-        }
+        itemList.addAll(player.getInventory());
+        itemList.addAll(player.getCurrentArea().getItems());
         List<Item> returns = new ArrayList<Item>();
-        for(int i = 0; i < player.listInventory().size() + 
+        for(int i = 0; i < player.getInventory().size() + 
                 player.getCurrentArea().getItems().size(); i++){
-            if(i<player.listInventory().size()){
-                if(player.listInventory().get(i).hasMatching(input))
-                    returns.add(player.listInventory().get(i));
+            if(i<player.getInventory().size()){
+                if(player.getInventory().get(i).hasMatching(input))
+                    returns.add(player.getInventory().get(i));
             }
             else{
                 if(player.getCurrentArea().getItems().get
-                        (i-player.listInventory().size()).hasMatching(input)) 
+                        (i-player.getInventory().size()).hasMatching(input)) 
                     returns.add(player.getCurrentArea().getItems().get
-                            (i - player.listInventory().size()));
+                            (i - player.getInventory().size()));
             }
         }
         return returns.size() > 0 ? returns : null;

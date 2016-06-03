@@ -44,21 +44,15 @@ public class Player {
     }
     
     public boolean hasMatching(Item item){
-        for(Item item2: this.inventory){
-            if(item == item2) return true;
-        }
-        return false;
+        return this.inventory.stream().anyMatch(i -> i == item);
     }
     
-    public List<Item> listInventory(){
+    public List<Item> getInventory(){
         return this.inventory;
     }
     
     public Item getItem(String name){
-        for(Item item: this.inventory){
-            if(name.equals(item.getName())) return item;
-        }
-        return null;
+        return this.inventory.stream().filter(i -> i.getName().equals(name)).findAny().orElse(null);
     }
     
     public Area getCurrentArea(){

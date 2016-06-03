@@ -27,9 +27,8 @@ public class Look extends Verb {
             desc.add(player.getCurrentArea().getDescription());
             desc.add("");
             desc.add("This Area contains:");
-            for (final Item item : player.getCurrentArea().getItems()) {
-                desc.add(item.getName());
-            }
+            player.getCurrentArea().getItems().stream().map(Item::getName)
+                .forEachOrdered(desc::add);
         }
         if (player.getCurrentArea().getDark() != true) {
             for (String item : desc) {
