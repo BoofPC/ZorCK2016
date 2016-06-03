@@ -4,16 +4,15 @@ import core.*;
 import items.*;
 
 
-public class Hallway8 extends Area{
+public class Hallway09 extends Area{
 
-       public Hallway8(World containingWorld){
+       public Hallway09(World containingWorld){
             super(containingWorld);
 
             getPortals()
-                .north(new Portal(false,"Hallway6"))
-                .south(new Portal(false, "DuanesRoom"))
-                .west(new Portal(false, "Hallway9"))
-                .east(new Portal(false, "Hallway7"));
+                .south(new Portal(false, "ISSRoom"))
+                .west(new Portal(false, "Hallway10"))
+                .east(new Portal(false, "Hallway8"));
             setTitle("Hallway");
             setInitialDescription("----------");
             setDescription("-----");

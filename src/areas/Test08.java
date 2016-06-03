@@ -3,13 +3,13 @@ package areas;
 import core.*;
 import items.*;
 
-public class Test8 extends Area{
+public class Test08 extends Area{
 
-       public Test8(World containingWorld){
+       public Test08(World containingWorld){
             super(containingWorld);
-            getPortals().west(new Portal(false, "Test7"))
-                .east(new Portal(false, "Test9"))
-                .north(new Portal(false, "Test5"))
+            getPortals().west(new Portal(false, "Test07"))
+                .east(new Portal(false, "Test09"))
+                .north(new Portal(false, "Test05"))
                 .south(new Portal(false, "Test10"));
             setTitle("Test Area 8");
             setInitialDescription("This is the eighth test area, there is path "

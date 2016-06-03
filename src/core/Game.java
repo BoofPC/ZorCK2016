@@ -72,19 +72,19 @@ public class Game {
         game.verbList.add(new Write());
         
         //Add all Areas to the new world
-        world.addArea("Test1",new Test1(world));
-        world.addArea("Test2",new Test2(world));
-        world.addArea("Test3",new Test3(world));
-        world.addArea("Test4",new Test4(world));
-        world.addArea("Test5",new Test5(world));
-        world.addArea("Test6",new Test6(world));
-        world.addArea("Test7",new Test7(world));
-        world.addArea("Test8",new Test8(world));
-        world.addArea("Test9",new Test9(world));
+        world.addArea("Test01",new Test01(world));
+        world.addArea("Test02",new Test02(world));
+        world.addArea("Test03",new Test03(world));
+        world.addArea("Test04",new Test04(world));
+        world.addArea("Test05",new Test05(world));
+        world.addArea("Test06",new Test06(world));
+        world.addArea("Test07",new Test07(world));
+        world.addArea("Test08",new Test08(world));
+        world.addArea("Test09",new Test09(world));
         world.addArea("Test10",new Test10(world));
         
         //Setting initial area for player
-        player.setCurrentArea(world.getArea("Test5"));
+        player.setCurrentArea(world.getArea("Test05"));
         player.addItem(new NoTea());
         Context constr = new Context(player, world);
         Command com;

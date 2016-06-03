@@ -3,9 +3,9 @@ package areas;
 import core.*;
 import items.*;
 
-public class Hallway7 extends Area {
+public class Hallway07 extends Area {
     
-    public Hallway7(World containingWorld) {
+    public Hallway07(World containingWorld) {
         super(containingWorld);
         
         getPortals().north(new Portal(Portal.State.UNLOCKED, "WomensRestroom"))

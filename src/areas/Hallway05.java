@@ -4,9 +4,9 @@ import core.*;
 import items.*;
 
 
-public class Hallway5 extends Area{
+public class Hallway05 extends Area{
 
-       public Hallway5(World containingWorld){
+       public Hallway05(World containingWorld){
             super(containingWorld);
 
             getPortals()

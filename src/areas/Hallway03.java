@@ -4,21 +4,21 @@ import core.*;
 import items.*;
 
 
-public class Hallway4 extends Area{
+public class Hallway03 extends Area{
 
-       public Hallway4(World containingWorld){
+       public Hallway03(World containingWorld){
             super(containingWorld);
 
             getPortals()
-                .north(new Portal(false,"Hallway3"))
-                .south(new Portal(false, "Hallway5"))
-                .west(new Portal(false, "WilsonsRoom"))
-                .east(new Portal(false, "StakersRoom"));
+                .north(new Portal(false,"Hallway2"))
+                .south(new Portal(false, "Hallway4"))
+                .west(new Portal(true, "SecretPassage"))
+                .east(new Portal(false, "ArthursRoom"));
             setTitle("Hallway");
             setInitialDescription("----------");
             setDescription("-----");
 
-            addItem(new Door(true,"Western Door", null,getPortals().west()));
+            addItem(new Door(true,"Western Door", "Key to Secret Passage",getPortals().west()));
             addItem(new Door(false,"Eastern Door", null,getPortals().east()));
             
             
