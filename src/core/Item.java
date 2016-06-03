@@ -252,31 +252,52 @@ public abstract class Item {
         portal = getPortal();
         Area target;
         target = world.getArea(portal.getTarget());
-        // TODO Rewrite with switch
-        int oppDir;
         final Direction direction = currentArea.getDirection(portal);
-        final int dirOrd = direction.ordinal();
-        if(dirOrd < 4) {
-            oppDir = dirOrd - 2;
-            if(oppDir < 0) oppDir += 4;
-        }else if(dirOrd < 8){
-            oppDir = dirOrd - 2;
-            if(oppDir < 4) oppDir += 4;
-        }else{
-            if(direction == Direction.UP) oppDir = 9;
-            else oppDir = 8;
+        final Direction oppDir;
+        switch (direction) {
+            case NORTH:
+                oppDir = Direction.SOUTH;
+                break;
+            case EAST:
+                oppDir = Direction.WEST;
+                break;
+            case SOUTH:
+                oppDir = Direction.NORTH;
+                break;
+            case WEST:
+                oppDir = Direction.EAST;
+                break;
+            case NORTHEAST:
+                oppDir = Direction.SOUTHWEST;
+                break;
+            case SOUTHEAST:
+                oppDir = Direction.NORTHWEST;
+                break;
+            case SOUTHWEST:
+                oppDir = Direction.NORTHEAST;
+                break;
+            case NORTHWEST:
+                oppDir = Direction.SOUTHEAST;
+                break;
+            case UP:
+                oppDir = Direction.DOWN;
+                break;
+            case DOWN:
+                oppDir = Direction.UP;
+                break;
+            default:
+                oppDir = null;
         }
         
-        Item oppDoor;
-        final Direction oppPortal = Direction.values()[oppDir];
-        oppDoor = target.getPortals().getPortal(oppPortal).getDoor(target);
+        final Portal oppPortal = target.getPortals().getPortal(oppDir);
+        final Item oppDoor = oppPortal.getDoor(target);
         
         if(getUsageKey(5) == 3){
-            target.getPortals().getPortal(oppPortal).lock();
+            oppPortal.lock();
             if(oppDoor != null)
                 oppDoor.setUsageKey(5,3);
         }else{
-            target.getPortals().getPortal(oppPortal).unlock();
+            oppPortal.unlock();
             if(oppDoor != null)
                 oppDoor.setUsageKey(5,2);
         }
