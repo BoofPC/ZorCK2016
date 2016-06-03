@@ -22,8 +22,12 @@ public class Lock extends Verb {
             if (!noun.getName().equals("noItem")) {
                 List<Item> keys = noun.getKey();
                 if (keys != null) {
-                    boolean test = player.getInventory().stream().anyMatch(i -> i.getName()
-                            .equals(keys.get(0).getName()));
+                    boolean test = false;
+                    for (final Item item : player.getInventory()) {
+                        if (item.getName().equals(keys.get(0).getName())) {
+                            test = true;
+                        }
+                    }
                     if (noun.getUsageKey(5) == 2) {
                         if (test) {
                             noun.setUsageKey(5, 3);

@@ -27,17 +27,16 @@ public class Look extends Verb {
             desc.add(player.getCurrentArea().getDescription());
             desc.add("");
             desc.add("This Area contains:");
-            player.getCurrentArea().getItems().stream().map(Item::getName)
-                .forEachOrdered(desc::add);
+            for (final Item item : player.getCurrentArea().getItems()) {
+                desc.add(item.getName());
+            }
         }
         if (player.getCurrentArea().getDark() != true) {
-            for (String item : desc) {
-                System.out.println(item);
-            }
+            desc.forEach(System.out::println);
         } else if (player.getItem("Lantern") != null) {
             if (player.getItem("Lantern").getActive()) {
-                for (String item : desc) {
-                    System.out.println(item);
+                for (final String line : desc) {
+                    System.out.println(line);
                 }
             } else {
                 System.out.println("It's too dark to see!");

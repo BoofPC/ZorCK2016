@@ -22,8 +22,13 @@ public class Stab extends Verb {
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
                 Item sword = new Sword();
-                boolean test = player.getInventory().stream().anyMatch(i -> i.getName()
-                        .equals(sword.getName()));
+                boolean test = false;
+                final String swordName = sword.getName();
+                for (final Item item : player.getInventory()) {
+                    if (item.getName().equals(swordName)) {
+                        test = true;
+                    }
+                }
                 if (test) {
                     if (noun.getUsageKey(11) == 2 || noun.getUsageKey(11) == 3) {
                         noun.drop(area);
@@ -38,7 +43,7 @@ public class Stab extends Verb {
                         System.out.println("Now why would you do that?");
                     }
                 } else {
-                    System.out.println("You need the " + sword.getName()
+                    System.out.println("You need the " + swordName
                             + " to stab the " + noun.getName());
                 }
             } else {
