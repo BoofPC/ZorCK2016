@@ -297,7 +297,6 @@ public abstract class Item {
 
     public abstract void interact(Command command, Context context);
 
-
     public static final class Usage {
         private Visible visible = Visible.VISIBLE;
         private Take take = Take.UNTAKABLE;
@@ -309,7 +308,6 @@ public abstract class Item {
         private Active active = Active.STATIC;
         private Move move = Move.IMMOVABLE;
         private Wear wear = Wear.UNWEARABLE;
-        private Close close = Close.UNCLOSABLE;
         private Stab stab = Stab.UNSTABBABLE;
         private Press press = Press.UNPRESSABLE;
         private Climb climb = Climb.UNCLIMBABLE;
@@ -348,9 +346,6 @@ public abstract class Item {
         }
         public static enum Wear {
             UNWEARABLE, WEARABLE
-        }
-        public static enum Close {
-            UNCLOSABLE, OPEN, CLOSED
         }
         public static enum Stab {
             UNSTABBABLE, STABABBLE
@@ -442,13 +437,6 @@ public abstract class Item {
             this.wear = o;
             return this;
         }
-        public Close close() {
-            return this.close;
-        }
-        public Usage close(final Close o) {
-            this.close = o;
-            return this;
-        }
         public Stab stab() {
             return this.stab;
         }
@@ -484,11 +472,9 @@ public abstract class Item {
             this.breakable = o;
             return this;
         }
-        
         public Talk talk(){
             return this.talk;
         }
-        
         public Usage talk(final Talk o){
             this.talk = o;
             return this;
