@@ -10,7 +10,7 @@ public class Player {
     private Area currentArea;
     private int score;
     private boolean prayer;
-    private int death;
+    private Game.Status death;
     private boolean sit;
     
     private List<Item> inventory;
@@ -21,7 +21,7 @@ public class Player {
         this.maxHp = hp;
         this.name = name;
         this.prayer = false;
-        this.death = 0;
+        this.death = Game.Status.KEEP_PLAYING;
         this.sit = false;
         
         this.inventory = new ArrayList<>();
@@ -122,11 +122,11 @@ public class Player {
         return this.sit;
     }
     
-    public void setDeath(int death){
+    public void setDeath(Game.Status death){
         this.death = death;
     }
     
-    public int getDeath(){
+    public Game.Status getDeath(){
         return this.death;
     }
 }

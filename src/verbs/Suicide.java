@@ -13,7 +13,7 @@ public class Suicide extends Verb {
 
     public void run(Command command, Context context) {
         Player player = context.getPlayer();
-        player.setDeath(Game.SUICIDE);
+        player.setDeath(Game.Status.SUICIDE);
         System.out.println("Whelp, goodbye, I guess");
         System.out.println(player.getName() + " commited suicide");
     }

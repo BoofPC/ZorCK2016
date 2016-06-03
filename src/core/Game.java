@@ -10,12 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    //Gameplay statuses
-    public static final int KEEP_PLAYING = 0;
-    public static final int SELF_QUIT = 1;
-    public static final int WIN = 2;
-    public static final int DIE = 3;
-    public static final int SUICIDE = 4;
+    public static enum Status {
+        KEEP_PLAYING, SELF_QUIT, WIN, DIE, SUICIDE
+    }
     
     public List<Verb> verbList = new ArrayList<Verb>();
     
@@ -107,8 +104,8 @@ public class Game {
             String input = "";
             
             //Main Game Loop
-            int status = KEEP_PLAYING;
-            while(status == KEEP_PLAYING){
+            Status status = Status.KEEP_PLAYING;
+            while(status == Status.KEEP_PLAYING){
                 System.out.println("You are in room " 
                         + player.getCurrentArea().getTitle());
                 

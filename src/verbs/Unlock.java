@@ -1,7 +1,6 @@
 package verbs;
 
 import core.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Unlock extends Verb {
