@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Drop extends Verb {
 
     public Drop() {
         super("drop",
-                new String[]{"release", "throw out", "toss", "leave"},
+                Arrays.asList("release", "throw out", "toss", "leave"),
                 Verb.usage().noun());
     }
 

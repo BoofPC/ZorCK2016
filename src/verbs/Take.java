@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Take extends Verb {
 
     public Take() {
         super("take",
-                new String[]{"get", "obtain", "pick up", "pickup", "steal"},
+                Arrays.asList("get", "obtain", "pick up", "pickup", "steal"),
                 Verb.usage().noun());
     }
 

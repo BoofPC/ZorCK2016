@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Pray extends Verb {
 
     public Pray() {
         super("pray",
-                new String[]{"worship"},
+                Arrays.asList("worship"),
                 Verb.usage().bare().noun());
     }
 

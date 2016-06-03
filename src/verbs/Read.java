@@ -1,5 +1,7 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Read extends Verb {
@@ -7,7 +9,7 @@ public class Read extends Verb {
     public Read() {
         super("read",
                 //I dunno. What else would someone say?
-                new String[]{"peruse", "study"},
+                Arrays.asList("peruse", "study"),
                 Verb.usage().noun());
     }
 

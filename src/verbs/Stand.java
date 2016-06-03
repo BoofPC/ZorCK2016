@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Stand extends Verb {
 
     public Stand() {
         super("stand",
-                new String[]{"rise"},
+                Arrays.asList("rise"),
                 Verb.usage().bare());
     }
 

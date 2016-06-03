@@ -1,5 +1,7 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 import core.World.Direction;
 
@@ -7,7 +9,7 @@ public class Climb extends Verb {
 
     public Climb() {
         super("climb",
-                new String[]{"scale"},
+                Arrays.asList("scale"),
                 Verb.usage().bare().noun());
     }
 

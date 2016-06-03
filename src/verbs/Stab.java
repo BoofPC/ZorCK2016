@@ -1,5 +1,7 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 import items.*;
 
@@ -7,7 +9,7 @@ public class Stab extends Verb {
 
     public Stab() {
         super("stab",
-                new String[]{"slice", "shank", "cut", "kill"},
+                Arrays.asList("slice", "shank", "cut", "kill"),
                 Verb.usage().noun());
     }
 

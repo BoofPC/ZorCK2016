@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Break extends Verb {
 
     public Break() {
         super("break",
-                new String[]{"shatter", "destroy"},
+                Arrays.asList("shatter", "destroy"),
                 Verb.usage().noun());
     }
 

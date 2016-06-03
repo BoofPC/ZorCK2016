@@ -1,6 +1,7 @@
 package verbs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import core.*;
@@ -9,7 +10,7 @@ public class Look extends Verb {
 
     public Look() {
         super("look",
-                new String[]{"l"},
+                Arrays.asList("l"),
                 Verb.usage().bare().direction());
     }
 

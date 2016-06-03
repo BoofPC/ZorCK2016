@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Score extends Verb {
 
     public Score() {
         super("score",
-                new String[]{"progress", "ranking", "rank"},
+                Arrays.asList("progress", "ranking", "rank"),
                 Verb.usage().bare());
     }
 

@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Eat extends Verb {
 
     public Eat() {
         super("eat",
-                new String[]{"consume", "devour", "ingest"},
+                Arrays.asList("consume", "devour", "ingest"),
                 Verb.usage().noun());
     }
 

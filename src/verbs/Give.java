@@ -1,5 +1,7 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 /**
@@ -13,7 +15,7 @@ public class Give extends Verb {
 
     public Give() {
         super("give",
-                new String[]{"gift"},
+                Arrays.asList("gift"),
                 Verb.usage().noun());
     }
 

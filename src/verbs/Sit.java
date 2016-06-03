@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Sit extends Verb {
 
     public Sit() {
         super("sit",
-                new String[]{"lie down", "prone", "criss-cross applesauce"},
+                Arrays.asList("lie down", "prone", "criss-cross applesauce"),
                 Verb.usage().bare());
     }
 

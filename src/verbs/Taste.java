@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Taste extends Verb {
 
     public Taste() {
         super("taste",
-                new String[]{"lick", "sample"},
+                Arrays.asList("lick", "sample"),
                 Verb.usage().bare().noun());
     }
 

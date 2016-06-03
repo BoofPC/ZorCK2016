@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Hit extends Verb {
 
     public Hit() {
         super("hit",
-                new String[]{"punch", "kick", "headbutt"},
+                Arrays.asList("punch", "kick", "headbutt"),
                 Verb.usage().noun());
     }
 

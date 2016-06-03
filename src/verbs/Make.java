@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Make extends Verb {
 
     public Make() {
         super("make",
-                new String[]{"create", "build", "construct"},
+                Arrays.asList("create", "build", "construct"),
                 Verb.usage().noun());
     }
 

@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Put extends Verb {
 
     public Put() {
         super("put",
-                new String[]{"place", "set"},
+                Arrays.asList("place", "set"),
                 Verb.usage().noun());
     }
 

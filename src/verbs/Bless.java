@@ -3,13 +3,14 @@ package verbs;
 import core.*;
 import items.DuckOfDoom;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Bless extends Verb {
 
     public Bless() {
         super("bless",
-                new String[]{"God bless",
+                Arrays.asList("God bless",
                     "b l e s s",
                     "55318",
                     "BLESS",
@@ -19,7 +20,7 @@ public class Bless extends Verb {
                     "81ESS",
                     "81E55",
                     "bless"
-                    },
+                    ),
                 Verb.usage().bare().noun());
     }
 

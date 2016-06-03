@@ -1,13 +1,15 @@
 package verbs;
 
 import core.*;
+
+import java.util.Arrays;
 import java.util.Random;
 
 public class Curse extends Verb {
 
     // https://en.wiktionary.org/w/index.php?title=Category:English_vulgarities
     public Curse() {
-        super("damn", new String[] {"anal", "anus", "arse", "ass", "asshat", "asshole", "ballsack",
+        super("damn", Arrays.asList("anal", "anus", "arse", "ass", "asshat", "asshole", "ballsack",
                 "balls", "bastard", "bitch", "boi", "blowjob", "blow job", "bollock", "bollocks",
                 "boner", "boob", "bungus", "bum", "butt", "butthead", "buttplug", "clitoris",
                 "clusterfuck", "cock", "cocksucker", "coon", "cunt", "cum", "dafuq", "dick",
@@ -16,7 +18,7 @@ public class Curse extends Verb {
                 "goddamn", "god damn", "hell", "purgatory", "homo", "jizz", "labia", "motherfucker",
                 "muff", "nigger", "nigga", "penis", "piss", "porn", "poop", "prick", "pube",
                 "pussy", "queef", "queer", "scrotum", "sex", "shit", "shitass", "slut", "smegma",
-                "spunk", "tit", "tosser", "twat", "vagina", "wank", "whore", "whoreson"},
+                "spunk", "tit", "tosser", "twat", "vagina", "wank", "whore", "whoreson"),
                 Verb.usage().bare().noun());
     }
 

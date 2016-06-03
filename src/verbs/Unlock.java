@@ -1,13 +1,15 @@
 package verbs;
 
 import core.*;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class Unlock extends Verb {
 
     public Unlock() {
         super("unlock",
-                new String[]{},
+                Arrays.asList(),
                 Verb.usage().noun());
     }
 

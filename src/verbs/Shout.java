@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Shout extends Verb {
 
     public Shout() {
         super("shout",
-                new String[]{"scream", "yell"},
+                Arrays.asList("scream", "yell"),
                 Verb.usage().bare().noun());
     }
 

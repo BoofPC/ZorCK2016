@@ -1,14 +1,15 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Close extends Verb {
 
     public Close() {
         super("close",
-                new String[]{"shut"},
+                Arrays.asList("shut"),
                 Verb.usage().noun());
-
     }
 
     @Override

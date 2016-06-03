@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class TurnOn extends Verb {
 
     public TurnOn() {
         super("turn on",
-                new String[]{"activate"},
+                Arrays.asList("activate"),
                 Verb.usage().noun());
     }
 

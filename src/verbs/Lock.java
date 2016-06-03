@@ -1,13 +1,15 @@
 package verbs;
 
 import core.*;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class Lock extends Verb {
 
     public Lock() {
         super("lock",
-                new String[]{},
+                Arrays.asList(),
                 Verb.usage().noun());
     }
 

@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Diagnostic extends Verb {
 
     public Diagnostic() {
         super("diagnostic",
-                new String[]{"status", "health"},
+                Arrays.asList("status", "health"),
                 Verb.usage().bare());
     }
 

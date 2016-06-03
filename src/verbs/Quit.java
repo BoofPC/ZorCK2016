@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Quit extends Verb {
 
     public Quit() {
         super("quit",
-                new String[]{"q", "quit game"},
+                Arrays.asList("q", "quit game"),
                 Verb.usage().bare());
     }
 

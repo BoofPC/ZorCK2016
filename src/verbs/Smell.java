@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Smell extends Verb {
 
     public Smell() {
         super("smell",
-                new String[]{"sniff"},
+                Arrays.asList("sniff"),
                 Verb.usage().bare().noun());
 
     }

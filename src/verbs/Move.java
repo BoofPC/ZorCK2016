@@ -1,5 +1,7 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 import core.World.Direction;
 
@@ -7,7 +9,7 @@ public class Move extends Verb {
 
     public Move() {
         super("move",
-                new String[]{"go", "travel", "walk"},
+                Arrays.asList("go", "travel", "walk"),
                 Verb.usage().direction());
     }
 

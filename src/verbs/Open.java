@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Open extends Verb {
 
     public Open() {
         super("open",
-                new String[]{"unseal"},
+                Arrays.asList("unseal"),
                 Verb.usage().noun());
     }
 

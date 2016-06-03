@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Run extends Verb {
 
     public Run() {
         super("run",
-                new String[]{"sprint", "jog", "gallop"},
+                Arrays.asList("sprint", "jog", "gallop"),
                 Verb.usage().bare().direction());
     }
 

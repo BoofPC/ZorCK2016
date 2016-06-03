@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Sell extends Verb {
 
     public Sell() {
         super("sell",
-                new String[]{"barter", "bargain"},
+                Arrays.asList("barter", "bargain"),
                 Verb.usage().noun());
     }
 

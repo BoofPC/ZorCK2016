@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Examine extends Verb {
 
     public Examine() {
         super("examine",
-                new String[]{"look at", "scan", "study", "observe"},
+                Arrays.asList("look at", "scan", "study", "observe"),
                 Verb.usage().noun());
     }
 

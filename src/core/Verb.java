@@ -1,6 +1,5 @@
 package core;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;
 
@@ -19,9 +18,9 @@ public abstract class Verb {
      */
     public Usage usage;
 
-    public Verb(final String title, final String[] synonyms, final Usage usage){
+    public Verb(final String title, final List<String> synonyms, final Usage usage){
         this.title = title;
-        this.synonyms = Arrays.asList(synonyms);
+        this.synonyms = synonyms;
         this.usage = usage;
     }
 
@@ -40,7 +39,7 @@ public abstract class Verb {
 
     public abstract void run(Command command, Context construct);
 
-    public static Verb fromLambda(final String title, final String[] synonyms, final Usage usage, final BiConsumer<Command, Context> f) {
+    public static Verb fromLambda(final String title, final List<String> synonyms, final Usage usage, final BiConsumer<Command, Context> f) {
         return new Verb(title, synonyms, usage) {
             @Override
             public void run(final Command command, final Context construct) {

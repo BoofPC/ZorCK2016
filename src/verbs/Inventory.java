@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Inventory extends Verb {
 
     public Inventory() {
         super("inventory",
-                new String[]{"i"},
+                Arrays.asList("i"),
                 Verb.usage().bare());
     }
 

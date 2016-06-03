@@ -1,12 +1,14 @@
 package verbs;
 
+import java.util.Arrays;
+
 import core.*;
 
 public class Credits extends Verb {
 
     public Credits() {
         super("credits",
-                new String[]{"c"},
+                Arrays.asList("c"),
                 Verb.usage().bare());
     }
 
