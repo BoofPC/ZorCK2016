@@ -18,7 +18,7 @@ public class Eat extends Verb {
 
         final Player player = construct.getPlayer();
 
-        if (noun.usage.food() == Item.Usage.Food.EDIBLE) {
+        if (noun.usage().food() == Item.Usage.Food.EDIBLE) {
             if (player.getCurrentArea().hasMatching(noun)) {
                 player.getCurrentArea().removeItem(noun);
             } else if (player.hasMatching(noun)) {

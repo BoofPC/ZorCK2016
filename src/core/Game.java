@@ -16,7 +16,7 @@ public class Game {
         KEEP_PLAYING, SELF_QUIT, WIN, DIE, SUICIDE
     }
 
-    public List<Verb> verbList = new ArrayList<Verb>();
+    private final List<Verb> verbList = new ArrayList<Verb>();
 
     public static void main(final String[] args){
         //self explanatory initialization

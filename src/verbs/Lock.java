@@ -31,9 +31,9 @@ public class Lock extends Verb {
                             test = true;
                         }
                     }
-                    if (noun.usage.lock() == Item.Usage.Lock.UNLOCKED) {
+                    if (noun.usage().lock() == Item.Usage.Lock.UNLOCKED) {
                         if (test) {
-                            noun.usage.lock(Item.Usage.Lock.LOCKED);
+                            noun.usage().lock(Item.Usage.Lock.LOCKED);
                             System.out.println("You locked the " + noun.getName());
                             if (noun.getPortal() != null) {
                                 noun.getPortal().lock();
@@ -44,7 +44,7 @@ public class Lock extends Verb {
                         } else {
                             System.out.println("You need a key for that");
                         }
-                    } else if (noun.usage.lock() == Item.Usage.Lock.LOCKED) {
+                    } else if (noun.usage().lock() == Item.Usage.Lock.LOCKED) {
                         System.out.println("The " + noun.getName() + " is already locked!");
                     }
                 } else {

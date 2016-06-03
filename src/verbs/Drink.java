@@ -22,9 +22,9 @@ public class Drink extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                switch (noun.usage.drink()) {
+                switch (noun.usage().drink()) {
                     case DRINKABLE:
-                        noun.usage.drink(Item.Usage.Drink.EMPTY);
+                        noun.usage().drink(Item.Usage.Drink.EMPTY);
                         System.out.println("You drank the " + noun.getName());
                         break;
                     case CLOSED:

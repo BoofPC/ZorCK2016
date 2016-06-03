@@ -28,7 +28,7 @@ public class Give extends Verb {
         if (player.hasMatching(noun)) {
             Item receiver = null;
             for (final Item item : player.getCurrentArea().getItems()) {
-                if (item.usage.recieve() == Item.Usage.Recieve.RECIEVE) {
+                if (item.usage().recieve() == Item.Usage.Recieve.RECIEVE) {
                     receiver = item;
                     break;
                 }

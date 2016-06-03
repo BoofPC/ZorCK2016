@@ -23,15 +23,15 @@ public class Take extends Verb {
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
                 if (player.getCurrentArea().hasMatching(noun)) {
-                    if (noun.usage.take() == Item.Usage.Take.TAKABLE) {
+                    if (noun.usage().take() == Item.Usage.Take.TAKABLE) {
                         player.getCurrentArea().removeItem(noun);
                         player.addItem(noun);
                         System.out.println(player.getName() + " took the "
                                 + noun.getName());
-                    } else if (noun.usage.take() == Item.Usage.Take.TOO_HEAVY) {
+                    } else if (noun.usage().take() == Item.Usage.Take.TOO_HEAVY) {
                         System.out.println("The " + noun.getName()
                                 + " is too heavy for that");
-                    } else if (noun.usage.take() == Item.Usage.Take.BOLTED_DOWN) {
+                    } else if (noun.usage().take() == Item.Usage.Take.BOLTED_DOWN) {
                         System.out.println("The " + noun.getName() + " is bolted down");
                     } else {
                         System.out.println("You can't take the " + noun.getName());

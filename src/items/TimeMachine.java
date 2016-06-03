@@ -7,7 +7,7 @@ import java.util.List;
 public class TimeMachine extends Item {
     public TimeMachine(){
         super();
-        this.usage.active(Usage.Active.OFF).take(Usage.Take.TOO_HEAVY)
+        this.usage().active(Usage.Active.OFF).take(Usage.Take.TOO_HEAVY)
             .recieve(Usage.Recieve.RECIEVE);
         //We need to have different texts for different
         //if the user has different items needed for the

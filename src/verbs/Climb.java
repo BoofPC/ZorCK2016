@@ -24,7 +24,7 @@ public class Climb extends Verb {
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
                 final Portal upPortal = player.getCurrentArea().getPortals().up();
-                if (noun.usage.climb() == Item.Usage.Climb.CLIMABLE && upPortal != null) {
+                if (noun.usage().climb() == Item.Usage.Climb.CLIMABLE && upPortal != null) {
                     if (!upPortal.isLocked()) {
                         construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, Direction.UP), construct);
                     } else {

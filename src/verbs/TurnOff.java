@@ -22,10 +22,10 @@ public class TurnOff extends Verb {
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                if (noun.usage.active() == Item.Usage.Active.ON) {
-                    noun.usage.active(Item.Usage.Active.OFF);
+                if (noun.usage().active() == Item.Usage.Active.ON) {
+                    noun.usage().active(Item.Usage.Active.OFF);
                     System.out.println("You turned off the " + noun.getName());
-                } else if (noun.usage.active() == Item.Usage.Active.OFF) {
+                } else if (noun.usage().active() == Item.Usage.Active.OFF) {
                     System.out.println(noun.getName() + " is already off");
                 } else {
                     System.out.println("I don't see how you expect to do that");

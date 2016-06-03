@@ -7,9 +7,9 @@ import core.World.Direction;
 
 public abstract class Item {
     private String name;
-    public String description;
+    private String description;
 
-    public Usage usage = Item.usage();
+    private final Usage usage = new Usage();
     // TODO Update description
     /*
      * update this number as needed
@@ -96,21 +96,23 @@ public abstract class Item {
      *               2: not real
      */
 
-    public String taste;
-    public Item inside;
+    private String taste;
+    private Item inside;
     // if item is read
-    public String text;
-    // if item can be turned on or pressed
-    public boolean active;
-    public String smell;
-    public String sound;
-    public List<Item> received;
-    public List<String> keys;
-    public Portal portal;
-    public List<String> synonyms;
+    private String text;
+    private String smell;
+    private String sound;
+    private List<Item> received;
+    private List<String> keys;
+    private Portal portal;
+    private final List<String> synonyms;
 
     public Item() {
         this.synonyms = new ArrayList<String>();
+    }
+
+    public Usage usage() {
+        return this.usage;
     }
 
     public String getName() {
@@ -154,14 +156,14 @@ public abstract class Item {
     }
 
     public boolean getActive() {
-        return this.usage.active() == Usage.Active.ON;
+        return this.usage().active() == Usage.Active.ON;
     }
 
     public void setActive(final boolean active) {
         if (active) {
-            this.usage.active(Usage.Active.ON);
+            this.usage().active(Usage.Active.ON);
         } else {
-            this.usage.active(Usage.Active.OFF);
+            this.usage().active(Usage.Active.OFF);
         }
     }
 
@@ -266,24 +268,20 @@ public abstract class Item {
         final Portal oppPortal = target.getPortals().getPortal(oppDir);
         final Item oppDoor = oppPortal.getDoor(target);
 
-        if (this.usage.lock() == Usage.Lock.LOCKED) {
+        if (this.usage().lock() == Usage.Lock.LOCKED) {
             oppPortal.lock();
             if (oppDoor != null) {
-                oppDoor.usage.lock(Usage.Lock.LOCKED);
+                oppDoor.usage().lock(Usage.Lock.LOCKED);
             }
         } else {
             oppPortal.unlock();
             if (oppDoor != null) {
-                oppDoor.usage.lock(Usage.Lock.UNLOCKED);
+                oppDoor.usage().lock(Usage.Lock.UNLOCKED);
             }
         }
     }
 
     public abstract void interact(Command command, Context context);
-
-    public static Usage usage() {
-        return null;
-    }
 
     public static final class Usage {
         private Visible visible;

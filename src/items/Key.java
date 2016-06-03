@@ -6,7 +6,7 @@ public class Key extends Item{
 
     public Key(final String name, final String description){
         super();
-        this.usage.take(Usage.Take.TAKABLE);
+        this.usage().take(Usage.Take.TAKABLE);
         this.setName(name);
         if(!name.equals("key")) {
             this.addSynonym(name.toLowerCase());
@@ -17,7 +17,7 @@ public class Key extends Item{
 
     public Key(){
         super();
-        this.usage.lock(Usage.Lock.LOCKED);
+        this.usage().lock(Usage.Lock.LOCKED);
         this.setName("Key");
         this.addSynonym("key");
         this.setDescription("A small, yellow key");

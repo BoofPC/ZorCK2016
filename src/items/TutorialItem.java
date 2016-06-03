@@ -14,7 +14,7 @@ public class TutorialItem extends Item{
 
     public TutorialItem(){
         super();
-        this.usage
+        this.usage()
             .take(Usage.Take.TAKABLE) // This key means the player can pick out the item
             .food(Usage.Food.EDIBLE); // This key means the player can eat the item
         // TODO Update usage description

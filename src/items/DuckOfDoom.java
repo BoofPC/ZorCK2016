@@ -5,7 +5,7 @@ import core.*;
 public class DuckOfDoom extends Item{
     public DuckOfDoom(){
         super();
-        this.usage.take(Usage.Take.TAKABLE);
+        this.usage().take(Usage.Take.TAKABLE);
         this.setName("Duck");
         this.addSynonym("duck");
         this.addSynonym("duckofdoom");
