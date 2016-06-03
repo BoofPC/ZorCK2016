@@ -7,7 +7,7 @@ public class Listen extends Verb {
     public Listen() {
         super("listen",
                 new String[]{"hear", "pay attention", "listen to"},
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
     }
 
     public void run(Command command, Context construct) {

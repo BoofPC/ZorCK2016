@@ -9,7 +9,7 @@ public class Hello extends Verb {
         super("hello",
                 new String[]{"hi", "good day", "good morning", "good afternoon",
                     "good evening"},
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
 
     }
 

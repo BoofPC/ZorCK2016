@@ -7,7 +7,7 @@ public class Take extends Verb {
     public Take() {
         super("take",
                 new String[]{"get", "obtain", "pick up", "pickup", "steal"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

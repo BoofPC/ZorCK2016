@@ -9,7 +9,7 @@ public class Light extends Verb {
     public Light() {
         super("light",
                 new String[]{"ignite", "illuminate"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

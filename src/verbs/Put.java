@@ -7,7 +7,7 @@ public class Put extends Verb {
     public Put() {
         super("put",
                 new String[]{"place", "set"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

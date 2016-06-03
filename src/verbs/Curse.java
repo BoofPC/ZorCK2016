@@ -70,7 +70,7 @@ public class Curse extends Verb {
                     "vagina",
                     "wank",
                     "whore"},
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
     }
 
     public void run(Command command, Context construct) {

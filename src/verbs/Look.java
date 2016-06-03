@@ -10,7 +10,7 @@ public class Look extends Verb {
     public Look() {
         super("look",
                 new String[]{"l"},
-                new boolean[]{true, false, true});
+                Verb.usage().bare().direction());
     }
 
     public void run(Command command, Context construct) {

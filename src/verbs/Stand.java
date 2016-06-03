@@ -7,7 +7,7 @@ public class Stand extends Verb {
     public Stand() {
         super("stand",
                 new String[]{"rise"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
 
     public void run(Command command, Context construct) {

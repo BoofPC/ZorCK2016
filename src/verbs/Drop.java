@@ -7,7 +7,7 @@ public class Drop extends Verb {
     public Drop() {
         super("drop",
                 new String[]{"release", "throw out", "toss", "leave"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

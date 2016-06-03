@@ -7,7 +7,7 @@ public class Break extends Verb {
     public Break() {
         super("break",
                 new String[]{"shatter", "destroy"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

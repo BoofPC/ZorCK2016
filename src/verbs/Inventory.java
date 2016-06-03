@@ -7,7 +7,7 @@ public class Inventory extends Verb {
     public Inventory() {
         super("inventory",
                 new String[]{"i"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
 
     public void run(Command command, Context construct) {

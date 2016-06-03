@@ -7,7 +7,7 @@ public class Poke extends Verb {
     public Poke() {
         super("poke",
                 new String[]{"touch", "prod", "tap", "feel"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

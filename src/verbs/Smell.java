@@ -7,7 +7,7 @@ public class Smell extends Verb {
     public Smell() {
         super("smell",
                 new String[]{"sniff"},
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
 
     }
 

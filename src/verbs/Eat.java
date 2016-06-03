@@ -7,7 +7,7 @@ public class Eat extends Verb {
     public Eat() {
         super("eat",
                 new String[]{"consume", "devour", "ingest"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

@@ -7,7 +7,7 @@ public class Diagnostic extends Verb {
     public Diagnostic() {
         super("diagnostic",
                 new String[]{"status", "health"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
 
     public void run(Command command, Context construct) {

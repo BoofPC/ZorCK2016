@@ -7,7 +7,7 @@ public class Credits extends Verb {
     public Credits() {
         super("credits",
                 new String[]{"c"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
     
     public static void printlnp(String s) {

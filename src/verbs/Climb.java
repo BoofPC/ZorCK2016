@@ -8,7 +8,7 @@ public class Climb extends Verb {
     public Climb() {
         super("climb",
                 new String[]{"scale"},
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
     }
 
     public void run(Command command, Context construct) {

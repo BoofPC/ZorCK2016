@@ -20,7 +20,7 @@ public class Bless extends Verb {
                     "81E55",
                     "bless"
                     },
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
     }
 
     public void run(Command command, Context context) {

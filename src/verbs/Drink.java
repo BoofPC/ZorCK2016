@@ -7,7 +7,7 @@ public class Drink extends Verb {
     public Drink() {
         super("drink",
                 new String[]{"sip", "quaff"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

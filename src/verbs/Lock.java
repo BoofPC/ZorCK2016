@@ -8,7 +8,7 @@ public class Lock extends Verb {
     public Lock() {
         super("lock",
                 new String[]{},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

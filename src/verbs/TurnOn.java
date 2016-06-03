@@ -7,7 +7,7 @@ public class TurnOn extends Verb {
     public TurnOn() {
         super("turn on",
                 new String[]{"activate"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

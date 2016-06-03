@@ -7,7 +7,7 @@ public class Make extends Verb {
     public Make() {
         super("make",
                 new String[]{"create", "build", "construct"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

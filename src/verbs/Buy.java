@@ -7,7 +7,7 @@ public class Buy extends Verb {
     public Buy() {
         super("buy",
                 new String[]{"purchase"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

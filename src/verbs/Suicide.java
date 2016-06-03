@@ -8,7 +8,7 @@ public class Suicide extends Verb {
     public Suicide() {
         super("suicide",
                 new String[]{"kill self", "kill yourself","orange monkey eagle", "commit suicide", "stab self"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
 
     public void run(Command command, Context context) {

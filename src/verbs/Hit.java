@@ -7,7 +7,7 @@ public class Hit extends Verb {
     public Hit() {
         super("hit",
                 new String[]{"punch", "kick", "headbutt"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

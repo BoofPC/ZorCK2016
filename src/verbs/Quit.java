@@ -7,7 +7,7 @@ public class Quit extends Verb {
     public Quit() {
         super("quit",
                 new String[]{"q", "quit game"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
 
     public void run(Command command, Context context) {

@@ -7,7 +7,7 @@ public class Examine extends Verb {
     public Examine() {
         super("examine",
                 new String[]{"look at", "scan", "study", "observe"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

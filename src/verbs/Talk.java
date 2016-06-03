@@ -11,7 +11,7 @@ public class Talk extends Verb {
                 //The purpose of this verb is to enable the player to interact
                 //with items. The fact that it only works with a noun is what
                 //distinguishes it from Shout.
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

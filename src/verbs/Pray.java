@@ -7,7 +7,7 @@ public class Pray extends Verb {
     public Pray() {
         super("pray",
                 new String[]{"worship"},
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
     }
 
     public void run(Command command, Context construct) {

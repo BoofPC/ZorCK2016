@@ -7,7 +7,7 @@ public class Sit extends Verb {
     public Sit() {
         super("sit",
                 new String[]{"lie down", "prone", "criss-cross applesauce"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
 
     public void run(Command command, Context construct) {

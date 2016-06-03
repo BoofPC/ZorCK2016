@@ -7,7 +7,7 @@ public class Close extends Verb {
     public Close() {
         super("close",
                 new String[]{"shut"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
 
     }
 

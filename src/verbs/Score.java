@@ -7,7 +7,7 @@ public class Score extends Verb {
     public Score() {
         super("score",
                 new String[]{"progress", "ranking", "rank"},
-                new boolean[]{true, false, false});
+                Verb.usage().bare());
     }
 
     public void run(Command command, Context construct) {

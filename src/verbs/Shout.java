@@ -7,7 +7,7 @@ public class Shout extends Verb {
     public Shout() {
         super("shout",
                 new String[]{"scream", "yell"},
-                new boolean[]{true, true, false});
+                Verb.usage().bare().noun());
     }
 
     public void run(Command command, Context construct) {

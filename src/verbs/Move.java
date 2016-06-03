@@ -8,7 +8,7 @@ public class Move extends Verb {
     public Move() {
         super("move",
                 new String[]{"go", "travel", "walk"},
-                new boolean[]{false, false, true});
+                Verb.usage().direction());
     }
 
     public void run(Command command, Context construct) {

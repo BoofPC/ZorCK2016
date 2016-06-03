@@ -14,7 +14,7 @@ public class Give extends Verb {
     public Give() {
         super("give",
                 new String[]{"gift"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {

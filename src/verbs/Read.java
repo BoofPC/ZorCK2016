@@ -8,7 +8,7 @@ public class Read extends Verb {
         super("read",
                 //I dunno. What else would someone say?
                 new String[]{"peruse", "study"},
-                new boolean[]{false, true, false});
+                Verb.usage().noun());
     }
 
     public void run(Command command, Context construct) {
