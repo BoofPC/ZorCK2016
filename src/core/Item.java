@@ -491,7 +491,7 @@ public abstract class Item {
             return this.talk;
         }
         
-        public Usage breakable(final Talk o){
+        public Usage talk(final Talk o){
             this.talk = o;
             return this;
         }
