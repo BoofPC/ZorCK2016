@@ -27,7 +27,6 @@ public class Game {
 
         //Register all verbs in the verbList
         game.verbList.add(new Break());
-        game.verbList.add(new Buy());
         game.verbList.add(new Choose());
         game.verbList.add(new Climb());
         game.verbList.add(new Close());
@@ -56,7 +55,6 @@ public class Game {
         game.verbList.add(new Read());
         game.verbList.add(new Run());
         game.verbList.add(new Score());
-        game.verbList.add(new Sell());
         game.verbList.add(new Shout());
         game.verbList.add(new Sit());
         game.verbList.add(new Smell());
@@ -69,7 +67,6 @@ public class Game {
         game.verbList.add(new TurnOff());
         game.verbList.add(new TurnOn());
         game.verbList.add(new Unlock());
-        game.verbList.add(new Write());
 
         //Add all Areas to the new world
         /*world.addArea("Test01",new Test01(world));
