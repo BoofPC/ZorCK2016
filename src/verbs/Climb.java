@@ -11,11 +11,12 @@ public class Climb extends Verb {
                 Verb.usage().bare().noun());
     }
 
-    public void run(Command command, Context construct) {
+    @Override
+    public void run(final Command command, final Context construct) {
         command.getDirection();
-        Item noun = command.getNoun();
+        final Item noun = command.getNoun();
 
-        Player player = construct.getPlayer();
+        final Player player = construct.getPlayer();
         construct.getWorld();
 
         if (noun != null) {

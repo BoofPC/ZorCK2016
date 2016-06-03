@@ -3,23 +3,22 @@ package areas;
 import core.*;
 import items.*;
 
-
 public class Hallway06 extends Area{
 
-       public Hallway06(World containingWorld){
+       public Hallway06(final World containingWorld){
             super(containingWorld);
 
-            getPortals()
-                .north(new Portal(false,"Hallway5"))
-                .south(new Portal(false, "Hallway8"))
+            this.getPortals()
+                .north(new Portal(false,"Hallway05"))
+                .south(new Portal(false, "Hallway08"))
                 .west(new Portal(false, "WatchmansRoom"));
-            setTitle("Hallway");
-            setInitialDescription("----------");
-            setDescription("-----");
+            this.setTitle("Hallway");
+            this.setInitialDescription("----------");
+            this.setDescription("-----");
 
-            addItem(new Door(true,"Western Door", null,getPortals().west()));
-            
-            
+            this.addItem(new Door(true,"Western Door", null,this.getPortals().west()));
+
+
             //Add these if you want
             //addItem(ITEM);
             //setTaste(STRING);
@@ -27,18 +26,20 @@ public class Hallway06 extends Area{
             //setSound(STRING);
             //setDark(BOOLEAN); //if the player needs the lantern to see
 
-            
+
        }
-       
+
         @Override
-        public void interact(Command command, Context context){
+        public void interact(final Command command, final Context context){
             Item noun;
             noun = command.getNoun();
 
-            if(command.getNoun() !=  null)
+            if(command.getNoun() !=  null) {
                 noun.interact(command,context);
-            if(!context.getSkipGeneral())
+            }
+            if(!context.getSkipGeneral()) {
                 command.getVerb().run(command, context);
+            }
         }
-       
+
 }

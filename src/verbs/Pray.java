@@ -10,11 +10,12 @@ public class Pray extends Verb {
                 Verb.usage().bare().noun());
     }
 
-    public void run(Command command, Context construct) {
+    @Override
+    public void run(final Command command, final Context construct) {
         command.getDirection();
         command.getNoun();
 
-        Player player = construct.getPlayer();
+        final Player player = construct.getPlayer();
         construct.getWorld();
 
         player.setPrayer(true);

@@ -11,18 +11,18 @@ public class World {
         NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST, UP, DOWN
     }
 
-    private HashMap<String, Area> map;
+    private final HashMap<String, Area> map;
 
 
     public World() {
         this.map = new HashMap<>();
     }
 
-    public void addArea(String areaName, Area newArea) {
+    public void addArea(final String areaName, final Area newArea) {
         this.map.put(areaName, newArea);
     }
 
-    public Area getArea(String name) {
+    public Area getArea(final String name) {
         return this.map.get(name);
     }
 }

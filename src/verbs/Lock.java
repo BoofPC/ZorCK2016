@@ -11,16 +11,17 @@ public class Lock extends Verb {
                 Verb.usage().noun());
     }
 
-    public void run(Command command, Context construct) {
+    @Override
+    public void run(final Command command, final Context construct) {
         command.getDirection();
-        Item noun = command.getNoun();
+        final Item noun = command.getNoun();
 
-        Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        final Player player = construct.getPlayer();
+        final World world = construct.getWorld();
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                List<String> keys = noun.getKeys();
+                final List<String> keys = noun.getKeys();
                 if (keys != null) {
                     boolean test = false;
                     for (final Item item : player.getInventory()) {

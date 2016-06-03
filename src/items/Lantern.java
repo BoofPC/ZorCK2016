@@ -3,19 +3,20 @@ package items;
 import core.*;
 
 public class Lantern extends Item{
-    
+
     public Lantern(){
         super();
-        setUsageKey(Item.TAKE,1);
-        setUsageKey(Item.TURN_ON,2);
-        setName("Lantern");
-        addSynonym("lantern");
-        addSynonym("light");
-        addSynonym("flashlight");
-        
+        this.setUsageKey(Item.TAKE,1);
+        this.setUsageKey(Item.TURN_ON,2);
+        this.setName("Lantern");
+        this.addSynonym("lantern");
+        this.addSynonym("light");
+        this.addSynonym("flashlight");
+
     }
-    
-    public void interact(Command command, Context context){
-        
+
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
 }

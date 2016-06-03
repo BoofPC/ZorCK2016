@@ -9,14 +9,15 @@ import core.*;
  */
 
 public class NoItem extends Item{
-    
+
     public NoItem(){
         super();
-        setName("noItem");
-        setUsageKey(0,2);
+        this.setName("noItem");
+        this.setUsageKey(0,2);
     }
-    
-    public void interact(Command command, Context context){
-        
+
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
 }

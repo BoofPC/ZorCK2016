@@ -10,10 +10,11 @@ public class Stand extends Verb {
                 Verb.usage().bare());
     }
 
-    public void run(Command command, Context construct) {
+    @Override
+    public void run(final Command command, final Context construct) {
         command.getDirection();
 
-        Player player = construct.getPlayer();
+        final Player player = construct.getPlayer();
         construct.getWorld();
 
         player.setSit(false);

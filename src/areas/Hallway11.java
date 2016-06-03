@@ -6,20 +6,20 @@ import items.*;
 
 public class Hallway11 extends Area{
 
-       public Hallway11(World containingWorld){
+       public Hallway11(final World containingWorld){
             super(containingWorld);
 
-            getPortals()
+            this.getPortals()
                 .south(new Portal(false, "BroadcastingRoom"))
                 .west(new Portal(false, "Hallway12"))
                 .east(new Portal(false, "Hallwa10"));
-            setTitle("Hallway");
-            setInitialDescription("----------");
-            setDescription("-----");
+            this.setTitle("Hallway");
+            this.setInitialDescription("----------");
+            this.setDescription("-----");
 
-            addItem(new Door(true,"Southern Door", null,getPortals().south()));
-            
-            
+            this.addItem(new Door(true,"Southern Door", null,this.getPortals().south()));
+
+
             //Add these if you want
             //addItem(ITEM);
             //setTaste(STRING);
@@ -27,18 +27,20 @@ public class Hallway11 extends Area{
             //setSound(STRING);
             //setDark(BOOLEAN); //if the player needs the lantern to see
 
-            
+
        }
-       
+
         @Override
-        public void interact(Command command, Context context){
+        public void interact(final Command command, final Context context){
             Item noun;
             noun = command.getNoun();
 
-            if(command.getNoun() !=  null)
+            if(command.getNoun() !=  null) {
                 noun.interact(command,context);
-            if(!context.getSkipGeneral())
+            }
+            if(!context.getSkipGeneral()) {
                 command.getVerb().run(command, context);
+            }
         }
-       
+
 }

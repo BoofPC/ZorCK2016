@@ -20,9 +20,10 @@ public class Curse extends Verb {
                 Verb.usage().bare().noun());
     }
 
-    public void run(Command command, Context construct) {
-        Random rand = new Random();
-        int n = rand.nextInt(4);
+    @Override
+    public void run(final Command command, final Context construct) {
+        final Random rand = new Random();
+        final int n = rand.nextInt(4);
         if (n == 0) {
             System.out.println("Tough shit, asshole");
         } else if (n == 1) {

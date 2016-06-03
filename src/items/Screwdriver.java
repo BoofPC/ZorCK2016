@@ -3,16 +3,17 @@ package items;
 import core.*;
 
 public class Screwdriver extends Item{
-    
+
     public Screwdriver(){
         super();
-        setUsageKey(Item.TAKE,1);
-        setName("Flathead Screwdriver");
-        addSynonym("flathead screwdriver");
-        addSynonym("screwdriver");
+        this.setUsageKey(Item.TAKE,1);
+        this.setName("Flathead Screwdriver");
+        this.addSynonym("flathead screwdriver");
+        this.addSynonym("screwdriver");
     }
-    
-    public void interact(Command command, Context context){
-        
+
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
 }

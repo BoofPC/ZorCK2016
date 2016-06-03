@@ -13,8 +13,9 @@ public class Hello extends Verb {
 
     }
 
-    public void run(Command command, Context construct) {
-        int n = new Random().nextInt(10);
+    @Override
+    public void run(final Command command, final Context construct) {
+        final int n = new Random().nextInt(10);
         switch (n) {
             case 0:
                 System.out.println("Good day");

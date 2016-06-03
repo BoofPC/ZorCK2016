@@ -10,10 +10,11 @@ public class Eat extends Verb {
                 Verb.usage().noun());
     }
 
-    public void run(Command command, Context construct) {
-        Item noun = command.getNoun();
+    @Override
+    public void run(final Command command, final Context construct) {
+        final Item noun = command.getNoun();
 
-        Player player = construct.getPlayer();
+        final Player player = construct.getPlayer();
 
         if (noun.getUsageKey(2) == 2) {
             if (player.getCurrentArea().hasMatching(noun)) {

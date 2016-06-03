@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public abstract class Area{
-    //this is a 10 element array that has portals in 
+    //this is a 10 element array that has portals in
     //each of the cardinal and half-cardinal directions as well as up and down.
-    private final Portals portals; 
-    private World world;
+    private final Portals portals;
+    private final World world;
     private String title;
     private String initialDescription;
     private String description;
@@ -18,26 +18,26 @@ public abstract class Area{
     private String sound;
     private boolean dark;
     private boolean firstVisit;
-    
+
     public List<Item> items;
-    
-    private HashMap<String,Boolean> state;
-    
-    public Area(World containingWorld){
+
+    private final HashMap<String,Boolean> state;
+
+    public Area(final World containingWorld){
        this.portals = new Portals();
        this.world = containingWorld;
        this.state = new HashMap<>();
        this.items = new ArrayList<Item>();
        this.firstVisit = true;
     }
-    
+
     public World getContainingWorld(){
         return this.world;
     }
-    
+
     public abstract void interact(Command command, Context context);
-    
-    public void enter(Player player){
+
+    public void enter(final Player player){
        if(this.firstVisit && !this.dark){
            System.out.println(this.initialDescription);
            this.firstVisit = false;
@@ -51,102 +51,104 @@ public abstract class Area{
                  }
        }else if(this.firstVisit){
        	   System.out.println("It's too dark to see!");
-       }else System.out.println(this.description);
+       } else {
+        System.out.println(this.description);
     }
-    
+    }
+
     public Portals getPortals() {
         return this.portals;
     }
-    
-    public World.Direction getDirection(Portal portal){
+
+    public World.Direction getDirection(final Portal portal){
         return Arrays.stream(World.Direction.values())
                 .filter(d -> portal == this.portals.getPortal(d)).findAny().orElse(null);
     }
-	
+
     public String getTitle(){
 	return this.title;
     }
-    
-    public void setTitle(String title){
+
+    public void setTitle(final String title){
         this.title = title;
     }
-	
+
     public String getInitialDescription(){
         return this.initialDescription;
     }
-    
-    public void setInitialDescription(String description){
+
+    public void setInitialDescription(final String description){
         this.initialDescription = description;
     }
-    
+
     public String getDescription(){
         return this.description;
     }
-    
-    public void setDescription(String description){
+
+    public void setDescription(final String description){
         this.description = description;
     }
-    
+
     public String getTaste(){
         return this.taste;
     }
-    
-    public void setTaste(String input){
+
+    public void setTaste(final String input){
         this.taste = input;
     }
-    
+
     public String getSmell(){
         return this.smell;
     }
-    
-    public void setSmell(String input){
+
+    public void setSmell(final String input){
         this.smell = input;
     }
-    
+
     public String getSound(){
         return this.sound;
     }
-    
-    public void setSound(String input){
+
+    public void setSound(final String input){
         this.sound = input;
     }
-    
-    public boolean getState(String name){
+
+    public boolean getState(final String name){
         return this.state.get(name);
     }
-	
-    public void setState(String name, boolean bool){
+
+    public void setState(final String name, final boolean bool){
 	this.state.put(name,bool);
     }
-    
-    public void addItem(Item item){
+
+    public void addItem(final Item item){
         this.items.add(item);
     }
-    
-    public void removeItem(Item item){
+
+    public void removeItem(final Item item){
         this.items.remove(item);
     }
-    
-    public boolean hasMatching(Item item){
+
+    public boolean hasMatching(final Item item){
         return this.items.stream().anyMatch(i -> i == item);
     }
-    
+
     public List<Item> getItems(){
         return this.items;
     }
-    
-    public Item getItem(String title) {
+
+    public Item getItem(final String title) {
         return this.items.stream().filter(i -> i.getName().equals(title)).findFirst().orElse(null);
     }
-    
+
     public boolean getDark(){
         return this.dark;
     }
-    
-    public void setDark(boolean dark){
+
+    public void setDark(final boolean dark){
         this.dark = dark;
     }
-    
+
     public boolean getFirstVisit(){
         return this.firstVisit;
     }

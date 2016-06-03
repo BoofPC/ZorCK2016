@@ -3,26 +3,29 @@ package items;
 import core.*;
 
 public class Key extends Item{
-    
-    public Key(String name, String description){
+
+    public Key(final String name, final String description){
         super();
-        setUsageKey(Item.TAKE,1);
-        setName(name);
-        if(!name.equals("key")) addSynonym(name.toLowerCase());
-        addSynonym("key");
-        setDescription(description);
+        this.setUsageKey(Item.TAKE,1);
+        this.setName(name);
+        if(!name.equals("key")) {
+            this.addSynonym(name.toLowerCase());
+        }
+        this.addSynonym("key");
+        this.setDescription(description);
     }
-    
+
     public Key(){
         super();
-        setUsageKey(Item.TAKE,1);
-        setName("Key");
-        addSynonym("key");
-        setDescription("A small, yellow key");
+        this.setUsageKey(Item.TAKE,1);
+        this.setName("Key");
+        this.addSynonym("key");
+        this.setDescription("A small, yellow key");
     }
-    
-    public void interact(Command command, Context context){
-        
+
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
-    
+
 }

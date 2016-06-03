@@ -11,36 +11,36 @@ public class TutorialItem extends Item{
     //
     //In this tutorial, we will be creating a potato chip
     //The actual filename would be PotatoChip.java
-    
+
     public TutorialItem(){
         super();
-        setUsageKey(Item.TAKE,1);   //This key means the player can pick out the item
-        setUsageKey(Item.EAT,2);   //This key means the player can eat the item
+        this.setUsageKey(Item.TAKE,1);   //This key means the player can pick out the item
+        this.setUsageKey(Item.EAT,2);   //This key means the player can eat the item
         //Full explanation of usage keys can be found at the bottom
-        
-        setName("Potato Chip");   //This is the item's name, in this case, it is
+
+        this.setName("Potato Chip");   //This is the item's name, in this case, it is
                              //a banana. This should be a unique name, as, in
                              //the event of a conflict of synonyms, the game
                              //will ask to distinguish between two names
-                             //For Example - if the player has both White 
+                             //For Example - if the player has both White
                              //Chocolate and Dark Chocolate, and inputs "eat
                              //chocolate," the game will output, "Did you mean
                              //the White Chocolate or the Dark Chocolate?"
-                             
-        setDescription("It looks crunchy and yellow");    //If you want to set
+
+        this.setDescription("It looks crunchy and yellow");    //If you want to set
                             //a (visual) description, do so here
-        
+
         //The synonyms list should include all possible things the user could
         //call the item. All should be lower case and the first item should
         //Always be the name of the item, set above
-        addSynonym("potato chip");
-        addSynonym("chip");
-        addSynonym("crisp");
-        addSynonym("potato crisp");
-        
-        setTaste("It tastes greasy and fattening. Delicious!");   //If you want,
-        setSmell("It smells decadent"); //set additional descriptors here
-        
+        this.addSynonym("potato chip");
+        this.addSynonym("chip");
+        this.addSynonym("crisp");
+        this.addSynonym("potato crisp");
+
+        this.setTaste("It tastes greasy and fattening. Delicious!");   //If you want,
+        this.setSmell("It smells decadent"); //set additional descriptors here
+
         //Other possible descriptors:
         //setInside(Item)       -       if another item is inside this one,
         //                              e.g. a bottle of water
@@ -49,28 +49,29 @@ public class TutorialItem extends Item{
         //setActive(boolean)    -       if the item can be turned on/off
         //                              e.g. a lantern
         //setSound(String)      -       if the item can be heard
-        
+
 
     }
-    
-    public void interact(Command command, Context context){
-        
+
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
-    
+
 }
 
         //usage is an array of ints which determines many
-        //characteristics of an item. Each item in the 
+        //characteristics of an item. Each item in the
         //array corresponds with an attribute of the item
         //for example the first item in the array represents
         //whether the item is takable, with different numbers
-        //as different statuses. 0 is always "unset." 1 is "takable," the user can 
-        //"take" the item to get it into their inventory. 2 means the item is too 
-        //heavy to take, and will return an appropriate message if "take (item)" 
+        //as different statuses. 0 is always "unset." 1 is "takable," the user can
+        //"take" the item to get it into their inventory. 2 means the item is too
+        //heavy to take, and will return an appropriate message if "take (item)"
         //is invoked. 3 means the item is bolted down, etc.
         //
         //The meanings of each item is as follows:
-        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14 
+        //{0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14
         //{[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive}
         //feel free to add more
         //the possible statuses of each are as follows:

@@ -5,28 +5,30 @@ import items.*;
 
 public class Test09 extends Area{
 
-       public Test09(World containingWorld){
+       public Test09(final World containingWorld){
             super(containingWorld);
-            getPortals().west(new Portal(false, "Test08"))
+            this.getPortals().west(new Portal(false, "Test08"))
                 .north(new Portal(false, "Test06"));
-            setTitle("Test Area 9");
-            setInitialDescription("This is the ninth test area, there is path "
+            this.setTitle("Test Area 9");
+            this.setInitialDescription("This is the ninth test area, there is path "
                     + "leading west and a path leading north. There is a "
                     + "Hamburger on the ground.");
-            setDescription("This is the ninth test area");   
-            setState("First",true);
-            addItem(new Hamburger());
+            this.setDescription("This is the ninth test area");
+            this.setState("First",true);
+            this.addItem(new Hamburger());
        }
-       
+
     @Override
-    public void interact(Command command, Context context){
+    public void interact(final Command command, final Context context){
         Item noun;
         noun = command.getNoun();
         //if you don't have any special interactions, just put this:
-        if(command.getNoun() !=  null)
+        if(command.getNoun() !=  null) {
             noun.interact(command,context);
-        if(!context.getSkipGeneral())
+        }
+        if(!context.getSkipGeneral()) {
             command.getVerb().run(command, context);
+        }
     }
 
 }

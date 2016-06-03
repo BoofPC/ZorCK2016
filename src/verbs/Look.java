@@ -13,14 +13,15 @@ public class Look extends Verb {
                 Verb.usage().bare().direction());
     }
 
-    public void run(Command command, Context construct) {
+    @Override
+    public void run(final Command command, final Context construct) {
         command.getDirection();
         command.getNoun();
 
-        Player player = construct.getPlayer();
+        final Player player = construct.getPlayer();
         construct.getWorld();
 
-        List<String> desc = new ArrayList<>();
+        final List<String> desc = new ArrayList<>();
         if (player.getCurrentArea().getItems().size() == 0) {
             desc.add(player.getCurrentArea().getDescription());
         } else {

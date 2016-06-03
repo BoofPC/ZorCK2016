@@ -11,17 +11,18 @@ public class Stab extends Verb {
                 Verb.usage().noun());
     }
 
-    public void run(Command command, Context construct) {
+    @Override
+    public void run(final Command command, final Context construct) {
         command.getDirection();
-        Item noun = command.getNoun();
+        final Item noun = command.getNoun();
 
-        Player player = construct.getPlayer();
+        final Player player = construct.getPlayer();
         construct.getWorld();
-        Area area = player.getCurrentArea();
+        final Area area = player.getCurrentArea();
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {
-                Item sword = new Sword();
+                final Item sword = new Sword();
                 boolean test = false;
                 final String swordName = sword.getName();
                 for (final Item item : player.getInventory()) {

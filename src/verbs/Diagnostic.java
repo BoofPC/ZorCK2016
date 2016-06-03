@@ -10,8 +10,9 @@ public class Diagnostic extends Verb {
                 Verb.usage().bare());
     }
 
-    public void run(Command command, Context construct) {
-        Player player = construct.getPlayer();
+    @Override
+    public void run(final Command command, final Context construct) {
+        final Player player = construct.getPlayer();
 
         System.out.println("\tHealth: " + player.getHp() + " / "
                 + player.getMaxHp());

@@ -17,10 +17,11 @@ public class Give extends Verb {
                 Verb.usage().noun());
     }
 
-    public void run(Command command, Context construct) {
-        Item noun = command.getNoun();
+    @Override
+    public void run(final Command command, final Context construct) {
+        final Item noun = command.getNoun();
 
-        Player player = construct.getPlayer();
+        final Player player = construct.getPlayer();
 
         if (player.hasMatching(noun)) {
             Item receiver = null;

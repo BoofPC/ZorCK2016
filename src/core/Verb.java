@@ -18,51 +18,52 @@ public abstract class Verb {
      * nor can you "take up," but you can "take cat"
      */
     public Usage usage;
-    
-    public Verb(String title, String[] synonyms, Usage usage){
+
+    public Verb(final String title, final String[] synonyms, final Usage usage){
         this.title = title;
         this.synonyms = Arrays.asList(synonyms);
         this.usage = usage;
     }
-    
+
     public String getTitle(){
         return this.title;
     }
-    
-    public boolean hasMatching(String input){
+
+    public boolean hasMatching(final String input){
         if(this.title.equals(input)) return true;
         return this.synonyms.contains(input);
     }
-    
+
     public Usage getUsage() {
         return this.usage;
     }
-    
+
     public abstract void run(Command command, Context construct);
-    
-    public static Verb fromLambda(String title, String[] synonyms, Usage usage, BiConsumer<Command, Context> f) {
+
+    public static Verb fromLambda(final String title, final String[] synonyms, final Usage usage, final BiConsumer<Command, Context> f) {
         return new Verb(title, synonyms, usage) {
-            public void run(Command command, Context construct) {
+            @Override
+            public void run(final Command command, final Context construct) {
                 f.accept(command, construct);
             }
         };
     }
-    
+
     public static Usage usage() {
         return new Usage();
     }
-    
+
     public static class Usage {
         private boolean bare = false;
         private boolean noun = false;
         private boolean direction = false;
-        
+
         public Usage() {}
 
         public boolean isBare() {
             return this.bare;
         }
-        
+
         public Usage bare() {
             this.bare = true;
             return this;
@@ -72,16 +73,16 @@ public abstract class Verb {
             this.bare = false;
             return this;
         }
-        
+
         public boolean isNoun() {
             return this.noun;
         }
-        
+
         public Usage noun() {
             this.noun = true;
             return this;
         }
-        
+
         public Usage notNoun() {
             this.noun = false;
             return this;
@@ -90,12 +91,12 @@ public abstract class Verb {
         public boolean isDirection() {
             return this.direction;
         }
-        
+
         public Usage direction() {
             this.direction = true;
             return this;
         }
-        
+
         public Usage notDirection() {
             this.direction = false;
             return this;

@@ -23,10 +23,11 @@ public class Bless extends Verb {
                 Verb.usage().bare().noun());
     }
 
-    public void run(Command command, Context context) {
-        Player player = context.getPlayer();
-        Random rand = new Random();
-        int n = rand.nextInt(10);
+    @Override
+    public void run(final Command command, final Context context) {
+        final Player player = context.getPlayer();
+        final Random rand = new Random();
+        final int n = rand.nextInt(10);
         if (n == 0) {
             System.out.println("You dont know why but you feel better");
         } else if (n == 1 || n == 5) {

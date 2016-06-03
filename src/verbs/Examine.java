@@ -10,8 +10,9 @@ public class Examine extends Verb {
                 Verb.usage().noun());
     }
 
-    public void run(Command command, Context construct) {
-        Item noun = command.getNoun();
+    @Override
+    public void run(final Command command, final Context construct) {
+        final Item noun = command.getNoun();
 
         if (noun != null) {
             if (!noun.getName().equals("noItem")) {

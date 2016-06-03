@@ -10,8 +10,9 @@ public class Quit extends Verb {
                 Verb.usage().bare());
     }
 
-    public void run(Command command, Context context) {
-        Player player = context.getPlayer();
+    @Override
+    public void run(final Command command, final Context context) {
+        final Player player = context.getPlayer();
         System.out.println("Goodbye!");
         player.setDeath(Game.Status.SELF_QUIT);
     }

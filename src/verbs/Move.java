@@ -11,12 +11,13 @@ public class Move extends Verb {
                 Verb.usage().direction());
     }
 
-    public void run(Command command, Context construct) {
-        Direction direction = command.getDirection();
+    @Override
+    public void run(final Command command, final Context construct) {
+        final Direction direction = command.getDirection();
         command.getNoun();
 
-        Player player = construct.getPlayer();
-        World world = construct.getWorld();
+        final Player player = construct.getPlayer();
+        final World world = construct.getWorld();
 
         if (direction != null) {
             final Portal portal = player.getCurrentArea().getPortals().getPortal(direction);

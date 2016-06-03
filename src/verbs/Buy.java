@@ -10,7 +10,8 @@ public class Buy extends Verb {
                 Verb.usage().noun());
     }
 
-    public void run(Command command, Context construct) {
+    @Override
+    public void run(final Command command, final Context construct) {
 
     }
 }

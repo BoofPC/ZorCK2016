@@ -3,16 +3,17 @@ package items;
 import core.*;
 
 public class Sword extends Item{
-    
+
     public Sword(){
         super();
-        setUsageKey(Item.TAKE,1);
-        setName("Elvish Sword");
-        addSynonym("elvish sword");
-        addSynonym("sword");
+        this.setUsageKey(Item.TAKE,1);
+        this.setName("Elvish Sword");
+        this.addSynonym("elvish sword");
+        this.addSynonym("sword");
     }
-    
-    public void interact(Command command, Context context){
-        
+
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
 }

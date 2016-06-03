@@ -11,8 +11,9 @@ public class Suicide extends Verb {
                 Verb.usage().bare());
     }
 
-    public void run(Command command, Context context) {
-        Player player = context.getPlayer();
+    @Override
+    public void run(final Command command, final Context context) {
+        final Player player = context.getPlayer();
         player.setDeath(Game.Status.SUICIDE);
         System.out.println("Whelp, goodbye, I guess");
         System.out.println(player.getName() + " commited suicide");

@@ -5,30 +5,32 @@ import items.*;
 
 public class Test02 extends Area{
 
-       public Test02(World containingWorld){
+       public Test02(final World containingWorld){
             super(containingWorld);
-            getPortals().west(new Portal(false, "Test01"))
+            this.getPortals().west(new Portal(false, "Test01"))
                 .east(new Portal(false, "Test03"))
                 .south(new Portal(false, "Test05"));
-            setTitle("Test Area 2");
-            setInitialDescription("This is the second test area, there is path "
+            this.setTitle("Test Area 2");
+            this.setInitialDescription("This is the second test area, there is path "
                     + "leading east-west and a door to the south. There is a "
                     + "screwdriver on the ground");
-            setDescription("This is the second test area");
-            addItem(new Door(false,"Southern Door","Key",getPortals().south()));
-            addItem(new Screwdriver());
-            setState("First",true);
+            this.setDescription("This is the second test area");
+            this.addItem(new Door(false,"Southern Door","Key",this.getPortals().south()));
+            this.addItem(new Screwdriver());
+            this.setState("First",true);
        }
-       
+
     @Override
-    public void interact(Command command, Context context){
+    public void interact(final Command command, final Context context){
         Item noun;
         noun = command.getNoun();
         //if you don't have any special interactions, just put this:
-        if(command.getNoun() !=  null)
+        if(command.getNoun() !=  null) {
             noun.interact(command,context);
-        if(!context.getSkipGeneral())
+        }
+        if(!context.getSkipGeneral()) {
             command.getVerb().run(command, context);
+        }
     }
-       
+
 }
