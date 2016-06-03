@@ -110,6 +110,22 @@ public class Credits extends Verb {
         Credits.printlnp("");
         Credits.printlnp("");
         Credits.printlnp("");
+        Credits.printlnp("Safety Pig!");
+        Credits.printlnp("");
+        Credits.printlnp("                               _");
+        Credits.printlnp("  _._ _..._ .-',     _.._(`))");
+        Credits.printlnp(" '-. `     '  /-._.-'    ',/");
+        Credits.printlnp("    )         \\            '.");
+        Credits.printlnp("   / _    _    |             \\");
+        Credits.printlnp("  |  a    a    /              |");
+        Credits.printlnp("  \\   .-.                     ;  ");
+        Credits.printlnp("   '-('' ).-'       ,'       ;");
+        Credits.printlnp("      '-;           |      .'");
+        Credits.printlnp("        \\           \\    /");
+        Credits.printlnp("         | 7  .__  _.-\\   \\");
+        Credits.printlnp("         | |  |  ``/  /`  /");
+        Credits.printlnp("       /,_|  |   /,_/   /");
+        Credits.printlnp("           /,_/      '`-'");
         Credits.printlnp("");
         Credits.printlnp("");
         Credits.printlnp("");
@@ -119,9 +135,8 @@ public class Credits extends Verb {
         Credits.printlnp("");
         Credits.printlnp("");
         Credits.printlnp("");
-        Credits.printlnp("");
-        Credits.printlnp("");
-        Credits.printlnp("");
+        Credits.printlnp("");       
+        
     }
 
     public static void pause(final int time) {
