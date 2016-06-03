@@ -8,6 +8,8 @@ import items.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Game {
     public static enum Status {
@@ -181,24 +183,10 @@ public class Game {
     }
     
     public List<Item> findNoun(String input, Player player){
-        List<Item> itemList = new ArrayList<Item>();
-        itemList.addAll(player.getInventory());
-        itemList.addAll(player.getCurrentArea().getItems());
-        List<Item> returns = new ArrayList<Item>();
-        for(int i = 0; i < player.getInventory().size() + 
-                player.getCurrentArea().getItems().size(); i++){
-            if(i<player.getInventory().size()){
-                if(player.getInventory().get(i).hasMatching(input))
-                    returns.add(player.getInventory().get(i));
-            }
-            else{
-                if(player.getCurrentArea().getItems().get
-                        (i-player.getInventory().size()).hasMatching(input)) 
-                    returns.add(player.getCurrentArea().getItems().get
-                            (i - player.getInventory().size()));
-            }
-        }
-        return returns.size() > 0 ? returns : null;
+        return Stream.concat(player.getInventory().stream(),
+                player.getCurrentArea().getItems().stream())
+            .filter(item -> item.hasMatching(input))
+            .collect(Collectors.toCollection(ArrayList::new));
     }
     
     public Direction findDirection(String input){

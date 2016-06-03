@@ -221,7 +221,7 @@ public abstract class Item {
     }
     
     public boolean hasMatching(String str){
-        return this.synonyms.contains(str);
+        return this.name.equals(str) || this.synonyms.contains(str);
     }
     
     public void drop(Area area){
