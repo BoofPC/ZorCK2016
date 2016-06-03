@@ -21,7 +21,9 @@ public class MrBooth extends Item{
     }
 
     @Override
-    public void interact(Command command, Context context) {
-        if (command.getVerb().getTitle().equals("smell")) this.smell();
+    public void interact(final Command command, final Context context) {
+        if (command.getVerb().getTitle().equals("smell")) {
+            this.smell();
+        }
     }
 }

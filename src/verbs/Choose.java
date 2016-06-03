@@ -14,6 +14,6 @@ public class Choose extends Verb {
 
     @Override
     public void run(final Command command, final Context construct) {
-        
+
     }
 }
