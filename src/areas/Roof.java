@@ -3,11 +3,6 @@ package areas;
 import core.*;
 import items.*;
 
-/**
- * This area contains two important items: the Calculator and a key to the
- * Secret Passage. To get the key, the player must give the crow the cracker
- * (found in Hallway7).
- */
 public class Roof extends Area {
     
     public Roof(World containingWorld) {
@@ -27,10 +22,6 @@ public class Roof extends Area {
         setSound("The only sound you hear is the caws of the crow.");
         setSmell("It smells like nothing here is going to further your progress"
                 + " in the game!");
-        
-        addItem(new BoothBust());
-        addItem(new Calculator());
-        addItem(new Crow());
     }
 
     @Override

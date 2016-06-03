@@ -19,7 +19,6 @@ public class Hallway7 extends Area {
                 + "the center of the hallway.");
         setDescription("This is the end of the hallway.");
         
-        addItem(new Cracker());
     }
 
     @Override
