@@ -1,8 +1,6 @@
 package items;
 
 import core.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Door extends Item{
 
@@ -24,9 +22,7 @@ public class Door extends Item{
                 .synonym(name.toLowerCase());
         }
         this.synonym("door");
-        final List<String> keys = new ArrayList<String>();
-        keys.add(key);
-        this.keys(keys)
+        this.key(key)
             .portal(portal);
     }
 

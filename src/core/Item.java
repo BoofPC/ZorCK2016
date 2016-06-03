@@ -102,13 +102,12 @@ public abstract class Item {
     private String text;
     private String smell;
     private String sound;
-    private List<Item> received;
-    private List<String> keys;
+    private final List<Item> received = new ArrayList<>();
+    private final List<String> keys = new ArrayList<>();
     private Portal portal;
-    private final List<String> synonyms;
+    private final List<String> synonyms = new ArrayList<>();
 
     public Item() {
-        this.synonyms = new ArrayList<String>();
     }
 
     public Usage usage() {
@@ -193,11 +192,6 @@ public abstract class Item {
 
     public List<String> keys() {
         return this.keys;
-    }
-
-    public Item keys(final List<String> keys) {
-        this.keys = keys;
-        return this;
     }
     
     public Item key(final String key) {
@@ -305,42 +299,26 @@ public abstract class Item {
 
 
     public static final class Usage {
-        private Visible visible;
-        private Take take;
-        private Food food;
-        private Drink drink;
-        private Open open;
-        private Lock lock;
-        private Read read;
-        private Active active;
-        private Move move;
-        private Wear wear;
-        private Close close;
-        private Stab stab;
-        private Press press;
-        private Climb climb;
-        private Recieve recieve;
-        private Breakable breakable;
-        private Talk talk;
-        public Usage() {
-            this.visible = Visible.VISIBLE;
-            this.take = Take.UNTAKABLE;
-            this.food = Food.UNEDIBLE;
-            this.drink = Drink.UNDRINKABLE;
-            this.open = Open.UNOPENABLE;
-            this.lock = Lock.NO_LOCK;
-            this.read = Read.UNREADABLE;
-            this.active = Active.STATIC;
-            this.move = Move.IMMOVABLE;
-            this.wear = Wear.UNWEARABLE;
-            this.close = Close.UNCLOSABLE;
-            this.stab = Stab.UNSTABBABLE;
-            this.press = Press.UNPRESSABLE;
-            this.climb = Climb.UNCLIMBABLE;
-            this.recieve = Recieve.NO_RECIEVE;
-            this.breakable = Breakable.UNBREAKABLE;
-            this.talk = Talk.NO_TALK;
-        }
+        private Visible visible = Visible.VISIBLE;
+        private Take take = Take.UNTAKABLE;
+        private Food food = Food.UNEDIBLE;
+        private Drink drink = Drink.UNDRINKABLE;
+        private Open open = Open.UNOPENABLE;
+        private Lock lock = Lock.NO_LOCK;
+        private Read read = Read.UNREADABLE;
+        private Active active = Active.STATIC;
+        private Move move = Move.IMMOVABLE;
+        private Wear wear = Wear.UNWEARABLE;
+        private Close close = Close.UNCLOSABLE;
+        private Stab stab = Stab.UNSTABBABLE;
+        private Press press = Press.UNPRESSABLE;
+        private Climb climb = Climb.UNCLIMBABLE;
+        private Recieve recieve = Recieve.NO_RECIEVE;
+        private Breakable breakable = Breakable.UNBREAKABLE;
+        private Talk talk = Talk.NO_TALK;
+        
+        public Usage() {}
+        
         public static enum Visible {
             VISIBLE, HIDDEN
         }
