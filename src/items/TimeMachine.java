@@ -13,9 +13,9 @@ public class TimeMachine extends Item {
         //if the user has different items needed for the
         //time machine, for now I will just keep it as it
         //needs all three items.
-        this.setName("Time Machine");
-        this.addSynonym("time machine");
-        this.setDescription("This is a broken time machine. It"
+        this.name("Time Machine");
+        this.synonym("time machine");
+        this.description("This is a broken time machine. It"
                 + " needs a flux capaciator, Mr.Fusion, and"
                 + " a banana peel. It allows you to travel"
                 + " back in time!");
@@ -23,7 +23,7 @@ public class TimeMachine extends Item {
         keys.add(new MrFusion().getName());
         keys.add(new BananaPeel().getName());
         keys.add(new FluxCapacitor().getName());
-        this.setKeys(keys);
+        this.keys(keys);
     }
 
     @Override

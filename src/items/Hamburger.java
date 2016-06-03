@@ -7,13 +7,13 @@ public class Hamburger extends Item{
     public Hamburger(){
         super();
         this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
-        this.setName("Hamburger");
-        this.setDescription("Its meat looks succulent and buns look fluffy");
-        this.addSynonym("hamburger");
-        this.addSynonym("burger");
-        this.addSynonym("cheeseburger");
-        this.setTaste("It is the best burger you've ever tasted");
-        this.setSmell("It smells decadent");
+        this.name("Hamburger");
+        this.description("Its meat looks succulent and buns look fluffy");
+        this.synonym("hamburger");
+        this.synonym("burger");
+        this.synonym("cheeseburger");
+        this.taste("It is the best burger you've ever tasted");
+        this.smell("It smells decadent");
     }
 
     @Override

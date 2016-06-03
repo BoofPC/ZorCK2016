@@ -9,12 +9,12 @@ public class Cracker extends Item {
         this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
         //can't break it. it's an indestructable cracker!
 
-        this.setName("Cracker");
-        this.addSynonym("cracker");
+        this.name("Cracker");
+        this.synonym("cracker");
 
-        this.setDescription("It's a stale cracker.");
+        this.description("It's a stale cracker.");
 
-        this.setTaste("It tastes slightly salty, with a hint of carpet.");
+        this.taste("It tastes slightly salty, with a hint of carpet.");
     }
 
     @Override

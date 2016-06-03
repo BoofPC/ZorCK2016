@@ -12,7 +12,7 @@ public class NoItem extends Item{
 
     public NoItem(){
         super();
-        this.setName("noItem");
+        this.name("noItem");
         this.usage().visible(Usage.Visible.HIDDEN);
     }
 

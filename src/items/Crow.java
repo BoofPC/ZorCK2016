@@ -11,11 +11,11 @@ public class Crow extends Item {
         super();
         this.usage().recieve(Usage.Recieve.RECIEVE);
 
-        this.setName("Crow");
-        this.addSynonym("crow");
-        this.addSynonym("bird");
+        this.name("Crow");
+        this.synonym("crow");
+        this.synonym("bird");
 
-        this.setDescription("It's a crow with a key tied to it's leg. It turns "
+        this.description("It's a crow with a key tied to it's leg. It turns "
                 + "aggressive when you try to take it.");
     }
 

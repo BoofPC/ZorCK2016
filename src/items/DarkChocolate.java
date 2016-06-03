@@ -7,12 +7,12 @@ public class DarkChocolate extends Item{
     public DarkChocolate(){
         super();
         this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
-        this.setName("Dark Chocolate");
-        this.setDescription("Its looks dark and tasty");
-        this.addSynonym("dark chocolate");
-        this.addSynonym("chocolate");
-        this.addSynonym("chocolate bar");
-        this.setTaste("It tastes like heaven");
+        this.name("Dark Chocolate");
+        this.description("Its looks dark and tasty");
+        this.synonym("dark chocolate");
+        this.synonym("chocolate");
+        this.synonym("chocolate bar");
+        this.taste("It tastes like heaven");
     }
 
     @Override

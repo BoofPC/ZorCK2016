@@ -119,88 +119,99 @@ public abstract class Item {
         return this.name;
     }
 
-    public void setName(final String name) {
+    public Item name(final String name) {
         this.name = name;
+        return this;
     }
 
     public String getDescription() {
         return this.description;
     }
 
-    public void setDescription(final String description) {
+    public Item description(final String description) {
         this.description = description;
+        return this;
     }
 
     public String getTaste() {
         return this.taste;
     }
 
-    public void setTaste(final String taste) {
+    public Item taste(final String taste) {
         this.taste = taste;
+        return this;
     }
 
     public Item getInside() {
         return this.inside;
     }
 
-    public void setInside(final Item inside) {
+    public Item inside(final Item inside) {
         this.inside = inside;
+        return this;
     }
 
     public String getText() {
         return this.text;
     }
 
-    public void setText(final String text) {
+    public Item text(final String text) {
         this.text = text;
+        return this;
     }
 
     public boolean getActive() {
         return this.usage().active() == Usage.Active.ON;
     }
 
-    public void setActive(final boolean active) {
+    public Item active(final boolean active) {
         if (active) {
             this.usage().active(Usage.Active.ON);
         } else {
             this.usage().active(Usage.Active.OFF);
         }
+        return this;
     }
 
     public String getSmell() {
         return this.smell;
     }
 
-    public void setSmell(final String smell) {
+    public Item smell(final String smell) {
         this.smell = smell;
+        return this;
     }
 
     public String getSound() {
         return this.sound;
     }
 
-    public void setSound(final String sound) {
+    public Item sound(final String sound) {
         this.sound = sound;
+        return this;
     }
 
     public List<String> getKeys() {
         return this.keys;
     }
 
-    public void setKeys(final List<String> keys) {
+    public Item keys(final List<String> keys) {
         this.keys = keys;
+        return this;
     }
 
     public Portal getPortal() {
         return this.portal;
     }
 
-    public void setPortal(final Portal portal) {
+    public Item portal(final Portal portal) {
         this.portal = portal;
+        return this;
     }
 
-    public void addSynonym(final String str) {
+    public Item synonym(final String str) {
         this.synonyms.add(str);
+        return this;
     }
 
     public boolean hasMatching(final String str) {
@@ -210,7 +221,7 @@ public abstract class Item {
     public void drop(final Area area) {
         if (this.getInside() != null) {
             area.addItem(this.getInside());
-            this.setInside(null);
+            this.inside(null);
         }
     }
 
