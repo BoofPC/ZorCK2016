@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public abstract class Verb {
-    public String title;
-    public List<String> synonyms;
+    private String title;
+    private List<String> synonyms;
     /**
      * Usage is a data class determining which verbs can 'take' what other parts of speech. Right
      * now commands can only be one verb and up to one other part, but eventually they could
@@ -16,7 +16,7 @@ public abstract class Verb {
      * verb "take" would have the usage array [false, true, false] because you cannot simply "take"
      * nor can you "take up," but you can "take cat"
      */
-    public Usage usage;
+    private Usage usage;
 
     public Verb(final String title, final List<String> synonyms, final Usage usage){
         this.title = title;
@@ -29,8 +29,7 @@ public abstract class Verb {
     }
 
     public boolean hasMatching(final String input){
-        if(this.title.equals(input)) return true;
-        return this.synonyms.contains(input);
+        return this.title.equals(input) || this.synonyms.contains(input);
     }
 
     public Usage getUsage() {

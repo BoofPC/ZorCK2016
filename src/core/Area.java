@@ -19,7 +19,7 @@ public abstract class Area{
     private boolean dark;
     private boolean firstVisit;
 
-    public List<Item> items;
+    private List<Item> items;
 
     private final HashMap<String,Boolean> state;
 
