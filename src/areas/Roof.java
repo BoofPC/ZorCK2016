@@ -1,7 +1,6 @@
 package areas;
 
 import core.*;
-import core.World.Direction;
 import items.*;
 
 /**
@@ -14,7 +13,7 @@ public class Roof extends Area {
     public Roof(World containingWorld) {
         super(containingWorld);
         
-        getPortals().setPortal(Direction.WEST, new Portal(Portal.UNLOCKED, "WomensRestroom"));
+        getPortals().west(new Portal(Portal.UNLOCKED, "WomensRestroom"));
         
         setTitle("Roof");
         setInitialDescription("The roof is largely empty. Smatterings of bird " 

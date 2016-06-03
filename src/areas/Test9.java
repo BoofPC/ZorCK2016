@@ -1,15 +1,14 @@
 package areas;
 
 import core.*;
-import core.World.Direction;
 import items.*;
 
 public class Test9 extends Area{
 
        public Test9(World containingWorld){
             super(containingWorld);
-            getPortals().setPortal(Direction.WEST, new Portal(false, "Test8"));
-            getPortals().setPortal(Direction.NORTH, new Portal(false, "Test6"));
+            getPortals().west(new Portal(false, "Test8"))
+                .north(new Portal(false, "Test6"));
             setTitle("Test Area 9");
             setInitialDescription("This is the ninth test area, there is path "
                     + "leading west and a path leading north. There is a "

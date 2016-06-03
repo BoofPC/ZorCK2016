@@ -1,14 +1,13 @@
 package areas;
 
 import core.*;
-import core.World.Direction;
 
 public class ComsciRoom extends Area{
 
     public ComsciRoom(World containingWorld) {
         super(containingWorld);
-        getPortals().setPortal(Direction.EAST, new Portal(false, "Hallway5"));
-        getPortals().setPortal(Direction.SOUTH, new Portal(false, "Wachtman's room"));
+        getPortals().east(new Portal(false, "Hallway5"))
+            .south(new Portal(false, "Wachtman's room"));
         //change the portal to go to hallway when hallway is made
         setTitle("Comsci Room");
         setInitialDescription("This is the Comsci room, Room 317.");

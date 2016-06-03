@@ -1,14 +1,13 @@
 package areas;
 
 import core.*;
-import core.World.Direction;
 import items.*;
 
 public class FishersRoom extends Area {
 
     public FishersRoom(World containingWorld) {
         super(containingWorld);
-        getPortals().setPortal(Direction.NORTH, new Portal(Portal.UNLOCKED, "Hallway17"));
+        getPortals().north(new Portal(Portal.UNLOCKED, "Hallway17"));
         setInitialDescription("You are in Fisher's room as various papers on "
                 + "the downfall of the Ming Empire and essays as well as Silk "
                 + "Roads trading changed China while a Reggae-sounding song "
@@ -19,7 +18,7 @@ public class FishersRoom extends Area {
         setSmell("It smells like teen spirit (or in other words perspiration)");
         setTaste("You taste good ol' oxygen");
         setSound("Blaring reggae music pounds through your ear drums");
-        addItem(new Door(false, "Northern Door", new Key(), getPortals().getPortal(World.Direction.NORTH)));
+        addItem(new Door(false, "Northern Door", new Key(), getPortals().north()));
     }
 
     @Override

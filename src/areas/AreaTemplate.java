@@ -11,17 +11,18 @@ public class AreaTemplate extends Area{     //Be sure to replace this
        public AreaTemplate(World containingWorld){      //And this
             super(containingWorld);
             /* Set the ones you need
-            setPortal(World.NORTH, new Portal(,""));
-            setPortal(World.EAST, new Portal(, ""));
-            setPortal(World.SOUTH, new Portal(, ""));
-            setPortal(World.WEST, new Portal(, ""));
+            getPortals()
+                .north(new Portal(,""))
+                .east(new Portal(, ""))
+                .south(new Portal(, ""))
+                .west(new Portal(, ""));
             */
             setTitle("");
             setInitialDescription("");
             setDescription("");
             //Add any necessary doors
             addItem(new Door(false,"DOORNAME", null,
-                    getPortals().getPortal(World.Direction.SOUTH/*DIRECTION THE DOOR IS FACING*/)));
+                    getPortals().south()/*DIRECTION THE DOOR IS FACING*/));
             
             
             //Add these if you want

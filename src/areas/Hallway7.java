@@ -1,7 +1,6 @@
 package areas;
 
 import core.*;
-import core.World.Direction;
 import items.*;
 
 public class Hallway7 extends Area {
@@ -9,8 +8,8 @@ public class Hallway7 extends Area {
     public Hallway7(World containingWorld) {
         super(containingWorld);
         
-        getPortals().setPortal(Direction.NORTH, new Portal(Portal.UNLOCKED, "WomensRestroom"));
-        getPortals().setPortal(Direction.WEST, new Portal(Portal.UNLOCKED, "Hallway8"));
+        getPortals().north(new Portal(Portal.UNLOCKED, "WomensRestroom"))
+            .west(new Portal(Portal.UNLOCKED, "Hallway8"));
         
         setTitle("Hallway");
         setInitialDescription("This is the end of the hallway. To the north is "

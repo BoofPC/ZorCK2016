@@ -1,7 +1,6 @@
 package areas;
 
 import core.*;
-import core.World.Direction;
 import items.*;
 import verbs.Read;
 
@@ -15,8 +14,8 @@ public class WomensRestroom extends Area {
         super(containingWorld);
         
         //TODO: add way to unlock portal by opening window
-        getPortals().setPortal(Direction.EAST, new Portal(Portal.LOCKED, "Roof"));
-        getPortals().setPortal(Direction.SOUTH, new Portal(Portal.UNLOCKED, "Hallway7"));
+        getPortals().east(new Portal(Portal.LOCKED, "Roof"))
+            .south(new Portal(Portal.UNLOCKED, "Hallway7"));
         
         setTitle("Women's Restroom");
         setInitialDescription("The room is dimly lit, illuminated only by the "
