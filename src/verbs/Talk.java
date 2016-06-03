@@ -18,6 +18,15 @@ public class Talk extends Verb {
 
     @Override
     public void run(final Command command, final Context construct) {
+        command.getDirection();
+        final Item noun = command.getNoun();
 
+        construct.getPlayer();
+        construct.getWorld();
+        
+        if(noun != null){
+            System.out.println("you have spoken to " + noun);
+            if(noun)
+        }
     }
 }

@@ -283,6 +283,7 @@ public abstract class Item {
 
     public abstract void interact(Command command, Context context);
 
+
     public static final class Usage {
         private Visible visible;
         private Take take;
@@ -300,6 +301,7 @@ public abstract class Item {
         private Climb climb;
         private Recieve recieve;
         private Breakable breakable;
+        private Talk talk;
         public Usage() {
             this.visible = Visible.VISIBLE;
             this.take = Take.UNTAKABLE;
@@ -317,6 +319,7 @@ public abstract class Item {
             this.climb = Climb.UNCLIMBABLE;
             this.recieve = Recieve.NO_RECIEVE;
             this.breakable = Breakable.UNBREAKABLE;
+            this.talk = Talk.NO_TALK;
         }
         public static enum Visible {
             VISIBLE, HIDDEN
@@ -366,6 +369,11 @@ public abstract class Item {
         public static enum Breakable {
             UNBREAKABLE, UNBROKEN, BROKEN
         }
+        
+        public static enum Talk {
+            NO_TALK, TALK
+        }
+        
         public Visible visible() {
             return this.visible;
         }
@@ -476,6 +484,15 @@ public abstract class Item {
         }
         public Usage breakable(final Breakable o) {
             this.breakable = o;
+            return this;
+        }
+        
+        public Talk talk(){
+            return this.talk;
+        }
+        
+        public Usage breakable(final Talk o){
+            this.talk = o;
             return this;
         }
     }
