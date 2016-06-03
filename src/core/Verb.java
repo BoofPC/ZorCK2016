@@ -28,6 +28,10 @@ public abstract class Verb {
         return this.title;
     }
 
+    public List<String> getSynonyms() {
+        return synonyms;
+    }
+
     public boolean hasMatching(final String input){
         return this.title.equals(input) || this.synonyms.contains(input);
     }

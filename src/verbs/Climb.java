@@ -26,7 +26,7 @@ public class Climb extends Verb {
                 final Portal upPortal = player.getCurrentArea().getPortals().up();
                 if (noun.usage().climb() == Item.CLIMABLE && upPortal != null) {
                     if (!upPortal.isLocked()) {
-                        construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, Direction.UP), construct);
+                        construct.getPlayer().getCurrentArea().interact(Command.directedBare(new Climb(), Direction.UP, ""), construct);
                     } else {
                         System.out.println("You can't climb that!");
                     }
@@ -34,7 +34,7 @@ public class Climb extends Verb {
                     System.out.println("You can't climb that!");
                 }
             } else {
-                construct.getPlayer().getCurrentArea().interact(new Command(new Move(), null, Direction.UP), construct);
+                construct.getPlayer().getCurrentArea().interact(Command.directedBare(new Move(), Direction.UP, ""), construct);
             }
         } else {
             System.out.println("Where do you expect to find one of those?");
