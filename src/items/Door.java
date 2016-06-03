@@ -11,23 +11,23 @@ public class Door extends Item{
         this.usage().take(Usage.Take.BOLTED_DOWN).open(Usage.Open.CLOSED);
         if(locked){
             this.usage().lock(Usage.Lock.LOCKED);
-            this.name("Locked Door");
-            this.description("You gotta find some way to unlock it!");
-            this.synonym("locked door");
+            this.name("Locked Door")
+                .description("You gotta find some way to unlock it!")
+                .synonym("locked door");
         }else{
             this.usage().lock(Usage.Lock.UNLOCKED);
-            this.name("Door");
-            this.description("Whelp, that's a door alright!");
+            this.name("Door")
+                .description("Whelp, that's a door alright!");
         }
         if(name != null){
-            this.name(name);
-            this.synonym(name.toLowerCase());
+            this.name(name)
+                .synonym(name.toLowerCase());
         }
         this.synonym("door");
         final List<String> keys = new ArrayList<String>();
         keys.add(key);
-        this.keys(keys);
-        this.portal(portal);
+        this.keys(keys)
+            .portal(portal);
     }
 
     @Override

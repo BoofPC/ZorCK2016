@@ -6,12 +6,12 @@ public class EagleOfBlessing extends Item{
     public EagleOfBlessing(){
         super();
         this.usage().take(Usage.Take.TAKABLE);
-        this.setName("Eagle");
-        this.addSynonym("Eagleofblessing");
-        this.addSynonym("Eagle of blessing");
-        this.addSynonym("Eaglet");
-        this.addSynonym("Amurica");
-        this.addSynonym("America");
+        this.name("Eagle")
+            .synonym("Eagleofblessing")
+            .synonym("Eagle of blessing")
+            .synonym("Eaglet")
+            .synonym("Amurica")
+            .synonym("America");
     
     }
 

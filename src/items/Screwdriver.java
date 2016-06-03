@@ -7,9 +7,9 @@ public class Screwdriver extends Item{
     public Screwdriver(){
         super();
         this.usage().take(Usage.Take.TAKABLE);
-        this.name("Flathead Screwdriver");
-        this.synonym("flathead screwdriver");
-        this.synonym("screwdriver");
+        this.name("Flathead Screwdriver")
+            .synonym("flathead screwdriver")
+            .synonym("screwdriver");
     }
 
     @Override

@@ -26,7 +26,6 @@ public class Talk extends Verb {
         
         if(noun != null){
             System.out.println("you have spoken to " + noun);
-            if(noun)
         }
     }
 }

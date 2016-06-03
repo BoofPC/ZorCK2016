@@ -7,9 +7,9 @@ public class Sword extends Item{
     public Sword(){
         super();
         this.usage().take(Usage.Take.TAKABLE);
-        this.name("Elvish Sword");
-        this.synonym("elvish sword");
-        this.synonym("sword");
+        this.name("Elvish Sword")
+            .synonym("elvish sword")
+            .synonym("sword");
     }
 
     @Override

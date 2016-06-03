@@ -17,11 +17,11 @@ public class MagicOrb extends Item{
         super();
         // The object can be taken
         this.usage().take(Usage.Take.TAKABLE);
-        this.name("Magic Orb");
-        this.synonym("magic orb");
-        this.synonym("orb");
-        this.synonym("magic ball");
-        this.description("It looks like it would do something special if "
+        this.name("Magic Orb")
+            .synonym("magic orb")
+            .synonym("orb")
+            .synonym("magic ball")
+            .description("It looks like it would do something special if "
                 + "you took it");
     }
 

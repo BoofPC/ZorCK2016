@@ -7,9 +7,9 @@ public class FluxCapacitor extends Item{
     public FluxCapacitor(){
         super();
         this.usage().take(Usage.Take.TAKABLE);
-        this.name("Flux Capacitor");
-        this.synonym("flux capacitor");
-        this.description("This is one of the parts of the time"
+        this.name("Flux Capacitor")
+            .synonym("flux capacitor")
+            .description("This is one of the parts of the time"
                 + " machine!");
 
     }

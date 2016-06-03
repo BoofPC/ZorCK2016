@@ -7,11 +7,11 @@ public class AnonymousNote extends Item {
     public AnonymousNote() {
         super();
         this.usage().take(Usage.Take.TOO_HEAVY).read(Usage.Read.READABLE);
-        this.name("Anonymous Note");
-        this.description("It's a note from an unknown author...");
-        this.synonym("anonymous note");
-        this.synonym("note");
-        this.text("You won't believe this but, I need you to go back"
+        this.name("Anonymous Note")
+            .description("It's a note from an unknown author...")
+            .synonym("anonymous note")
+            .synonym("note")
+            .text("You won't believe this but, I need you to go back"
                 + " in time and force Mr.Booth to grade the assignments"
                 + " so that the world doesn't end. If you don't do this"
                 + " tomorrow the world will look very different from what"

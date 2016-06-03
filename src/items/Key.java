@@ -11,16 +11,16 @@ public class Key extends Item{
         if(!name.equals("key")) {
             this.synonym(name.toLowerCase());
         }
-        this.synonym("key");
-        this.description(description);
+        this.synonym("key")
+            .description(description);
     }
 
     public Key(){
         super();
         this.usage().lock(Usage.Lock.LOCKED);
-        this.name("Key");
-        this.synonym("key");
-        this.description("A small, yellow key");
+        this.name("Key")
+            .synonym("key")
+            .description("A small, yellow key");
     }
 
     @Override

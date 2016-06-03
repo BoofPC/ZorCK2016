@@ -12,8 +12,8 @@ public class NoItem extends Item{
 
     public NoItem(){
         super();
-        this.name("noItem");
-        this.usage().visible(Usage.Visible.HIDDEN);
+        this.name("noItem")
+            .usage().visible(Usage.Visible.HIDDEN);
     }
 
     @Override
