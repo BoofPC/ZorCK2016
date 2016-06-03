@@ -108,13 +108,15 @@ public class Game {
         final Context construct = new Context(player, world);
         Command com;
 
-        //Fun printed start stuff
-        System.out.println("Welcome to\n" + "d8888888P                    a88888b. dP     dP\n"
+        //Fun printed start stuff @formatter:off
+        System.out.println("Welcome to\n"
+                + "d8888888P                    a88888b. dP     dP\n"
                 + "     .d8'                   d8'   `88 88   .d8'\n"
                 + "   .d8'   .d8888b. 88d888b. 88        88aaa8P' \n"
                 + " .d8'     88'  `88 88'  `88 88        88   `8b.\n"
                 + "d8'       88.  .88 88       Y8.   .88 88     88\n"
                 + "Y8888888P `88888P' dP        Y88888P' dP     dP\n\n");
+        //@formatter:on
 
         //'enter' first room to get things started
         player.getCurrentArea().enter(player);
@@ -126,15 +128,16 @@ public class Game {
             //Main Game Loop
             Status status = Status.KEEP_PLAYING;
             while (status == Status.KEEP_PLAYING) {
-                if (player.getCurrentArea().getTitle().equals("Hallway")
-                        || player.getCurrentArea().getTitle().equals("Women's Restroom")
-                        || player.getCurrentArea().getTitle().equals("Men's Restroom")
-                        || player.getCurrentArea().getTitle().equals("Security Room")
-                        || player.getCurrentArea().getTitle().equals("Chemical Storage Room")) {
+                final Area currentArea = player.getCurrentArea();
+                final String currentTitle = currentArea.getTitle();
+                if (currentTitle.equals("Hallway") || currentTitle.equals("Women's Restroom")
+                        || currentTitle.equals("Men's Restroom")
+                        || currentTitle.equals("Security Room")
+                        || currentTitle.equals("Chemical Storage Room")) {
                     //...
-                    System.out.println("You are in the " + player.getCurrentArea().getTitle());
+                    System.out.println("You are in the " + currentTitle);
                 } else {
-                    System.out.println("You are in " + player.getCurrentArea().getTitle());
+                    System.out.println("You are in " + currentTitle);
                 }
 
                 System.out.print(">");
@@ -150,60 +153,66 @@ public class Game {
                         .map(StringBuilder::toString)
                         .collect(Collectors.toCollection(ArrayList::new));
 
-                if (Game.findDirection(rawInput) != null) {
-                    player.getCurrentArea().interact(
-                            new Command(new Move(), null, Game.findDirection(rawInput)), construct);
+                final Direction findDirection = Game.findDirection(rawInput);
+                parsing: {
+                    if (findDirection != null) {
+                        currentArea.interact(new Command(new Move(), null, findDirection),
+                                construct);
+                        break parsing;
+                    }
                     //code to test parsers
-                    /*else if(game.verbParser(input) != null){
-                    System.out.println(game.verbParser(input).getTitle());
-                    if(game.verbParser(input).getUsageKey(1)){
-                        if(game.nounParser(input,player) != null){
-                            if(!game.nounParser(input,player).getName().equals("noItem"))
-                                System.out.println(game.nounParser(input,player).getName());
-                            else if(!game.verbParser(input).getUsageKey(0))
-                                System.out.println("Ya need a noun, ya dingus");
-                        }else{
-                            System.out.println("Where do you expect to find one of those?");
-                        }
-                    }
-                    }*/
-                } else if (Game.verbParser(inputsConcat, game.verbList) != null) {
-                    //String verb = game.verbParser(input).getTitle();
                     final Verb verb = Game.verbParser(inputsConcat, game.verbList);
-                    boolean conflict = false;
-                    Item noun = null;
-                    final List<Item> nouns = Game.nounParser(inputsConcat, player);
-                    if (nouns != null) {
-                        if (nouns.size() == 1) {
-                            noun = nouns.get(0);
-                        } else {
-                            conflict = true;
-                        }
-                    }
-                    if (!conflict) {
-                        final Direction direction = Game.directionParser(inputsConcat);
-                        com = new Command(verb, noun, direction);
-                        player.getCurrentArea().interact(com, construct);
-                        /*
-                        }else if(verb.equals("quit")){
-                            status = game.quit();
-                        
-                        }else if(verb.equals("suicide")){ status = game.suicide(player); }
-                        */
-                    } else {
-                        if (nouns.size() > 3) {
-                            System.out.print("Did you mean the ");
-                            for (int i = 0; i < nouns.size() - 1; i++) {
-                                System.out.println(nouns.get(i).name() + ", the ");
+                    /* Parser test
+                    if (verb != null) {
+                        System.out.println(verb.getTitle());
+                        if (verb.getUsage().isNoun()) {
+                            final List<Item> nouns = Game.nounParser(inputsConcat, player);
+                            if (nouns != null) {
+                                if (!nouns.get(0).name().equals("noItem")) {
+                                    System.out.println(nouns.get(0).name());
+                                } else {
+                                    if (!verb.getUsage().isBare()) {
+                                        System.out.println("Ya need a noun, ya dingus");
+                                    }
+                                }
+                            } else {
+                                System.out.println("Where do you expect to find one of those?");
                             }
-                            System.out.println(
-                                    ", or the " + nouns.get(nouns.size() - 1).name() + "?");
-                        } else {
-                            System.out.print("Did you mean the " + nouns.get(0).name() + " or the "
-                                    + nouns.get(1).name() + "?");
                         }
+                        break parsing;
                     }
-                    status = player.getDeath();
+                    */
+                    if (verb != null) {
+                        boolean conflict = false;
+                        Item noun = null;
+                        final List<Item> nouns = Game.nounParser(inputsConcat, player);
+                        if (nouns != null) {
+                            if (nouns.size() == 1) {
+                                noun = nouns.get(0);
+                            } else {
+                                conflict = true;
+                            }
+                        }
+                        if (!conflict) {
+                            final Direction direction = Game.directionParser(inputsConcat);
+                            com = new Command(verb, noun, direction);
+                            currentArea.interact(com, construct);
+                        } else {
+                            if (nouns.size() > 3) {
+                                System.out.print("Did you mean the ");
+                                final int limit = nouns.size() - 1;
+                                for (int i = 0; i < limit; i++) {
+                                    System.out.println(nouns.get(i).name() + ", the ");
+                                }
+                                System.out.println(", or the " + nouns.get(limit).name() + "?");
+                            } else {
+                                System.out.print("Did you mean the " + nouns.get(0).name()
+                                        + " or the " + nouns.get(1).name() + "?");
+                            }
+                        }
+                        status = player.getDeath();
+                        break parsing;
+                    }
                 }
                 System.out.println("");
             }
@@ -211,7 +220,6 @@ public class Game {
             System.out.println("");
         }
     }
-
 
     public static Verb findVerb(final String input, final List<Verb> verbList) {
         return verbList.stream().filter(i -> i.hasMatching(input)).findAny().orElse(null);
@@ -290,20 +298,20 @@ public class Game {
     }
 
     // From http://rosettacode.org/wiki/Power_Set ; under GNU FDL 1.2
-    public static <T> List<List<T>> powerset(Collection<T> list) {
+    public static <T> List<List<T>> powerset(final Collection<T> list) {
         List<List<T>> ps = new ArrayList<List<T>>();
         ps.add(new ArrayList<T>()); // add the empty set
 
         // for every item in the original list
-        for (T item : list) {
-            List<List<T>> newPs = new ArrayList<List<T>>();
+        for (final T item : list) {
+            final List<List<T>> newPs = new ArrayList<List<T>>();
 
-            for (List<T> subset : ps) {
+            for (final List<T> subset : ps) {
                 // copy all of the current powerset's subsets
                 newPs.add(subset);
 
                 // plus the subsets appended with the current item
-                List<T> newSubset = new ArrayList<T>(subset);
+                final List<T> newSubset = new ArrayList<T>(subset);
                 newSubset.add(item);
                 newPs.add(newSubset);
             }
