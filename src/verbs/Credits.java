@@ -15,12 +15,6 @@ public class Credits extends Verb {
 
     @Override
     public void run(final Command command, final Context construct) {
-        command.getDirection();
-        command.getNoun();
-
-        construct.getPlayer();
-        construct.getWorld();
-
         Credits.printlnp("\n\n\n\n\n\n\n");
         Credits.printlnp("d8888888P                    a88888b. dP     dP");
         Credits.printlnp("     .d8'                   d8'   `88 88   .d8'");
