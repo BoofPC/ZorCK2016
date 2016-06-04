@@ -135,8 +135,8 @@ public class Credits extends Verb {
         Credits.printlnp("");
         Credits.printlnp("");
         Credits.printlnp("");
-        Credits.printlnp("");       
-        
+        Credits.printlnp("");
+
     }
 
     public static void pause(final int time) {

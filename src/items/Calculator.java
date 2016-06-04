@@ -13,8 +13,7 @@ public class Calculator extends Item {
         //TODO: make the calculator do something when it's on
 
         this.name("Calculator")
-            .synonym("calculator")
-            .synonym("graphing calculator")
+            .synonym("calculator", "graphing calculator")
             .description("It's a TI-84 Plus Supreme Deluxe Color Limited Edition "
                 + "Graphing Calculator with a 4K touchscreen!");
     }

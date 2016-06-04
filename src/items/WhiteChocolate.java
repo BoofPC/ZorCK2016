@@ -9,9 +9,7 @@ public class WhiteChocolate extends Item{
         this.usage().take(Item.TAKABLE).food(Item.EDIBLE);
         this.name("White Chocolate")
             .description("Its looks light and disgusting")
-            .synonym("white chocolate")
-            .synonym("chocolate")
-            .synonym("chocolate bar")
+            .synonym("white chocolate", "chocolate", "chocolate bar")
             .taste("It tastes like hell");
     }
 

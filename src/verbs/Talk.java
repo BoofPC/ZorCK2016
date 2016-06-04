@@ -23,7 +23,7 @@ public class Talk extends Verb {
 
         construct.getPlayer();
         construct.getWorld();
-        
+
         if(noun != null){
             System.out.println("you have spoken to " + noun);
         }

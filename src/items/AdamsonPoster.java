@@ -12,10 +12,7 @@ public class AdamsonPoster extends Item {
         this.usage().take(Item.TAKABLE).read(Item.READABLE);
 
         this.name("Adamson Poster")
-            .synonym("adamson poster")
-            .synonym("poster")
-            .synonym("flier")
-            .synonym("picture")
+            .synonym("adamson poster", "poster", "flier", "picture")
             .description("It is the most beautiful image you have ever laid your eyes upon.")
         //@formatter:off
             .text(

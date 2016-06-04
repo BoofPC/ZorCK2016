@@ -9,8 +9,7 @@ public class AnonymousNote extends Item {
         this.usage().take(Item.TOO_HEAVY).read(Item.READABLE);
         this.name("Anonymous Note")
             .description("It's a note from an unknown author...")
-            .synonym("anonymous note")
-            .synonym("note")
+            .synonym("anonymous note", "note")
             .text("You won't believe this but, I need you to go back"
                 + " in time and force Mr.Booth to grade the assignments"
                 + " so that the world doesn't end. If you don't do this"

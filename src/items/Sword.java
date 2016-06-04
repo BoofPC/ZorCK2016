@@ -8,8 +8,7 @@ public class Sword extends Item{
         super();
         this.usage().take(Item.TAKABLE);
         this.name("Elvish Sword")
-            .synonym("elvish sword")
-            .synonym("sword");
+            .synonym("elvish sword", "sword");
     }
 
     @Override

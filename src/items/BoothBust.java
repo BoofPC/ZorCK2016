@@ -10,11 +10,7 @@ public class BoothBust extends Item {
         //cannot pick up
 
         this.name("Booth Bust")
-            .synonym("booth bust")
-            .synonym("bust")
-            .synonym("statue")
-            .synonym("bust of booth")
-
+            .synonym("booth bust", "bust", "statue", "bust of booth")
             .description("It's a well-made bronze likeness of Mr. Booth.");
     }
 

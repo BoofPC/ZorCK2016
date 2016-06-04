@@ -35,11 +35,7 @@ public class TutorialItem extends Item{
         //The synonyms list should include all possible things the user could
         //call the item. All should be lower case and the first item should
         //Always be the name of the item, set above
-            .synonym("potato chip")
-            .synonym("chip")
-            .synonym("crisp")
-            .synonym("potato crisp")
-
+            .synonym("potato chip", "chip", "crisp", "potato crisp")
             .taste("It tastes greasy and fattening. Delicious!")   //If you want,
             .smell("It smells decadent"); //set additional descriptors here
 

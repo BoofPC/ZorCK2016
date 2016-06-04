@@ -193,7 +193,7 @@ public abstract class Item {
     public List<String> keys() {
         return this.keys;
     }
-    
+
     public Item key(final String key) {
         this.keys.add(key);
         return this;
@@ -211,9 +211,11 @@ public abstract class Item {
     public List<String> synonyms() {
         return this.synonyms;
     }
-    
-    public Item synonym(final String str) {
-        this.synonyms.add(str);
+
+    public Item synonym(final String... strs) {
+        for (final String str : strs) {
+            this.synonyms.add(str);
+        }
         return this;
     }
 
@@ -314,9 +316,9 @@ public abstract class Item {
         private Recieve recieve = Recieve.NO_RECIEVE;
         private Breakable breakable = Breakable.UNBREAKABLE;
         private Talk talk = Talk.NO_TALK;
-        
+
         public Usage() {}
-        
+
         public static enum Visible {
             VISIBLE, HIDDEN
         }
@@ -478,7 +480,7 @@ public abstract class Item {
             return this;
         }
     }
-    
+
     public static final Usage.Visible VISIBLE = Usage.Visible.VISIBLE;
     public static final Usage.Visible HIDDEN = Usage.Visible.HIDDEN;
     public static final Usage.Take UNTAKABLE = Usage.Take.UNTAKABLE;
