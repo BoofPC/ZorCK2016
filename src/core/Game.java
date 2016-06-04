@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import verbs.*;
 import areas.*;
+import core.Verb.Usage;
 import core.World.Direction;
 import items.*;
 import javafx.util.Pair;
@@ -160,13 +161,15 @@ public class Game {
 
     public static Command parse(final String inputRaw, final Context construct,
             final List<Verb> verbList) {
-        String input = inputRaw.trim().toLowerCase();
+        final String input = inputRaw.trim().toLowerCase();
         for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
-            if (input.equals(entry.getKey()))
-                return Command.direction(entry.getValue(), null);
+            final String dir = entry.getKey();
+            if (input.startsWith(dir))
+                return Command.direction(entry.getValue(), input.substring(dir.length()));
         }
         verb: {
             final Verb verb;
+            final String verbInput;
             {
                 final Map<String, Pair<Verb, String>> matches = new HashMap<>();
                 for (final Verb focus : verbList) {
@@ -181,14 +184,16 @@ public class Game {
                     final Pair<Verb, String> result =
                             matches.entrySet().iterator().next().getValue();
                     verb = result.getKey();
-                    input = result.getValue().trim();
+                    verbInput = result.getValue().trim();
                 } else {
                     Game.ambiguous(matches.entrySet().stream().map(Entry::getKey).iterator());
                     break verb;
                 }
             }
-            noun: {
+            final Usage usage = verb.getUsage();
+            noun: if (usage.isNoun()) {
                 final Item noun;
+                final String nounInput;
                 {
                     final Player player = construct.getPlayer();
                     final Map<String, Pair<Item, String>> matches = new HashMap<>();
@@ -199,7 +204,7 @@ public class Game {
                     }
                     for (final Item focus : player.getCurrentArea().getItems()) {
                         for (final String syn : focus.synonyms()) {
-                            Game.tryMatch(input, matches, focus, syn);
+                            Game.tryMatch(verbInput, matches, focus, syn);
                         }
                     }
 
@@ -209,13 +214,35 @@ public class Game {
                         final Pair<Item, String> result =
                                 matches.entrySet().iterator().next().getValue();
                         noun = result.getKey();
-                        input = result.getValue().trim();
+                        nounInput = result.getValue().trim();
                     } else {
                         Game.ambiguous(matches.entrySet().stream().map(Entry::getKey).iterator());
                         break noun;
                     }
                 }
-                return Command.applied(verb, noun, input);
+
+                if (usage.isDirection()) {
+                    for (final Entry<String, Direction> entry : Game.directionShorthand
+                            .entrySet()) {
+                        final String dir = entry.getKey();
+                        if (nounInput.startsWith(dir))
+                            return Command.directed(verb, noun, entry.getValue(),
+                                    nounInput.substring(dir.length()));
+                    }
+                }
+
+                return Command.applied(verb, noun, nounInput);
+            }
+            if (usage.isDirection()) {
+                for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
+                    final String dir = entry.getKey();
+                    if (verbInput.startsWith(dir))
+                        return Command.directedBare(verb, entry.getValue(),
+                                verbInput.substring(dir.length()));
+                }
+            }
+            if (!usage.isBare()) {
+                break verb;
             }
             return Command.bare(verb, input);
         }

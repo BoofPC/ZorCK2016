@@ -18,21 +18,21 @@ public abstract class Verb {
      */
     private final Usage usage;
 
-    public Verb(final String title, final List<String> synonyms, final Usage usage){
+    public Verb(final String title, final List<String> synonyms, final Usage usage) {
         this.title = title;
         this.synonyms = synonyms;
         this.usage = usage;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 
     public List<String> getSynonyms() {
-        return synonyms;
+        return this.synonyms;
     }
 
-    public boolean hasMatching(final String input){
+    public boolean hasMatching(final String input) {
         return this.title.equals(input) || this.synonyms.contains(input);
     }
 
@@ -42,7 +42,8 @@ public abstract class Verb {
 
     public abstract void run(Command command, Context construct);
 
-    public static Verb fromLambda(final String title, final List<String> synonyms, final Usage usage, final BiConsumer<Command, Context> f) {
+    public static Verb fromLambda(final String title, final List<String> synonyms,
+            final Usage usage, final BiConsumer<Command, Context> f) {
         return new Verb(title, synonyms, usage) {
             @Override
             public void run(final Command command, final Context construct) {
