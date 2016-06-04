@@ -50,20 +50,32 @@ public final class Command {
         return new Command(null, null, null, leftovers);
     }
 
-    public boolean isVerb() {
+    public boolean hasVerb() {
         return this.verb != null;
     }
 
-    public boolean isBare() {
-        return this.isVerb() && (this.noun == null);
+    public boolean hasNoun() {
+        return this.noun != null;
     }
 
-    public boolean isDirected() {
+    public boolean hasDirection() {
         return this.direction != null;
     }
 
+    public boolean isBare() {
+        return this.hasVerb() && !this.hasNoun();
+    }
+
+    public boolean isApplied() {
+        return this.hasVerb() && this.hasNoun();
+    }
+
     public boolean isDirection() {
-        return !this.isVerb() && this.isDirected();
+        return this.hasDirection() && !this.hasVerb();
+    }
+
+    public boolean isDirected() {
+        return this.hasVerb() && this.hasDirection();
     }
 
     public boolean isBadParse() {

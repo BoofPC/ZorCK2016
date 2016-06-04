@@ -8,53 +8,50 @@ import java.util.List;
 public class Lock extends Verb {
 
     public Lock() {
-        super("lock",
-                Arrays.asList(),
-                Verb.usage().noun());
+        super("lock", Arrays.asList(), Verb.usage().noun());
     }
 
     @Override
     public void run(final Command command, final Context construct) {
-        command.getDirection();
         final Item noun = command.getNoun();
+        final Item.Usage usage = noun.usage();
 
-        final Player player = construct.getPlayer();
-        final World world = construct.getWorld();
-
-        if (noun != null) {
-            if (!noun.name().equals("noItem")) {
+        switch (usage.lock()) {
+            case UNLOCKED:
                 final List<String> keys = noun.keys();
+
                 if (keys != null) {
+                    final Player player = construct.getPlayer();
                     boolean test = false;
                     for (final Item item : player.getInventory()) {
-                        if (item.name().equals(keys.get(0))) {
+                        if (keys.contains(item.name())) {
                             test = true;
+                            break;
                         }
                     }
-                    if (noun.usage().lock() == Item.UNLOCKED) {
-                        if (test) {
-                            noun.usage().lock(Item.LOCKED);
-                            System.out.println("You locked the " + noun.name());
-                            if (noun.getPortal() != null) {
-                                noun.getPortal().lock();
-                            }
-                            if (noun.hasMatching("door")) {
-                                noun.synchronizeDoor(world, player.getCurrentArea());
-                            }
-                        } else {
-                            System.out.println("You need a key for that");
+                    if (test) {
+                        usage.lock(Item.LOCKED);
+                        System.out.println("You locked the " + noun.name());
+                        final Portal portal = noun.getPortal();
+                        if (portal != null) {
+                            portal.lock();
                         }
-                    } else if (noun.usage().lock() == Item.LOCKED) {
-                        System.out.println("The " + noun.name() + " is already locked!");
+                        if (noun.hasMatching("door")) {
+                            noun.synchronizeDoor(construct.getWorld(), player.getCurrentArea());
+                        }
+                    } else {
+                        System.out.println("You need a key for that");
                     }
                 } else {
                     System.out.println("Now, how do you expect to do that?");
                 }
-            } else {
-                System.out.println("Ya need a noun, ya dingus");
-            }
-        } else {
-            System.out.println("Where do you expect to find one of those?");
+                break;
+            case LOCKED:
+                System.out.println("The " + noun.name() + " is already locked!");
+                break;
+            case NO_LOCK:
+                System.out.println("Now, how do you expect to do that?");
+                break;
         }
     }
 

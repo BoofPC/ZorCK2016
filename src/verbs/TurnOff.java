@@ -7,34 +7,25 @@ import core.*;
 public class TurnOff extends Verb {
 
     public TurnOff() {
-        super("turn off",
-                Arrays.asList("deactivate"),
-                Verb.usage().noun());
+        super("turn off", Arrays.asList("deactivate"), Verb.usage().noun());
     }
 
     @Override
     public void run(final Command command, final Context construct) {
-        command.getDirection();
         final Item noun = command.getNoun();
+        final Item.Usage usage = noun.usage();
 
-        construct.getPlayer();
-        construct.getWorld();
-
-        if (noun != null) {
-            if (!noun.name().equals("noItem")) {
-                if (noun.usage().active() == Item.ON) {
-                    noun.usage().active(Item.OFF);
-                    System.out.println("You turned off the " + noun.name());
-                } else if (noun.usage().active() == Item.OFF) {
-                    System.out.println(noun.name() + " is already off");
-                } else {
-                    System.out.println("I don't see how you expect to do that");
-                }
-            } else {
-                System.out.println("Ya need a noun, ya dingus");
-            }
-        } else {
-            System.out.println("Where do you expect to find one of those?");
+        switch (usage.active()) {
+            case ON:
+                usage.active(Item.OFF);
+                System.out.println("You turned off the " + noun.name());
+                break;
+            case OFF:
+                System.out.println(noun.name() + " is already off");
+                break;
+            case STATIC:
+                System.out.println("I don't see how you expect to do that.");
+                break;
         }
     }
 }

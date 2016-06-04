@@ -47,6 +47,13 @@ public class Player {
         return this.inventory.stream().anyMatch(i -> i == item);
     }
 
+    public boolean hasItem(final String name) {
+        for (final Item item : this.getInventory()) {
+            if (item.name().equals(name)) return true;
+        }
+        return false;
+    }
+
     public List<Item> getInventory() {
         return this.inventory;
     }
