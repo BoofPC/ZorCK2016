@@ -1,13 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Open extends Verb {
 
     public Open() {
-        super("open", Arrays.asList("unseal"), Verb.usage().noun());
+        super("open", Verb.usage().noun(), "unseal");
     }
 
     @Override

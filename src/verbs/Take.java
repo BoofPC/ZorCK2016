@@ -1,15 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Take extends Verb {
 
     public Take() {
-        super("take",
-                Arrays.asList("get", "obtain", "pick up", "pickup", "steal"),
-                Verb.usage().noun());
+        super("take", Verb.usage().noun(), "get", "obtain", "pick up", "pickup", "steal");
     }
 
     @Override
@@ -21,11 +17,9 @@ public class Take extends Verb {
             if (noun.usage().take() == Item.TAKABLE) {
                 player.getCurrentArea().removeItem(noun);
                 player.addItem(noun);
-                System.out.println(player.getName() + " took the "
-                        + noun.name());
+                System.out.println(player.getName() + " took the " + noun.name());
             } else if (noun.usage().take() == Item.TOO_HEAVY) {
-                System.out.println("The " + noun.name()
-                        + " is too heavy for that");
+                System.out.println("The " + noun.name() + " is too heavy for that");
             } else if (noun.usage().take() == Item.BOLTED_DOWN) {
                 System.out.println("The " + noun.name() + " is bolted down");
             } else {

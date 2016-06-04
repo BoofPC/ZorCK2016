@@ -1,7 +1,6 @@
 package verbs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import core.*;
@@ -9,18 +8,12 @@ import core.*;
 public class Look extends Verb {
 
     public Look() {
-        super("look",
-                Arrays.asList("l"),
-                Verb.usage().bare().direction());
+        super("look", Verb.usage().bare().direction(), "l");
     }
 
     @Override
     public void run(final Command command, final Context construct) {
-        command.getDirection();
-        command.getNoun();
-
         final Player player = construct.getPlayer();
-        construct.getWorld();
 
         final List<String> desc = new ArrayList<>();
         if (player.getCurrentArea().getItems().size() == 0) {

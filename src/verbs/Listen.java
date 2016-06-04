@@ -1,14 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Listen extends Verb {
 
     public Listen() {
-        super("listen", Arrays.asList("hear", "pay attention", "listen to"),
-                Verb.usage().bare().noun());
+        super("listen", Verb.usage().bare().noun(), "hear", "pay attention", "listen to");
     }
 
     @Override

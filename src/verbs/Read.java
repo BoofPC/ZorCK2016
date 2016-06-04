@@ -1,13 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Read extends Verb {
 
     public Read() {
-        super("read", Arrays.asList("peruse", "study"), Verb.usage().noun());
+        super("read", Verb.usage().noun(), "peruse", "study");
     }
 
     @Override

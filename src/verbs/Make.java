@@ -1,15 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Make extends Verb {
 
     public Make() {
-        super("make",
-                Arrays.asList("create", "build", "construct"),
-                Verb.usage().noun());
+        super("make", Verb.usage().noun(), "create", "build", "construct");
     }
 
     @Override

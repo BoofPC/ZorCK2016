@@ -1,13 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Poke extends Verb {
 
     public Poke() {
-        super("poke", Arrays.asList("touch", "prod", "tap", "feel"), Verb.usage().noun());
+        super("poke", Verb.usage().noun(), "touch", "prod", "tap", "feel");
     }
 
     @Override

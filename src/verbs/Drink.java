@@ -1,13 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Drink extends Verb {
 
     public Drink() {
-        super("drink", Arrays.asList("sip", "quaff"), Verb.usage().noun());
+        super("drink", Verb.usage().noun(), "sip", "quaff");
     }
 
     @Override

@@ -2,17 +2,13 @@ package verbs;
 
 import core.*;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Hello extends Verb {
 
     public Hello() {
-        super("hello",
-                Arrays.asList("hi", "good day", "good morning", "good afternoon",
-                    "good evening"),
-                Verb.usage().bare().noun());
-
+        super("hello", Verb.usage().bare().noun(), "hi", "good day", "good morning",
+                "good afternoon", "good evening");
     }
 
     @Override

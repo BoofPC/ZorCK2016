@@ -1,14 +1,12 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 import core.World.Direction;
 
 public class Climb extends Verb {
 
     public Climb() {
-        super("climb", Arrays.asList("scale"), Verb.usage().bare().noun());
+        super("climb", Verb.usage().bare().noun(), "scale");
     }
 
     @Override

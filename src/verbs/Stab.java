@@ -1,14 +1,12 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 import items.*;
 
 public class Stab extends Verb {
 
     public Stab() {
-        super("stab", Arrays.asList("slice", "shank", "cut", "kill"), Verb.usage().noun());
+        super("stab", Verb.usage().noun(), "slice", "shank", "cut", "kill");
     }
 
     @Override

@@ -1,13 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Taste extends Verb {
 
     public Taste() {
-        super("taste", Arrays.asList("lick", "sample"), Verb.usage().bare().noun());
+        super("taste", Verb.usage().bare().noun(), "lick", "sample");
     }
 
     @Override

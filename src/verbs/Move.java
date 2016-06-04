@@ -1,23 +1,17 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 import core.World.Direction;
 
 public class Move extends Verb {
 
     public Move() {
-        super("move",
-                Arrays.asList("go", "travel", "walk"),
-                Verb.usage().direction());
+        super("move", Verb.usage().direction(), "go", "travel", "walk");
     }
 
     @Override
     public void run(final Command command, final Context construct) {
         final Direction direction = command.getDirection();
-        command.getNoun();
-
         final Player player = construct.getPlayer();
         final World world = construct.getWorld();
 
@@ -25,7 +19,7 @@ public class Move extends Verb {
             final Portal portal = player.getCurrentArea().getPortals().getPortal(direction);
             if (portal.isLocked()) {
                 System.out.println("You can't go that way!");
-            } else if(!player.getSit()){
+            } else if (!player.getSit()) {
                 player.setCurrentArea(world.getArea(portal.getTarget()));
                 System.out.print(player.getName() + " moved ");
                 switch (direction) {
@@ -61,7 +55,7 @@ public class Move extends Verb {
                         break;
                 }
                 player.getCurrentArea().enter(player);
-            }else if(player.getSit()){
+            } else if (player.getSit()) {
                 System.out.println("Ya gotta stand up first, stupid");
             }
         } else {

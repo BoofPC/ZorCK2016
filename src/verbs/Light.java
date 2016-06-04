@@ -1,7 +1,5 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.Command;
 import core.Context;
 import core.Verb;
@@ -9,9 +7,7 @@ import core.Verb;
 public class Light extends Verb {
 
     public Light() {
-        super("light",
-                Arrays.asList("ignite", "illuminate"),
-                Verb.usage().noun());
+        super("light", Verb.usage().noun(), "ignite", "illuminate");
     }
 
     @Override
