@@ -9,7 +9,7 @@ public class BroadcastingRoom extends Area {
         super(containingWorld);
 
         this.portals().north(new Portal(false, "Hallway11"))
-                .east(new Portal(true, "AdomsonsRoom"));
+                .east(new Portal(true, "AdamsonsRoom"));
         this.title("Broadcasting Room").initialDescription("----------").description("-----").articleThe(true)
                 .item(new Door(false, "Northern Door", null, this.portals().north()))
                 .item(new Door(true, "Eastern Door", "Adamson's Key", this.portals().east()));

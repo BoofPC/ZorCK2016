@@ -101,7 +101,7 @@ public class Game {
         world.addArea("Hallway15", new Hallway15(world));
         world.addArea("Hallway16", new Hallway16(world));
         world.addArea("Hallway17", new Hallway17(world));
-        world.addArea("AdomsonsRoom", new AdamsonsRoom(world));
+        world.addArea("AdamsonsRoom", new AdamsonsRoom(world));
         world.addArea("ArthursRoom", new ArthursRoom(world));
         world.addArea("BirkenfeldsRoom", new BirkenfeldsRoom(world));
         world.addArea("BoothsRoom", new BoothsRoom(world));
