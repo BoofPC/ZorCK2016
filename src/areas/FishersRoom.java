@@ -7,7 +7,7 @@ public class FishersRoom extends Area {
 
     public FishersRoom(final World containingWorld) {
         super(containingWorld);
-        this.portals().north(new Portal(Portal.State.UNLOCKED, "Hallway17"));
+        this.portals().south(new Portal(Portal.State.UNLOCKED, "Hallway17"));
         this.initialDescription("You are in Fisher's room as various papers on "
                 + "the downfall of the Ming Empire and essays as well as Silk "
                 + "Roads trading changed China while a Reggae-sounding song "
@@ -17,7 +17,7 @@ public class FishersRoom extends Area {
             .dark(false).smell("It smells like teen spirit (or in other words perspiration)")
             .taste("You taste good ol' oxygen")
             .sound("Blaring reggae music pounds through your ear drums")
-            .item(new Door(false, "Northern Door", null, this.portals().north()))
+            .item(new Door(false, "Southern Door", null, this.portals().south()))
             .item(new Lantern());
     }
 
@@ -25,6 +25,7 @@ public class FishersRoom extends Area {
     public void interact(final Command command, final Context context) {
         final Verb verb = command.getVerb();
         if (verb.getTitle().equals("look")) {
+            //This is unnecessary - It should be the description
             System.out.println("You see scattered papers around the room, some"
                     + " saying 'You can get it if you really want' and others"
                     + " discussing the extent to which the Kyoto Protocol assisted"
@@ -43,6 +44,7 @@ public class FishersRoom extends Area {
                 System.out.println("Fisher says, 'Bring me some coffee.'");
             }
 
+            //This is unnecessary
             else if (verb.getTitle().equals("take") && noun.equals("lantern")) {
                 if (this.hasMatching(new Lantern())) {
                     System.out.println("You picked up the lantern!");

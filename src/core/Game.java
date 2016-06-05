@@ -101,10 +101,36 @@ public class Game {
         world.addArea("Hallway15", new Hallway15(world));
         world.addArea("Hallway16", new Hallway16(world));
         world.addArea("Hallway17", new Hallway17(world));
+        world.addArea("AdomsonsRoom", new AdamsonsRoom(world));
+        world.addArea("ArthursRoom", new ArthursRoom(world));
+        world.addArea("BirkenfeldsRoom", new BirkenfeldsRoom(world));
+        world.addArea("BoothsRoom", new BoothsRoom(world));
+        world.addArea("BroadcastingRoom", new BroadcastingRoom(world));
+        world.addArea("ChemicalStorageRoom", new ChemicalStorageRoom(world));
         world.addArea("CompSciRoom", new CompSciRoom(world));
+        world.addArea("ConferenceRoom01", new ConferenceRoom01(world));
+        world.addArea("ConferenceRoom02", new ConferenceRoom02(world));
+        world.addArea("DuanesRoom", new DuanesRoom(world));
         world.addArea("FishersRoom", new FishersRoom(world));
+        world.addArea("GharstsRoom", new GharstsRoom(world));
         world.addArea("HendrichsonsRoom", new HendrichsonsRoom(world));
+        world.addArea("ISSRoom", new ISSRoom(world));
+        world.addArea("JorstadsRoom", new JorstadsRoom(world));
+        world.addArea("KUGRRoom", new KUGRRoom(world));
+        world.addArea("KasslersRoom", new KasslersRoom(world));
+        world.addArea("Library", new Library(world));
+        world.addArea("MensRestroom", new MensRestroom(world));
+        world.addArea("OishisRoom", new OishisRoom(world));
+        world.addArea("RomarosRoom", new RomarosRoom(world));
         world.addArea("Roof", new Roof(world));
+        world.addArea("RosenquistsRoom", new RosenquistsRoom(world));
+        world.addArea("SchuchartsRoom", new SchuchartsRoom(world));
+        world.addArea("SecretPassage", new SecretPassage(world));
+        world.addArea("SecurityRoom", new SecurityRoom(world));
+        world.addArea("StaffLounge", new StaffLounge(world));
+        world.addArea("StakersRoom", new StakersRoom(world));
+        world.addArea("WatchmansRoom", new WatchmansRoom(world));
+        world.addArea("WilsonsRoom", new WilsonsRoom(world));
         world.addArea("WomensRestroom", new WomensRestroom(world));
 
         //Setting initial area for player
@@ -133,10 +159,7 @@ public class Game {
             while (status == Status.KEEP_PLAYING) {
                 final Area currentArea = player.getCurrentArea();
                 final String currentTitle = currentArea.title();
-                if (currentTitle.equals("Hallway") || currentTitle.equals("Women's Restroom")
-                        || currentTitle.equals("Men's Restroom")
-                        || currentTitle.equals("Security Room")
-                        || currentTitle.equals("Chemical Storage Room")) {
+                if (currentArea.articleThe()) {
                     //...
                     System.out.println("You are in the " + currentTitle);
                 } else {

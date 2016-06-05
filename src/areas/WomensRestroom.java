@@ -22,7 +22,7 @@ public class WomensRestroom extends Area {
                 + "light coming in from the window to the east. To the south "
                 + "is a doorway leading into the hallway. A poster hangs on "
                 + "the door of one of the stalls.")
-            .description("This is the Women's Restroom.")
+            .description("This is the Women's Restroom.").articleThe(true)
 
             .sound("You hear an incessant dripping sound coming from a faucet.")
             .smell("It smells like flowers.")

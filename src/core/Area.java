@@ -20,6 +20,7 @@ public abstract class Area {
     private String sound;
     private boolean dark;
     private boolean firstVisit = true;
+    private boolean articleThe;
 
     private final List<Item> items = new ArrayList<Item>();
 
@@ -27,6 +28,7 @@ public abstract class Area {
 
     public Area(final World containingWorld) {
         this.world = containingWorld;
+        this.articleThe = false;
     }
 
     public World getContainingWorld() {
@@ -178,6 +180,15 @@ public abstract class Area {
 
     public Area firstVisit(final boolean firstVisit) {
         this.firstVisit = firstVisit;
+        return this;
+    }
+    
+    public boolean articleThe(){
+        return this.articleThe;
+    }
+    
+    public Area articleThe(boolean the){
+        this.articleThe = the;
         return this;
     }
 }

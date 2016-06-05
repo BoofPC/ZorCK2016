@@ -11,7 +11,7 @@ public class Hallway13 extends Area {
             .south(new Portal(false, "Hallway12"))
             .east(new Portal(true, "Library")); //Door to the library is locked
         this.title("Hallway")
-            .initialDescription("----------").description("-----")
+            .initialDescription("----------").description("-----").articleThe(true)
 
             .item(new Door(true, "Library Door", "Library Key", this.portals().east()));
     }

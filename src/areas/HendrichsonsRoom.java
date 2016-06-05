@@ -22,6 +22,7 @@ public class HendrichsonsRoom extends Area {
     public void interact(final Command command, final Context context) {
         final Verb verb = command.getVerb();
         final Item noun = command.getNoun();
+        //This is unnecessary
         if (verb.getTitle().equals("look")) {
             System.out.println(this.description());
         } else {

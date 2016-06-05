@@ -17,7 +17,7 @@ public class Hallway07 extends Area {
                 + "a doorway that leads to the women's restroom. Off to the "
                 + "side is a staircase that has been barricaded with chairs. "
                 + "The hallway continues to the west. A stale cracker lies in "
-                + "the center of the hallway.")
+                + "the center of the hallway.").articleThe(true)
             .description("This is the end of the hallway.")
 
             .item(new Cracker());

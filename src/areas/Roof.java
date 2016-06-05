@@ -22,7 +22,7 @@ public class Roof extends Area {
                 + "Mr. Booth. Past the crow is the edge of the roof. To the "
                 + "west is a window leading to the Women's Restroom.")
         //TODO: add a verb to jump off of the roof
-            .description("This is the roof.")
+            .description("This is the roof.").articleThe(true)
 
             .sound("The only sound you hear is the caws of the crow.")
             .smell("It smells like nothing here is going to further your progress"
