@@ -16,7 +16,7 @@ public class Drop extends Verb {
         if (player.hasMatching(noun)) {
             if (noun.usage().take() == Item.TAKABLE) {
                 player.removeItem(noun);
-                player.getCurrentArea().addItem(noun);
+                player.getCurrentArea().item(noun);
                 System.out.println("You dropped " + noun.name());
             } else {
                 System.out.println(

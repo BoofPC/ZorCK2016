@@ -14,20 +14,20 @@ public class WomensRestroom extends Area {
         super(containingWorld);
 
         //TODO: add way to unlock portal by opening window
-        this.getPortals().east(new Portal(Portal.State.LOCKED, "Roof"))
+        this.portals().east(new Portal(Portal.State.LOCKED, "Roof"))
             .south(new Portal(Portal.State.UNLOCKED, "Hallway07"));
 
-        this.setTitle("Women's Restroom");
-        this.setInitialDescription("The room is dimly lit, illuminated only by the "
+        this.title("Women's Restroom")
+            .initialDescription("The room is dimly lit, illuminated only by the "
                 + "light coming in from the window to the east. To the south "
                 + "is a doorway leading into the hallway. A poster hangs on "
-                + "the door of one of the stalls.");
-        this.setDescription("This is the Women's Restroom.");
+                + "the door of one of the stalls.")
+            .description("This is the Women's Restroom.")
 
-        this.setSound("You hear an incessant dripping sound coming from a faucet.");
-        this.setSmell("It smells like flowers.");
+            .sound("You hear an incessant dripping sound coming from a faucet.")
+            .smell("It smells like flowers.")
 
-        this.addItem(new AdamsonPoster());
+            .item(new AdamsonPoster());
 
     }
 

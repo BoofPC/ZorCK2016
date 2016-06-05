@@ -16,17 +16,15 @@ public class Look extends Verb {
         final Player player = construct.getPlayer();
 
         final List<String> desc = new ArrayList<>();
-        if (player.getCurrentArea().getItems().size() == 0) {
-            desc.add(player.getCurrentArea().getDescription());
-        } else {
-            desc.add(player.getCurrentArea().getDescription());
+        desc.add(player.getCurrentArea().description());
+        if (player.getCurrentArea().items().size() > 0) {
             desc.add("");
             desc.add("This Area contains:");
-            for (final Item item : player.getCurrentArea().getItems()) {
+            for (final Item item : player.getCurrentArea().items()) {
                 desc.add(item.name());
             }
         }
-        if (player.getCurrentArea().getDark() != true) {
+        if (player.getCurrentArea().dark() != true) {
             desc.forEach(System.out::println);
         } else if (player.getItem("Lantern") != null) {
             if (player.getItem("Lantern").active()) {

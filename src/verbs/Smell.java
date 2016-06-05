@@ -11,7 +11,7 @@ public class Smell extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         if (command.isBare()) {
-            final String smell = construct.getPlayer().getCurrentArea().getSmell();
+            final String smell = construct.getPlayer().getCurrentArea().smell();
             if (smell != null) {
                 System.out.println(smell);
             } else {

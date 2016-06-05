@@ -20,7 +20,7 @@ public class Give extends Verb {
 
         if (player.hasMatching(noun)) {
             Item receiver = null;
-            for (final Item item : player.getCurrentArea().getItems()) {
+            for (final Item item : player.getCurrentArea().items()) {
                 if (item.usage().recieve() == Item.RECIEVE) {
                     receiver = item;
                     break;

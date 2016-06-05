@@ -11,7 +11,7 @@ public class Listen extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         if (command.isBare()) {
-            final String sound = construct.getPlayer().getCurrentArea().getSound();
+            final String sound = construct.getPlayer().getCurrentArea().sound();
             if (sound != null) {
                 System.out.println(sound);
             } else {

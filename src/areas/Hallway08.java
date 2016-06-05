@@ -3,44 +3,19 @@ package areas;
 import core.*;
 import items.*;
 
-public class Hallway08 extends Area{
+public class Hallway08 extends Area {
 
-       public Hallway08(final World containingWorld){
-            super(containingWorld);
+    public Hallway08(final World containingWorld) {
+        super(containingWorld);
 
-            this.getPortals()
-                .north(new Portal(false,"Hallway06"))
-                .south(new Portal(false, "DuanesRoom"))
-                .west(new Portal(false, "Hallway09"))
-                .east(new Portal(false, "Hallway07"));
-            this.setTitle("Hallway");
-            this.setInitialDescription("----------");
-            this.setDescription("-----");
+        this.portals()
+            .north(new Portal(false, "Hallway06"))
+            .south(new Portal(false, "DuanesRoom"))
+            .west(new Portal(false, "Hallway09"))
+            .east(new Portal(false, "Hallway07"));
+        this.title("Hallway")
+            .initialDescription("----------").description("-----")
 
-            this.addItem(new Door(true,"Southern Door", null,this.getPortals().south()));
-
-
-            //Add these if you want
-            //addItem(ITEM);
-            //setTaste(STRING);
-            //setSmell(STRING);
-            //setSound(STRING);
-            //setDark(BOOLEAN); //if the player needs the lantern to see
-
-
-       }
-
-        @Override
-        public void interact(final Command command, final Context context){
-            Item noun;
-            noun = command.getNoun();
-
-            if(command.getNoun() !=  null) {
-                noun.interact(command,context);
-            }
-            if(!context.getSkipGeneral()) {
-                command.getVerb().run(command, context);
-            }
-        }
-
+            .item(new Door(true, "Southern Door", null, this.portals().south()));
+    }
 }

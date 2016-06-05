@@ -131,7 +131,7 @@ public class Game {
             final Status status = Status.KEEP_PLAYING;
             while (status == Status.KEEP_PLAYING) {
                 final Area currentArea = player.getCurrentArea();
-                final String currentTitle = currentArea.getTitle();
+                final String currentTitle = currentArea.title();
                 if (currentTitle.equals("Hallway") || currentTitle.equals("Women's Restroom")
                         || currentTitle.equals("Men's Restroom")
                         || currentTitle.equals("Security Room")
@@ -204,7 +204,7 @@ public class Game {
                             Game.tryMatch(verbInput, matches, focus, syn);
                         }
                     }
-                    for (final Item focus : player.getCurrentArea().getItems()) {
+                    for (final Item focus : player.getCurrentArea().items()) {
                         for (final String syn : focus.synonyms()) {
                             Game.tryMatch(verbInput, matches, focus, syn);
                         }

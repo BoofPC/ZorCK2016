@@ -224,7 +224,7 @@ public abstract class Item {
 
     public void drop(final Area area) {
         if (this.inside() != null) {
-            area.addItem(this.inside());
+            area.item(this.inside());
             this.inside(null);
         }
     }
@@ -243,7 +243,7 @@ public abstract class Item {
         portal = this.getPortal();
         Area target;
         target = world.getArea(portal.getTarget());
-        final Direction direction = currentArea.getDirection(portal);
+        final Direction direction = currentArea.direction(portal);
         final Direction oppDir;
         switch (direction) {
             case NORTH:
@@ -280,7 +280,7 @@ public abstract class Item {
                 oppDir = null;
         }
 
-        final Portal oppPortal = target.getPortals().getPortal(oppDir);
+        final Portal oppPortal = target.portals().getPortal(oppDir);
         final Item oppDoor = oppPortal.getDoor(target);
 
         if (this.usage().lock() == Usage.Lock.LOCKED) {

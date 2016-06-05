@@ -13,7 +13,7 @@ public class Move extends Verb {
     public void run(final Command command, final Context construct) {
         final Direction direction = command.getDirection();
         final Player player = construct.getPlayer();
-        final Portal portal = player.getCurrentArea().getPortals().getPortal(direction);
+        final Portal portal = player.getCurrentArea().portals().getPortal(direction);
 
         if (portal.isLocked()) {
             System.out.println("You can't go that way!");

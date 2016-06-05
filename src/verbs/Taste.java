@@ -11,7 +11,7 @@ public class Taste extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         if (command.isBare()) {
-            final String taste = construct.getPlayer().getCurrentArea().getTaste();
+            final String taste = construct.getPlayer().getCurrentArea().taste();
             if (taste != null) {
                 System.out.println(taste);
             } else {

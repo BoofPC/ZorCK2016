@@ -11,39 +11,33 @@ public class AreaTemplate extends Area { // Be sure to replace this
     public AreaTemplate(final World containingWorld) { // And this
         super(containingWorld);
         /* Set the ones you need
-        this.getPortals()
+        this.portals()
             .north(new Portal(, ""))
             .east(new Portal(, ""))
             .south(new Portal(, ""))
             .west(new Portal(, ""));
         */
-        this.setTitle("");
-        this.setInitialDescription("");
-        this.setDescription("");
+        this.title("")
+            .initialDescription("")    
+            .description("");
         // Add any necessary doors
         // (Here, the door faces south)
-        this.addItem(new Door(false, "DOORNAME", null, this.getPortals().south()));
+        this.item(new Door(false, "DOORNAME", null, this.portals().south()));
 
         /* Add these if you want
-        this.addItem(ITEM);
-        this.setTaste(STRING);
-        this.setSmell(STRING);
-        this.setSound(STRING);
-        this.setDark(BOOLEAN); // if the player needs the lantern to see
+        this.item(ITEM)
+            .taste(STRING)
+            .smell(STRING)
+            .sound(STRING)
+            .dark(BOOLEAN); // if the player needs the lantern to see
         */
     }
 
+    // If you don't have any special interactions, leave this out.
+    // If you do, this is a good base.
     @Override
     public void interact(final Command command, final Context context) {
-        Item noun;
-        noun = command.getNoun();
-        // if you don't have any special interactions, just put this:
-        if (command.getNoun() != null) {
-            noun.interact(command, context);
-        }
-        if (!context.getSkipGeneral()) {
-            command.getVerb().run(command, context);
-        }
+        super.interact(command, context);
     }
 
 }
