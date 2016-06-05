@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Game {
     public static enum Status {
@@ -141,7 +142,7 @@ public class Game {
                     System.out.println("You are in " + currentTitle);
                 }
 
-                System.out.print(">");
+                System.out.print("> ");
                 final String input = reader.nextLine();
                 System.out.println("");
 
@@ -163,9 +164,10 @@ public class Game {
             final List<Verb> verbList) {
         final String input = inputRaw.trim().toLowerCase();
         for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
-            final String dir = entry.getKey();
-            if (input.startsWith(dir))
-                return Command.direction(entry.getValue(), input.substring(dir.length()));
+            final Pair<Direction, String> match =
+                    Game.getMatch(input, entry.getValue(), entry.getKey());
+            if (match != null)
+                return Command.direction(match.getKey(), match.getValue());
         }
         verb: {
             final Verb verb;
@@ -199,7 +201,7 @@ public class Game {
                     final Map<String, Pair<Item, String>> matches = new HashMap<>();
                     for (final Item focus : player.getInventory()) {
                         for (final String syn : focus.synonyms()) {
-                            Game.tryMatch(input, matches, focus, syn);
+                            Game.tryMatch(verbInput, matches, focus, syn);
                         }
                     }
                     for (final Item focus : player.getCurrentArea().getItems()) {
@@ -209,6 +211,7 @@ public class Game {
                     }
 
                     if (matches.isEmpty()) {
+                        // System.out.println("No noun matches " + verbInput);
                         break noun;
                     } else if (matches.size() == 1) {
                         final Pair<Item, String> result =
@@ -224,10 +227,10 @@ public class Game {
                 if (usage.isDirection()) {
                     for (final Entry<String, Direction> entry : Game.directionShorthand
                             .entrySet()) {
-                        final String dir = entry.getKey();
-                        if (nounInput.startsWith(dir))
-                            return Command.directed(verb, noun, entry.getValue(),
-                                    nounInput.substring(dir.length()));
+                        final Pair<Direction, String> match =
+                                Game.getMatch(nounInput, entry.getValue(), entry.getKey());
+                        if (match != null)
+                            return Command.directed(verb, noun, match.getKey(), match.getValue());
                     }
                 }
 
@@ -235,13 +238,14 @@ public class Game {
             }
             if (usage.isDirection()) {
                 for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
-                    final String dir = entry.getKey();
-                    if (verbInput.startsWith(dir))
-                        return Command.directedBare(verb, entry.getValue(),
-                                verbInput.substring(dir.length()));
+                    final Pair<Direction, String> match =
+                            Game.getMatch(verbInput, entry.getValue(), entry.getKey());
+                    if (match != null)
+                        return Command.directedBare(verb, match.getKey(), match.getValue());
                 }
             }
             if (!usage.isBare()) {
+                // System.out.println(verb.getTitle() + " isn't bare. Leftovers: " + verbInput);
                 break verb;
             }
             return Command.bare(verb, input);
@@ -249,10 +253,25 @@ public class Game {
         return Command.badParse(input);
     }
 
+    private final static Pattern endOfMatch = Pattern.compile("^\\s");
+
+    public static <T> Pair<T, String> getMatch(final String input, final T focus,
+            final String str) {
+        if (input.startsWith(str)) {
+            final String leftovers = input.substring(str.length());
+            if (leftovers.isEmpty() || Game.endOfMatch.matcher(leftovers).find()) {
+                // System.out.println("Match: " + str + "; leftovers: " + leftovers);
+                return new Pair<>(focus, leftovers);
+            }
+        }
+        return null;
+    }
+
     public static <T> void tryMatch(final String input, final Map<String, Pair<T, String>> matches,
-            final T focus, final String syn) {
-        if (input.startsWith(syn)) {
-            matches.put(syn, new Pair<>(focus, input.substring(syn.length())));
+            final T focus, final String str) {
+        final Pair<T, String> result = Game.getMatch(input, focus, str);
+        if (result != null) {
+            matches.put(str, result);
         }
     }
 
@@ -269,7 +288,7 @@ public class Game {
             if (hasNext) {
                 System.out.print(", ");
             } else {
-                System.out.print("?");
+                System.out.println("?");
             }
         }
     }

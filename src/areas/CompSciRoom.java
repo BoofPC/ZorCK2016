@@ -1,6 +1,7 @@
 package areas;
 
 import core.*;
+import items.MrBooth;
 
 public class CompSciRoom extends Area{
 
@@ -13,6 +14,7 @@ public class CompSciRoom extends Area{
         this.setInitialDescription("This is the CompSci room, Room 317. MrBooth is here in his chair,"
                 +"infornt of his computer. on, his computer is power school. You see Your Grade is an F");
         this.setDescription("This is the CompSci Room, room 317");
+        this.addItem(new MrBooth());
     }
 
         @Override
