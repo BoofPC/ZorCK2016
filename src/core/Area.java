@@ -33,11 +33,11 @@ public abstract class Area {
         return this.world;
     }
 
-    public void interact(Command command, Context context) {
+    public void interact(final Command command, final Context context) {
         final Item noun = command.getNoun();
         Area.defaultInteract(command, context, noun);
     }
-    
+
     public static void defaultInteract(final Command command, final Context context, final Item noun) {
         if (command.getNoun() != null) {
             noun.interact(command, context);
@@ -131,7 +131,7 @@ public abstract class Area {
     public Map<String, Boolean> state() {
         return this.state;
     }
-    
+
     public boolean state(final String name) {
         return this.state.get(name);
     }
@@ -175,8 +175,8 @@ public abstract class Area {
     public boolean firstVisit() {
         return this.firstVisit;
     }
-    
-    public Area firstVisit(boolean firstVisit) {
+
+    public Area firstVisit(final boolean firstVisit) {
         this.firstVisit = firstVisit;
         return this;
     }

@@ -16,5 +16,5 @@ public class CompSciRoom extends Area{
             .description("This is the CompSci Room, room 317")
             .item(new MrBooth());
     }
-    
+
 }

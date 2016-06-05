@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Game {
@@ -253,16 +254,15 @@ public class Game {
         return Command.badParse(input);
     }
 
-    private final static Pattern endOfMatch = Pattern.compile("^\\s");
+    private final static Matcher endOfMatch = Pattern.compile("^\\s").matcher("");
 
     public static <T> Pair<T, String> getMatch(final String input, final T focus,
             final String str) {
         if (input.startsWith(str)) {
             final String leftovers = input.substring(str.length());
-            if (leftovers.isEmpty() || Game.endOfMatch.matcher(leftovers).find()) {
+            if (leftovers.isEmpty() || Game.endOfMatch.reset(leftovers).find())
                 // System.out.println("Match: " + str + "; leftovers: " + leftovers);
                 return new Pair<>(focus, leftovers);
-            }
         }
         return null;
     }
