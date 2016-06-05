@@ -31,47 +31,47 @@ public class Game {
 
 
         // Register all verbs
-        game.verbList.add(new Break());
-        game.verbList.add(new Choose());
-        game.verbList.add(new Climb());
-        game.verbList.add(new Close());
-        game.verbList.add(new Credits());
-        game.verbList.add(new Curse());
-        game.verbList.add(new Diagnostic());
-        game.verbList.add(new Drink());
-        game.verbList.add(new Drop());
-        game.verbList.add(new Eat());
-        game.verbList.add(new Examine());
-        game.verbList.add(new Give());
-        game.verbList.add(new Hello());
-        game.verbList.add(new Hit());
-        game.verbList.add(new Inventory());
-        game.verbList.add(new Light());
-        game.verbList.add(new Listen());
-        game.verbList.add(new Lock());
-        game.verbList.add(new Look());
-        game.verbList.add(new Make());
-        game.verbList.add(new Move());
-        game.verbList.add(new Open());
-        game.verbList.add(new Poke());
-        game.verbList.add(new Pray());
-        game.verbList.add(new Put());
-        game.verbList.add(new Quit());
-        game.verbList.add(new Read());
-        game.verbList.add(new Run());
-        game.verbList.add(new Score());
-        game.verbList.add(new Shout());
-        game.verbList.add(new Sit());
-        game.verbList.add(new Smell());
-        game.verbList.add(new Stab());
-        game.verbList.add(new Stand());
-        game.verbList.add(new Suicide());
-        game.verbList.add(new Take());
-        game.verbList.add(new Talk());
-        game.verbList.add(new Taste());
-        game.verbList.add(new TurnOff());
-        game.verbList.add(new TurnOn());
-        game.verbList.add(new Unlock());
+        game.addVerb(Break.class)
+            .addVerb(Choose.class)
+            .addVerb(Climb.class)
+            .addVerb(Close.class)
+            .addVerb(Credits.class)
+            .addVerb(Curse.class)
+            .addVerb(Diagnostic.class)
+            .addVerb(Drink.class)
+            .addVerb(Drop.class)
+            .addVerb(Eat.class)
+            .addVerb(Examine.class)
+            .addVerb(Give.class)
+            .addVerb(Hello.class)
+            .addVerb(Hit.class)
+            .addVerb(Inventory.class)
+            .addVerb(Light.class)
+            .addVerb(Listen.class)
+            .addVerb(Lock.class)
+            .addVerb(Look.class)
+            .addVerb(Make.class)
+            .addVerb(Move.class)
+            .addVerb(Open.class)
+            .addVerb(Poke.class)
+            .addVerb(Pray.class)
+            .addVerb(Put.class)
+            .addVerb(Quit.class)
+            .addVerb(Read.class)
+            .addVerb(Run.class)
+            .addVerb(Score.class)
+            .addVerb(Shout.class)
+            .addVerb(Sit.class)
+            .addVerb(Smell.class)
+            .addVerb(Stab.class)
+            .addVerb(Stand.class)
+            .addVerb(Suicide.class)
+            .addVerb(Take.class)
+            .addVerb(Talk.class)
+            .addVerb(Taste.class)
+            .addVerb(TurnOff.class)
+            .addVerb(TurnOn.class)
+            .addVerb(Unlock.class);
 
         //Add all Areas to the new world
         /*world.addArea("Test01",new Test01(world));
@@ -185,6 +185,15 @@ public class Game {
             System.out.println("");
 
         }
+    }
+    
+    public Game addVerb(Class<? extends Verb> verb) {
+        try {
+            this.verbList.add(verb.newInstance());
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return this;
     }
 
     public static Command parse(final String inputRaw, final Context construct,
