@@ -1,15 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Choose extends Verb {
 
     public Choose() {
-        super("choose",
-                Arrays.asList("select"),
-                Verb.usage().noun().direction());
+        super("choose", Verb.usage().noun().direction(), "select");
     }
 
     @Override

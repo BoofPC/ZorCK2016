@@ -1,15 +1,11 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Run extends Verb {
 
     public Run() {
-        super("run",
-                Arrays.asList("sprint", "jog", "gallop"),
-                Verb.usage().bare().direction());
+        super("run", Verb.usage().bare().direction(), "sprint", "jog", "gallop");
     }
 
     @Override

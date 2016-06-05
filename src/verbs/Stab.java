@@ -1,59 +1,35 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 import items.*;
 
 public class Stab extends Verb {
 
     public Stab() {
-        super("stab",
-                Arrays.asList("slice", "shank", "cut", "kill"),
-                Verb.usage().noun());
+        super("stab", Verb.usage().noun(), "slice", "shank", "cut", "kill");
     }
 
     @Override
     public void run(final Command command, final Context construct) {
-        command.getDirection();
         final Item noun = command.getNoun();
-
         final Player player = construct.getPlayer();
-        construct.getWorld();
         final Area area = player.getCurrentArea();
 
-        if (noun != null) {
-            if (!noun.name().equals("noItem")) {
-                final Item sword = new Sword();
-                boolean test = false;
-                final String swordName = sword.name();
-                for (final Item item : player.getInventory()) {
-                    if (item.name().equals(swordName)) {
-                        test = true;
-                    }
+        final String swordName = new Sword().name();
+        if (player.hasItem(swordName)) {
+            if (noun.usage().stab() == Item.STABABBLE) {
+                noun.drop(area);
+                System.out.println("You stabbed the " + noun.name());
+                if (noun.inside() != null) {
+                    System.out.println("It dropped the " + noun.inside().name());
                 }
-                if (test) {
-                    if (noun.usage().stab() == Item.STABABBLE) {
-                        noun.drop(area);
-                        System.out.println("You stabbed the " + noun.name());
-                        if (noun.inside() != null) {
-                            System.out.println("It dropped the "
-                                    + noun.inside().name());
-                        }
-                        noun.drop(area);
-                        area.removeItem(noun);
-                    } else {
-                        System.out.println("Now why would you do that?");
-                    }
-                } else {
-                    System.out.println("You need the " + swordName
-                            + " to stab the " + noun.name());
-                }
+                noun.drop(area);
+                area.removeItem(noun);
             } else {
-                System.out.println("Ya need a noun, ya dingus");
+                System.out.println("Now why would you do that?");
             }
         } else {
-            System.out.println("Where do you expect to find one of those?");
+            System.out.println("You need the " + swordName + " to stab the " + noun.name());
         }
     }
 }
