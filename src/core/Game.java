@@ -170,10 +170,13 @@ public class Game {
                 final String input = reader.nextLine();
                 System.out.println("");
 
-                final Command command = Game.parse(input, construct, game.verbList);
+                Command command = Game.parse(input, construct, game.verbList);
                 if (command.isBadParse()) {
                     System.out.println("What?");
                     continue;
+                }
+                if (command.isDirection()) {
+                    command = Command.directedBare(new Move(), command.getDirection(), command.getLeftovers());
                 }
                 currentArea.interact(command, construct);
                 System.out.println("");
