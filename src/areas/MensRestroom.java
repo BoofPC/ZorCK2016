@@ -9,7 +9,8 @@ public class MensRestroom extends Area {
         super(containingWorld);
 
         this.portals().south(new Portal(false, Hallway14.class));
-        this.title("Men's Restroom").initialDescription("----------").description("-----").articleThe(true)
+        this.title("Men's Restroom").initialDescription("there are toilets and sinks and their is paper piled against the waste basket").description("Ketchup").articleThe(true)
                 .item(new Door(false, "Southern Door", null, this.portals().south()));
+        this.item(new Ketchup());
     }
 }
