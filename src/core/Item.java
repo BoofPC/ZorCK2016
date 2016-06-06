@@ -24,8 +24,8 @@ public abstract class Item {
      * is invoked. 3 means the item is bolted down, etc.
      *
      * The meanings of each item is as follows:
-     * {0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14     ,15
-     * {[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive,break}
+     * {0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14     ,15   ,16
+     * {[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive,break,use}
      * feel free to add more
      * the possible statuses of each are as follows:
      * take (n = 1) -    0: unset (default, returns "not takable")
@@ -83,6 +83,9 @@ public abstract class Item {
      *                   1: cannot break item
      *                   2: breakable, not broken
      *                   3: breakable, broken
+     * use (n = 16) -    0: unset (default, returns "no use")
+     *                   1: item has no use
+     *                   2: item has a use (invoked by Use verb)
      *
      *
      *
@@ -315,6 +318,7 @@ public abstract class Item {
         private Recieve recieve = Recieve.NO_RECIEVE;
         private Breakable breakable = Breakable.UNBREAKABLE;
         private Talk talk = Talk.NO_TALK;
+        private Use use = Use.NO_USE;
 
         public Usage() {}
 
@@ -365,6 +369,10 @@ public abstract class Item {
         }
         public static enum Talk {
             NO_TALK, TALK
+        }
+        
+        public static enum Use {
+            USABLE, NO_USE
         }
 
         public Visible visible() {
@@ -555,4 +563,6 @@ public abstract class Item {
     public static final Usage.Breakable BROKEN = Usage.Breakable.BROKEN;
     public static final Usage.Talk NO_TALK = Usage.Talk.NO_TALK;
     public static final Usage.Talk TALK = Usage.Talk.TALK;
+    public static final Usage.Use USABLE = Usage.Use.USABLE;
+    public static final Usage.Use NO_USE = Usage.Use.NO_USE;
 }

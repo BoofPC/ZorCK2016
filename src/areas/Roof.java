@@ -18,8 +18,8 @@ public class Roof extends Area {
         this.title("Roof")
             .initialDescription("The roof is largely empty. Smatterings of bird "
                 + "poop litter the ground, and amongst the poop lies a "
-                + "calculator. An agitated crow is perched atop a bronze bust of "
-                + "Mr. Booth. Past the crow is the edge of the roof. To the "
+                + "calculator. An agitated crow is perched atop a toolbox. "
+                + "Past the crow is the edge of the roof. To the "
                 + "west is a window leading to the Women's Restroom.")
         //TODO: add a verb to jump off of the roof
             .description("This is the roof.").articleThe(true)
