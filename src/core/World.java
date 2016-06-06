@@ -25,7 +25,7 @@ public class World {
     
     public World addArea(final Class<? extends Area> areaName) {
         try {
-            return this.addArea(areaName, areaName.getConstructor(Area.class).newInstance(this));
+            return this.addArea(areaName, areaName.getConstructor(World.class).newInstance(this));
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException | NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
