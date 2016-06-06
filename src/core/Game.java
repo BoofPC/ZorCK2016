@@ -1,6 +1,8 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import verbs.*;
 import areas.*;
 import core.Verb.Usage;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,47 +34,18 @@ public class Game {
 
 
         // Register all verbs
-        game.addVerb(new Break())
-            .addVerb(new Choose())
-            .addVerb(new Climb())
-            .addVerb(new Close())
-            .addVerb(new Credits())
-            .addVerb(new Curse())
-            .addVerb(new Diagnostic())
-            .addVerb(new Drink())
-            .addVerb(new Drop())
-            .addVerb(new Eat())
-            .addVerb(new Examine())
-            .addVerb(new Give())
-            .addVerb(new Hello())
-            .addVerb(new Hit())
-            .addVerb(new Inventory())
-            .addVerb(new Light())
-            .addVerb(new Listen())
-            .addVerb(new Lock())
-            .addVerb(new Look())
-            .addVerb(new Make())
-            .addVerb(new Move())
-            .addVerb(new Open())
-            .addVerb(new Poke())
-            .addVerb(new Pray())
-            .addVerb(new Put())
-            .addVerb(new Quit())
-            .addVerb(new Read())
-            .addVerb(new Run())
-            .addVerb(new Score())
-            .addVerb(new Shout())
-            .addVerb(new Sit())
-            .addVerb(new Smell())
-            .addVerb(new Stab())
-            .addVerb(new Stand())
-            .addVerb(new Suicide())
-            .addVerb(new Take())
-            .addVerb(new Talk())
-            .addVerb(new Taste())
-            .addVerb(new TurnOff())
-            .addVerb(new TurnOn())
-            .addVerb(new Unlock());
+        game.addVerb(new Break()).addVerb(new Choose()).addVerb(new Climb()).addVerb(new Close())
+                .addVerb(new Credits()).addVerb(new Curse()).addVerb(new Diagnostic())
+                .addVerb(new Drink()).addVerb(new Drop()).addVerb(new Eat()).addVerb(new Examine())
+                .addVerb(new Give()).addVerb(new Hello()).addVerb(new Hit())
+                .addVerb(new Inventory()).addVerb(new Light()).addVerb(new Listen())
+                .addVerb(new Lock()).addVerb(new Look()).addVerb(new Make()).addVerb(new Move())
+                .addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray()).addVerb(new Put())
+                .addVerb(new Quit()).addVerb(new Read()).addVerb(new Run()).addVerb(new Score())
+                .addVerb(new Shout()).addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab())
+                .addVerb(new Stand()).addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk())
+                .addVerb(new Taste()).addVerb(new TurnOff()).addVerb(new TurnOn())
+                .addVerb(new Unlock());
 
         //Add all Areas to the new world
         /*
@@ -86,54 +60,24 @@ public class Game {
             .addArea(Test09.class)
             .addArea(Test10.class);
         */
-        world.addArea(Hallway01.class)
-            .addArea(Hallway02.class)
-            .addArea(Hallway03.class)
-            .addArea(Hallway04.class)
-            .addArea(Hallway05.class)
-            .addArea(Hallway06.class)
-            .addArea(Hallway07.class)
-            .addArea(Hallway08.class)
-            .addArea(Hallway09.class)
-            .addArea(Hallway10.class)
-            .addArea(Hallway11.class)
-            .addArea(Hallway12.class)
-            .addArea(Hallway13.class)
-            .addArea(Hallway14.class)
-            .addArea(Hallway15.class)
-            .addArea(Hallway16.class)
-            .addArea(Hallway17.class);
-        world.addArea(AdamsonsRoom.class)
-            .addArea(ArthursRoom.class)
-            .addArea(BirkenfeldsRoom.class)
-            .addArea(BoothsRoom.class)
-            .addArea(BroadcastingRoom.class)
-            .addArea(ChemicalStorageRoom.class)
-            .addArea(CompSciRoom.class)
-            .addArea(ConferenceRoom01.class)
-            .addArea(ConferenceRoom02.class)
-            .addArea(DuanesRoom.class)
-            .addArea(FishersRoom.class)
-            .addArea(GharstsRoom.class)
-            .addArea(HendrichsonsRoom.class)
-            .addArea(ISSRoom.class)
-            .addArea(JorstadsRoom.class)
-            .addArea(KUGRRoom.class)
-            .addArea(KasslersRoom.class)
-            .addArea(Library.class)
-            .addArea(MensRestroom.class)
-            .addArea(OishisRoom.class)
-            .addArea(RomarosRoom.class)
-            .addArea(Roof.class)
-            .addArea(RosenquistsRoom.class)
-            .addArea(SchuchartsRoom.class)
-            .addArea(SecretPassage.class)
-            .addArea(SecurityRoom.class)
-            .addArea(StaffLounge.class)
-            .addArea(StakersRoom.class)
-            .addArea(WatchmansRoom.class)
-            .addArea(WilsonsRoom.class)
-            .addArea(WomensRestroom.class);
+        world.addArea(Hallway01.class).addArea(Hallway02.class).addArea(Hallway03.class)
+                .addArea(Hallway04.class).addArea(Hallway05.class).addArea(Hallway06.class)
+                .addArea(Hallway07.class).addArea(Hallway08.class).addArea(Hallway09.class)
+                .addArea(Hallway10.class).addArea(Hallway11.class).addArea(Hallway12.class)
+                .addArea(Hallway13.class).addArea(Hallway14.class).addArea(Hallway15.class)
+                .addArea(Hallway16.class).addArea(Hallway17.class);
+        world.addArea(AdamsonsRoom.class).addArea(ArthursRoom.class).addArea(BirkenfeldsRoom.class)
+                .addArea(BoothsRoom.class).addArea(BroadcastingRoom.class)
+                .addArea(ChemicalStorageRoom.class).addArea(CompSciRoom.class)
+                .addArea(ConferenceRoom01.class).addArea(ConferenceRoom02.class)
+                .addArea(DuanesRoom.class).addArea(FishersRoom.class).addArea(GharstsRoom.class)
+                .addArea(HendrichsonsRoom.class).addArea(ISSRoom.class).addArea(JorstadsRoom.class)
+                .addArea(KUGRRoom.class).addArea(KasslersRoom.class).addArea(Library.class)
+                .addArea(MensRestroom.class).addArea(OishisRoom.class).addArea(RomarosRoom.class)
+                .addArea(Roof.class).addArea(RosenquistsRoom.class).addArea(SchuchartsRoom.class)
+                .addArea(SecretPassage.class).addArea(SecurityRoom.class).addArea(StaffLounge.class)
+                .addArea(StakersRoom.class).addArea(WatchmansRoom.class).addArea(WilsonsRoom.class)
+                .addArea(WomensRestroom.class);
 
         //Setting initial area for player
         player.setCurrentArea(world.getArea(CompSciRoom.class));
@@ -178,7 +122,8 @@ public class Game {
                     continue;
                 }
                 if (command.isDirection()) {
-                    command = Command.directedBare(new Move(), command.getDirection(), command.getLeftovers());
+                    command = Command.directedBare(new Move(), command.getDirection(),
+                            command.getLeftovers());
                 }
                 currentArea.interact(command, construct);
                 System.out.println("");
@@ -188,7 +133,7 @@ public class Game {
 
         }
     }
-    
+
     public Game addVerb(Verb verb) {
         this.verbList.add(verb);
         return this;
@@ -216,7 +161,10 @@ public class Game {
                 }
                 if (matches.isEmpty()) {
                     break verb;
-                } else if (matches.size() == 1) {
+                } else if (matches.size() > 1) {
+                    Game.tryResolve(input, matches);
+                }
+                if (matches.size() == 1) {
                     final Pair<Verb, String> result =
                             matches.entrySet().iterator().next().getValue();
                     verb = result.getKey();
@@ -247,7 +195,10 @@ public class Game {
                     if (matches.isEmpty()) {
                         // System.out.println("No noun matches " + verbInput);
                         break noun;
-                    } else if (matches.size() == 1) {
+                    } else if (matches.size() > 1) {
+                        Game.tryResolve(verbInput, matches);
+                    }
+                    if (matches.size() == 1) {
                         final Pair<Item, String> result =
                                 matches.entrySet().iterator().next().getValue();
                         noun = result.getKey();
@@ -285,6 +236,12 @@ public class Game {
             return Command.bare(verb, input);
         }
         return Command.badParse(input);
+    }
+
+    public static <T> void tryResolve(String input, Map<String, T> matches) {
+        final Set<Entry<String, T>> matchSet = matches.entrySet();
+        matchSet.stream().filter(e -> e.getKey().equals(input)).findFirst()
+                .ifPresent(e -> matchSet.retainAll(Arrays.asList(e)));
     }
 
     private final static Matcher endOfMatch = Pattern.compile("^\\s").matcher("");

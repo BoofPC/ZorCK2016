@@ -372,7 +372,7 @@ public abstract class Item {
         }
         
         public static enum Use {
-            USABLE, NO_USE
+            NO_USE, USABLE
         }
 
         public Visible visible() {
@@ -516,6 +516,15 @@ public abstract class Item {
 
         public Usage talk(final Talk o) {
             this.talk = o;
+            return this;
+        }
+        
+        public Use use() {
+            return this.use;
+        }
+
+        public Usage use(final Use o) {
+            this.use = o;
             return this;
         }
     }
