@@ -13,11 +13,11 @@ public class MrBooth extends Item{
 
     @Override
     public void interact(final Command command, final Context context) {
-        
+
         if (command.getVerb().getTitle().equals("smell")) {
             this.smell();
         }
-        
+
         else if(command.getVerb().getTitle().equals("talk")){
             final Random rand = new Random();
             final int n = rand.nextInt(3);

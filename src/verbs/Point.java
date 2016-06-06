@@ -9,7 +9,7 @@ public class Point extends Verb {
     }
 
     @Override
-    public void run(Command command, Context construct) {
+    public void run(final Command command, final Context construct) {
         //will make it work with laser pointer
         System.out.println("It is rude to point!");
     }

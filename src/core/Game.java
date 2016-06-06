@@ -134,7 +134,7 @@ public class Game {
         }
     }
 
-    public Game addVerb(Verb verb) {
+    public Game addVerb(final Verb verb) {
         this.verbList.add(verb);
         return this;
     }
@@ -238,7 +238,7 @@ public class Game {
         return Command.badParse(input);
     }
 
-    public static <T> void tryResolve(String input, Map<String, T> matches) {
+    public static <T> void tryResolve(final String input, final Map<String, T> matches) {
         final Set<Entry<String, T>> matchSet = matches.entrySet();
         matchSet.stream().filter(e -> e.getKey().equals(input)).findFirst()
                 .ifPresent(e -> matchSet.retainAll(Arrays.asList(e)));

@@ -1,5 +1,5 @@
 package areas;
- 
+
 import core.*;
 import items.*;
 

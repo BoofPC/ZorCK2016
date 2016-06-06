@@ -182,12 +182,12 @@ public abstract class Area {
         this.firstVisit = firstVisit;
         return this;
     }
-    
+
     public boolean articleThe(){
         return this.articleThe;
     }
-    
-    public Area articleThe(boolean the){
+
+    public Area articleThe(final boolean the){
         this.articleThe = the;
         return this;
     }

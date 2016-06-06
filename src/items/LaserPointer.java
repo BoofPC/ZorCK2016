@@ -11,7 +11,7 @@ public class LaserPointer extends Item {
     }
 
     @Override
-    public void interact(Command command, Context context) {
-        
+    public void interact(final Command command, final Context context) {
+
     }
 }

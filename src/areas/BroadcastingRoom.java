@@ -23,13 +23,13 @@ public class BroadcastingRoom extends Area {
         // (Here, the door faces south)
         this.item(new Door(false, "Door to Mr Adamson's room", null, this.portals().west()));
 
-        
+
         this.item(new DuckOfDoom());
         this.item(new LaserPointer());
     }
 
     @Override
-    public void interact(Command command, Context context) {
+    public void interact(final Command command, final Context context) {
          //To change body of generated methods, choose Tools | Templates.
     }
 }

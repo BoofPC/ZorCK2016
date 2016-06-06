@@ -13,7 +13,7 @@ public class Break extends Verb {
         final Item noun = command.getNoun();
         final Item.Usage usage = noun.usage();
         final Player player = construct.getPlayer();
-        
+
         if (usage.breakable() == Item.BREAKABLE) {
             if (player.getCurrentArea().hasMatching(noun)) {
                 player.getCurrentArea()
