@@ -25,6 +25,6 @@ public class MagicOrb extends Item{
 
     @Override
     public void interact(final Command command, final Context context){
-
+    
     }
 }
