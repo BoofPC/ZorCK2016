@@ -13,7 +13,7 @@ public class Roof extends Area {
     public Roof(final World containingWorld) {
         super(containingWorld);
 
-        this.portals().west(new Portal(Portal.State.UNLOCKED, "WomensRestroom"));
+        this.portals().west(new Portal(Portal.State.UNLOCKED, WomensRestroom.class));
 
         this.title("Roof")
             .initialDescription("The roof is largely empty. Smatterings of bird "

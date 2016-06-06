@@ -12,10 +12,10 @@ public class AreaTemplate extends Area { // Be sure to replace this
         super(containingWorld);
         /* Set the ones you need
         this.portals()
-            .north(new Portal(, ""))
-            .east(new Portal(, ""))
-            .south(new Portal(, ""))
-            .west(new Portal(, ""));
+            .north(new Portal(, .class))
+            .east(new Portal(, .class))
+            .south(new Portal(, .class))
+            .west(new Portal(, .class));
         */
         this.title("")
             .initialDescription("")

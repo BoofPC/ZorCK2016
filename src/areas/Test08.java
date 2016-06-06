@@ -8,10 +8,10 @@ public class Test08 extends Area {
     public Test08(final World containingWorld) {
         super(containingWorld);
         this.portals()
-            .west(new Portal(false, "Test07"))
-            .east(new Portal(false, "Test09"))
-            .north(new Portal(false, "Test05"))
-            .south(new Portal(false, "Test10"));
+            .west(new Portal(false, Test07.class))
+            .east(new Portal(false, Test09.class))
+            .north(new Portal(false, Test05.class))
+            .south(new Portal(false, Test10.class));
         this.title("Test Area 8")
             .initialDescription("This is the eighth test area, there is path "
                 + "leading east-west and path leading north. There is a cave"

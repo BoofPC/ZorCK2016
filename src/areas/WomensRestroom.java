@@ -14,8 +14,8 @@ public class WomensRestroom extends Area {
         super(containingWorld);
 
         //TODO: add way to unlock portal by opening window
-        this.portals().east(new Portal(Portal.State.LOCKED, "Roof"))
-            .south(new Portal(Portal.State.UNLOCKED, "Hallway07"));
+        this.portals().east(new Portal(Portal.State.LOCKED, Roof.class))
+            .south(new Portal(Portal.State.UNLOCKED, Hallway07.class));
 
         this.title("Women's Restroom")
             .initialDescription("The room is dimly lit, illuminated only by the "

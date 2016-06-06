@@ -9,9 +9,9 @@ public class Hallway06 extends Area {
         super(containingWorld);
 
         this.portals()
-            .north(new Portal(false, "Hallway05"))
-            .south(new Portal(false, "Hallway08"))
-            .west(new Portal(false, "WatchmansRoom"));
+            .north(new Portal(false, Hallway05.class))
+            .south(new Portal(false, Hallway08.class))
+            .west(new Portal(false, WatchmansRoom.class));
         this.title("Hallway")
             .initialDescription("----------").description("-----").articleThe(true)
 

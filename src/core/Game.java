@@ -74,67 +74,69 @@ public class Game {
             .addVerb(new Unlock());
 
         //Add all Areas to the new world
-        /*world.addArea("Test01",new Test01(world));
-        world.addArea("Test02",new Test02(world));
-        world.addArea("Test03",new Test03(world));
-        world.addArea("Test04",new Test04(world));
-        world.addArea("Test05",new Test05(world));
-        world.addArea("Test06",new Test06(world));
-        world.addArea("Test07",new Test07(world));
-        world.addArea("Test08",new Test08(world));
-        world.addArea("Test09",new Test09(world));
-        world.addArea("Test10",new Test10(world));*/
-        world.addArea("Hallway01", new Hallway01(world));
-        world.addArea("Hallway02", new Hallway02(world));
-        world.addArea("Hallway03", new Hallway03(world));
-        world.addArea("Hallway04", new Hallway04(world));
-        world.addArea("Hallway05", new Hallway05(world));
-        world.addArea("Hallway06", new Hallway06(world));
-        world.addArea("Hallway07", new Hallway07(world));
-        world.addArea("Hallway08", new Hallway08(world));
-        world.addArea("Hallway09", new Hallway09(world));
-        world.addArea("Hallway10", new Hallway10(world));
-        world.addArea("Hallway11", new Hallway11(world));
-        world.addArea("Hallway12", new Hallway12(world));
-        world.addArea("Hallway13", new Hallway13(world));
-        world.addArea("Hallway14", new Hallway14(world));
-        world.addArea("Hallway15", new Hallway15(world));
-        world.addArea("Hallway16", new Hallway16(world));
-        world.addArea("Hallway17", new Hallway17(world));
-        world.addArea("AdamsonsRoom", new AdamsonsRoom(world));
-        world.addArea("ArthursRoom", new ArthursRoom(world));
-        world.addArea("BirkenfeldsRoom", new BirkenfeldsRoom(world));
-        world.addArea("BoothsRoom", new BoothsRoom(world));
-        world.addArea("BroadcastingRoom", new BroadcastingRoom(world));
-        world.addArea("ChemicalStorageRoom", new ChemicalStorageRoom(world));
-        world.addArea("CompSciRoom", new CompSciRoom(world));
-        world.addArea("ConferenceRoom01", new ConferenceRoom01(world));
-        world.addArea("ConferenceRoom02", new ConferenceRoom02(world));
-        world.addArea("DuanesRoom", new DuanesRoom(world));
-        world.addArea("FishersRoom", new FishersRoom(world));
-        world.addArea("GharstsRoom", new GharstsRoom(world));
-        world.addArea("HendrichsonsRoom", new HendrichsonsRoom(world));
-        world.addArea("ISSRoom", new ISSRoom(world));
-        world.addArea("JorstadsRoom", new JorstadsRoom(world));
-        world.addArea("KUGRRoom", new KUGRRoom(world));
-        world.addArea("KasslersRoom", new KasslersRoom(world));
-        world.addArea("Library", new Library(world));
-        world.addArea("MensRestroom", new MensRestroom(world));
-        world.addArea("OishisRoom", new OishisRoom(world));
-        world.addArea("RomarosRoom", new RomarosRoom(world));
-        world.addArea("Roof", new Roof(world));
-        world.addArea("RosenquistsRoom", new RosenquistsRoom(world));
-        world.addArea("SchuchartsRoom", new SchuchartsRoom(world));
-        world.addArea("SecretPassage", new SecretPassage(world));
-        world.addArea("SecurityRoom", new SecurityRoom(world));
-        world.addArea("StaffLounge", new StaffLounge(world));
-        world.addArea("StakersRoom", new StakersRoom(world));
-        world.addArea("WatchmansRoom", new WatchmansRoom(world));
-        world.addArea("WilsonsRoom", new WilsonsRoom(world));
-        world.addArea("WomensRestroom", new WomensRestroom(world));
+        /*
+        world.addArea(Test01.class)
+            .addArea(Test02.class)
+            .addArea(Test03.class)
+            .addArea(Test04.class)
+            .addArea(Test05.class)
+            .addArea(Test06.class)
+            .addArea(Test07.class)
+            .addArea(Test08.class)
+            .addArea(Test09.class)
+            .addArea(Test10.class);
+        */
+        world.addArea(Hallway01.class)
+            .addArea(Hallway02.class)
+            .addArea(Hallway03.class)
+            .addArea(Hallway04.class)
+            .addArea(Hallway05.class)
+            .addArea(Hallway06.class)
+            .addArea(Hallway07.class)
+            .addArea(Hallway08.class)
+            .addArea(Hallway09.class)
+            .addArea(Hallway10.class)
+            .addArea(Hallway11.class)
+            .addArea(Hallway12.class)
+            .addArea(Hallway13.class)
+            .addArea(Hallway14.class)
+            .addArea(Hallway15.class)
+            .addArea(Hallway16.class)
+            .addArea(Hallway17.class);
+        world.addArea(AdamsonsRoom.class)
+            .addArea(ArthursRoom.class)
+            .addArea(BirkenfeldsRoom.class)
+            .addArea(BoothsRoom.class)
+            .addArea(BroadcastingRoom.class)
+            .addArea(ChemicalStorageRoom.class)
+            .addArea(CompSciRoom.class)
+            .addArea(ConferenceRoom01.class)
+            .addArea(ConferenceRoom02.class)
+            .addArea(DuanesRoom.class)
+            .addArea(FishersRoom.class)
+            .addArea(GharstsRoom.class)
+            .addArea(HendrichsonsRoom.class)
+            .addArea(ISSRoom.class)
+            .addArea(JorstadsRoom.class)
+            .addArea(KUGRRoom.class)
+            .addArea(KasslersRoom.class)
+            .addArea(Library.class)
+            .addArea(MensRestroom.class)
+            .addArea(OishisRoom.class)
+            .addArea(RomarosRoom.class)
+            .addArea(Roof.class)
+            .addArea(RosenquistsRoom.class)
+            .addArea(SchuchartsRoom.class)
+            .addArea(SecretPassage.class)
+            .addArea(SecurityRoom.class)
+            .addArea(StaffLounge.class)
+            .addArea(StakersRoom.class)
+            .addArea(WatchmansRoom.class)
+            .addArea(WilsonsRoom.class)
+            .addArea(WomensRestroom.class);
 
         //Setting initial area for player
-        player.setCurrentArea(world.getArea("CompSciRoom"));
+        player.setCurrentArea(world.getArea(CompSciRoom.class));
         player.addItem(new NoTea());
         final Context construct = new Context(player, world);
 

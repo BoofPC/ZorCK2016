@@ -12,8 +12,8 @@ public class TutorialArea extends Area {
         // Always have this
         super(containingWorld);
         // Portals leading east to Test2 and south to Test4 (the way to Test4 is blocked)
-        this.portals().east(new Portal(Portal.State.UNLOCKED, "Test02"))
-                .south(new Portal(Portal.State.LOCKED, "Test04"));
+        this.portals().east(new Portal(Portal.State.UNLOCKED, Test02.class))
+                .south(new Portal(Portal.State.LOCKED, Test04.class));
         // This is the title of the area; it appears every move for which the player is in the area
         this.title("Test Area 1")
         // This is the description of the area which appears when the player initially enters
