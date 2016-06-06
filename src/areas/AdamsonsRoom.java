@@ -15,3 +15,4 @@ public class AdamsonsRoom extends Area {
                 .item(new Door(true, "Western Door", "Adamson's Key", this.portals().west()));
     }
 }
+ 
