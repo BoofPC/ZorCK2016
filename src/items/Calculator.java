@@ -10,8 +10,8 @@ public class Calculator extends Item {
     public Calculator() {
         super();
         this.usage().take(Item.TAKABLE).active(Item.OFF);
-        //TODO: make the calculator do something when it's on
-
+        //make the calculator do something when it's on
+        //oh wait... not in the game anymore
         this.name("Calculator")
             .synonym("calculator", "graphing calculator")
             .description("It's a TI-84 Plus Supreme Deluxe Color Limited Edition "

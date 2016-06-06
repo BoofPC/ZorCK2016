@@ -11,15 +11,20 @@ public class Break extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
-
-        if (noun.usage().breakable() == Item.UNBROKEN) {
-            // TODO: find a better way to destroy something
-            noun.usage().visible(Item.HIDDEN).breakable(Item.BROKEN);
-            System.out.println("You broke the " + noun.name());
-        } else if (noun.usage().breakable() == Item.BROKEN) {
-            System.out.println("The " + noun.name() + " is already broken.");
+        final Item.Usage usage = noun.usage();
+        final Player player = construct.getPlayer();
+        
+        if (usage.breakable() == Item.BREAKABLE) {
+            if (player.getCurrentArea().hasMatching(noun)) {
+                player.getCurrentArea()
+                        .getItem(noun.name()).usage().breakable(Item.BROKEN);
+                System.out.println("You broke the " + noun.name());
+            } else if (player.hasMatching(noun)) {
+                player.getItem(noun.name()).usage().breakable(Item.BROKEN);
+                System.out.println("You broke your " + noun.name());
+            }
         } else {
-            System.out.println("You can't break the " + noun.name());
+            System.out.println("I don't see how you expect to do that!");
         }
     }
 }

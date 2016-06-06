@@ -365,7 +365,7 @@ public abstract class Item {
             NO_RECIEVE, RECIEVE
         }
         public static enum Breakable {
-            UNBREAKABLE, UNBROKEN, BROKEN
+            BREAKABLE, UNBREAKABLE, UNBROKEN, BROKEN
         }
         public static enum Talk {
             NO_TALK, TALK
@@ -374,7 +374,7 @@ public abstract class Item {
         public static enum Use {
             NO_USE, USABLE
         }
-
+        
         public Visible visible() {
             return this.visible;
         }
@@ -567,6 +567,7 @@ public abstract class Item {
     public static final Usage.Climb CLIMABLE = Usage.Climb.CLIMABLE;
     public static final Usage.Recieve NO_RECIEVE = Usage.Recieve.NO_RECIEVE;
     public static final Usage.Recieve RECIEVE = Usage.Recieve.RECIEVE;
+    public static final Usage.Breakable BREAKABLE = Usage.Breakable.BREAKABLE;
     public static final Usage.Breakable UNBREAKABLE = Usage.Breakable.UNBREAKABLE;
     public static final Usage.Breakable UNBROKEN = Usage.Breakable.UNBROKEN;
     public static final Usage.Breakable BROKEN = Usage.Breakable.BROKEN;

@@ -127,6 +127,9 @@ public class TutorialItem extends Item{
         //break (n = 15) -  0: unset (default, returns "cannot break")
         //                  1: cannot break item
         //                  2: breakable
+        //use (n = 16) -    0: unset (default, returns "has no use"
+        //                  1: item has no use
+        //                  2: item has a use
         //
         //
         //the first item, represented here as [duumy], refers to

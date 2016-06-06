@@ -13,7 +13,7 @@ public class WomensRestroom extends Area {
     public WomensRestroom(final World containingWorld) {
         super(containingWorld);
 
-        //TODO: add way to unlock portal by opening window
+        //TODO: unlock window with key
         this.portals().east(new Portal(Portal.State.LOCKED, Roof.class))
             .south(new Portal(Portal.State.UNLOCKED, Hallway07.class));
 
