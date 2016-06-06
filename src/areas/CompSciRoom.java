@@ -12,8 +12,8 @@ public class CompSciRoom extends Area{
         this.title("CompSci Room")
                  //This is not a logical sentence structure
                 .initialDescription("This is the CompSci room, Room 317. Mr Booth is here in his chair,"
-                    +"infornt of his computer. on, his computer is PowerSchool. You see Your Grade is an F")
-                .description("This is the CompSci Room, room 317").articleThe(true)
+                    +" in front of his computer. Powerschool is open on his computer. You see your grade is an F.")
+                .description("This is the CompSci Room, room 317.").articleThe(true)
                 .item(new MrBooth());
     }
 
