@@ -12,8 +12,7 @@ public class Toolbox extends Item {
             .lock(Item.LOCKED);
         this.name("Toolbox")
             .synonym("toolbox")
-            .description("It's a small red toolbox. You can use the Toolbox Key "
-            + "to lock and unlock this.");
+            .description("A small red toolbox");
         this.key("Toolbox Key");
     }
     
@@ -26,6 +25,8 @@ public class Toolbox extends Item {
                     + "screwdriver!");
                 context.getPlayer().getCurrentArea().item(new Screwdriver());
             }
+        } else {
+            command.getVerb().run(command, context);
         }
         
     }
