@@ -6,15 +6,13 @@ public class Cracker extends Item {
 
     public Cracker() {
         super();
-        this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
+        this.usage().take(Item.TAKABLE).food(Item.EDIBLE);
         //can't break it. it's an indestructable cracker!
 
-        this.setName("Cracker");
-        this.addSynonym("cracker");
-
-        this.setDescription("It's a stale cracker.");
-
-        this.setTaste("It tastes slightly salty, with a hint of carpet.");
+        this.name("Cracker")
+            .synonym("cracker")
+            .description("It's a stale cracker.")
+            .taste("It tastes slightly salty, with a hint of carpet.");
     }
 
     @Override

@@ -13,30 +13,30 @@ public class Roof extends Area {
     public Roof(final World containingWorld) {
         super(containingWorld);
 
-        this.getPortals().west(new Portal(Portal.State.UNLOCKED, "WomensRestroom"));
+        this.portals().west(new Portal(Portal.State.UNLOCKED, WomensRestroom.class));
 
-        this.setTitle("Roof");
-        this.setInitialDescription("The roof is largely empty. Smatterings of bird "
+        this.title("Roof")
+            .initialDescription("The roof is largely empty. Smatterings of bird "
                 + "poop litter the ground, and amongst the poop lies a "
-                + "calculator. An agitated crow is perched atop a bronze bust of "
-                + "Mr. Booth. Past the crow is the edge of the roof. To the "
-                + "west is a window leading to the Women's Restroom.");
+                + "calculator. An agitated crow is perched atop a toolbox. "
+                + "Past the crow is the edge of the roof. To the "
+                + "west is a window leading to the Women's Restroom.")
         //TODO: add a verb to jump off of the roof
-        this.setDescription("This is the roof.");
+            .description("This is the roof.").articleThe(true)
 
-        this.setSound("The only sound you hear is the caws of the crow.");
-        this.setSmell("It smells like nothing here is going to further your progress"
-                + " in the game!");
+            .sound("The only sound you hear is the caws of the crow.")
+            .smell("It smells like nothing here is going to further your progress"
+                + " in the game!")
 
-        this.addItem(new BoothBust());
-        this.addItem(new Calculator());
-        this.addItem(new Crow());
+            .item(new BoothBust())
+            .item(new Calculator())
+            .item(new Crow());
     }
 
     @Override
     public void interact(final Command command, final Context context) {
         final String verb = command.getVerb().getTitle();
-        final String noun = command.getNoun().getName();
+        final String noun = command.getNoun().name();
 
         if (verb.equals("take")) {
             if (noun.equals("Key to Secret Passage")) {
@@ -54,12 +54,7 @@ public class Roof extends Area {
                                 +" a label that reads 'Secret Passage'"));
             }
         } else {
-            if(command.getNoun() !=  null) {
-                command.getNoun().interact(command,context);
-            }
-            if(!context.getSkipGeneral()) {
-                command.getVerb().run(command, context);
-            }
+            super.interact(command, context);
         }
     }
 }

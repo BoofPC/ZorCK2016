@@ -9,18 +9,13 @@ public class AdamsonPoster extends Item {
 
     public AdamsonPoster() {
         super();
-        this.usage().take(Usage.Take.TAKABLE).read(Usage.Read.READABLE);
+        this.usage().take(Item.TAKABLE).read(Item.READABLE);
 
-        this.setName("Adamson Poster");
-        this.addSynonym("adamson poster");
-        this.addSynonym("poster");
-        this.addSynonym("flier");
-        this.addSynonym("picture");
-
-        this.setDescription("It is the most beautiful image you have ever laid your eyes upon.");
-
+        this.name("Adamson Poster")
+            .synonym("adamson poster", "poster", "flier", "picture")
+            .description("It is the most beautiful image you have ever laid your eyes upon.")
         //@formatter:off
-        this.setText(
+            .text(
           ".............`````...----.........................\n"
         + ".............``.-:::::::::::--....................\n"
         + "..............-:::-------::/:::---................\n"

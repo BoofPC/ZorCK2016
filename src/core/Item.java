@@ -24,8 +24,8 @@ public abstract class Item {
      * is invoked. 3 means the item is bolted down, etc.
      *
      * The meanings of each item is as follows:
-     * {0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14     ,15
-     * {[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive,break}
+     * {0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14     ,15   ,16
+     * {[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive,break,use}
      * feel free to add more
      * the possible statuses of each are as follows:
      * take (n = 1) -    0: unset (default, returns "not takable")
@@ -83,6 +83,9 @@ public abstract class Item {
      *                   1: cannot break item
      *                   2: breakable, not broken
      *                   3: breakable, broken
+     * use (n = 16) -    0: unset (default, returns "no use")
+     *                   1: item has no use
+     *                   2: item has a use (invoked by Use verb)
      *
      *
      *
@@ -102,105 +105,120 @@ public abstract class Item {
     private String text;
     private String smell;
     private String sound;
-    private List<Item> received;
-    private List<String> keys;
+    private final List<Item> received = new ArrayList<>();
+    private final List<String> keys = new ArrayList<>();
     private Portal portal;
-    private final List<String> synonyms;
+    private final List<String> synonyms = new ArrayList<>();
 
-    public Item() {
-        this.synonyms = new ArrayList<String>();
-    }
+    public Item() {}
 
     public Usage usage() {
         return this.usage;
     }
 
-    public String getName() {
+    public String name() {
         return this.name;
     }
 
-    public void setName(final String name) {
+    public Item name(final String name) {
         this.name = name;
+        return this;
     }
 
-    public String getDescription() {
+    public String description() {
         return this.description;
     }
 
-    public void setDescription(final String description) {
+    public Item description(final String description) {
         this.description = description;
+        return this;
     }
 
-    public String getTaste() {
+    public String taste() {
         return this.taste;
     }
 
-    public void setTaste(final String taste) {
+    public Item taste(final String taste) {
         this.taste = taste;
+        return this;
     }
 
-    public Item getInside() {
+    public Item inside() {
         return this.inside;
     }
 
-    public void setInside(final Item inside) {
+    public Item inside(final Item inside) {
         this.inside = inside;
+        return this;
     }
 
-    public String getText() {
+    public String text() {
         return this.text;
     }
 
-    public void setText(final String text) {
+    public Item text(final String text) {
         this.text = text;
+        return this;
     }
 
-    public boolean getActive() {
+    public boolean active() {
         return this.usage().active() == Usage.Active.ON;
     }
 
-    public void setActive(final boolean active) {
+    public Item active(final boolean active) {
         if (active) {
             this.usage().active(Usage.Active.ON);
         } else {
             this.usage().active(Usage.Active.OFF);
         }
+        return this;
     }
 
-    public String getSmell() {
+    public String smell() {
         return this.smell;
     }
 
-    public void setSmell(final String smell) {
+    public Item smell(final String smell) {
         this.smell = smell;
+        return this;
     }
 
-    public String getSound() {
+    public String sound() {
         return this.sound;
     }
 
-    public void setSound(final String sound) {
+    public Item sound(final String sound) {
         this.sound = sound;
+        return this;
     }
 
-    public List<String> getKeys() {
+    public List<String> keys() {
         return this.keys;
     }
 
-    public void setKeys(final List<String> keys) {
-        this.keys = keys;
+    public Item key(final String key) {
+        this.keys.add(key);
+        return this;
     }
 
     public Portal getPortal() {
         return this.portal;
     }
 
-    public void setPortal(final Portal portal) {
+    public Item portal(final Portal portal) {
         this.portal = portal;
+        return this;
     }
 
-    public void addSynonym(final String str) {
-        this.synonyms.add(str);
+    public List<String> synonyms() {
+        return this.synonyms;
+    }
+
+    public Item synonym(final String... strs) {
+        for (final String str : strs) {
+            this.synonyms.add(str);
+        }
+        return this;
     }
 
     public boolean hasMatching(final String str) {
@@ -208,9 +226,9 @@ public abstract class Item {
     }
 
     public void drop(final Area area) {
-        if (this.getInside() != null) {
-            area.addItem(this.getInside());
-            this.setInside(null);
+        if (this.inside() != null) {
+            area.item(this.inside());
+            this.inside(null);
         }
     }
 
@@ -228,7 +246,7 @@ public abstract class Item {
         portal = this.getPortal();
         Area target;
         target = world.getArea(portal.getTarget());
-        final Direction direction = currentArea.getDirection(portal);
+        final Direction direction = currentArea.direction(portal);
         final Direction oppDir;
         switch (direction) {
             case NORTH:
@@ -265,7 +283,7 @@ public abstract class Item {
                 oppDir = null;
         }
 
-        final Portal oppPortal = target.getPortals().getPortal(oppDir);
+        final Portal oppPortal = target.portals().getPortal(oppDir);
         final Item oppDoor = oppPortal.getDoor(target);
 
         if (this.usage().lock() == Usage.Lock.LOCKED) {
@@ -284,40 +302,27 @@ public abstract class Item {
     public abstract void interact(Command command, Context context);
 
     public static final class Usage {
-        private Visible visible;
-        private Take take;
-        private Food food;
-        private Drink drink;
-        private Open open;
-        private Lock lock;
-        private Read read;
-        private Active active;
-        private Move move;
-        private Wear wear;
-        private Close close;
-        private Stab stab;
-        private Press press;
-        private Climb climb;
-        private Recieve recieve;
-        private Breakable breakable;
-        public Usage() {
-            this.visible = Visible.VISIBLE;
-            this.take = Take.UNTAKABLE;
-            this.food = Food.UNEDIBLE;
-            this.drink = Drink.UNDRINKABLE;
-            this.open = Open.UNOPENABLE;
-            this.lock = Lock.NO_LOCK;
-            this.read = Read.UNREADABLE;
-            this.active = Active.STATIC;
-            this.move = Move.IMMOVABLE;
-            this.wear = Wear.UNWEARABLE;
-            this.close = Close.UNCLOSABLE;
-            this.stab = Stab.UNSTABBABLE;
-            this.press = Press.UNPRESSABLE;
-            this.climb = Climb.UNCLIMBABLE;
-            this.recieve = Recieve.NO_RECIEVE;
-            this.breakable = Breakable.UNBREAKABLE;
-        }
+        private Visible visible = Visible.VISIBLE;
+        private Take take = Take.UNTAKABLE;
+        private Food food = Food.UNEDIBLE;
+        private Drink drink = Drink.UNDRINKABLE;
+        private Open open = Open.UNOPENABLE;
+        private Lock lock = Lock.NO_LOCK;
+        private Read read = Read.UNREADABLE;
+        private Active active = Active.STATIC;
+        private Move move = Move.IMMOVABLE;
+        private Wear wear = Wear.UNWEARABLE;
+        private Stab stab = Stab.UNSTABBABLE;
+        private Press press = Press.UNPRESSABLE;
+        private Climb climb = Climb.UNCLIMBABLE;
+        private Recieve recieve = Recieve.NO_RECIEVE;
+        private Breakable breakable = Breakable.UNBREAKABLE;
+        private Talk talk = Talk.NO_TALK;
+        private Use use = Use.NO_USE;
+        private Puttable puttable = Puttable.PUTTABLE;
+
+        public Usage() {}
+                
         public static enum Visible {
             VISIBLE, HIDDEN
         }
@@ -328,7 +333,7 @@ public abstract class Item {
             UNEDIBLE, EDIBLE
         }
         public static enum Drink {
-            UNDRINKABLE, DRINKABLE, CLOSED, EMPTY
+            UNDRINKABLE, DRINKABLE, CLOSED_DRINK, EMPTY
         }
         public static enum Open {
             UNOPENABLE, CLOSED, OPEN
@@ -348,9 +353,6 @@ public abstract class Item {
         public static enum Wear {
             UNWEARABLE, WEARABLE
         }
-        public static enum Close {
-            UNCLOSABLE, OPEN, CLOSED
-        }
         public static enum Stab {
             UNSTABBABLE, STABABBLE
         }
@@ -364,119 +366,229 @@ public abstract class Item {
             NO_RECIEVE, RECIEVE
         }
         public static enum Breakable {
-            UNBREAKABLE, UNBROKEN, BROKEN
+            BREAKABLE, UNBREAKABLE, UNBROKEN, BROKEN
         }
+        public static enum Talk {
+            NO_TALK, TALK
+        }
+
+        public static enum Use {
+            NO_USE, USABLE
+        }
+
         public Visible visible() {
             return this.visible;
         }
+        
+        public static enum Puttable{
+            PUTTABLE,UNPUTTABLE
+        }
+
         public Usage visible(final Visible o) {
             this.visible = Visible.VISIBLE;
             return this;
         }
+
         public Take take() {
             return this.take;
         }
+
         public Usage take(final Take o) {
             this.take = o;
             return this;
         }
+
         public Food food() {
             return this.food;
         }
+
         public Usage food(final Food o) {
             this.food = o;
             return this;
         }
+
         public Drink drink() {
             return this.drink;
         }
+
         public Usage drink(final Drink o) {
             this.drink = o;
             return this;
         }
+
         public Open open() {
             return this.open;
         }
+
         public Usage open(final Open o) {
             this.open = o;
             return this;
         }
+
         public Lock lock() {
             return this.lock;
         }
+
         public Usage lock(final Lock o) {
             this.lock = o;
             return this;
         }
+
         public Read read() {
             return this.read;
         }
+
         public Usage read(final Read o) {
             this.read = o;
             return this;
         }
+
         public Active active() {
             return this.active;
         }
+
         public Usage active(final Active o) {
             this.active = o;
             return this;
         }
+
         public Move move() {
             return this.move;
         }
+
         public Usage move(final Move o) {
             this.move = o;
             return this;
         }
+
         public Wear wear() {
             return this.wear;
         }
+
         public Usage wear(final Wear o) {
             this.wear = o;
             return this;
         }
-        public Close close() {
-            return this.close;
-        }
-        public Usage close(final Close o) {
-            this.close = o;
-            return this;
-        }
+
         public Stab stab() {
             return this.stab;
         }
+
         public Usage stab(final Stab o) {
             this.stab = o;
             return this;
         }
+
         public Press press() {
             return this.press;
         }
+
         public Usage press(final Press o) {
             this.press = o;
             return this;
         }
+
         public Climb climb() {
             return this.climb;
         }
+
         public Usage climb(final Climb o) {
             this.climb = o;
             return this;
         }
+
         public Recieve recieve() {
             return this.recieve;
         }
+
         public Usage recieve(final Recieve o) {
             this.recieve = o;
             return this;
         }
+
         public Breakable breakable() {
             return this.breakable;
         }
+
         public Usage breakable(final Breakable o) {
             this.breakable = o;
             return this;
         }
+
+        public Talk talk() {
+            return this.talk;
+        }
+
+        public Usage talk(final Talk o) {
+            this.talk = o;
+            return this;
+        }
+
+        public Use use() {
+            return this.use;
+        }
+
+        public Usage use(final Use o) {
+            this.use = o;
+            return this;
+        }
+        
+        public Puttable puttable(){
+            return this.puttable;
+        }
+        
+        public Usage puttable(final Puttable o){
+            this.puttable = o;
+            return this;
+        }
     }
+
+    // java: i cry everytim
+    public static final Usage.Visible VISIBLE = Usage.Visible.VISIBLE;
+    public static final Usage.Visible HIDDEN = Usage.Visible.HIDDEN;
+    public static final Usage.Take UNTAKABLE = Usage.Take.UNTAKABLE;
+    public static final Usage.Take TAKABLE = Usage.Take.TAKABLE;
+    public static final Usage.Take TOO_HEAVY = Usage.Take.TOO_HEAVY;
+    public static final Usage.Take BOLTED_DOWN = Usage.Take.BOLTED_DOWN;
+    public static final Usage.Food UNEDIBLE = Usage.Food.UNEDIBLE;
+    public static final Usage.Food EDIBLE = Usage.Food.EDIBLE;
+    public static final Usage.Drink UNDRINKABLE = Usage.Drink.UNDRINKABLE;
+    public static final Usage.Drink DRINKABLE = Usage.Drink.DRINKABLE;
+    public static final Usage.Drink CLOSED_DRINK = Usage.Drink.CLOSED_DRINK;
+    public static final Usage.Drink EMPTY = Usage.Drink.EMPTY;
+    public static final Usage.Open UNOPENABLE = Usage.Open.UNOPENABLE;
+    public static final Usage.Open CLOSED = Usage.Open.CLOSED;
+    public static final Usage.Open OPEN = Usage.Open.OPEN;
+    public static final Usage.Lock NO_LOCK = Usage.Lock.NO_LOCK;
+    public static final Usage.Lock UNLOCKED = Usage.Lock.UNLOCKED;
+    public static final Usage.Lock LOCKED = Usage.Lock.LOCKED;
+    public static final Usage.Read UNREADABLE = Usage.Read.UNREADABLE;
+    public static final Usage.Read READABLE = Usage.Read.READABLE;
+    public static final Usage.Read ILLEGIBLE = Usage.Read.ILLEGIBLE;
+    public static final Usage.Active STATIC = Usage.Active.STATIC;
+    public static final Usage.Active OFF = Usage.Active.OFF;
+    public static final Usage.Active ON = Usage.Active.ON;
+    public static final Usage.Move IMMOVABLE = Usage.Move.IMMOVABLE;
+    public static final Usage.Move MOVABLE = Usage.Move.MOVABLE;
+    public static final Usage.Wear UNWEARABLE = Usage.Wear.UNWEARABLE;
+    public static final Usage.Wear WEARABLE = Usage.Wear.WEARABLE;
+    public static final Usage.Stab UNSTABBABLE = Usage.Stab.UNSTABBABLE;
+    public static final Usage.Stab STABABBLE = Usage.Stab.STABABBLE;
+    public static final Usage.Press UNPRESSABLE = Usage.Press.UNPRESSABLE;
+    public static final Usage.Press UNPRESSED = Usage.Press.UNPRESSED;
+    public static final Usage.Press PRESSED = Usage.Press.PRESSED;
+    public static final Usage.Climb UNCLIMBABLE = Usage.Climb.UNCLIMBABLE;
+    public static final Usage.Climb CLIMABLE = Usage.Climb.CLIMABLE;
+    public static final Usage.Recieve NO_RECIEVE = Usage.Recieve.NO_RECIEVE;
+    public static final Usage.Recieve RECIEVE = Usage.Recieve.RECIEVE;
+    public static final Usage.Breakable BREAKABLE = Usage.Breakable.BREAKABLE;
+    public static final Usage.Breakable UNBREAKABLE = Usage.Breakable.UNBREAKABLE;
+    public static final Usage.Breakable UNBROKEN = Usage.Breakable.UNBROKEN;
+    public static final Usage.Breakable BROKEN = Usage.Breakable.BROKEN;
+    public static final Usage.Talk NO_TALK = Usage.Talk.NO_TALK;
+    public static final Usage.Talk TALK = Usage.Talk.TALK;
+    public static final Usage.Use USABLE = Usage.Use.USABLE;
+    public static final Usage.Use NO_USE = Usage.Use.NO_USE;
+    public static final Usage.Puttable PUTTABLE = Usage.Puttable.PUTTABLE;
+    public static final Usage.Puttable UNPUTTABLE = Usage.Puttable.UNPUTTABLE;
 }

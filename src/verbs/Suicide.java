@@ -1,16 +1,13 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 // Killing yourself is a feature. They asked for it.
 public class Suicide extends Verb {
 
     public Suicide() {
-        super("suicide",
-                Arrays.asList("kill self", "kill yourself","orange monkey eagle", "commit suicide", "stab self"),
-                Verb.usage().bare());
+        super("suicide", Verb.usage().bare(), "kill self", "kill yourself", "orange monkey eagle",
+                "commit suicide", "stab self");
     }
 
     @Override

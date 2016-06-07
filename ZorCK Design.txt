@@ -4,3 +4,4 @@ core Design Doc:	https://goo.gl/7ZO40Z
 Item Sheet:             https://goo.gl/cqlyfX
 Rooms Assignment:       https://goo.gl/y4wh8V
 Story Doc:              https://goo.gl/Kb5tWV
+Story Guide:            https://goo.gl/wz0oTu 

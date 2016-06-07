@@ -1,41 +1,30 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Break extends Verb {
 
     public Break() {
-        super("break",
-                Arrays.asList("shatter", "destroy"),
-                Verb.usage().noun());
+        super("break", Verb.usage().noun(), "shatter", "destroy");
     }
 
     @Override
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
-        construct.getPlayer();
+        final Item.Usage usage = noun.usage();
+        final Player player = construct.getPlayer();
 
-        if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                if (noun.usage().breakable() == Item.Usage.Breakable.UNBROKEN) {
-                    // TODO: find a better way to destroy something
-                    noun.usage().visible(Item.Usage.Visible.HIDDEN)
-                        .breakable(Item.Usage.Breakable.BROKEN);
-                    System.out.println("You broke the " + noun.getName());
-                } else if (noun.usage().breakable() == Item.Usage.Breakable.BROKEN) {
-                    System.out.println("The " + noun.getName()
-                            + " is already broken.");
-                } else {
-                    System.out.println("You can't break the " + noun.getName());
-                }
-            } else {
-                System.out.println("Ya need a noun, ya dingus.");
+        if (usage.breakable() == Item.BREAKABLE) {
+            if (player.getCurrentArea().hasMatching(noun)) {
+                player.getCurrentArea()
+                        .getItem(noun.name()).usage().breakable(Item.BROKEN);
+                System.out.println("You broke the " + noun.name());
+            } else if (player.hasMatching(noun)) {
+                player.getItem(noun.name()).usage().breakable(Item.BROKEN);
+                System.out.println("You broke your " + noun.name());
             }
         } else {
-            System.out.println("Where do you expect to find one of those?");
+            System.out.println("I don't see how you expect to do that!");
         }
-
     }
 }

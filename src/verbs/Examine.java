@@ -1,34 +1,22 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Examine extends Verb {
 
     public Examine() {
-        super("examine",
-                Arrays.asList("look at", "scan", "study", "observe"),
-                Verb.usage().noun());
+        super("examine", Verb.usage().noun(), "x", "look at", "scan", "study", "observe");
     }
 
     @Override
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
 
-        if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                if (noun.getDescription() != null) {
-                    System.out.println(noun.getDescription());
-                } else {
-                    System.out.println("It looks like every other "
-                            + noun.getName() + " you've ever seen");
-                }
-            } else {
-                System.out.println("Ya need a noun, ya dingus");
-            }
+        final String description = noun.description();
+        if (description != null) {
+            System.out.println(description);
         } else {
-            System.out.println("Where do you expect to find one of those?");
+            System.out.println("It looks like every other " + noun.name() + " you've ever seen");
         }
 
     }

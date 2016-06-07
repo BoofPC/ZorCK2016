@@ -9,14 +9,14 @@ public class Portal {
         }
     }
     private State locked;
-    private final String target; //Should be the id of an area to go to
+    private final Class<? extends Area> target; //Should be the id of an area to go to
 
-    public Portal(final State locked, final String target){
+    public Portal(final State locked, final Class<? extends Area> target){
         this.locked = locked;
         this.target = target;
     }
 
-    public Portal(final boolean locked, final String target) {
+    public Portal(final boolean locked, final Class<? extends Area> target) {
         this(locked ? State.LOCKED : State.UNLOCKED, target);
     }
 
@@ -32,12 +32,12 @@ public class Portal {
         this.locked = State.UNLOCKED;
     }
 
-    public String getTarget(){
+    public Class<? extends Area> getTarget(){
         return this.target;
     }
 
     public Item getDoor(final Area currentArea){
-        return currentArea.getItems().stream().filter(i -> i.getPortal() == this).findAny()
+        return currentArea.items().stream().filter(i -> i.getPortal() == this).findAny()
                 .orElse(null);
     }
 }

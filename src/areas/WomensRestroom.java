@@ -13,28 +13,28 @@ public class WomensRestroom extends Area {
     public WomensRestroom(final World containingWorld) {
         super(containingWorld);
 
-        //TODO: add way to unlock portal by opening window
-        this.getPortals().east(new Portal(Portal.State.LOCKED, "Roof"))
-            .south(new Portal(Portal.State.UNLOCKED, "Hallway07"));
+        //TODO: unlock window with key
+        this.portals().east(new Portal(Portal.State.LOCKED, Roof.class))
+            .south(new Portal(Portal.State.UNLOCKED, Hallway07.class));
 
-        this.setTitle("Women's Restroom");
-        this.setInitialDescription("The room is dimly lit, illuminated only by the "
+        this.title("Women's Restroom")
+            .initialDescription("The room is dimly lit, illuminated only by the "
                 + "light coming in from the window to the east. To the south "
                 + "is a doorway leading into the hallway. A poster hangs on "
-                + "the door of one of the stalls.");
-        this.setDescription("This is the Women's Restroom.");
+                + "the door of one of the stalls.")
+            .description("This is the Women's Restroom.").articleThe(true)
 
-        this.setSound("You hear an incessant dripping sound coming from a faucet.");
-        this.setSmell("It smells like flowers.");
+            .sound("You hear an incessant dripping sound coming from a faucet.")
+            .smell("It smells like flowers.")
 
-        this.addItem(new AdamsonPoster());
+            .item(new AdamsonPoster());
 
     }
 
     @Override
     public void interact(final Command command, final Context context) {
         final String verb = command.getVerb().getTitle();
-        final String noun = command.getNoun().getName();
+        final String noun = command.getNoun().name();
 
         //read the poster, in case the player looks at it instead
         if (verb.equals("examine") && noun.equals("Adamson Poster")) {

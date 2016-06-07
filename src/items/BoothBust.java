@@ -9,13 +9,9 @@ public class BoothBust extends Item {
 
         //cannot pick up
 
-        this.setName("Booth Bust");
-        this.addSynonym("booth bust");
-        this.addSynonym("bust");
-        this.addSynonym("statue");
-        this.addSynonym("bust of booth");
-
-        this.setDescription("It's a well-made bronze likeness of Mr. Booth.");
+        this.name("Booth Bust")
+            .synonym("booth bust", "bust", "statue", "bust of booth")
+            .description("It's a well-made bronze likeness of Mr. Booth.");
     }
 
     @Override

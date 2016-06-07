@@ -1,44 +1,33 @@
 package verbs;
 
-import java.util.Arrays;
-
 import core.*;
 
 public class Open extends Verb {
 
     public Open() {
-        super("open",
-                Arrays.asList("unseal"),
-                Verb.usage().noun());
+        super("open", Verb.usage().noun(), "unseal");
     }
 
     @Override
     public void run(final Command command, final Context construct) {
-        command.getDirection();
         final Item noun = command.getNoun();
+        final Item.Usage usage = noun.usage();
 
-        construct.getPlayer();
-        construct.getWorld();
-
-        if (noun != null) {
-            if (!noun.getName().equals("noItem")) {
-                if (noun.usage().open() == Item.Usage.Open.CLOSED) {
-                    if (noun.usage().lock() != Item.Usage.Lock.LOCKED) {
-                        noun.usage().open(Item.Usage.Open.OPEN);
-                        System.out.println("You opened the " + noun.getName());
-                    } else {
-                        System.out.println(noun.getName() + " is locked");
-                    }
-                } else if (noun.usage().open() == Item.Usage.Open.OPEN) {
-                    System.out.println(noun.getName() + " is already open");
+        switch (usage.open()) {
+            case CLOSED:
+                if (usage.lock() != Item.LOCKED) {
+                    usage.open(Item.OPEN);
+                    System.out.println("You opened the " + noun.name());
                 } else {
-                    System.out.println("I don't see how you expect to do that");
+                    System.out.println(noun.name() + " is locked");
                 }
-            } else {
-                System.out.println("Ya need a noun, ya dingus");
-            }
-        } else {
-            System.out.println("Where do you expect to find one of those?");
+                break;
+            case OPEN:
+                System.out.println(noun.name() + " is already open");
+                break;
+            case UNOPENABLE:
+                System.out.println("I don't see how you expect to do that");
+                break;
         }
     }
 }

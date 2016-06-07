@@ -15,12 +15,12 @@ public class TutorialItem extends Item{
     public TutorialItem(){
         super();
         this.usage()
-            .take(Usage.Take.TAKABLE) // This key means the player can pick out the item
-            .food(Usage.Food.EDIBLE); // This key means the player can eat the item
+            .take(Item.TAKABLE) // This key means the player can pick out the item
+            .food(Item.EDIBLE); // This key means the player can eat the item
         // TODO Update usage description
         //Full explanation of usage keys can be found at the bottom
 
-        this.setName("Potato Chip");   //This is the item's name, in this case, it is
+        this.name("Potato Chip")   //This is the item's name, in this case, it is
                              //a banana. This should be a unique name, as, in
                              //the event of a conflict of synonyms, the game
                              //will ask to distinguish between two names
@@ -29,19 +29,15 @@ public class TutorialItem extends Item{
                              //chocolate," the game will output, "Did you mean
                              //the White Chocolate or the Dark Chocolate?"
 
-        this.setDescription("It looks crunchy and yellow");    //If you want to set
+            .description("It looks crunchy and yellow")    //If you want to set
                             //a (visual) description, do so here
 
         //The synonyms list should include all possible things the user could
         //call the item. All should be lower case and the first item should
         //Always be the name of the item, set above
-        this.addSynonym("potato chip");
-        this.addSynonym("chip");
-        this.addSynonym("crisp");
-        this.addSynonym("potato crisp");
-
-        this.setTaste("It tastes greasy and fattening. Delicious!");   //If you want,
-        this.setSmell("It smells decadent"); //set additional descriptors here
+            .synonym("potato chip", "chip", "crisp", "potato crisp")
+            .taste("It tastes greasy and fattening. Delicious!")   //If you want,
+            .smell("It smells decadent"); //set additional descriptors here
 
         //Other possible descriptors:
         //setInside(Item)       -       if another item is inside this one,
@@ -131,6 +127,9 @@ public class TutorialItem extends Item{
         //break (n = 15) -  0: unset (default, returns "cannot break")
         //                  1: cannot break item
         //                  2: breakable
+        //use (n = 16) -    0: unset (default, returns "has no use"
+        //                  1: item has no use
+        //                  2: item has a use
         //
         //
         //the first item, represented here as [duumy], refers to

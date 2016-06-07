@@ -2,24 +2,23 @@ package verbs;
 
 import core.*;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Curse extends Verb {
 
     // https://en.wiktionary.org/w/index.php?title=Category:English_vulgarities
     public Curse() {
-        super("damn", Arrays.asList("anal", "anus", "arse", "ass", "asshat", "asshole", "ballsack",
-                "balls", "bastard", "bitch", "boi", "blowjob", "blow job", "bollock", "bollocks",
-                "boner", "boob", "bungus", "bum", "butt", "butthead", "buttplug", "clitoris",
-                "clusterfuck", "cock", "cocksucker", "coon", "cunt", "cum", "dafuq", "dick",
-                "dickhat", "dickhead", "dickweed", "dildo", "douchebag", "dyke", "fag", "faggot",
-                "fellate", "fellatio", "feltcher", "fuck", "f u c k", "fudgepacker", "fudge packer",
-                "goddamn", "god damn", "hell", "purgatory", "homo", "jizz", "labia", "motherfucker",
-                "muff", "nigger", "nigga", "penis", "piss", "porn", "poop", "prick", "pube",
-                "pussy", "queef", "queer", "scrotum", "sex", "shit", "shitass", "slut", "smegma",
-                "spunk", "tit", "tosser", "twat", "vagina", "wank", "whore", "whoreson"),
-                Verb.usage().bare().noun());
+        super("damn", Verb.usage().bare().noun(), "anal", "anus", "arse", "ass", "asshat",
+                "asshole", "ballsack", "balls", "bastard", "bitch", "boi", "blowjob", "blow job",
+                "bollock", "bollocks", "boner", "boob", "bungus", "bum", "butt", "butthead",
+                "buttplug", "clitoris", "clusterfuck", "cock", "cocksucker", "coon", "cunt", "cum",
+                "dafuq", "dick", "dickhat", "dickhead", "dickweed", "dildo", "douchebag", "dyke",
+                "fag", "faggot", "fellate", "fellatio", "feltcher", "fuck", "f u c k",
+                "fudgepacker", "fudge packer", "goddamn", "god damn", "hell", "purgatory", "homo",
+                "jizz", "labia", "motherfucker", "muff", "nigger", "nigga", "penis", "piss", "porn",
+                "poop", "prick", "pube", "pussy", "queef", "queer", "scrotum", "sex", "shit",
+                "shitass", "slut", "smegma", "spunk", "tit", "tosser", "twat", "vagina", "wank",
+                "whore", "whoreson");
     }
 
     @Override

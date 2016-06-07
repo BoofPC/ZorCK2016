@@ -6,13 +6,11 @@ public class DarkChocolate extends Item{
 
     public DarkChocolate(){
         super();
-        this.usage().take(Usage.Take.TAKABLE).food(Usage.Food.EDIBLE);
-        this.setName("Dark Chocolate");
-        this.setDescription("Its looks dark and tasty");
-        this.addSynonym("dark chocolate");
-        this.addSynonym("chocolate");
-        this.addSynonym("chocolate bar");
-        this.setTaste("It tastes like heaven");
+        this.usage().take(Item.TAKABLE).food(Item.EDIBLE);
+        this.name("Dark Chocolate")
+            .description("Its looks dark and tasty")
+            .synonym("dark chocolate", "chocolate", "chocolate bar")
+            .taste("It tastes like heaven");
     }
 
     @Override

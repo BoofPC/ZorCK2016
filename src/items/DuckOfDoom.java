@@ -2,23 +2,17 @@ package items;
 
 import core.*;
 
-public class DuckOfDoom extends Item{
-    public DuckOfDoom(){
+public class DuckOfDoom extends Item {
+    public DuckOfDoom() {
         super();
-        this.usage().take(Usage.Take.TAKABLE);
-        this.setName("Duck");
-        this.addSynonym("duck");
-        this.addSynonym("duckofdoom");
-        this.addSynonym("duck of doom");
-        this.addSynonym("duckling");
-        this.addSynonym("duckery");
-        this.addSynonym("mallard");
-        this.addSynonym("loon");
+        this.usage().take(Item.TAKABLE);
+        this.name("Duck").synonym("duck", "duckofdoom", "duck of doom", "duckling", "duckery",
+                "mallard", "loon");
     }
 
     @Override
-    public void interact(final Command command, final Context context){
-        if(command.getVerb().getTitle().equals("take")) {
+    public void interact(final Command command, final Context context) {
+        if (command.getVerb().getTitle().equals("take")) {
             System.out.println("You should know better than to pick up a duck in a dungeon!");
             context.getPlayer().addHp(-5);
         }

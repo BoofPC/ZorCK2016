@@ -6,21 +6,21 @@ public class Key extends Item{
 
     public Key(final String name, final String description){
         super();
-        this.usage().take(Usage.Take.TAKABLE);
-        this.setName(name);
+        this.usage().take(Item.TAKABLE);
+        this.name(name);
         if(!name.equals("key")) {
-            this.addSynonym(name.toLowerCase());
+            this.synonym(name.toLowerCase());
         }
-        this.addSynonym("key");
-        this.setDescription(description);
+        this.synonym("key")
+            .description(description);
     }
 
     public Key(){
         super();
-        this.usage().lock(Usage.Lock.LOCKED);
-        this.setName("Key");
-        this.addSynonym("key");
-        this.setDescription("A small, yellow key");
+        this.usage().lock(Item.LOCKED);
+        this.name("Key")
+            .synonym("key")
+            .description("A small, yellow key");
     }
 
     @Override
