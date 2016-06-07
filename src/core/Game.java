@@ -29,7 +29,7 @@ public class Game {
 
     public static void main(final String[] args) {
         final Game game = new Game();
-        final Player player = new Player(10, "Carlton");
+        final Player player = new Player(10, "Red");
         final World world = new World();
 
 

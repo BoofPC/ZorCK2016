@@ -15,3 +15,4 @@ public class Quit extends Verb {
         player.setDeath(Game.Status.SELF_QUIT);
     }
 }
+//

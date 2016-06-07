@@ -25,8 +25,10 @@ public final class Command {
         return new Command(verb, null, null, null, leftovers);
     }
 
+
     public static Command applied(final Verb verb, final Item noun, final NounOrigin nounOrigin,
             final String leftovers) {
+
         if (verb == null || noun == null)
             throw new NullPointerException();
         return new Command(verb, noun, nounOrigin, null, leftovers);
