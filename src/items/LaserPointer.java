@@ -7,6 +7,9 @@ public class LaserPointer extends Item {
         super();
         this.usage().take(Usage.Take.TAKABLE);
         this.name("Laser Pointer")
-            .synonym("laser", "pointer", "laserpionter");
+                .synonym("laser")
+                .synonym("pointer")
+                .synonym("laserpionter");
     }
+
 }
