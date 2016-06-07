@@ -15,8 +15,7 @@ public class Stab extends Verb {
         final Player player = construct.getPlayer();
         final Area area = player.getCurrentArea();
 
-        final String swordName = new Sword().name();
-        if (player.hasItem(swordName)) {
+        if (player.hasItem(Sword.class)) {
             if (noun.usage().stab() == Item.STABABBLE) {
                 noun.drop(area);
                 System.out.println("You stabbed the " + noun.name());
@@ -29,7 +28,7 @@ public class Stab extends Verb {
                 System.out.println("Now why would you do that?");
             }
         } else {
-            System.out.println("You need the " + swordName + " to stab the " + noun.name());
+            System.out.println("You need the " + new Sword().name() + " to stab the " + noun.name());
         }
     }
 }

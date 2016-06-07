@@ -6,12 +6,15 @@ public final class Command {
 
     private final Verb verb;
     private final Item noun;
+    private final Command.NounOrigin nounOrigin;
     private final Direction direction;
     private final String leftovers;
 
-    private Command(final Verb verb, final Item noun, final Direction direction, final String leftovers){
+    private Command(final Verb verb, final Item noun, final Command.NounOrigin nounOrigin,
+            final Direction direction, final String leftovers) {
         this.verb = verb;
         this.noun = noun;
+        this.nounOrigin = nounOrigin;
         this.direction = direction;
         this.leftovers = leftovers != null ? leftovers : "";
     }
@@ -19,35 +22,38 @@ public final class Command {
     public static Command bare(final Verb verb, final String leftovers) {
         if (verb == null)
             throw new NullPointerException();
-        return new Command(verb, null, null, leftovers);
+        return new Command(verb, null, null, null, leftovers);
     }
 
-    public static Command applied(final Verb verb, final Item noun, final String leftovers) {
+    public static Command applied(final Verb verb, final Item noun, final Command.NounOrigin nounOrigin,
+            final String leftovers) {
         if (verb == null || noun == null)
             throw new NullPointerException();
-        return new Command(verb, noun, null, leftovers);
+        return new Command(verb, noun, nounOrigin, null, leftovers);
     }
 
-    public static Command directedBare(final Verb verb, final Direction direction, final String leftovers) {
+    public static Command directedBare(final Verb verb, final Direction direction,
+            final String leftovers) {
         if (verb == null || direction == null)
             throw new NullPointerException();
-        return new Command(verb, null, direction, leftovers);
+        return new Command(verb, null, null, direction, leftovers);
     }
 
-    public static Command directed(final Verb verb, final Item noun, final Direction direction, final String leftovers) {
+    public static Command directed(final Verb verb, final Item noun, final Command.NounOrigin nounOrigin, final Direction direction,
+            final String leftovers) {
         if (verb == null || noun == null || direction == null)
             throw new NullPointerException();
-        return new Command(verb, noun, direction, leftovers);
+        return new Command(verb, noun, nounOrigin, direction, leftovers);
     }
 
     public static Command direction(final Direction direction, final String leftovers) {
         if (direction == null)
             throw new NullPointerException();
-        return new Command(null, null, direction, leftovers);
+        return new Command(null, null, null, direction, leftovers);
     }
 
     public static Command badParse(final String leftovers) {
-        return new Command(null, null, null, leftovers);
+        return new Command(null, null, null, null, leftovers);
     }
 
     public boolean hasVerb() {
@@ -90,11 +96,19 @@ public final class Command {
         return this.noun;
     }
 
+    public Command.NounOrigin getNounOrigin() {
+        return nounOrigin;
+    }
+
     public Direction getDirection() {
         return this.direction;
     }
 
     public String getLeftovers() {
         return this.leftovers;
+    }
+
+    public static enum NounOrigin {
+        PLAYER, AREA
     }
 }

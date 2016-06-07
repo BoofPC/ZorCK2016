@@ -11,13 +11,17 @@ public class Eat extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
+        final Command.NounOrigin nounOrigin = command.getNounOrigin();
         final Player player = construct.getPlayer();
 
         if (noun.usage().food() == Item.EDIBLE) {
-            if (player.getCurrentArea().hasMatching(noun)) {
-                player.getCurrentArea().removeItem(noun);
-            } else if (player.hasMatching(noun)) {
-                player.removeItem(noun);
+            switch (nounOrigin) {
+                case AREA:
+                    player.getCurrentArea().removeItem(noun);
+                    break;
+                case PLAYER:
+                    player.removeItem(noun);
+                    break;
             }
             System.out.println(player.getName() + " ate the " + noun.name());
             if (noun.taste() != null) {

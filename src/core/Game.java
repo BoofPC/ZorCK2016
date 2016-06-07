@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import verbs.*;
 import areas.*;
+import core.Command.NounOrigin;
 import core.Verb.Usage;
 import core.World.Direction;
 import items.*;
@@ -177,18 +178,22 @@ public class Game {
             final Usage usage = verb.getUsage();
             noun: if (usage.isNoun()) {
                 final Item noun;
+                final Command.NounOrigin nounOrigin;
                 final String nounInput;
                 {
                     final Player player = construct.getPlayer();
-                    final Map<String, Pair<Item, String>> matches = new HashMap<>();
+                    final Map<String, Pair<Pair<Item, Command.NounOrigin>, String>> matches =
+                            new HashMap<>();
                     for (final Item focus : player.getInventory()) {
                         for (final String syn : focus.synonyms()) {
-                            Game.tryMatch(verbInput, matches, focus, syn);
+                            Game.tryMatch(verbInput, matches,
+                                    new Pair<>(focus, Command.NounOrigin.PLAYER), syn);
                         }
                     }
                     for (final Item focus : player.getCurrentArea().items()) {
                         for (final String syn : focus.synonyms()) {
-                            Game.tryMatch(verbInput, matches, focus, syn);
+                            Game.tryMatch(verbInput, matches,
+                                    new Pair<>(focus, Command.NounOrigin.PLAYER), syn);
                         }
                     }
 
@@ -199,9 +204,11 @@ public class Game {
                         Game.tryResolve(verbInput, matches);
                     }
                     if (matches.size() == 1) {
-                        final Pair<Item, String> result =
+                        final Pair<Pair<Item, NounOrigin>, String> result =
                                 matches.entrySet().iterator().next().getValue();
-                        noun = result.getKey();
+                        final Pair<Item, NounOrigin> noun_ = result.getKey();
+                        noun = noun_.getKey();
+                        nounOrigin = noun_.getValue();
                         nounInput = result.getValue().trim();
                     } else {
                         Game.ambiguous(matches.entrySet().stream().map(Entry::getKey).iterator());
@@ -215,11 +222,12 @@ public class Game {
                         final Pair<Direction, String> match =
                                 Game.getMatch(nounInput, entry.getValue(), entry.getKey());
                         if (match != null)
-                            return Command.directed(verb, noun, match.getKey(), match.getValue());
+                            return Command.directed(verb, noun, nounOrigin, match.getKey(),
+                                    match.getValue());
                     }
                 }
 
-                return Command.applied(verb, noun, nounInput);
+                return Command.applied(verb, noun, nounOrigin, nounInput);
             }
             if (usage.isDirection()) {
                 for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {

@@ -16,25 +16,29 @@ public class Give extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
+        final Command.NounOrigin nounOrigin = command.getNounOrigin();
         final Player player = construct.getPlayer();
 
-        if (player.hasMatching(noun)) {
-            Item receiver = null;
-            for (final Item item : player.getCurrentArea().items()) {
-                if (item.usage().recieve() == Item.RECIEVE) {
-                    receiver = item;
-                    break;
+        switch (nounOrigin) {
+            case PLAYER:
+                Item receiver = null;
+                for (final Item item : player.getCurrentArea().items()) {
+                    if (item.usage().recieve() == Item.RECIEVE) {
+                        receiver = item;
+                        break;
+                    }
                 }
-            }
-            if (receiver != null) {
-                receiver.receive(noun);
-                player.removeItem(noun);
-                System.out.println("You gave the " + noun.name() + " to " + receiver.name());
-            } else {
-                System.out.println("I don't see who you'd want to give that to");
-            }
-        } else {
-            System.out.println("You don't even have a " + noun.name());
+                if (receiver != null) {
+                    receiver.receive(noun);
+                    player.removeItem(noun);
+                    System.out.println("You gave the " + noun.name() + " to " + receiver.name());
+                } else {
+                    System.out.println("I don't see who you'd want to give that to");
+                }
+                break;
+            default:
+                System.out.println("You don't even have a " + noun.name());
+                break;
         }
     }
 }
