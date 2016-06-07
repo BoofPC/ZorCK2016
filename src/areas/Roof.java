@@ -33,10 +33,18 @@ public class Roof extends Area {
     @Override
     public void interact(final Command command, final Context context) {
         final World.Direction direction = command.getDirection();
+        final Item noun = command.getNoun();
+        final String verb = command.getVerb().getTitle();
 
         if (direction == World.Direction.SOUTH){
             System.out.println("Whoops. You walked off of the roof.");
             super.interact(command, context);
+        } else if (verb.equals("take") && noun.name().equals("Toolbox")
+            && this.items().contains(noun)) {
+            this.sound("Sounds like there's no toolbox here.")
+                    .smell("It smells"
+                + " like there's no toolbox here.");
+            command.getVerb().run(command, context);
         } else {
             super.interact(command, context);
         }
