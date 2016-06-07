@@ -9,7 +9,7 @@ public class ChemicalStorageRoom extends Area {
         super(containingWorld);
 
         this.portals().south(new Portal(false, BirkenfeldsRoom.class));
-        this.title("Chemical Storage Room").initialDescription("----------").description("-----").articleThe(true)
+        this.title("Chemical Storage Room").initialDescription("You're in the Chemical Storage room. This room smells weird. You feel light headed.").description("You're in the Chemical Storage room. You feel light headed.").articleThe(true)
                 .item(new Door(false, "Southern Door", null, this.portals().south()));
     }
 }
