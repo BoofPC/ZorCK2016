@@ -10,6 +10,8 @@ import core.*;
  *
  * To do this, we will write a special take method in the Area in which the
  * orb will be (Test8)
+ * 
+ * TODO Do it here instead
  */
 public class MagicOrb extends Item{
 
@@ -21,10 +23,5 @@ public class MagicOrb extends Item{
             .synonym("magic orb", "orb", "magic ball")
             .description("It looks like it would do something special if "
                 + "you took it");
-    }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
     }
 }

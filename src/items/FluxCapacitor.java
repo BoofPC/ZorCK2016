@@ -11,9 +11,4 @@ public class FluxCapacitor extends Item {
                 .description("This is one of the parts of the time machine!");
 
     }
-
-    @Override
-    public void interact(final Command command, final Context context) {
-
-    }
 }

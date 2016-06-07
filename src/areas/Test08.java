@@ -31,11 +31,9 @@ public class Test08 extends Area {
             player.getCurrentArea().removeItem(command.getNoun());
             System.out.println("The orb seeps into your skin");
             System.out.println("Your max HP just went up by 10!");
-        } else {
-            command.getVerb().run(command, context);
         }
 
-        command.getVerb().run(command, context);
+        super.interact(command, context);
     }
 
 }

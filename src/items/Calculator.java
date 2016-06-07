@@ -17,9 +17,4 @@ public class Calculator extends Item {
             .description("It's a TI-84 Plus Supreme Deluxe Color Limited Edition "
                 + "Graphing Calculator with a 4K touchscreen!");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

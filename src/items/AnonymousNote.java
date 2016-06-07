@@ -17,9 +17,4 @@ public class AnonymousNote extends Item {
                 + " you see now... I'm running out of paper so I'll have to"
                 + " be quick. Find the Time machine and...");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

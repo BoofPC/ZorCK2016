@@ -13,9 +13,4 @@ public class Hamburger extends Item{
             .taste("It is the best burger you've ever tasted")
             .smell("It smells decadent");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

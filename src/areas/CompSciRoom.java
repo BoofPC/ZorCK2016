@@ -20,19 +20,11 @@ public class CompSciRoom extends Area{
 
         @Override
         public void interact(final Command command, final Context context){
-            Item noun;
-            noun = command.getNoun();
             //TODO: Make ending play when player has blackmail
             if(context.getPlayer().hasMatching(new Blackmail())) {
                 ;
             }
-            //if you don't have any special interactions, just put this:
-            if(command.getNoun() !=  null) {
-                noun.interact(command,context);
-            }
-            if(!context.getSkipGeneral()) {
-                command.getVerb().run(command, context);
-                //TODO: have a function to lure boof out
-            }
+            //TODO: have a function to lure boof out
+            super.interact(command, context);
         }
 }

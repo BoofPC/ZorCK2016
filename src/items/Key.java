@@ -22,10 +22,4 @@ public class Key extends Item{
             .synonym("key")
             .description("A small, yellow key");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
-
 }

@@ -13,9 +13,4 @@ public class Ketchup extends Item{
             .taste("It's salty but why did you eat plain ketchup?")
             .smell("I bet it would smell great on a burger");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

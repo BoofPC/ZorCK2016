@@ -12,9 +12,4 @@ public class DarkChocolate extends Item{
             .synonym("dark chocolate", "chocolate", "chocolate bar")
             .taste("It tastes like heaven");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

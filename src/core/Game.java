@@ -32,7 +32,6 @@ public class Game {
         final Player player = new Player(10, "Red");
         final World world = new World();
 
-
         // Register all verbs
         game.addVerb(new Break()).addVerb(new Choose()).addVerb(new Climb()).addVerb(new Close())
                 .addVerb(new Credits()).addVerb(new Curse()).addVerb(new Diagnostic())
@@ -41,11 +40,10 @@ public class Game {
                 .addVerb(new Inventory()).addVerb(new Light()).addVerb(new Listen())
                 .addVerb(new Lock()).addVerb(new Look()).addVerb(new Make()).addVerb(new Move())
                 .addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray()).addVerb(new Put())
-                .addVerb(new Quit()).addVerb(new Read()).addVerb(new Run()).addVerb(new Score())
-                .addVerb(new Shout()).addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab())
-                .addVerb(new Stand()).addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk())
-                .addVerb(new Taste()).addVerb(new TurnOff()).addVerb(new TurnOn())
-                .addVerb(new Unlock());
+                .addVerb(new Quit()).addVerb(new Read()).addVerb(new Score()).addVerb(new Shout())
+                .addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab()).addVerb(new Stand())
+                .addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk()).addVerb(new Taste())
+                .addVerb(new TurnOff()).addVerb(new TurnOn()).addVerb(new Unlock());
 
         //Add all Areas to the new world
         /*
@@ -99,10 +97,9 @@ public class Game {
 
         //Initial prompt setup
         try (Scanner reader = new Scanner(System.in)) {
-
             //Main Game Loop
-            final Status status = Status.KEEP_PLAYING;
-            while (status == Status.KEEP_PLAYING) {
+            Status death = null;
+            while ((death = player.getDeath()) == Status.KEEP_PLAYING) {
                 final Area currentArea = player.getCurrentArea();
                 final String currentTitle = currentArea.title();
                 if (currentArea.articleThe()) {
@@ -122,15 +119,30 @@ public class Game {
                     continue;
                 }
                 if (command.isDirection()) {
-                    command = Command.directedBare(new Move(), command.getDirection(),
-                            command.getLeftovers());
+                    command = Command.directedBare(new Move(), "move", command.getDirection(),
+                            command.getDirectionStr(), command.getLeftovers());
                 }
                 currentArea.interact(command, construct);
                 System.out.println("");
             }
-            player.getCurrentArea().interact(Command.bare(new Score(), ""), construct);
-            System.out.println("");
 
+            switch (death) {
+                case DIE:
+                    System.out.println("You have died.");
+                    break;
+                case SUICIDE:
+                    System.out.println("You decided to end it all.");
+                    break;
+                case SELF_QUIT:
+                    System.out.println("See you again soon!");
+                    break;
+                case WIN:
+                    System.out.println("A winnner is you!");
+                    break;
+                default:
+            }
+            player.getCurrentArea().interact(Command.bare(new Score(), "score", ""), construct);
+            System.out.println("");
         }
     }
 
@@ -143,16 +155,19 @@ public class Game {
             final List<Verb> verbList) {
         final String input = inputRaw.trim().toLowerCase();
         for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
-            final Pair<Direction, String> match =
+            final Pair<Direction, Pair<String, String>> match =
                     Game.getMatch(input, entry.getValue(), entry.getKey());
-            if (match != null)
-                return Command.direction(match.getKey(), match.getValue());
+            if (match != null) {
+                final Pair<String, String> matchStrs = match.getValue();
+                return Command.direction(match.getKey(), matchStrs.getKey(), matchStrs.getKey());
+            }
         }
         verb: {
             final Verb verb;
+            final String verbStr;
             final String verbInput;
             {
-                final Map<String, Pair<Verb, String>> matches = new HashMap<>();
+                final Map<String, Pair<Verb, Pair<String, String>>> matches = new HashMap<>();
                 for (final Verb focus : verbList) {
                     Game.tryMatch(input, matches, focus, focus.getTitle());
                     for (final String syn : focus.getSynonyms()) {
@@ -165,10 +180,12 @@ public class Game {
                     Game.tryResolve(input, matches);
                 }
                 if (matches.size() == 1) {
-                    final Pair<Verb, String> result =
+                    final Pair<Verb, Pair<String, String>> result =
                             matches.entrySet().iterator().next().getValue();
                     verb = result.getKey();
-                    verbInput = result.getValue().trim();
+                    final Pair<String, String> verbStrs = result.getValue();
+                    verbStr = verbStrs.getKey();
+                    verbInput = verbStrs.getValue().trim();
                 } else {
                     Game.ambiguous(matches.entrySet().stream().map(Entry::getKey).iterator());
                     break verb;
@@ -178,10 +195,11 @@ public class Game {
             noun: if (usage.isNoun()) {
                 final Item noun;
                 final Command.NounOrigin nounOrigin;
+                final String nounStr;
                 final String nounInput;
                 {
                     final Player player = construct.getPlayer();
-                    final Map<String, Pair<Pair<Item, Command.NounOrigin>, String>> matches =
+                    final Map<String, Pair<Pair<Item, Command.NounOrigin>, Pair<String, String>>> matches =
                             new HashMap<>();
                     for (final Item focus : player.getInventory()) {
                         for (final String syn : focus.synonyms()) {
@@ -203,12 +221,14 @@ public class Game {
                         Game.tryResolve(verbInput, matches);
                     }
                     if (matches.size() == 1) {
-                        final Pair<Pair<Item, Command.NounOrigin>, String> result =
+                        final Pair<Pair<Item, Command.NounOrigin>, Pair<String, String>> result =
                                 matches.entrySet().iterator().next().getValue();
                         final Pair<Item, Command.NounOrigin> noun_ = result.getKey();
                         noun = noun_.getKey();
                         nounOrigin = noun_.getValue();
-                        nounInput = result.getValue().trim();
+                        final Pair<String, String> nounStrs = result.getValue();
+                        nounStr = nounStrs.getKey();
+                        nounInput = nounStrs.getValue().trim();
                     } else {
                         Game.ambiguous(matches.entrySet().stream().map(Entry::getKey).iterator());
                         break noun;
@@ -218,29 +238,35 @@ public class Game {
                 if (usage.isDirection()) {
                     for (final Entry<String, Direction> entry : Game.directionShorthand
                             .entrySet()) {
-                        final Pair<Direction, String> match =
+                        final Pair<Direction, Pair<String, String>> match =
                                 Game.getMatch(nounInput, entry.getValue(), entry.getKey());
-                        if (match != null)
-                            return Command.directed(verb, noun, nounOrigin, match.getKey(),
-                                    match.getValue());
+                        if (match != null) {
+                            final Pair<String, String> directionStrs = match.getValue();
+                            return Command.directed(verb, verbStr, noun, nounStr, nounOrigin,
+                                    match.getKey(), directionStrs.getKey(),
+                                    directionStrs.getValue());
+                        }
                     }
                 }
 
-                return Command.applied(verb, noun, nounOrigin, nounInput);
+                return Command.applied(verb, verbStr, noun, nounStr, nounOrigin, nounInput);
             }
             if (usage.isDirection()) {
                 for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
-                    final Pair<Direction, String> match =
+                    final Pair<Direction, Pair<String, String>> match =
                             Game.getMatch(verbInput, entry.getValue(), entry.getKey());
-                    if (match != null)
-                        return Command.directedBare(verb, match.getKey(), match.getValue());
+                    if (match != null) {
+                        final Pair<String, String> directionStrs = match.getValue();
+                        return Command.directedBare(verb, verbStr, match.getKey(),
+                                directionStrs.getKey(), directionStrs.getValue());
+                    }
                 }
             }
             if (!usage.isBare()) {
                 // System.out.println(verb.getTitle() + " isn't bare. Leftovers: " + verbInput);
                 break verb;
             }
-            return Command.bare(verb, input);
+            return Command.bare(verb, verbStr, input);
         }
         return Command.badParse(input);
     }
@@ -253,20 +279,21 @@ public class Game {
 
     private final static Matcher endOfMatch = Pattern.compile("^\\s").matcher("");
 
-    public static <T> Pair<T, String> getMatch(final String input, final T focus,
+    public static <T> Pair<T, Pair<String, String>> getMatch(final String input, final T focus,
             final String str) {
         if (input.startsWith(str)) {
             final String leftovers = input.substring(str.length());
             if (leftovers.isEmpty() || Game.endOfMatch.reset(leftovers).find())
                 // System.out.println("Match: " + str + "; leftovers: " + leftovers);
-                return new Pair<>(focus, leftovers);
+                return new Pair<>(focus, new Pair<>(str, leftovers));
         }
         return null;
     }
 
-    public static <T> void tryMatch(final String input, final Map<String, Pair<T, String>> matches,
-            final T focus, final String str) {
-        final Pair<T, String> result = Game.getMatch(input, focus, str);
+    public static <T> void tryMatch(final String input,
+            final Map<String, Pair<T, Pair<String, String>>> matches, final T focus,
+            final String str) {
+        final Pair<T, Pair<String, String>> result = Game.getMatch(input, focus, str);
         if (result != null) {
             matches.put(str, result);
         }

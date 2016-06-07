@@ -25,14 +25,19 @@ public class Curse extends Verb {
     public void run(final Command command, final Context construct) {
         final Random rand = new Random();
         final int n = rand.nextInt(4);
-        if (n == 0) {
-            System.out.println("Tough shit, asshole");
-        } else if (n == 1) {
-            System.out.println("Its not so bad.  You could have been killed already.");
-        } else if (n == 2) {
-            System.out.println("Oh, dear. Such language from a supposed winning adventurer!");
-        } else {
-            System.out.println("Such language in a high-class establishment like this!");
+        switch (n) {
+            case 0:
+                System.out.println("Tough shit, asshole");
+                break;
+            case 1:
+                System.out.println("Its not so bad.  You could have been killed already.");
+                break;
+            case 2:
+                System.out.println("Oh, dear. Such language from a supposed winning adventurer!");
+                break;
+            default:
+                System.out.println("Such language in a high-class establishment like this!");
+                break;
         }
     }
 }

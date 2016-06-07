@@ -19,9 +19,4 @@ public class TimeMachine extends Item {
                 + " back in time!");
         this.key(new MrFusion().name()).key(new BananaPeel().name()).key(new FluxCapacitor().name());
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

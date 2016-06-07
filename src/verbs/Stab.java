@@ -16,16 +16,18 @@ public class Stab extends Verb {
         final Area area = player.getCurrentArea();
 
         if (player.hasItem(Sword.class)) {
-            if (noun.usage().stab() == Item.STABABBLE) {
-                noun.drop(area);
-                System.out.println("You stabbed the " + noun.name());
-                if (noun.inside() != null) {
-                    System.out.println("It dropped the " + noun.inside().name());
-                }
-                noun.drop(area);
-                area.removeItem(noun);
-            } else {
-                System.out.println("Now why would you do that?");
+            switch (noun.usage().stab()) {
+                case STABABBLE:
+                    System.out.println("You stabbed the " + noun.name());
+                    if (noun.inside() != null) {
+                        System.out.println("It dropped the " + noun.inside().name());
+                    }
+                    noun.drop(area);
+                    area.removeItem(noun);
+                    break;
+                default:
+                    System.out.println("Now why would you do that?");
+                    break;
             }
         } else {
             System.out.println("You need the " + new Sword().name() + " to stab the " + noun.name());

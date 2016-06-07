@@ -27,11 +27,9 @@ public class BirkenfeldsRoom extends Area {
             System.out.println("Hey, do your packets!!!");
             System.out.println("Sorry, can you get me Chemical A?");
             System.out.println("I'll open the Chemical Storage Room for you");
-        } else {
-            command.getVerb().run(command, context);
         }
 
-        command.getVerb().run(command, context);
+        super.interact(command, context);
     }
 
 }

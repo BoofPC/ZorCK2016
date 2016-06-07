@@ -14,9 +14,4 @@ public class Cracker extends Item {
             .description("It's a stale cracker.")
             .taste("It tastes slightly salty, with a hint of carpet.");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

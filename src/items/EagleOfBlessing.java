@@ -12,12 +12,13 @@ public class EagleOfBlessing extends Item {
     }
 
     @Override
-    public void interact(final Command command, final Context context) {
+    public boolean interact(final Command command, final Context context) {
         if (command.getVerb().getTitle().equals("take")) {
             System.out.println(
                     "Wow this is a rare case when a bird in a dungeon helps you just dont go a fowl");
             context.getPlayer().addHp(5);
+            return true;
         }
+        return false;
     }
-
 }

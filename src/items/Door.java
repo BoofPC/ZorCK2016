@@ -25,9 +25,4 @@ public class Door extends Item{
         this.key(key)
             .portal(portal);
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

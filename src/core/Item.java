@@ -299,7 +299,9 @@ public abstract class Item {
         }
     }
 
-    public abstract void interact(Command command, Context context);
+    public boolean interact(Command command, Context context) {
+        return false;
+    };
 
     public static final class Usage {
         private Visible visible = Visible.VISIBLE;

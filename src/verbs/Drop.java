@@ -15,13 +15,16 @@ public class Drop extends Verb {
 
         switch (command.getNounOrigin()) {
             case PLAYER:
-                if (noun.usage().take() == Item.TAKABLE) {
-                    player.removeItem(noun);
-                    player.getCurrentArea().item(noun);
-                    System.out.println("You dropped " + noun.name());
-                } else {
-                    System.out.println(
-                            "I'm sorry " + player.getName() + ", I can't allow you to do that");
+                switch (noun.usage().take()) {
+                    case TAKABLE:
+                        player.removeItem(noun);
+                        player.getCurrentArea().item(noun);
+                        System.out.println("You dropped " + noun.name());
+                        break;
+                    default:
+                        System.out.println(
+                                "I'm sorry " + player.getName() + ", I can't allow you to do that");
+                        break;
                 }
                 break;
             default:

@@ -11,11 +11,12 @@ public class DuckOfDoom extends Item {
     }
 
     @Override
-    public void interact(final Command command, final Context context) {
+    public boolean interact(final Command command, final Context context) {
         if (command.getVerb().getTitle().equals("take")) {
             System.out.println("You should know better than to pick up a duck in a dungeon!");
             context.getPlayer().addHp(-5);
+            return true;
         }
+        return false;
     }
-
 }

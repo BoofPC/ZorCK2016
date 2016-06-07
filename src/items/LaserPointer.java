@@ -9,9 +9,4 @@ public class LaserPointer extends Item {
         this.name("Laser Pointer")
             .synonym("laser", "pointer", "laserpionter");
     }
-
-    @Override
-    public void interact(final Command command, final Context context) {
-
-    }
 }

@@ -11,9 +11,4 @@ public class MrFusion extends Item {
             .description("This is one of the parts of the time machine!")
             .synonym("mr fusion", "mr. fusion");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }

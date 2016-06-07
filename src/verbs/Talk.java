@@ -18,7 +18,7 @@ public class Talk extends Verb {
         final Item noun = command.getNoun();
 
         if (noun != null) {
-            System.out.println("you have spoken to " + noun.name());
+            System.out.println(noun.name() + " isn't very talkative right now.");
         }
     }
 }

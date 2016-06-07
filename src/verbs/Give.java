@@ -23,7 +23,7 @@ public class Give extends Verb {
             case PLAYER:
                 Item receiver = null;
                 for (final Item item : player.getCurrentArea().items()) {
-                    if (item.usage().recieve() == Item.RECIEVE) {
+                    if (item.usage().recieve() == Item.Usage.Recieve.RECIEVE) {
                         receiver = item;
                         break;
                     }

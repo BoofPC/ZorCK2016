@@ -17,7 +17,7 @@ public class Toolbox extends Item {
     }
     
     @Override
-    public void interact(final Command command, final Context context) {
+    public boolean interact(final Command command, final Context context) {
         if (command.getVerb().getTitle().equals("open")) {
             if (this.usage().lock() == Usage.Lock.UNLOCKED) {
                 command.getVerb().run(command, context);
@@ -25,8 +25,9 @@ public class Toolbox extends Item {
                     + "screwdriver!");
                 context.getPlayer().getCurrentArea().item(new Screwdriver());
             }
+            return true;
         } else {
-            command.getVerb().run(command, context);
+            return false;
         }
         
     }

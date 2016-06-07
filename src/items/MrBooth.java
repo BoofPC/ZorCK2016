@@ -12,13 +12,8 @@ public class MrBooth extends Item{
     }
 
     @Override
-    public void interact(final Command command, final Context context) {
-
-        if (command.getVerb().getTitle().equals("smell")) {
-            this.smell();
-        }
-
-        else if(command.getVerb().getTitle().equals("talk")){
+    public boolean interact(final Command command, final Context context) {
+        if(command.getVerb().getTitle().equals("talk")){
             final Random rand = new Random();
             final int n = rand.nextInt(3);
             if(n==0){
@@ -30,6 +25,8 @@ public class MrBooth extends Item{
             else{
                 System.out.println("good morning");
             }
+            return true;
         }
+        return false;
     }
 }

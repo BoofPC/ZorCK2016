@@ -16,13 +16,12 @@ public class Break extends Verb {
 
         switch (usage.breakable()) {
             case BREAKABLE:
+                noun.usage().breakable(Item.BROKEN);
                 switch (nounOrigin) {
                     case AREA:
-                        noun.usage().breakable(Item.BROKEN);
                         System.out.println("You broke the " + noun.name());
                         break;
                     case PLAYER:
-                        noun.usage().breakable(Item.BROKEN);
                         System.out.println("You broke your " + noun.name());
                         break;
                 }

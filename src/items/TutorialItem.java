@@ -50,12 +50,6 @@ public class TutorialItem extends Item{
 
 
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
-
 }
 
         //usage is an array of ints which determines many

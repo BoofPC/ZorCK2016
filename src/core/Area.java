@@ -41,7 +41,7 @@ public abstract class Area {
     }
 
     public static void defaultInteract(final Command command, final Context context, final Item noun) {
-        if (command.getNoun() != null) {
+        if (command.isApplied()) {
             noun.interact(command, context);
         }
         if (!context.getSkipGeneral()) {

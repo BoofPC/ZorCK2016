@@ -11,9 +11,4 @@ public class BananaPeel extends Item{
                 + " machine!")
             .synonym("banana peel");
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
 }
