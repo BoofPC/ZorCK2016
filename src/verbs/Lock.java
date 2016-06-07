@@ -31,7 +31,7 @@ public class Lock extends Verb {
                     if (test) {
                         usage.lock(Item.LOCKED);
                         System.out.println("You locked the " + noun.name());
-                        final Portal portal = noun.getPortal();
+                        final Portal portal = noun.portal();
                         if (portal != null) {
                             portal.lock();
                         }

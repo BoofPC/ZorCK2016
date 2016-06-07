@@ -201,7 +201,7 @@ public abstract class Item {
         return this;
     }
 
-    public Portal getPortal() {
+    public Portal portal() {
         return this.portal;
     }
 
@@ -243,7 +243,7 @@ public abstract class Item {
 
     public void synchronizeDoor(final World world, final Area currentArea) {
         Portal portal;
-        portal = this.getPortal();
+        portal = this.portal();
         Area target;
         target = world.getArea(portal.getTarget());
         final Direction direction = currentArea.direction(portal);

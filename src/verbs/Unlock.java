@@ -31,7 +31,7 @@ public class Unlock extends Verb {
                     if (test) {
                         usage.lock(Item.UNLOCKED);
                         System.out.println("You unlocked the " + noun.name());
-                        final Portal portal = noun.getPortal();
+                        final Portal portal = noun.portal();
                         if (portal != null) {
                             portal.unlock();
                         }
