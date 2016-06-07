@@ -16,14 +16,14 @@ public class BirkenfeldsRoom extends Area {
                 .item(new Door(true, "Northern Door", null, this.portals().north()));
 
     }
-    
+
     @Override
     public void interact(final Command command, final Context context) {
         if (command.getVerb().getTitle().equals("talk")
-                && command.getNoun().name().equals("mr.birkenfeld") 
+                && command.getNoun().name().equals("mr.birkenfeld")
                 || command.getNoun().name().equals("birkenfeld")) {
             this.portals().north(new Portal(false, ChemicalStorageRoom.class));
-            item(new Door(false, "Northern Door", null, this.portals().north()));
+            this.item(new Door(false, "Northern Door", null, this.portals().north()));
             System.out.println("Hey, do your packets!!!");
             System.out.println("Sorry, can you get me Chemical A?");
             System.out.println("I'll open the Chemical Storage Room for you");
@@ -33,5 +33,5 @@ public class BirkenfeldsRoom extends Area {
 
         command.getVerb().run(command, context);
     }
-    
+
 }

@@ -13,16 +13,16 @@ import core.*;
  * @author Kevin White
  */
 public class Scissors extends Item{
-    
+
     public Scissors() {
         super();
         this.usage().take(Item.TAKABLE);
         this.name("Scissors").description("A pair of plastic scissors used to cut frail things")
                 .synonym("scissors", "scisors", "scissor")
                 .smell("plasticy");
-        
+
     }
-    
+
     @Override
     public void interact(final Command command, final Context context){
     /*        if(command.getVerb().getTitle().equals("run")
@@ -33,6 +33,6 @@ public class Scissors extends Item{
             else {
                 command.getVerb().run(command, context);
             }
-                 
+
    */ }
 }

@@ -322,7 +322,7 @@ public abstract class Item {
         private Puttable puttable = Puttable.PUTTABLE;
 
         public Usage() {}
-                
+
         public static enum Visible {
             VISIBLE, HIDDEN
         }
@@ -379,7 +379,7 @@ public abstract class Item {
         public Visible visible() {
             return this.visible;
         }
-        
+
         public static enum Puttable{
             PUTTABLE,UNPUTTABLE
         }
@@ -532,11 +532,11 @@ public abstract class Item {
             this.use = o;
             return this;
         }
-        
+
         public Puttable puttable(){
             return this.puttable;
         }
-        
+
         public Usage puttable(final Puttable o){
             this.puttable = o;
             return this;

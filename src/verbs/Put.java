@@ -12,7 +12,7 @@ public class Put extends Verb {
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
         final Player player = construct.getPlayer();
-        
+
         if(player.hasMatching(noun)){
             if(noun.usage().puttable() == Item.PUTTABLE){
                 player.removeItem(noun);

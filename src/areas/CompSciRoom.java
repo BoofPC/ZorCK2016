@@ -23,7 +23,9 @@ public class CompSciRoom extends Area{
             Item noun;
             noun = command.getNoun();
             //TODO: Make ending play when player has blackmail
-            if(context.getPlayer().hasMatching("BlackMail"));
+            if(context.getPlayer().hasMatching(new Blackmail())) {
+                ;
+            }
             //if you don't have any special interactions, just put this:
             if(command.getNoun() !=  null) {
                 noun.interact(command,context);

@@ -13,7 +13,7 @@ import core.*;
  * @author Kevin White
  */
 public class Grass extends Item{
-    
+
     public Grass() {
         super();
         this.usage().take(Item.TOO_HEAVY)
@@ -21,15 +21,14 @@ public class Grass extends Item{
         this.name("Grass").description("Some grass in a small planter..")
                 .synonym("gras", "grass").smell("MM.. smells great");
         this.key(new Scissors().name());
-        
-        
+
+
     }
-        
+
     @Override
     public void interact(final Command command, final Context context){
 
     }
-    
+
     }
-    
-    
+
