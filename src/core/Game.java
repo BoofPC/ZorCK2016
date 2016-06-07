@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import verbs.*;
 import areas.*;
-import core.Command.NounOrigin;
 import core.Verb.Usage;
 import core.World.Direction;
 import items.*;
@@ -204,9 +203,9 @@ public class Game {
                         Game.tryResolve(verbInput, matches);
                     }
                     if (matches.size() == 1) {
-                        final Pair<Pair<Item, NounOrigin>, String> result =
+                        final Pair<Pair<Item, Command.NounOrigin>, String> result =
                                 matches.entrySet().iterator().next().getValue();
-                        final Pair<Item, NounOrigin> noun_ = result.getKey();
+                        final Pair<Item, Command.NounOrigin> noun_ = result.getKey();
                         noun = noun_.getKey();
                         nounOrigin = noun_.getValue();
                         nounInput = result.getValue().trim();

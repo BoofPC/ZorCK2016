@@ -6,11 +6,11 @@ public final class Command {
 
     private final Verb verb;
     private final Item noun;
-    private final Command.NounOrigin nounOrigin;
+    private final NounOrigin nounOrigin;
     private final Direction direction;
     private final String leftovers;
 
-    private Command(final Verb verb, final Item noun, final Command.NounOrigin nounOrigin,
+    private Command(final Verb verb, final Item noun, final NounOrigin nounOrigin,
             final Direction direction, final String leftovers) {
         this.verb = verb;
         this.noun = noun;
@@ -25,7 +25,7 @@ public final class Command {
         return new Command(verb, null, null, null, leftovers);
     }
 
-    public static Command applied(final Verb verb, final Item noun, final Command.NounOrigin nounOrigin,
+    public static Command applied(final Verb verb, final Item noun, final NounOrigin nounOrigin,
             final String leftovers) {
         if (verb == null || noun == null)
             throw new NullPointerException();
@@ -39,8 +39,8 @@ public final class Command {
         return new Command(verb, null, null, direction, leftovers);
     }
 
-    public static Command directed(final Verb verb, final Item noun, final Command.NounOrigin nounOrigin, final Direction direction,
-            final String leftovers) {
+    public static Command directed(final Verb verb, final Item noun, final NounOrigin nounOrigin,
+            final Direction direction, final String leftovers) {
         if (verb == null || noun == null || direction == null)
             throw new NullPointerException();
         return new Command(verb, noun, nounOrigin, direction, leftovers);
@@ -96,7 +96,7 @@ public final class Command {
         return this.noun;
     }
 
-    public Command.NounOrigin getNounOrigin() {
+    public NounOrigin getNounOrigin() {
         return nounOrigin;
     }
 
