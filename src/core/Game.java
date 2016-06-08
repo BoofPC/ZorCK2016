@@ -133,16 +133,16 @@ public class Game {
             switch (death) {
                 case DIE:
                     System.out.println("You have died.");
-                    break;
+                    System.exit(0);
                 case SUICIDE:
                     System.out.println("You decided to end it all.");
-                    break;
+                    System.exit(0);
                 case SELF_QUIT:
                     System.out.println("See you again soon!");
-                    break;
+                    System.exit(0);
                 case WIN:
                     System.out.println("A winnner is you!");
-                    break;
+                    System.exit(0);
                 default:
             }
             player.getCurrentArea().interact(Command.bare(new Score(), "score", ""), construct);
