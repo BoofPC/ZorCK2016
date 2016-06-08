@@ -10,10 +10,10 @@ public class Test07 extends Area {
             .east(new Portal(false, Test08.class))
             .north(new Portal(false, Test04.class));
         this.title("Test Area 7")
-            .initialDescription("This is the seventh test area, there is a "
+            .description("This is the seventh test area, there is a "
                 + "path to the east and to the north. There is a Lantern "
                 + "on the ground")
-            .description("This is the seventh test area").item(new Lantern())
+            .shortDescription("This is the seventh test area").item(new Lantern())
             .state("First", true);
     }
 }

@@ -9,7 +9,8 @@ public class ArthursRoom extends Area {
         super(containingWorld);
 
         this.portals().west(new Portal(false, Hallway03.class));
-        this.title("Arthur's Room").initialDescription("----------").description("-----")
+        this.title("Arthur's Room").description("----------").shortDescription("-----")
                 .item(new Door(false, "Western Door", null, this.portals().west()));
     }
 }
+//

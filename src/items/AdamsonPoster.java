@@ -3,7 +3,8 @@ package items;
 import core.*;
 
 /**
- * This is an ASCII art poster of Adamson. To view the image, the player must read the poster.
+ * This is an ASCII art poster of Adamson. To view the image, the player must read the poster. (Or
+ * apprently they can examine it in the room it's in because reasons.)
  */
 public class AdamsonPoster extends Item {
 
@@ -11,11 +12,11 @@ public class AdamsonPoster extends Item {
         super();
         this.usage().take(Item.TAKABLE).read(Item.READABLE);
 
-        this.name("Adamson Poster")
-            .synonym("adamson poster", "poster", "flier", "picture")
-            .description("It is the most beautiful image you have ever laid your eyes upon.")
+        this.name("Adamson Poster").synonym("adamson poster", "poster", "flier", "picture")
+                .examine("It is the most beautiful image you have ever laid your eyes upon."
+                        + " You feel compelled to read it.")
         //@formatter:off
-            .text(
+            .read(
           ".............`````...----.........................\n"
         + ".............``.-:::::::::::--....................\n"
         + "..............-:::-------::/:::---................\n"
@@ -47,10 +48,4 @@ public class AdamsonPoster extends Item {
         + "......---sdhhdyoNMMMMN.`   /ddddhhddddddddddhhdddh");
         //@formatter:on
     }
-
-    @Override
-    public void interact(final Command command, final Context context) {
-
-    }
-
 }

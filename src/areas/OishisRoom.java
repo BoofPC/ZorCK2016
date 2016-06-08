@@ -9,7 +9,7 @@ public class OishisRoom extends Area {
         super(containingWorld);
 
         this.portals().south(new Portal(false, Hallway15.class));
-        this.title("Oishi's Room").initialDescription("----------").description("-----")
+        this.title("Oishi's Room").description("----------").shortDescription("-----")
                 .item(new Door(false, "Southern Door", null, this.portals().south()));
     }
 }

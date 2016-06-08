@@ -22,7 +22,7 @@ public class World {
         this.map.put(areaName, newArea);
         return this;
     }
-    
+
     public World addArea(final Class<? extends Area> areaName) {
         try {
             return this.addArea(areaName, areaName.getConstructor(World.class).newInstance(this));
@@ -32,7 +32,7 @@ public class World {
         }
         return null;
     }
-    
+
     public Area getArea(final Class<? extends Area> area) {
         return this.map.get(area);
     }

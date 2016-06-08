@@ -12,10 +12,10 @@ public class Test05 extends Area {
             .east(new Portal(false, Test06.class))
             .south(new Portal(false, Test08.class));
         this.title("Test Area 5")
-            .initialDescription("This is the fifth test area, there is path "
+            .description("This is the fifth test area, there is path "
                 + "leading east-west, a door to the north, and a path to " + "the south.")
-            .description("This is the fifth test area")
-            .item(new Door(false, "Northern Door", "Key", this.portals().north()))
+            .shortDescription("This is the fifth test area")
+            .item(new Door(false, "Northern Door", Key.class, this.portals().north()))
             .state("First", true);
     }
 }

@@ -2,11 +2,13 @@ package verbs;
 
 import core.*;
 import core.World.Direction;
+import items.Scissors;
 
 public class Move extends Verb {
 
     public Move() {
-        super("move", Verb.usage().direction(), "go", "travel", "walk");
+        super("move", Verb.usage().direction(), "go", "travel", "walk", "run", "sprint", "jog",
+                "hustle");
     }
 
     @Override
@@ -15,43 +17,16 @@ public class Move extends Verb {
         final Player player = construct.getPlayer();
         final Portal portal = player.getCurrentArea().portals().getPortal(direction);
 
+        if (player.hasItem(Scissors.class) && !command.getVerbStr().equals("walk")) {
+            player.setDeath(Game.Status.DIE);
+            System.out.println("Didn't your mother ever tell you not to run with scissors?");
+            return;
+        }
+
         if (portal.isLocked()) {
             System.out.println("You can't go that way!");
         } else if (!player.getSit()) {
             player.setCurrentArea(construct.getWorld().getArea(portal.getTarget()));
-            System.out.print(player.getName() + " moved ");
-            switch (direction) {
-                case NORTH:
-                    System.out.println("north");
-                    break;
-                case EAST:
-                    System.out.println("east");
-                    break;
-                case SOUTH:
-                    System.out.println("south");
-                    break;
-                case WEST:
-                    System.out.println("west");
-                    break;
-                case NORTHEAST:
-                    System.out.println("northeast");
-                    break;
-                case SOUTHEAST:
-                    System.out.println("southeast");
-                    break;
-                case SOUTHWEST:
-                    System.out.println("southwest");
-                    break;
-                case NORTHWEST:
-                    System.out.println("northwest");
-                    break;
-                case UP:
-                    System.out.println("up");
-                    break;
-                case DOWN:
-                    System.out.println("down");
-                    break;
-            }
             player.getCurrentArea().enter(player);
         } else if (player.getSit()) {
             System.out.println("Ya gotta stand up first, stupid");

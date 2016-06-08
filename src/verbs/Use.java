@@ -2,22 +2,27 @@ package verbs;
 
 import core.*;
 
-/**
- *
- * @author Samantha
- */
 public class Use extends Verb {
-    
+
     public Use() {
         super("use", Verb.usage().noun());
     }
-    
+
     @Override
-    public void run(Command command, Context construct) {
+    public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
         final Item.Usage usage = noun.usage();
-        
-        noun.interact(command, construct);
+
+        switch (usage.use()) {
+            case USABLE:
+                noun.interact(command, construct);
+                System.out.println("You used the " + noun.name());
+                break;
+            default:
+                System.out.println("I don't see how you expect to do that!");
+                break;
+        }
+
     }
-    
+
 }

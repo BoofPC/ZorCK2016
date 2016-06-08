@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import core.World.Direction;
-
+//
 public abstract class Item {
-    private String name;
-    private String description;
+    private String name = "Default item name";
+    private String examine;
+    private String look;
 
     private final Usage usage = new Usage();
     // TODO Update description
@@ -102,11 +103,11 @@ public abstract class Item {
     private String taste;
     private Item inside;
     // if item is read
-    private String text;
+    private String read;
     private String smell;
     private String sound;
     private final List<Item> received = new ArrayList<>();
-    private final List<String> keys = new ArrayList<>();
+    private final List<Class<? extends Item>> keys = new ArrayList<>();
     private Portal portal;
     private final List<String> synonyms = new ArrayList<>();
 
@@ -125,12 +126,21 @@ public abstract class Item {
         return this;
     }
 
-    public String description() {
-        return this.description;
+    public String examine() {
+        return this.examine;
     }
 
-    public Item description(final String description) {
-        this.description = description;
+    public Item examine(final String description) {
+        this.examine = description;
+        return this;
+    }
+
+    public String look() {
+        return this.look;
+    }
+
+    public Item look(final String look) {
+        this.look = look;
         return this;
     }
 
@@ -152,12 +162,12 @@ public abstract class Item {
         return this;
     }
 
-    public String text() {
-        return this.text;
+    public String read() {
+        return this.read;
     }
 
-    public Item text(final String text) {
-        this.text = text;
+    public Item read(final String read) {
+        this.read = read;
         return this;
     }
 
@@ -192,16 +202,16 @@ public abstract class Item {
         return this;
     }
 
-    public List<String> keys() {
+    public List<Class<? extends Item>> keys() {
         return this.keys;
     }
 
-    public Item key(final String key) {
+    public Item key(final Class<? extends Item> key) {
         this.keys.add(key);
         return this;
     }
 
-    public Portal getPortal() {
+    public Portal portal() {
         return this.portal;
     }
 
@@ -243,7 +253,7 @@ public abstract class Item {
 
     public void synchronizeDoor(final World world, final Area currentArea) {
         Portal portal;
-        portal = this.getPortal();
+        portal = this.portal();
         Area target;
         target = world.getArea(portal.getTarget());
         final Direction direction = currentArea.direction(portal);
@@ -299,7 +309,9 @@ public abstract class Item {
         }
     }
 
-    public abstract void interact(Command command, Context context);
+    public boolean interact(final Command command, final Context context) {
+        return false;
+    };
 
     public static final class Usage {
         private Visible visible = Visible.VISIBLE;
@@ -319,6 +331,7 @@ public abstract class Item {
         private Breakable breakable = Breakable.UNBREAKABLE;
         private Talk talk = Talk.NO_TALK;
         private Use use = Use.NO_USE;
+        private Puttable puttable = Puttable.PUTTABLE;
 
         public Usage() {}
 
@@ -365,18 +378,22 @@ public abstract class Item {
             NO_RECIEVE, RECIEVE
         }
         public static enum Breakable {
-            UNBREAKABLE, UNBROKEN, BROKEN
+            BREAKABLE, UNBREAKABLE, UNBROKEN, BROKEN
         }
         public static enum Talk {
             NO_TALK, TALK
         }
-        
+
         public static enum Use {
-            USABLE, NO_USE
+            NO_USE, USABLE
         }
 
         public Visible visible() {
             return this.visible;
+        }
+
+        public static enum Puttable{
+            PUTTABLE,UNPUTTABLE
         }
 
         public Usage visible(final Visible o) {
@@ -518,6 +535,24 @@ public abstract class Item {
             this.talk = o;
             return this;
         }
+
+        public Use use() {
+            return this.use;
+        }
+
+        public Usage use(final Use o) {
+            this.use = o;
+            return this;
+        }
+
+        public Puttable puttable(){
+            return this.puttable;
+        }
+
+        public Usage puttable(final Puttable o){
+            this.puttable = o;
+            return this;
+        }
     }
 
     // java: i cry everytim
@@ -558,6 +593,7 @@ public abstract class Item {
     public static final Usage.Climb CLIMABLE = Usage.Climb.CLIMABLE;
     public static final Usage.Recieve NO_RECIEVE = Usage.Recieve.NO_RECIEVE;
     public static final Usage.Recieve RECIEVE = Usage.Recieve.RECIEVE;
+    public static final Usage.Breakable BREAKABLE = Usage.Breakable.BREAKABLE;
     public static final Usage.Breakable UNBREAKABLE = Usage.Breakable.UNBREAKABLE;
     public static final Usage.Breakable UNBROKEN = Usage.Breakable.UNBROKEN;
     public static final Usage.Breakable BROKEN = Usage.Breakable.BROKEN;
@@ -565,4 +601,6 @@ public abstract class Item {
     public static final Usage.Talk TALK = Usage.Talk.TALK;
     public static final Usage.Use USABLE = Usage.Use.USABLE;
     public static final Usage.Use NO_USE = Usage.Use.NO_USE;
+    public static final Usage.Puttable PUTTABLE = Usage.Puttable.PUTTABLE;
+    public static final Usage.Puttable UNPUTTABLE = Usage.Puttable.UNPUTTABLE;
 }

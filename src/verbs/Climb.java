@@ -15,19 +15,27 @@ public class Climb extends Verb {
         final Area currentArea = player.getCurrentArea();
 
         if (command.isBare()) {
-            currentArea.interact(Command.directedBare(new Move(), Direction.UP, ""), construct);
+            currentArea.interact(Command.directedBare(new Move(), "climb", Direction.UP, "up", ""),
+                    construct);
         } else {
             final Item noun = command.getNoun();
             final Portal upPortal = currentArea.portals().up();
-            if (noun.usage().climb() == Item.CLIMABLE && upPortal != null) {
-                if (!upPortal.isLocked()) {
-                    construct.getPlayer().getCurrentArea().interact(
-                            Command.directedBare(new Climb(), Direction.UP, ""), construct);
-                } else {
-                    System.out.println("You can't climb that right now.");
-                }
-            } else {
-                System.out.println("You can't climb that!");
+            switch (noun.usage().climb()) {
+                case CLIMABLE:
+                    if (upPortal != null) {
+                        if (!upPortal.isLocked()) {
+                            construct.getPlayer().getCurrentArea().interact(Command.directedBare(
+                                    new Climb(), "climb", Direction.UP, "up", ""), construct);
+                        } else {
+                            System.out.println("You can't climb that right now.");
+                        }
+                    } else {
+                        System.out.println("You can't climb that!");
+                    }
+                    break;
+                default:
+                    System.out.println("You can't climb that!");
+                    break;
             }
         }
     }

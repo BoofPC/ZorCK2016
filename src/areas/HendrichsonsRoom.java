@@ -9,10 +9,10 @@ public class HendrichsonsRoom extends Area {
         super(containingWorld);
         this.portals()
             .west(new Portal(Portal.State.UNLOCKED, Hallway01.class));
-        this.initialDescription("You are in Hendrichson's room. It contains lab benches "
+        this.description("You are in Hendrichson's room. It contains lab benches "
                 + "with chemicals and physics projects. You see a balloon on the floor "
                 + "that looks as if it has been recently used.")
-            .description("You are in Hendrichson's room.")
+            .shortDescription("You are in Hendrichson's room.")
             .smell("It smells like sodium chloride.")
             .sound("You don't hear anything. It is eerie...")
             .item(new Door(false, "Western Door", null, this.portals().west()));
@@ -24,7 +24,7 @@ public class HendrichsonsRoom extends Area {
         final Item noun = command.getNoun();
         //This is unnecessary
         if (verb.getTitle().equals("look")) {
-            System.out.println(this.description());
+            System.out.println(this.shortDescription());
         } else {
             if (verb.getTitle().equals("take") && noun.equals("balloon")) {
                 System.out.println("The saliva from the previous user of the balloon "

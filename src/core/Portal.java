@@ -10,7 +10,7 @@ public class Portal {
     }
     private State locked;
     private final Class<? extends Area> target; //Should be the id of an area to go to
-
+//
     public Portal(final State locked, final Class<? extends Area> target){
         this.locked = locked;
         this.target = target;
@@ -37,7 +37,7 @@ public class Portal {
     }
 
     public Item getDoor(final Area currentArea){
-        return currentArea.items().stream().filter(i -> i.getPortal() == this).findAny()
+        return currentArea.items().stream().filter(i -> i.portal() == this).findAny()
                 .orElse(null);
     }
 }

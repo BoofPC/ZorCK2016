@@ -13,15 +13,10 @@ public class TimeMachine extends Item {
         //needs all three items.
         this.name("Time Machine")
             .synonym("time machine")
-            .description("This is a broken time machine. It"
+            .examine("This is a broken time machine. It"
                 + " needs a flux capaciator, Mr.Fusion, and"
                 + " a banana peel. It allows you to travel"
                 + " back in time!");
-        this.key(new MrFusion().name()).key(new BananaPeel().name()).key(new FluxCapacitor().name());
-    }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
+        this.key(MrFusion.class).key(BananaPeel.class).key(FluxCapacitor.class);
     }
 }

@@ -29,7 +29,7 @@ public class TutorialItem extends Item{
                              //chocolate," the game will output, "Did you mean
                              //the White Chocolate or the Dark Chocolate?"
 
-            .description("It looks crunchy and yellow")    //If you want to set
+            .examine("It looks crunchy and yellow")    //If you want to set
                             //a (visual) description, do so here
 
         //The synonyms list should include all possible things the user could
@@ -50,12 +50,6 @@ public class TutorialItem extends Item{
 
 
     }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
-    }
-
 }
 
         //usage is an array of ints which determines many
@@ -127,6 +121,9 @@ public class TutorialItem extends Item{
         //break (n = 15) -  0: unset (default, returns "cannot break")
         //                  1: cannot break item
         //                  2: breakable
+        //use (n = 16) -    0: unset (default, returns "has no use"
+        //                  1: item has no use
+        //                  2: item has a use
         //
         //
         //the first item, represented here as [duumy], refers to

@@ -17,7 +17,7 @@ public class Lock extends Verb {
 
         switch (usage.lock()) {
             case UNLOCKED:
-                final List<String> keys = noun.keys();
+                final List<Class<? extends Item>> keys = noun.keys();
 
                 if (keys != null) {
                     final Player player = construct.getPlayer();
@@ -31,7 +31,7 @@ public class Lock extends Verb {
                     if (test) {
                         usage.lock(Item.LOCKED);
                         System.out.println("You locked the " + noun.name());
-                        final Portal portal = noun.getPortal();
+                        final Portal portal = noun.portal();
                         if (portal != null) {
                             portal.lock();
                         }

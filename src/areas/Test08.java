@@ -13,10 +13,10 @@ public class Test08 extends Area {
             .north(new Portal(false, Test05.class))
             .south(new Portal(false, Test10.class));
         this.title("Test Area 8")
-            .initialDescription("This is the eighth test area, there is path "
+            .description("This is the eighth test area, there is path "
                 + "leading east-west and path leading north. There is a cave"
                 + " to the south. There is a magic orb on the ground")
-            .description("This is the eighth test area")
+            .shortDescription("This is the eighth test area")
             .state("First", true)
             .item(new MagicOrb());
     }
@@ -31,11 +31,9 @@ public class Test08 extends Area {
             player.getCurrentArea().removeItem(command.getNoun());
             System.out.println("The orb seeps into your skin");
             System.out.println("Your max HP just went up by 10!");
-        } else {
-            command.getVerb().run(command, context);
         }
 
-        command.getVerb().run(command, context);
+        super.interact(command, context);
     }
 
 }
