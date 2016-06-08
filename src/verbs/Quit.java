@@ -12,7 +12,7 @@ public class Quit extends Verb {
     public void run(final Command command, final Context context) {
         final Player player = context.getPlayer();
         System.out.println("Goodbye!");
-        player.setDeath(Game.Status.SELF_QUIT);
+        System.exit(0);
     }
 }
 //
