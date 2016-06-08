@@ -15,7 +15,7 @@ public class Toolbox extends Item {
             .examine("A small red toolbox");
         this.key(KeyToolbox.class);
     }
-    
+
     @Override
     public boolean interact(final Command command, final Context context) {
         if (command.getVerb().getTitle().equals("open")) {
@@ -26,10 +26,9 @@ public class Toolbox extends Item {
                 context.getPlayer().getCurrentArea().item(new Screwdriver());
             }
             return true;
-        } else {
+        } else
             return false;
-        }
-        
+
     }
-    
+
 }

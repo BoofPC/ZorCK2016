@@ -4,7 +4,7 @@ import core.*;
 import items.*;
 
 /**
- * This area contains toolbox. If you walk anywhere but west, you fall off of 
+ * This area contains toolbox. If you walk anywhere but west, you fall off of
  * the roof and die.
  */
 public class Roof extends Area {
@@ -21,7 +21,7 @@ public class Roof extends Area {
                 + "toolbox lies on the ground. To the south is the edge of "
                 + "the roof. To the west is a window leading to the Women's "
                 + "Restroom.")
-                
+
             .shortDescription("This is the roof.")
 
             .sound("You can hear the toolbox.")

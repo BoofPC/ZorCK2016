@@ -178,7 +178,7 @@ public abstract class Area {
         return this;
     }
 
-    public String lookItem(Item item) {
+    public String lookItem(final Item item) {
         return item.look();
     }
 }

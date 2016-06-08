@@ -136,10 +136,10 @@ public abstract class Item {
     }
 
     public String look() {
-        return look;
+        return this.look;
     }
 
-    public Item look(String look) {
+    public Item look(final String look) {
         this.look = look;
         return this;
     }
@@ -309,7 +309,7 @@ public abstract class Item {
         }
     }
 
-    public boolean interact(Command command, Context context) {
+    public boolean interact(final Command command, final Context context) {
         return false;
     };
 

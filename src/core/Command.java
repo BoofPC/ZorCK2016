@@ -116,7 +116,7 @@ public final class Command {
     }
 
     public NounOrigin getNounOrigin() {
-        return nounOrigin;
+        return this.nounOrigin;
     }
 
     public Direction getDirection() {

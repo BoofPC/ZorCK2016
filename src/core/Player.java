@@ -36,8 +36,9 @@ public class Player {
         final List<Item> items = currentArea.items();
         for (final Item item : items) {
             final String look = currentArea.lookItem(item);
-            if (look == null)
+            if (look == null) {
                 continue;
+            }
             desc.append(' ');
             desc.append(look);
         }
@@ -68,8 +69,9 @@ public class Player {
         final List<Item> items = currentArea.items();
         for (final Item item : items) {
             final String look = currentArea.lookItem(item);
-            if (look == null)
+            if (look == null) {
                 continue;
+            }
             desc.append(' ');
             desc.append(look);
         }

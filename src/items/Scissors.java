@@ -6,7 +6,7 @@ public class Scissors extends Item {
 
     public Scissors() {
         super();
-        this.usage().take(TAKABLE).read(READABLE);
+        this.usage().take(Item.TAKABLE).read(Item.READABLE);
         this.name("The Scissors")
                 .examine(
                         "A pair of extraordinarily sharp scissors. Just looking at them sends a chill down your spine.")

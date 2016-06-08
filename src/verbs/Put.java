@@ -11,7 +11,7 @@ public class Put extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
-        final Command.NounOrigin nounOrigin = command.getNounOrigin(); 
+        final Command.NounOrigin nounOrigin = command.getNounOrigin();
         final Player player = construct.getPlayer();
 
         switch (nounOrigin) {

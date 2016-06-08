@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -177,7 +178,7 @@ public class Game {
                 if (matches.isEmpty()) {
                     break verb;
                 } else if (matches.size() > 1) {
-                    Game.tryResolve(input, matches);
+                    Game.disambiguate(input, matches);
                 }
                 if (matches.size() == 1) {
                     final Pair<Verb, Pair<String, String>> result =
@@ -187,7 +188,9 @@ public class Game {
                     verbStr = verbStrs.getKey();
                     verbInput = verbStrs.getValue().trim();
                 } else {
-                    Game.ambiguous(matches.entrySet().stream().map(Entry::getKey).iterator());
+                    Game.ambiguous(matches.entrySet().stream()
+                            .map(e -> new Pair<>(e.getValue().getKey(), e.getKey())).iterator(),
+                            Verb::getTitle);
                     break verb;
                 }
             }
@@ -218,7 +221,7 @@ public class Game {
                         // System.out.println("No noun matches " + verbInput);
                         break noun;
                     } else if (matches.size() > 1) {
-                        Game.tryResolve(verbInput, matches);
+                        Game.disambiguate(verbInput, matches);
                     }
                     if (matches.size() == 1) {
                         final Pair<Pair<Item, Command.NounOrigin>, Pair<String, String>> result =
@@ -230,7 +233,9 @@ public class Game {
                         nounStr = nounStrs.getKey();
                         nounInput = nounStrs.getValue().trim();
                     } else {
-                        Game.ambiguous(matches.entrySet().stream().map(Entry::getKey).iterator());
+                        Game.ambiguous(matches.entrySet().stream()
+                                .map(e -> new Pair<>(e.getValue().getKey().getKey(), e.getKey()))
+                                .iterator(), Item::name);
                         break noun;
                     }
                 }
@@ -271,7 +276,7 @@ public class Game {
         return Command.badParse(input);
     }
 
-    public static <T> void tryResolve(final String input, final Map<String, T> matches) {
+    public static <T> void disambiguate(final String input, final Map<String, T> matches) {
         final Set<Entry<String, T>> matchSet = matches.entrySet();
         matchSet.stream().filter(e -> e.getKey().equals(input)).findFirst()
                 .ifPresent(e -> matchSet.retainAll(Arrays.asList(e)));
@@ -283,7 +288,10 @@ public class Game {
             final String str) {
         if (input.startsWith(str)) {
             final String leftovers = input.substring(str.length());
-            if (leftovers.isEmpty() || Game.endOfMatch.reset(leftovers).find())
+            final boolean verb = focus instanceof Verb;
+            final Verb.Usage vUse = verb ? ((Verb) focus).getUsage() : null;
+            if ((leftovers.isEmpty() && (verb ? vUse.isBare() : true))
+                    || (Game.endOfMatch.reset(leftovers).find() && (verb ? !vUse.isBare() : true)))
                 // System.out.println("Match: " + str + "; leftovers: " + leftovers);
                 return new Pair<>(focus, new Pair<>(str, leftovers));
         }
@@ -299,16 +307,20 @@ public class Game {
         }
     }
 
-    public static void ambiguous(final Iterator<String> iterator) {
+    public static <T> void ambiguous(final Iterator<Pair<T, String>> iterator,
+            final Function<T, String> normalName) {
         System.out.print("Do you mean ");
         boolean hasNext = true;
         while (hasNext) {
-            final String str = iterator.next();
+            final Pair<T, String> strs = iterator.next();
             hasNext = iterator.hasNext();
             if (!hasNext) {
                 System.out.print("or ");
             }
-            System.out.print(str);
+            System.out.print(normalName.apply(strs.getKey()));
+            System.out.print(" (");
+            System.out.print(strs.getValue());
+            System.out.print(')');
             if (hasNext) {
                 System.out.print(", ");
             } else {
