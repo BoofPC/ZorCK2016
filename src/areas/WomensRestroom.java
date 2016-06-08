@@ -33,8 +33,8 @@ public class WomensRestroom extends Area {
 
     @Override
     public void interact(final Command command, final Context context) {
-        final String verb = command.getVerb().getTitle();
-        final String noun = command.getNoun().name();
+        final Verb verb = command.getVerb();
+        final Item noun = command.getNoun();
 
         //read the poster, in case the player looks at it instead
         if (verb.equals("examine") && noun.equals("Adamson Poster")) {

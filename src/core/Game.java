@@ -1,7 +1,6 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import verbs.*;
 import areas.*;
@@ -17,9 +16,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Game {
     public static enum Status {
@@ -35,16 +37,17 @@ public class Game {
 
         // Register all verbs
         game.addVerb(new Break()).addVerb(new Choose()).addVerb(new Climb()).addVerb(new Close())
-                .addVerb(new Credits()).addVerb(new Curse()).addVerb(new Diagnostic())
-                .addVerb(new Drink()).addVerb(new Drop()).addVerb(new Eat()).addVerb(new Examine())
-                .addVerb(new Give()).addVerb(new Hello()).addVerb(new Hit())
-                .addVerb(new Inventory()).addVerb(new Light()).addVerb(new Listen())
-                .addVerb(new Lock()).addVerb(new Look()).addVerb(new Make()).addVerb(new Move())
-                .addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray()).addVerb(new Put())
-                .addVerb(new Quit()).addVerb(new Read()).addVerb(new Score()).addVerb(new Shout())
-                .addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab()).addVerb(new Stand())
-                .addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk()).addVerb(new Taste())
-                .addVerb(new TurnOff()).addVerb(new TurnOn()).addVerb(new Unlock());
+                .addVerb(new Credits()).addVerb(new Curse()).addVerb(new Debug())
+                .addVerb(new Diagnostic()).addVerb(new Drink()).addVerb(new Drop())
+                .addVerb(new Eat()).addVerb(new Examine()).addVerb(new Give()).addVerb(new Hello())
+                .addVerb(new Hit()).addVerb(new Inventory()).addVerb(new Light())
+                .addVerb(new Listen()).addVerb(new Lock()).addVerb(new Look()).addVerb(new Make())
+                .addVerb(new Move()).addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray())
+                .addVerb(new Put()).addVerb(new Quit()).addVerb(new Read()).addVerb(new Score())
+                .addVerb(new Shout()).addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab())
+                .addVerb(new Stand()).addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk())
+                .addVerb(new Taste()).addVerb(new TurnOff()).addVerb(new TurnOn())
+                .addVerb(new Unlock());
 
         //Add all Areas to the new world
         /*
@@ -68,8 +71,9 @@ public class Game {
         world.addArea(AdamsonsRoom.class).addArea(ArthursRoom.class).addArea(BirkenfeldsRoom.class)
                 .addArea(BoothsRoom.class).addArea(BroadcastingRoom.class)
                 .addArea(ChemicalStorageRoom.class).addArea(CompSciRoom.class)
-                .addArea(ConferenceRoom01.class).addArea(ConferenceRoom02.class)
-                .addArea(DuanesRoom.class).addArea(FishersRoom.class).addArea(GharstsRoom.class)
+                .addArea(ConcreteGround.class).addArea(ConferenceRoom01.class)
+                .addArea(ConferenceRoom02.class).addArea(DuanesRoom.class)
+                .addArea(FishersRoom.class).addArea(GharstsRoom.class)
                 .addArea(HendrichsonsRoom.class).addArea(ISSRoom.class).addArea(JorstadsRoom.class)
                 .addArea(KUGRRoom.class).addArea(KasslersRoom.class).addArea(Library.class)
                 .addArea(MensRestroom.class).addArea(OishisRoom.class).addArea(RomarosRoom.class)
@@ -112,7 +116,6 @@ public class Game {
 
                 System.out.print("> ");
                 final String input = reader.nextLine();
-                System.out.println("");
 
                 Command command = Game.parse(input, construct, game.verbList);
                 if (command.isBadParse()) {
@@ -155,9 +158,9 @@ public class Game {
     public static Command parse(final String inputRaw, final Context construct,
             final List<Verb> verbList) {
         final String input = inputRaw.trim().toLowerCase();
-        for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
+        for (final Entry<String, Direction> entry : Game.dirShorthand.entrySet()) {
             final Pair<Direction, Pair<String, String>> match =
-                    Game.getMatch(input, entry.getValue(), entry.getKey());
+                    Game.getMatch(input, entry.getValue(), entry.getKey(), null);
             if (match != null) {
                 final Pair<String, String> matchStrs = match.getValue();
                 return Command.direction(match.getKey(), matchStrs.getKey(), matchStrs.getKey());
@@ -170,9 +173,11 @@ public class Game {
             {
                 final Map<String, Pair<Verb, Pair<String, String>>> matches = new HashMap<>();
                 for (final Verb focus : verbList) {
-                    Game.tryMatch(input, matches, focus, focus.getTitle());
+                    if (focus.getUsage().isArbitrary() && inputRaw.startsWith(focus.getTitle()))
+                        return Command.bare(focus, focus.getTitle(), inputRaw);
+                    Game.tryMatch(matches, input, focus, focus.getTitle(), focus.getUsage());
                     for (final String syn : focus.getSynonyms()) {
-                        Game.tryMatch(input, matches, focus, syn);
+                        Game.tryMatch(matches, input, focus, syn, focus.getUsage());
                     }
                 }
                 if (matches.isEmpty()) {
@@ -206,14 +211,14 @@ public class Game {
                             new HashMap<>();
                     for (final Item focus : player.getInventory()) {
                         for (final String syn : focus.synonyms()) {
-                            Game.tryMatch(verbInput, matches,
-                                    new Pair<>(focus, Command.NounOrigin.PLAYER), syn);
+                            Game.tryMatch(matches, verbInput,
+                                    new Pair<>(focus, Command.NounOrigin.PLAYER), syn, null);
                         }
                     }
                     for (final Item focus : player.getCurrentArea().items()) {
                         for (final String syn : focus.synonyms()) {
-                            Game.tryMatch(verbInput, matches,
-                                    new Pair<>(focus, Command.NounOrigin.PLAYER), syn);
+                            Game.tryMatch(matches, verbInput,
+                                    new Pair<>(focus, Command.NounOrigin.AREA), syn, null);
                         }
                     }
 
@@ -241,10 +246,9 @@ public class Game {
                 }
 
                 if (usage.isDirection()) {
-                    for (final Entry<String, Direction> entry : Game.directionShorthand
-                            .entrySet()) {
+                    for (final Entry<String, Direction> entry : Game.dirShorthand.entrySet()) {
                         final Pair<Direction, Pair<String, String>> match =
-                                Game.getMatch(nounInput, entry.getValue(), entry.getKey());
+                                Game.getMatch(nounInput, entry.getValue(), entry.getKey(), null);
                         if (match != null) {
                             final Pair<String, String> directionStrs = match.getValue();
                             return Command.directed(verb, verbStr, noun, nounStr, nounOrigin,
@@ -257,9 +261,9 @@ public class Game {
                 return Command.applied(verb, verbStr, noun, nounStr, nounOrigin, nounInput);
             }
             if (usage.isDirection()) {
-                for (final Entry<String, Direction> entry : Game.directionShorthand.entrySet()) {
+                for (final Entry<String, Direction> entry : Game.dirShorthand.entrySet()) {
                     final Pair<Direction, Pair<String, String>> match =
-                            Game.getMatch(verbInput, entry.getValue(), entry.getKey());
+                            Game.getMatch(verbInput, entry.getValue(), entry.getKey(), null);
                     if (match != null) {
                         final Pair<String, String> directionStrs = match.getValue();
                         return Command.directedBare(verb, verbStr, match.getKey(),
@@ -276,32 +280,35 @@ public class Game {
         return Command.badParse(input);
     }
 
-    public static <T> void disambiguate(final String input, final Map<String, T> matches) {
-        final Set<Entry<String, T>> matchSet = matches.entrySet();
-        matchSet.stream().filter(e -> e.getKey().equals(input)).findFirst()
-                .ifPresent(e -> matchSet.retainAll(Arrays.asList(e)));
+    public static <A, B> void disambiguate(final String input,
+            final Map<String, Pair<A, B>> matches) {
+        final Set<Entry<String, Pair<A, B>>> matchSet = matches.entrySet();
+        matchSet.retainAll(matchSet.stream()
+                .sorted((a, b) -> b.getKey().length() - a.getKey().length())
+                .filter(Game.distinctByKey(e -> e.getValue().getKey())).collect(Collectors.toList()));
     }
 
     private final static Matcher endOfMatch = Pattern.compile("^\\s").matcher("");
 
     public static <T> Pair<T, Pair<String, String>> getMatch(final String input, final T focus,
-            final String str) {
+            final String str, final Verb.Usage vUsage) {
         if (input.startsWith(str)) {
             final String leftovers = input.substring(str.length());
-            final boolean verb = focus instanceof Verb;
-            final Verb.Usage vUse = verb ? ((Verb) focus).getUsage() : null;
-            if ((leftovers.isEmpty() && (verb ? vUse.isBare() : true))
-                    || (Game.endOfMatch.reset(leftovers).find() && (verb ? !vUse.isBare() : true)))
+            final boolean verb = vUsage != null; //focus instanceof Verb;
+            //final Verb.Usage vUse = verb ? ((Verb) focus).getUsage() : null;
+            final boolean vBare = verb ? vUsage.isBare() : true;
+            final boolean vApplied = verb ? !vUsage.isBare() : true;
+            if ((leftovers.isEmpty() && vBare)
+                    || (Game.endOfMatch.reset(leftovers).find() && vApplied))
                 // System.out.println("Match: " + str + "; leftovers: " + leftovers);
                 return new Pair<>(focus, new Pair<>(str, leftovers));
         }
         return null;
     }
 
-    public static <T> void tryMatch(final String input,
-            final Map<String, Pair<T, Pair<String, String>>> matches, final T focus,
-            final String str) {
-        final Pair<T, Pair<String, String>> result = Game.getMatch(input, focus, str);
+    public static <T> void tryMatch(final Map<String, Pair<T, Pair<String, String>>> matches,
+            final String input, final T focus, final String str, final Verb.Usage vUsage) {
+        final Pair<T, Pair<String, String>> result = Game.getMatch(input, focus, str, vUsage);
         if (result != null) {
             matches.put(str, result);
         }
@@ -329,9 +336,9 @@ public class Game {
         }
     }
 
-    public static final Map<String, Direction> directionShorthand = Game.directionShorthand();
+    public static final Map<String, Direction> dirShorthand = Game.dirShorthand();
 
-    private static Map<String, Direction> directionShorthand() {
+    private static Map<String, Direction> dirShorthand() {
         final Map<String, Direction> map = new HashMap<>();
         map.put("north", Direction.NORTH);
         map.put("n", Direction.NORTH);
@@ -354,5 +361,13 @@ public class Game {
         map.put("down", Direction.DOWN);
         map.put("d", Direction.DOWN);
         return map;
+    }
+
+    public static <T> Predicate<T> distinctByKey(final Function<? super T, Object> keyExtractor) {
+        final Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return t -> {
+            System.out.println("Testing " + t.toString());
+            return seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+        };
     }
 }

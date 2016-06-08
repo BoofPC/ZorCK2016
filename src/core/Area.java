@@ -38,6 +38,9 @@ public abstract class Area {
     public void interact(final Command command, final Context context) {
         final Item noun = command.getNoun();
         Area.defaultInteract(command, context, noun);
+        if (this.firstVisit) {
+            this.firstVisit = false;
+        }
     }
 
     public static void defaultInteract(final Command command, final Context context, final Item noun) {
