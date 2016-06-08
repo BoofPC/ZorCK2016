@@ -106,7 +106,7 @@ public abstract class Item {
     private String smell;
     private String sound;
     private final List<Item> received = new ArrayList<>();
-    private final List<String> keys = new ArrayList<>();
+    private final List<Class<? extends Item>> keys = new ArrayList<>();
     private Portal portal;
     private final List<String> synonyms = new ArrayList<>();
 
@@ -192,11 +192,11 @@ public abstract class Item {
         return this;
     }
 
-    public List<String> keys() {
+    public List<Class<? extends Item>> keys() {
         return this.keys;
     }
 
-    public Item key(final String key) {
+    public Item key(final Class<? extends Item> key) {
         this.keys.add(key);
         return this;
     }

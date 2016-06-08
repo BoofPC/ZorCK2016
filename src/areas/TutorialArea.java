@@ -22,10 +22,10 @@ public class TutorialArea extends Area {
                 + "and white chocolate on the ground")
         // This is the description of the area which appears when the player inputs LOOK
             .description("This is the first test area")
-        // The way to the south is blocked by a door, named "Southern Door", which uses the Key() item
-        // named "Key" as a key and is connected to the southern portal. Set "Key" to the name of the
+        // The way to the south is blocked by a door, named "Southern Door", which uses the Key item
+        // as a key and is connected to the southern portal. Set Key to the class of the
         // corresponding key, or to null
-            .item(new Door(true, "Southern Door", "Key", this.portals().south()))
+            .item(new Door(true, "Southern Door", Key.class, this.portals().south()))
         // This room contains both dark and white chocolate
             .item(new DarkChocolate())
             .item(new WhiteChocolate());

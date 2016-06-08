@@ -13,7 +13,7 @@ public class BroadcastingRoom extends Area {
                 .east(new Portal(true, AdamsonsRoom.class));
         this.title("Broadcasting Room").initialDescription("----------").description("-----").articleThe(true)
                 .item(new Door(false, "Northern Door", null, this.portals().north()))
-                .item(new Door(true, "Eastern Door", "Adamson's Key", this.portals().east()));
+                .item(new Door(true, "Eastern Door", KeyAdamsons.class, this.portals().east()));
 
         this.initialDescription("You eneter a room of depressed possiblitities. "
                 + "Great things once happened here, "

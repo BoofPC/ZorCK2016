@@ -17,7 +17,7 @@ public class Lock extends Verb {
 
         switch (usage.lock()) {
             case UNLOCKED:
-                final List<String> keys = noun.keys();
+                final List<Class<? extends Item>> keys = noun.keys();
 
                 if (keys != null) {
                     final Player player = construct.getPlayer();

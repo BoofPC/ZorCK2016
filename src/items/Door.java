@@ -4,7 +4,7 @@ import core.*;
 
 public class Door extends Item{
 
-    public Door(final boolean locked,final String name,final String key,final Portal portal){
+    public Door(final boolean locked,final String name,final Class<? extends Item> key,final Portal portal){
         super();
         this.usage().take(Item.BOLTED_DOWN).open(Item.CLOSED);
         if(locked){

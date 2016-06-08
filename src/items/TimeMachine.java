@@ -17,6 +17,6 @@ public class TimeMachine extends Item {
                 + " needs a flux capaciator, Mr.Fusion, and"
                 + " a banana peel. It allows you to travel"
                 + " back in time!");
-        this.key(new MrFusion().name()).key(new BananaPeel().name()).key(new FluxCapacitor().name());
+        this.key(MrFusion.class).key(BananaPeel.class).key(FluxCapacitor.class);
     }
 }

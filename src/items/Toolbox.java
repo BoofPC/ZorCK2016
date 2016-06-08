@@ -13,7 +13,7 @@ public class Toolbox extends Item {
         this.name("Toolbox")
             .synonym("toolbox")
             .description("A small red toolbox");
-        this.key("Toolbox Key");
+        this.key(KeyToolbox.class);
     }
     
     @Override

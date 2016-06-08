@@ -14,7 +14,7 @@ public class Test01 extends Area {
                 + "the east and a locked door to the south. There is dark "
                 + "and white chocolate on the ground")
             .description("This is the first test area")
-            .item(new Door(true, "Southern Door", "Key", this.portals().south()))
+            .item(new Door(true, "Southern Door", Key.class, this.portals().south()))
             .item(new DarkChocolate())
             .item(new WhiteChocolate())
             .state("First", true);

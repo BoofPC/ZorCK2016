@@ -14,7 +14,7 @@ public class Test04 extends Area {
             .initialDescription("This is the fourth test area, there are paths"
                 + " to the east and south and a locked door to the north.")
             .description("This is the fourth test area")
-            .item(new Door(true, "Northern Door", "Key", this.portals().north()))
+            .item(new Door(true, "Northern Door", Key.class, this.portals().north()))
             .state("First", true);
     }
 }
