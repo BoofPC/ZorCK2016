@@ -4,11 +4,11 @@ import core.*;
 import items.*;
 
 public class CompSciRoom extends Area{
-
+    
     public CompSciRoom(final World containingWorld) {
         super(containingWorld);
         this.portals().east(new Portal(false, Hallway05.class))
-            .south(new Portal(false, WatchmansRoom.class));
+            .south(new Portal(true, WatchmansRoom.class));
         this.title("CompSci Room")
                  //This is not a logical sentence structure
                 .description("This is the CompSci room, Room 317."
@@ -20,11 +20,15 @@ public class CompSciRoom extends Area{
 
         @Override
         public void interact(final Command command, final Context context){
-            //TODO: Make ending play when player has blackmail
-            /*if(context.getPlayer().hasMatching(new Blackmail())) {
-                ;
-            }*/
-            //TODO: have a function to lure boof out
+            final Player player = context.getPlayer();
+            if(context.getPlayer().hasMatching(new Blackmail())) {
+                System.out.println("You blackmail Booth into grading an assinment worth 100000000 points");
+                player.setDeath(Game.Status.WIN);
+            }
+            if(context.getPlayer().hasMatching(new Screwdriver())) {
+                System.out.println("you tamper with booth's chair. He falls and leaves to get a new chair.");
+                this.removeItem(new MrBooth());
+            }
             super.interact(command, context);
         }
 }

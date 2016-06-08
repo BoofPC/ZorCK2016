@@ -33,7 +33,7 @@ public class Key extends Item {
 
     public static class SecretPassage extends Key {
         public SecretPassage() {
-            super("Secret Passage Key", "A dank key to the secret passage");
+            super("Secret Key", "A small, yellow key to the secret passage");
         }
     }
 
