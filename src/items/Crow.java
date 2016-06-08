@@ -13,7 +13,7 @@ public class Crow extends Item {
 
         this.name("Crow")
             .synonym("crow", "bird")
-            .description("It's a crow with a key tied to it's leg. It turns "
+            .examine("It's a crow with a key tied to it's leg. It turns "
                 + "aggressive when you try to take it.");
     }
 }

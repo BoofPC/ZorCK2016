@@ -9,7 +9,7 @@ public class KUGRRoom extends Area {
         super(containingWorld);
 
         this.portals().south(new Portal(false, Hallway10.class));
-        this.title("KUGR Room").initialDescription("----------").description("-----").articleThe(true)
+        this.title("KUGR Room").description("----------").shortDescription("-----").articleThe(true)
                 .item(new Door(false, "Southern Door", null, this.portals().south()));
     }
 }

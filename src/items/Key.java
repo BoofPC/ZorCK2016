@@ -12,7 +12,7 @@ public class Key extends Item{
             this.synonym(name.toLowerCase());
         }
         this.synonym("key")
-            .description(description);
+            .examine(description);
     }
 
     public Key(){
@@ -20,6 +20,6 @@ public class Key extends Item{
         this.usage().lock(Item.LOCKED);
         this.name("Key")
             .synonym("key")
-            .description("A small, yellow key");
+            .examine("A small, yellow key");
     }
 }

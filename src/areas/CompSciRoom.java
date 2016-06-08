@@ -11,10 +11,10 @@ public class CompSciRoom extends Area{
             .south(new Portal(false, WatchmansRoom.class));
         this.title("CompSci Room")
                  //This is not a logical sentence structure
-                .initialDescription("This is the CompSci room, Room 317. Mr Booth is here in his chair,"
-                    +" in front of his computer. Powerschool is open on his computer. You see your grade is an F."
+                .description("This is the CompSci room, Room 317."
+                    +" Powerschool is open on Booth's computer. You see your grade is an F."
                     +" There is a door to the east that leads to Hallway05 and a locked door to the north that leads to Mrs.Wachtman's room ")
-                .description("This is the CompSci Room, room 317.").articleThe(true)
+                .shortDescription("This is the CompSci Room, Room 317.").articleThe(true)
                 .item(new MrBooth());
     }
 

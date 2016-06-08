@@ -10,10 +10,10 @@ public class Test01 extends Area {
             .east(new Portal(false, Test02.class))
             .south(new Portal(true, Test04.class));
         this.title("Test Area 1")
-            .initialDescription("This is the first test area, there is path to "
+            .description("This is the first test area, there is path to "
                 + "the east and a locked door to the south. There is dark "
                 + "and white chocolate on the ground")
-            .description("This is the first test area")
+            .shortDescription("This is the first test area")
             .item(new Door(true, "Southern Door", Key.class, this.portals().south()))
             .item(new DarkChocolate())
             .item(new WhiteChocolate())

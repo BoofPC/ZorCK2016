@@ -11,6 +11,6 @@ public class BoothBust extends Item {
 
         this.name("Booth Bust")
             .synonym("booth bust", "bust", "statue", "bust of booth")
-            .description("It's a well-made bronze likeness of Mr. Booth.");
+            .examine("It's a well-made bronze likeness of Mr. Booth.");
     }
 }

@@ -12,9 +12,9 @@ public class Examine extends Verb {
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
 
-        final String description = noun.description();
-        if (description != null) {
-            System.out.println(description);
+        final String examine = noun.examine();
+        if (examine != null) {
+            System.out.println(examine);
         } else {
             System.out.println("It looks like every other " + noun.name() + " you've ever seen");
         }

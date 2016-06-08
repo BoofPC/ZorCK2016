@@ -14,7 +14,7 @@ public class Calculator extends Item {
         //oh wait... not in the game anymore
         this.name("Calculator")
             .synonym("calculator", "graphing calculator")
-            .description("It's a TI-84 Plus Supreme Deluxe Color Limited Edition "
+            .examine("It's a TI-84 Plus Supreme Deluxe Color Limited Edition "
                 + "Graphing Calculator with a 4K touchscreen!");
     }
 }

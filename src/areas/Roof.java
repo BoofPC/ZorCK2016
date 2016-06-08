@@ -17,12 +17,12 @@ public class Roof extends Area {
                 .west(new Portal(Portal.State.UNLOCKED, WomensRestroom.class));
 
         this.title("Roof").articleThe(true)
-            .initialDescription("The roof is largely empty. Only a small red "
+            .description("The roof is largely empty. Only a small red "
                 + "toolbox lies on the ground. To the south is the edge of "
                 + "the roof. To the west is a window leading to the Women's "
                 + "Restroom.")
                 
-            .description("This is the roof.")
+            .shortDescription("This is the roof.")
 
             .sound("You can hear the toolbox.")
             .smell("It smells like a red toolbox.")

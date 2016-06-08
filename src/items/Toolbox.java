@@ -12,7 +12,7 @@ public class Toolbox extends Item {
             .lock(Item.LOCKED);
         this.name("Toolbox")
             .synonym("toolbox")
-            .description("A small red toolbox");
+            .examine("A small red toolbox");
         this.key(KeyToolbox.class);
     }
     

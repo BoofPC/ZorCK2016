@@ -9,7 +9,7 @@ public class ConferenceRoom01 extends Area {
         super(containingWorld);
 
         this.portals().north(new Portal(false, Library.class));
-        this.title("Conference Room 1").initialDescription("----------").description("-----")
+        this.title("Conference Room 1").description("----------").shortDescription("-----")
                 .item(new Door(false, "Northern Door", null, this.portals().north()));
     }
 }

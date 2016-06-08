@@ -9,7 +9,7 @@ public class SchuchartsRoom extends Area {
         super(containingWorld);
 
         this.portals().south(new Portal(false, Hallway16.class));
-        this.title("Schuchart's Room").initialDescription("----------").description("-----")
+        this.title("Schuchart's Room").description("----------").shortDescription("-----")
                 .item(new Door(false, "Southern Door", null, this.portals().south()));
     }
 }

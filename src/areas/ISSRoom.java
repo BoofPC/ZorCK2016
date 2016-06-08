@@ -9,7 +9,7 @@ public class ISSRoom extends Area {
         super(containingWorld);
 
         this.portals().north(new Portal(false, Hallway09.class));
-        this.title("ISS Room").initialDescription("----------").description("-----").articleThe(true)
+        this.title("ISS Room").description("----------").shortDescription("-----").articleThe(true)
                 .item(new Door(false, "Northern Door", null, this.portals().north()));
     }
 }

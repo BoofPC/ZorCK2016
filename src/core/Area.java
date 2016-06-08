@@ -12,9 +12,9 @@ public abstract class Area {
      */
     private final Portals portals = new Portals();
     private final World world;
-    private String title;
-    private String initialDescription;
-    private String description;
+    private String title = "Default area title";
+    private String description = "Default description.";
+    private String shortDescription = "Default short description.";
     private String taste;
     private String smell;
     private String sound;
@@ -50,21 +50,7 @@ public abstract class Area {
     }
 
     public void enter(final Player player) {
-        if (this.firstVisit && !this.dark) {
-            System.out.println(this.initialDescription);
-            this.firstVisit = false;
-        } else if (this.firstVisit && player.getItem("Lantern") != null) {
-            if (player.getItem("Lantern").active()) {
-                System.out.println(player.getCurrentArea().initialDescription());
-                this.firstVisit = false;
-            } else {
-                System.out.println("It's too dark to see!");
-            }
-        } else if (this.firstVisit) {
-            System.out.println("It's too dark to see!");
-        } else {
-            System.out.println(this.description);
-        }
+        System.out.println(this.firstVisit ? player.currentDescription() : player.currentShortDescription());
     }
 
     public Portals portals() {
@@ -85,21 +71,21 @@ public abstract class Area {
         return this;
     }
 
-    public String initialDescription() {
-        return this.initialDescription;
-    }
-
-    public Area initialDescription(final String description) {
-        this.initialDescription = description;
-        return this;
-    }
-
     public String description() {
         return this.description;
     }
 
     public Area description(final String description) {
         this.description = description;
+        return this;
+    }
+
+    public String shortDescription() {
+        return this.shortDescription;
+    }
+
+    public Area shortDescription(final String shortDescription) {
+        this.shortDescription = shortDescription;
         return this;
     }
 
@@ -190,5 +176,9 @@ public abstract class Area {
     public Area articleThe(final boolean the){
         this.articleThe = the;
         return this;
+    }
+
+    public String lookItem(Item item) {
+        return item.look();
     }
 }

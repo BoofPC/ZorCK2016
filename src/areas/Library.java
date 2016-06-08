@@ -12,7 +12,7 @@ public class Library extends Area {
                 .north(new Portal(false, ConferenceRoom02.class))
                 .northeast(new Portal(false, SecretPassage.class))
                 .west(new Portal(true, Hallway13.class));
-        this.title("Library").initialDescription("----------").description("-----").articleThe(true)
+        this.title("Library").description("----------").shortDescription("-----").articleThe(true)
                 .item(new Door(false, "Southern Door", null, this.portals().south()))
                 .item(new Door(false, "Northern Door", null, this.portals().north()))
                 .item(new Door(false, "Northeastern Door", null, this.portals().northeast()))

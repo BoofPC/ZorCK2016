@@ -18,8 +18,8 @@ public class AreaTemplate extends Area { // Be sure to replace this
             .west(new Portal(, .class));
         */
         this.title("")
-            .initialDescription("")
             .description("")
+            .shortDescription("")
         // Add any necessary doors
         // (Here, the door faces south)
             .item(new Door(false, "DOORNAME", null, this.portals().south()));

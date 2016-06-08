@@ -5,8 +5,9 @@ import java.util.Random;
 public class MrBooth extends Item{
     public MrBooth(){
         super();
-        this.name("Mr.Booth")
-            .description("He is in a Robotics t-shirt and jean.")
+        this.name("Mr. Booth")
+            .look("Mr. Booth is sitting in his chair in front of his computer.")
+            .examine("He is in a Robotics t-shirt and jean.")
             .synonym("mr.booth", "mr booth", "booth", "boof", "booth")
             .smell("He smells like he showered this morning");
     }

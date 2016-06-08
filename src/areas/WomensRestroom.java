@@ -18,11 +18,11 @@ public class WomensRestroom extends Area {
             .south(new Portal(Portal.State.UNLOCKED, Hallway07.class));
 
         this.title("Women's Restroom")
-            .initialDescription("The room is dimly lit, illuminated only by the "
+            .description("The room is dimly lit, illuminated only by the "
                 + "light coming in from the window to the east. To the south "
                 + "is a doorway leading into the hallway. A poster hangs on "
                 + "the door of one of the stalls.")
-            .description("This is the Women's Restroom.").articleThe(true)
+            .shortDescription("This is the Women's Restroom.").articleThe(true)
 
             .sound("You hear an incessant dripping sound coming from a faucet.")
             .smell("It smells like flowers.")

@@ -6,8 +6,9 @@ import java.util.List;
 import core.World.Direction;
 //
 public abstract class Item {
-    private String name;
-    private String description;
+    private String name = "Default item name";
+    private String examine;
+    private String look;
 
     private final Usage usage = new Usage();
     // TODO Update description
@@ -102,7 +103,7 @@ public abstract class Item {
     private String taste;
     private Item inside;
     // if item is read
-    private String text;
+    private String read;
     private String smell;
     private String sound;
     private final List<Item> received = new ArrayList<>();
@@ -125,12 +126,21 @@ public abstract class Item {
         return this;
     }
 
-    public String description() {
-        return this.description;
+    public String examine() {
+        return this.examine;
     }
 
-    public Item description(final String description) {
-        this.description = description;
+    public Item examine(final String description) {
+        this.examine = description;
+        return this;
+    }
+
+    public String look() {
+        return look;
+    }
+
+    public Item look(String look) {
+        this.look = look;
         return this;
     }
 
@@ -152,12 +162,12 @@ public abstract class Item {
         return this;
     }
 
-    public String text() {
-        return this.text;
+    public String read() {
+        return this.read;
     }
 
-    public Item text(final String text) {
-        this.text = text;
+    public Item read(final String read) {
+        this.read = read;
         return this;
     }
 

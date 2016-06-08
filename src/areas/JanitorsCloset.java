@@ -9,9 +9,9 @@ public class JanitorsCloset extends Area {
         super(containingWorld);
         this.portals().east(new Portal(Portal.State.UNLOCKED, Hallway17.class));
         this.title("Janitor's Closet")
-                .initialDescription("A dark old Janitor's Closet. The room is oddly humid... "
+                .description("A dark old Janitor's Closet. The room is oddly humid... "
                         + "You see a pair of plastic sissors on the floor.")
-                .description(
+                .shortDescription(
                         "This is the Janitor's Closet you see extraordinarily sharp scissors and a small planter with grass."
                                 + "There is a door leaving where you entered to the east")
                 .item(new Scissors()).item(new Grass());

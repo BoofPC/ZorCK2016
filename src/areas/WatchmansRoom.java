@@ -10,7 +10,7 @@ public class WatchmansRoom extends Area {
 
         this.portals().east(new Portal(false, Hallway06.class))
                 .north(new Portal(false, CompSciRoom.class));
-        this.title("Watchman's Room").initialDescription("----------").description("-----")
+        this.title("Watchman's Room").description("----------").shortDescription("-----")
                 .item(new Door(false, "Eastern Door", null, this.portals().east()))
                 .item(new Door(false, "Northern Door", null, this.portals().north()));
     }

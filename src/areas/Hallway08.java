@@ -14,7 +14,7 @@ public class Hallway08 extends Area {
             .west(new Portal(false, Hallway09.class))
             .east(new Portal(false, Hallway07.class));
         this.title("Hallway")
-            .initialDescription("----------").description("-----").articleThe(true)
+            .description("----------").shortDescription("-----").articleThe(true)
 
             .item(new Door(true, "Southern Door", null, this.portals().south()));
     }

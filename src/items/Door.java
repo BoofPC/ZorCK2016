@@ -10,12 +10,12 @@ public class Door extends Item{
         if(locked){
             this.usage().lock(Item.LOCKED);
             this.name("Locked Door")
-                .description("You gotta find some way to unlock it!")
+                .examine("You gotta find some way to unlock it!")
                 .synonym("locked door");
         }else{
             this.usage().lock(Item.UNLOCKED);
             this.name("Door")
-                .description("Whelp, that's a door alright!");
+                .examine("Whelp, that's a door alright!");
         }
         if(name != null){
             this.name(name)
