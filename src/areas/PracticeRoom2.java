@@ -35,31 +35,29 @@ public class PracticeRoom2 extends Area{
     
     public PracticeRoom2(World containingWorld){
         super(containingWorld);
-        setPortal(World.NORTH, new Portal(false, "CrampedHall"));
-        setTitle("Second Practice Room");
-            setInitialDescription("This is the second practice room, with a doorway "
+        this.portals().north(new Portal(false, CrampedHall.class));
+        this.title("Second Practice Room")
+        .initialDescription("This is the second practice room, with a doorway "
                     + "leading north. A cupboard stands against the east wall, but"
-                    + " the place looks ransacked.");
-            setDescription("This is the second practice room.");
-            setState("First",true);
-            addItem(new Cupboard());
-            setDark(true);
+                    + " the place looks ransacked.")
+        .description("This is the second practice room.").state("First",true)
+        .item(new Cupboard()).dark(true);
     }
     
-    public void interact(Command command, Context context){
-            if((command.verb.getTitle().equals("taste") && command.noun.getName().equals("room"))
-                    || (command.verb.getTitle().equals("lick") && command.noun.getName().equals("room"))){
-                System.out.println("Why would you want to lick the room?"
-                        + " People dumped their spit valves out on the floor!");
-            }else if(command.verb.getTitle().equals("listen")){
-                System.out.println("You hear the echos of your breathing.");
-            }else if(command.verb.getTitle().equals("smell")){
-                System.out.println("You smell old sweat.");
-            }else{
-                command.verb.run(command, context);
-            }
-            
-            command.verb.run(command, context);
-                
+    @Override
+    public void interact(final Command command, final Context context){
+        final String verb = command.getVerb().getTitle();
+        final String noun = command.getNoun().name();
+        
+        if((verb.equals("taste") || verb.equals("lick")) && noun.equals("room")){
+            System.out.println("Why would you want to lick the room?"
+                    + " People dumped their spit valves out on the floor!");
+        }else if(verb.equals("listen")){
+            System.out.println("You hear the echos of your breathing.");
+        }else if(verb.equals("smell")){
+            System.out.println("You smell old sweat.");
+        }else{
+            super.interact(command, context);
         }
+    }
 }

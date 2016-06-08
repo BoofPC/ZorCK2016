@@ -28,32 +28,30 @@ public class PracticeRoom1 extends Area{
     
     public PracticeRoom1(World containingWorld){
         super(containingWorld);
-        setPortal(World.NORTH, new Portal(false, "CrampedHall"));
-        setTitle("First Practice Room");
-            setInitialDescription("This is the first practice room, with a doorway "
+        this.portals().north(new Portal(false, CrampedHall.class));
+        this.title("First Practice Room")
+        .initialDescription("This is the first practice room, with a doorway "
                     + "leading north. Tattered carpet hangs from the walls, and"
-                    + " a piano stands languishing in the corner.");
-            setDescription("This is the first practice room.");
-            setState("First",true);
-            addItem(new Piano());
-            setDark(true);
+                    + " a piano stands languishing in the corner.")
+        .description("This is the first practice room.").state("First",true)
+        .item(new Piano()).dark(true);
     }
     
-    public void interact(Command command, Context context){
-            if((command.verb.getTitle().equals("taste") && command.noun.getName().equals("room"))
-                    || (command.verb.getTitle().equals("lick") && command.noun.getName().equals("room"))){
-                System.out.println("Why would you want to lick the room?"
-                        + " People dumped their spit valves out on the floor!");
-            }else if(command.verb.getTitle().equals("listen")){
-                System.out.println("You faintly hear the sound of a forlorn"
-                        + " oboe trying to succeed in life.");
-            }else if(command.verb.getTitle().equals("smell")){
-                System.out.println("You smell broken dreams floating through the air.");
-            }else{
-                command.verb.run(command, context);
-            }
-            
-            command.verb.run(command, context);
-                
-        }
+    @Override
+    public void interact(final Command command, final Context context){
+        final String verb = command.getVerb().getTitle();
+        final String noun = command.getNoun().name();
+        
+        if((verb.equals("taste") || verb.equals("lick")) && noun.equals("room")){
+            System.out.println("Why would you want to lick the room?"
+                    + " People dumped their spit valves out on the floor!");
+        }else if(verb.equals("listen")){
+            System.out.println("You faintly hear the sound of a forlorn"
+                    + " oboe trying to succeed in life.");
+        }else if(verb.equals("smell")){
+            System.out.println("You smell broken dreams floating through the air.");
+        }else{
+            super.interact(command, context);
+        }        
+    }
 }

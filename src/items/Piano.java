@@ -6,6 +6,8 @@
 
 package items;
 
+import core.Command;
+import core.Context;
 import core.Item;
 
 /**
@@ -16,11 +18,17 @@ public class Piano extends Item{
     
     public Piano(){
         super();
-        setUsageKey(1,2);                   //The object cannot be taken
-        setName("Piano");
-        addSynonym("piano");
-        addSynonym("keyboard");
-        addSynonym("Keyboard");
-        setDescription("A very sad piano. It looks like its waiting for its Mozart");
+        this.usage().take(Item.TOO_HEAVY);
+        
+        this.name("Piano")
+        .synonym("piano")
+        .synonym("keyboard")
+        .synonym("Keyboard")
+        .description("A very sad piano. It looks like its waiting for its Mozart");
+    }
+    
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
 }

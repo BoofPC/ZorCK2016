@@ -6,6 +6,8 @@
 
 package items;
 
+import core.Command;
+import core.Context;
 import core.Item;
 
 /**
@@ -16,11 +18,16 @@ public class Motor extends Item{
     
     public Motor(){
         super();
-        setUsageKey(1,1);
-        setName("Motor");
-        addSynonym("motor");
-        setDescription("A greasy motor, with a battery pack attached. Someone"
+        this.usage().take(Item.TAKABLE);
+        this.name("Motor")
+        .synonym("motor")
+        .description("A greasy motor, with a battery pack attached. Someone"
                 + " was very clever a long time ago, though you have no idea"
                 + " how the batteries still work. It must be Black Magic.");
+    }
+    
+    @Override
+    public void interact(final Command command, final Context context){
+
     }
 }
