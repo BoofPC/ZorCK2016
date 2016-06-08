@@ -48,4 +48,10 @@ public class Key extends Item {
             super("Toolbox Key", "A key to the toolbox");
         }
     }
+    
+    public static class WomensRestroom extends Key {
+        public WomensRestroom() {
+            super("Women's Restroom Window Key", "A key to the window in the Women's Restroom");
+        }
+    }
 }

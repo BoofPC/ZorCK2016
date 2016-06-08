@@ -27,7 +27,8 @@ public class WomensRestroom extends Area {
             .sound("You hear an incessant dripping sound coming from a faucet.")
             .smell("It smells like flowers.")
 
-            .item(new AdamsonPoster());
+            .item(new AdamsonPoster())
+            .item(new Window(true, null, Key.WomensRestroom.class, this.portals().east()));
 
     }
 
