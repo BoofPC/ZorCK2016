@@ -40,7 +40,7 @@ public class Game {
                 .addVerb(new Credits()).addVerb(new Curse()).addVerb(new Debug())
                 .addVerb(new Diagnostic()).addVerb(new Drink()).addVerb(new Drop())
                 .addVerb(new Eat()).addVerb(new Examine()).addVerb(new Give()).addVerb(new Hello())
-                .addVerb(new Hit()).addVerb(new Inventory()).addVerb(new Light())
+                .addVerb(new Hit()).addVerb(new Inventory())
                 .addVerb(new Listen()).addVerb(new Lock()).addVerb(new Look()).addVerb(new Make())
                 .addVerb(new Move()).addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray())
                 .addVerb(new Put()).addVerb(new Quit()).addVerb(new Read()).addVerb(new Score())
