@@ -16,7 +16,7 @@ public class SecretPassage extends Area {
                 .smell("Vaguely mold and rot")
                 .sound("Quiet humming of the air conditioning")
                 .taste("Moldy")
-                .item(new Door(true, "Eastern Door", KeySecretPassage.class, this.portals().east()))
+                .item(new Door(true, "Eastern Door", Key.SecretPassage.class, this.portals().east()))
                 .item(new Door(true, "Southern Door", null, this.portals().south()));
     }
     

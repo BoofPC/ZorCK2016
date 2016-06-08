@@ -20,7 +20,7 @@ public class StaffLounge extends Area {
                 .item(new Microwave())
                 .item(new Refrigerator())
                 .item(new VendingMachine())
-                .item(new Door(true, "Northern Door", KeyStaffLounge.class,
+                .item(new Door(true, "Northern Door", Key.StaffLounge.class,
                         this.portals().north()));
     }
 

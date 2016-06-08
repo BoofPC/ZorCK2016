@@ -16,6 +16,6 @@ public class Library extends Area {
                 .item(new Door(false, "Southern Door", null, this.portals().south()))
                 .item(new Door(false, "Northern Door", null, this.portals().north()))
                 .item(new Door(false, "Northeastern Door", null, this.portals().northeast()))
-                .item(new Door(true, "Western Door", KeyLibrary.class, this.portals().west()));
+                .item(new Door(true, "Western Door", Key.Library.class, this.portals().west()));
     }
 }

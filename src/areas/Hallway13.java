@@ -13,6 +13,6 @@ public class Hallway13 extends Area {
         this.title("Hallway")
             .description("----------").shortDescription("-----").articleThe(true)
 
-            .item(new Door(true, "Library Door", KeyLibrary.class, this.portals().east()));
+            .item(new Door(true, "Library Door", Key.Library.class, this.portals().east()));
     }
 }
