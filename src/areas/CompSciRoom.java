@@ -21,9 +21,9 @@ public class CompSciRoom extends Area{
         @Override
         public void interact(final Command command, final Context context){
             //TODO: Make ending play when player has blackmail
-            if(context.getPlayer().hasMatching(new Blackmail())) {
+            /*if(context.getPlayer().hasMatching(new Blackmail())) {
                 ;
-            }
+            }*/
             //TODO: have a function to lure boof out
             super.interact(command, context);
         }

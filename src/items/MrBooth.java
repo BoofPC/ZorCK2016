@@ -18,13 +18,13 @@ public class MrBooth extends Item{
             final Random rand = new Random();
             final int n = rand.nextInt(3);
             if(n==0){
-                System.out.println("you'll never make me grade, fool!");
+                System.out.println("You'll never make me grade, fool!");
             }
             else if(n==1){
-                System.out.println("leave me alone!");
+                System.out.println("Leave me alone!");
             }
             else{
-                System.out.println("good morning");
+                System.out.println("Good morning");
             }
             return true;
         }

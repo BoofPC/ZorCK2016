@@ -32,7 +32,7 @@ public class Game {
 
     public static void main(final String[] args) {
         final Game game = new Game();
-        final Player player = new Player(10, "Red");
+        final Player player = new Player(10, "Carlton");
         final World world = new World();
 
         // Register all verbs
@@ -366,7 +366,7 @@ public class Game {
     public static <T> Predicate<T> distinctByKey(final Function<? super T, Object> keyExtractor) {
         final Map<Object, Boolean> seen = new ConcurrentHashMap<>();
         return t -> {
-            System.out.println("Testing " + t.toString());
+            //System.out.println("Testing " + t.toString());
             return seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
         };
     }
