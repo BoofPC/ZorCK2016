@@ -7,9 +7,9 @@ class IncriminatingEvidence extends Item {
     public IncriminatingEvidence() {
         super();
         this.usage().take(Item.TAKABLE);
-        this.name("Incriminating Evidence")
+        this.name("incriminating evidence")
                 .examine("It's Incriminating Evidence of Mr.Booth...")
-                .synonym("Evidence","Criminal","IE");
+                .synonym("evidence","criminal");
     }
     
 }
