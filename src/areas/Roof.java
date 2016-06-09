@@ -40,13 +40,14 @@ public class Roof extends Area {
 
         switch (this.countdown) {
             case 1:
-                this.portals().west().unlock();
                 System.out.println("You hear the window unlock.");
+                this.countdown--;
                 break;
             case 0:
                 System.out.println("Maybe you shouldn't throw unconscious teachers off roofs."
                         + "\nYou hear the window slide open.");
                 player.setDeath(Game.Status.DIE);
+                this.countdown--;
                 return;
             case -1:
                 break;
