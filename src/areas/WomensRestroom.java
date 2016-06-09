@@ -7,7 +7,7 @@ import verbs.Read;
 /**
  * This area has a window that leads to the roof. You unlock the window by using
  * a key found by using the plunger, which the girl in the stall gives you in
- * exchange for toilet paper, on the clogged toilet. I think.
+ * exchange for toilet paper, on the clogged toilet.
  */
 public class WomensRestroom extends Area {
 
