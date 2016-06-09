@@ -20,6 +20,16 @@ public class FlipOff extends Verb {
     
     @Override
     public void run(Command command, Context context){
+        System.out.println( "............... /´¯/) \n" +
+                            ".............,/¯ ..// \n" +
+                            "............/... ./ / \n" +
+                            "....../´¯/'...'/´¯ ¯`·¸ \n" +
+                            ".../'/.../..../......./¨¯\\ \n" +
+                            ".('(...´(..........,~/'...') \n" +
+                            "..\\.................\\/..../ \n" +
+                            "...\\............. _.·´ \n" +
+                            ".....\\..............( \n" +
+                            ".......\\.............\\ ");
         System.out.println("The Horror! The Horror!");
     }
 }
