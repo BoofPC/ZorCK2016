@@ -17,30 +17,26 @@ public class BoothsRoom extends Area {
                         + "physics textbooks. There is an exit the the east.")
                 .shortDescription("This room feels as if much pain was "
                         + "experienced here. There is an exit to the east")
-                .smell("It smells like physics!")
-                .taste("It tastes like science")
+                .smell("It smells like physics!").taste("It tastes like science")
                 .item(new Door(false, "Eastern Door", null, this.portals().east()))
                 .item(new MrBooth()).item(new BoothsComputer());
     }
 
     @Override
     public void interact(final Command command, final Context context) {
+        final Verb verb = command.getVerb();
         final String leftovers = command.getLeftovers();
-        final String verb = command.getVerb().getTitle();
-        if(command.getNoun() != null){
-            final String noun = command.getNoun().name();
-        }else{
-            final String noun = null;
-        }
-        
-        if(verb.equals("type") && leftovers.contains(context.getPassword())){
-            getItem(BoothsComputer.class).usage().lock(Item.UNLOCKED);
-            context.getPlayer().addScore(10);
-            System.out.println("You unlocked Booth's Computer and changed your grade to an A!");
-            context.getPlayer().setDeath(Game.Status.WIN);
-        }else if(verb.equals("type")){
-            System.out.println("WRONG PASSWORD");
-        }else{
+
+        if (verb.getClass().equals(Type.class)) {
+            if (leftovers.contains(context.getPassword())) {
+                getItem(BoothsComputer.class).usage().lock(Item.UNLOCKED);
+                context.getPlayer().addScore(10);
+                System.out.println("You unlocked Booth's Computer and changed your grade to an A!");
+                context.getPlayer().setDeath(Game.Status.WIN);
+            } else {
+                System.out.println("WRONG PASSWORD");
+            }
+        } else {
             super.interact(command, context);
         }
 
