@@ -24,7 +24,7 @@ public class Smell extends Verb {
                 System.out.println(smell);
             } else {
                 System.out.println(
-                        "It smells like every other " + noun.name() + " you've ever smelled.");
+                        "It smells like every other " + noun.name() + " you've ever smelt.");
             }
         }
     }
