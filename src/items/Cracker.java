@@ -11,7 +11,7 @@ public class Cracker extends Item {
 
         this.name("Cracker")
             .synonym("cracker")
-            .examine("It's a stale cracker.")
+            .examine("It's a stale cracker. Not a person.")
             .taste("It tastes slightly salty, with a hint of carpet.");
     }
 }
