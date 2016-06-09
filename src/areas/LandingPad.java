@@ -11,6 +11,7 @@ import core.Command;
 import core.Context;
 import core.Portal;
 import core.World;
+import items.ZiplineUp;
 
 /**
  *
@@ -25,7 +26,8 @@ public class LandingPad extends Area{
         this.title("Area outside Band Room")
         .initialDescription("This is a small space just outside the band"
                     + " room, with a zipline extending upward.")
-        .state("First",true).dark(false);
+        .state("First",true).dark(false)
+        .item(new ZiplineUp(true));
     }
     
     @Override

@@ -20,13 +20,12 @@ public class Roof extends Area {
         this.title("Roof").articleThe(true)
                 .description("The roof is largely empty. Only a small red "
                         + "toolbox lies on the ground. To the south is the edge of "
-                        + "the roof. To the west is a window leading to the Women's " + "Restroom.")
-
-                .shortDescription("This is the roof.")
-
-                .sound("You can hear the toolbox.").smell("It smells like a red toolbox.")
-
-                .item(new Toolbox());
+                        + "the roof. To the west is a window leading to the Women's "
+                        + "Restroom. There is also a zipline down to the band room.")
+                .sound("You can hear the toolbox.")
+                .smell("It smells like a red toolbox.")
+                .item(new Toolbox())
+                .item(new ZiplineDown());
     }
 
     @Override
