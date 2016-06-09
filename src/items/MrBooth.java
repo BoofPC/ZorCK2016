@@ -43,6 +43,11 @@ public class MrBooth extends Item {
                     this.changeState(State.UNCONSCIOUS);
                     return true;
                 }
+                if (verb.getClass().equals(FlipOff.class)){
+                    System.out.println("Booth is so appalled by your rude gesture he has a heart attack and faints!");
+                    this.changeState(State.UNCONSCIOUS);
+                    return true;
+                }
                 break;
             case UNCONSCIOUS:
                 break;
