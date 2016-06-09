@@ -16,7 +16,6 @@ public class Use extends Verb {
         switch (usage.use()) {
             case USABLE:
                 noun.interact(command, construct);
-                System.out.println("You used the " + noun.name());
                 break;
             default:
                 System.out.println("I don't see how you expect to do that!");

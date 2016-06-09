@@ -137,8 +137,9 @@ public class Player {
         return this.inventory;
     }
 
-    public Item getItem(final Class<? extends Item> item) {
-        return this.inventory.stream().filter(i -> i.getClass().equals(item)).findAny()
+    @SuppressWarnings("unchecked")
+    public <T extends Item> T getItem(final Class<T> item) {
+        return (T) this.inventory.stream().filter(i -> i.getClass().equals(item)).findAny()
                 .orElse(null);
     }
 

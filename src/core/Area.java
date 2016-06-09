@@ -43,7 +43,8 @@ public abstract class Area {
         }
     }
 
-    public static void defaultInteract(final Command command, final Context context, final Item noun) {
+    public static void defaultInteract(final Command command, final Context context,
+            final Item noun) {
         boolean done = false;
         if (!done && command.isApplied()) {
             done = noun.interact(command, context);
@@ -54,7 +55,8 @@ public abstract class Area {
     }
 
     public void enter(final Player player) {
-        System.out.println(this.firstVisit ? player.currentDescription() : player.currentShortDescription());
+        System.out.println(
+                this.firstVisit ? player.currentDescription() : player.currentShortDescription());
     }
 
     public Portals portals() {
@@ -151,8 +153,10 @@ public abstract class Area {
         return this.items.stream().anyMatch(i -> i == item);
     }
 
-    public Item getItem(final String title) {
-        return this.items.stream().filter(i -> i.name().equals(title)).findFirst().orElse(null);
+    @SuppressWarnings("unchecked")
+    public <T extends Item> T getItem(final Class<T> clazz) {
+        return (T) this.items.stream().filter(i -> i.getClass().equals(clazz)).findFirst()
+                .orElse(null);
     }
 
     public boolean dark() {
@@ -173,11 +177,11 @@ public abstract class Area {
         return this;
     }
 
-    public boolean articleThe(){
+    public boolean articleThe() {
         return this.articleThe;
     }
 
-    public Area articleThe(final boolean the){
+    public Area articleThe(final boolean the) {
         this.articleThe = the;
         return this;
     }

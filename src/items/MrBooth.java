@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class MrBooth extends Item {
     public static enum State {
-        INITIAL, UNCONSCIOUS
+        INITIAL, UNCONSCIOUS, FALLEN
     }
 
     private State state = State.INITIAL;
@@ -46,6 +46,8 @@ public class MrBooth extends Item {
                 break;
             case UNCONSCIOUS:
                 break;
+            case FALLEN:
+                break;
             default:
                 System.out.println("Mr. Booth eyes you suspiciously.");
                 break;
@@ -70,6 +72,18 @@ public class MrBooth extends Item {
                         break;
                 }
                 break;
+            case UNCONSCIOUS:
+                switch (newState) {
+                    case FALLEN:
+                        this.name("Mr. Booth (fallen)").look("Here lies Mr. Booth.")
+                                .examine("He looks more uncomfortable than peaceful.");
+                        this.usage().take(Item.TAKABLE);
+                        break;
+                    default:
+                        MrBooth.stateChangeFailure(oldState, newState);
+                        break;
+                }
+                break;
             default:
                 MrBooth.stateChangeFailure(oldState, newState);
                 break;
@@ -77,6 +91,8 @@ public class MrBooth extends Item {
     }
 
     public static void stateChangeFailure(final State oldState, final State newState) {
-        System.out.println("Mr. Booth glows with a heavenly light.");
+        System.out.println("Mr. Booth glows with a heavenly light."
+                + " Angellic voices in the distance say the words " + oldState.toString() + " and "
+                + newState.toString() + ".");
     }
 }

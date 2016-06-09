@@ -307,6 +307,9 @@ public abstract class Item {
         }
     }
 
+    /**
+     * @return whether the command processing is done
+     */
     public boolean interact(final Command command, final Context context) {
         return false;
     }
