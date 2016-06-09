@@ -333,6 +333,7 @@ public abstract class Item {
         private Talk talk = Talk.NO_TALK;
         private Use use = Use.NO_USE;
         private Puttable puttable = Puttable.PUTTABLE;
+        private Plungable plungable = Plungable.UNPLUNGABLE;
 
         public Usage() {}
 
@@ -395,6 +396,10 @@ public abstract class Item {
 
         public static enum Puttable{
             PUTTABLE,UNPUTTABLE
+        }
+        
+        public static enum Plungable {
+            PLUNGABLE, UNPLUNGABLE
         }
 
         public Usage visible(final Visible o) {
@@ -554,6 +559,15 @@ public abstract class Item {
             this.puttable = o;
             return this;
         }
+        
+        public Plungable plungable() {
+            return this.plungable;
+        }
+        
+        public Usage plungable(final Plungable o) {
+            this.plungable = o;
+            return this;
+        }
     }
 
     // java: i cry everytim
@@ -604,4 +618,6 @@ public abstract class Item {
     public static final Usage.Use NO_USE = Usage.Use.NO_USE;
     public static final Usage.Puttable PUTTABLE = Usage.Puttable.PUTTABLE;
     public static final Usage.Puttable UNPUTTABLE = Usage.Puttable.UNPUTTABLE;
+    public static final Usage.Plungable PLUNGABLE = Usage.Plungable.PLUNGABLE;
+    public static final Usage.Plungable UNPLUNGABLE = Usage.Plungable.UNPLUNGABLE;
 }
