@@ -15,26 +15,26 @@ public class ISSRoom extends Area {
         .smell("Smells like delinquency")
         .taste("Tastes like failure")
         .sound("It is absolutely silent")
-        .item(new Door(false, "Northern Door", null, this.portals().north()));       
+        .item(new Door(false, "Northern Door", null, this.portals().north()));
     }
      @Override
-    public void interact(Command command, Context construct) {
+    public void interact(final Command command, final Context construct) {
         if(command.getVerb().equals("look")){
             System.out.println("You see scattered papers around the room,"
                     + " many desks are lined up. There is a"
                     + " group of recycling bins in the corner of the room."
                     );
         }
-        
+
         if((command.getVerb().equals("open") || command.getVerb().equals("unseal")) && (command.getNoun().equals("bin") || command.getNoun().equals("recycling bin"))){
             System.out.println("You picked up the key!");
-                    construct.getPlayer().addItem(new Key());                    
+                    construct.getPlayer().addItem(new Key());
         }
-        
+
         else{
             System.out.println("The desks are empty!");
         }
     }
-    
-    
+
+
 }

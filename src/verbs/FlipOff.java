@@ -17,9 +17,9 @@ public class FlipOff extends Verb {
         super("flip off", Verb.usage().bare().noun(), "flick off", "give the finger",
                 "flip the bird", "give a middle fingered salute");
     }
-    
+
     @Override
-    public void run(Command command, Context context){
+    public void run(final Command command, final Context context){
         System.out.println( "............... /´¯/) \n" +
                             ".............,/¯ ..// \n" +
                             "............/... ./ / \n" +

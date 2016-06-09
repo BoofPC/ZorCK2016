@@ -1,7 +1,6 @@
 package areas;
 
 import core.*;
-import items.*;
 
 public class CompSciRoom extends Area {
 

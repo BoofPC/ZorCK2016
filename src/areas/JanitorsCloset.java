@@ -7,18 +7,13 @@ public class JanitorsCloset extends Area {
 
     public JanitorsCloset(final World containingWorld) {
         super(containingWorld);
-        this.portals()
-                .east(new Portal(false, Hallway17.class));
+        this.portals().east(new Portal(false, Hallway17.class));
         this.title("Janitor's Closet")
                 .description("A dark old Janitor's Closet. The room is oddly humid... "
-                        + "You see a pair of plastic scissors on the floor.")
-                .shortDescription(
-                        "This is the Janitor's Closet you see extraordinarily sharp scissors and a small planter with grass."
-                                + "There is a door leaving where you entered to the east")
-                .item(new Scissors())
-                .item(new Grass());
-        
+                        + "You see a pair of extraordinarily sharp scissors on the floor.")
+                .shortDescription("This is the Janitor's Closet. There's a small planter with grass"
+                        + "and door leaving where you entered to the east")
+                .item(new Scissors()).item(new Grass());
     }
-
 }
 

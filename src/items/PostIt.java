@@ -12,7 +12,7 @@ import core.*;
  * @author Peter
  */
 public class PostIt extends Item{
-    
+
     public PostIt(){
         super();
         this.usage().take(Item.TAKABLE).read(Item.READABLE).food(Item.EDIBLE);

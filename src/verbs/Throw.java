@@ -12,7 +12,7 @@ public class Throw extends Verb {
     }
 
     @Override
-    public void run(Command command, Context construct) {
+    public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
         final Player player = construct.getPlayer();
 

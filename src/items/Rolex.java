@@ -13,10 +13,10 @@ import core.*;
  * @author White3905k
  */
 public class Rolex extends Item {
-    
+
     public Rolex(){
         super();
-        this.usage().take(TAKABLE).read(Item.READABLE);
+        this.usage().take(Item.TAKABLE).read(Item.READABLE);
         this.name("Rolex")
                 .examine("This looks quite expensive yet completely pointless to you")
                 .synonym("watch", "the rolex", "the watch")
