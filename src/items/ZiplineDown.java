@@ -1,38 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package items;
 
-import areas.LandingPad;
-import core.Command;
-import core.Context;
-import core.Item;
-import core.Portal;
+import core.*;
+import areas.*;
 
-/**
- *
- * @author flowers9695r
- */
-public class ZiplineDown extends Item{
+public class ZiplineDown extends Item {
 
-    public ZiplineDown(){
+    public ZiplineDown() {
         super();
-        this.usage().take(Item.BOLTED_DOWN).open(Item.CLOSED);
-        this.name("Zipline")
-        .description("That zipline looks like fun!");
-        if(name != null){
-            this.name(name)
-                .synonym(name.toLowerCase());
-        }
-        this.synonym("zipline")
-        .portal(new Portal(true, LandingPad.class));
-    }
-
-    @Override
-    public void interact(final Command command, final Context context){
-
+        this.usage().take(Item.BOLTED_DOWN).use(USABLE);
+        this.name("Zipline").synonym("zipline")
+            .look("There is also a zipline down to the band room.")
+            .examine("That zipline looks like fun!");
+        this.portal(new Portal(true, LandingPad.class));
     }
 }

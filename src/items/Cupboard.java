@@ -6,9 +6,7 @@
 
 package items;
 
-import core.Command;
-import core.Context;
-import core.Item;
+import core.*;
 
 /**
  *
@@ -23,12 +21,7 @@ public class Cupboard extends Item{
         .synonym("cupboard")
         .synonym("cabinet")
         .synonym("Cabinet")
-        .description("A cupboard with potentially possible potential.")
+        .examine("A cupboard with potentially possible potential.")
         .inside(new MagicOrb());
-    }
-    
-    @Override
-    public void interact(final Command command, final Context context){
-
     }
 }

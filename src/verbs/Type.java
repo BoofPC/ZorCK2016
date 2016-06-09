@@ -19,7 +19,6 @@ public class Type extends Verb{
 
     @Override
     public void run(final Command command, final Context construct) {
-        System.out.println("I'm not sure where you want to type that");
-        System.out.println(command.getLeftovers());
+        System.out.println("I'm not sure where you want to type that.");
     }
 }

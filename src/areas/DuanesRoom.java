@@ -15,8 +15,8 @@ public class DuanesRoom extends Area {
                 + " tall shelf with snacks at the top").shortDescription("There "
                 + "are snacks on top of a tall shelf and a fuzzy orange cat.")
                 .item(new Door(false, "Northern Door", null, this.portals().north()));
-        this.item(new Cat());
-        this.item(new Snacks());
+        //this.item(new Cat());
+        //    .item(new Snacks());
     }
 
 

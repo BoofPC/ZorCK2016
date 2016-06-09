@@ -15,17 +15,15 @@ public class Roof extends Area {
         super(containingWorld);
 
         this.portals().south(new Portal(Portal.State.UNLOCKED, ConcreteGround.class))
-                .west(new Portal(Portal.State.UNLOCKED, WomensRestroom.class));
+                .west(new Portal(Portal.State.UNLOCKED, WomensRestroom.class))
+                .down(new Portal(Portal.State.UNLOCKED, BandRoom.class));
 
         this.title("Roof").articleThe(true)
                 .description("The roof is largely empty. Only a small red "
                         + "toolbox lies on the ground. To the south is the edge of "
-                        + "the roof. To the west is a window leading to the Women's "
-                        + "Restroom. There is also a zipline down to the band room.")
-                .sound("You can hear the toolbox.")
-                .smell("It smells like a red toolbox.")
-                .item(new Toolbox())
-                .item(new ZiplineDown());
+                        + "the roof. To the west is a window leading to the Women's Restroom.")
+                .sound("You can hear the toolbox.").smell("It smells like a red toolbox.")
+                .item(new Toolbox()).item(new ZiplineDown());
     }
 
     @Override
