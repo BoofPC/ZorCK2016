@@ -25,20 +25,22 @@ public class BoothsRoom extends Area {
 
     @Override
     public void interact(final Command command, final Context context) {
-        final Verb verb = command.getVerb();
         final String leftovers = command.getLeftovers();
-
-        if (verb.getClass().equals(Type.class)) {
-            if (leftovers.contains("compsci_is_fun!")) {
-                this.getItem(BoothsComputer.class).usage().lock(Item.UNLOCKED);
-                final Player player = context.getPlayer();
-                player.addScore(10);
-                System.out.println("You unlocked Booth's Computer and changed your grade to an A!");
-                player.setDeath(Game.Status.WIN);
-            } else {
-                System.out.println("WRONG PASSWORD");
-            }
-        } else {
+        final String verb = command.getVerb().getTitle();
+        if(command.getNoun() != null){
+            final String noun = command.getNoun().name();
+        }else{
+            final String noun = null;
+        }
+        
+        if(verb.equals("type") && leftovers.contains(context.getPassword())){
+            getItem(BoothsComputer.class).usage().lock(Item.UNLOCKED);
+            context.getPlayer().addScore(10);
+            System.out.println("You unlocked Booth's Computer and changed your grade to an A!");
+            context.getPlayer().setDeath(Game.Status.WIN);
+        }else if(verb.equals("type")){
+            System.out.println("WRONG PASSWORD");
+        }else{
             super.interact(command, context);
         }
 
