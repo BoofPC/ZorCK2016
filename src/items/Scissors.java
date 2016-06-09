@@ -14,6 +14,5 @@ public class Scissors extends Item {
                 .read("You don't want to get your eyes that close to see if anything's there.")
                 .sound("You move them and it sounds like the very molecules of the air are being split.")
                 .smell("They smell of blood and cold steel.");
-
     }
 }

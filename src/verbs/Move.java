@@ -8,7 +8,7 @@ public class Move extends Verb {
 
     public Move() {
         super("move", Verb.usage().direction(), "go", "travel", "walk", "run", "sprint", "jog",
-                "hustle");
+                "hustle", "trot", "skip", "prance", "move it on out");
     }
 
     @Override

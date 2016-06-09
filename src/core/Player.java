@@ -117,16 +117,18 @@ public class Player {
 
     public boolean hasItem(final Class<? extends Item> clazz) {
         for (final Item item : this.getInventory()) {
-            if (item.getClass().equals(clazz))
+            if (item.getClass().equals(clazz)) {
                 return true;
+            }
         }
         return false;
     }
 
     public boolean hasItem(final String name) {
         for (final Item item : this.getInventory()) {
-            if (item.name().equals(name))
+            if (item.name().equals(name)) {
                 return true;
+            }
         }
         return false;
     }

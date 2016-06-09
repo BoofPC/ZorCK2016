@@ -27,14 +27,17 @@ public class FishersRoom extends Area {
         final Verb verb = command.getVerb();
         if (verb.getTitle().equals("look")) {
             //This is unnecessary - It should be the description
-            Random rand = new Random();
-            int num = rand.nextInt(9);
-            if(num < 1) System.out.println("You see scattered papers around the room, some"
-                    + " saying 'You can get it if you really want' and others"
-                    + " discussing the extent to which the Kyoto Protocol assisted"
-                    + " United States' environmental impacts."
-                    + " Nothing seems to be of interest in this room.");
-            else System.out.println(this.description());
+            final Random rand = new Random();
+            final int num = rand.nextInt(9);
+            if(num < 1) {
+                System.out.println("You see scattered papers around the room, some"
+                        + " saying 'You can get it if you really want' and others"
+                        + " discussing the extent to which the Kyoto Protocol assisted"
+                        + " United States' environmental impacts."
+                        + " Nothing seems to be of interest in this room.");
+            } else {
+                System.out.println(this.description());
+            }
         } else {
             final Item noun = command.getNoun();
             if (verb.getTitle().equals("take") && (noun.equals("paper") || noun.equals("papers"))) {

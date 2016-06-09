@@ -19,6 +19,6 @@ public class SecretPassage extends Area {
                 .item(new Door(true, "Eastern Door", Key.SecretPassage.class, this.portals().east()))
                 .item(new Door(true, "Southern Door", null, this.portals().south()));
     }
-    
-    
+
+
 }

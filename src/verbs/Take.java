@@ -34,7 +34,7 @@ public class Take extends Verb {
                 }
                 break;
             default:
-                System.out.println("Where do you expect to find one of those?");
+                System.out.println("You already have that.");
                 break;
         }
     }

@@ -33,7 +33,8 @@ public class World {
         return null;
     }
 
-    public Area getArea(final Class<? extends Area> area) {
-        return this.map.get(area);
+    @SuppressWarnings("unchecked")
+    public <T extends Area> T getArea(final Class<T> area) {
+        return (T) this.map.get(area);
     }
 }

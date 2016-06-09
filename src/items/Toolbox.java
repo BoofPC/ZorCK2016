@@ -24,11 +24,10 @@ public class Toolbox extends Item {
                 System.out.println("The toolbox opens, revealing a shiny new "
                     + "screwdriver!");
                 context.getPlayer().getCurrentArea().item(new Screwdriver());
+                return true;
             }
-            return true;
-        } else
-            return false;
-
+        }
+        return false;
     }
 
 }

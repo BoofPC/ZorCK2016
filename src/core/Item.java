@@ -252,10 +252,8 @@ public abstract class Item {
     }
 
     public void synchronizeDoor(final World world, final Area currentArea) {
-        Portal portal;
-        portal = this.portal();
-        Area target;
-        target = world.getArea(portal.getTarget());
+        final Portal portal = this.portal();
+        final Area target = world.getArea(portal.getTarget());
         final Direction direction = currentArea.direction(portal);
         final Direction oppDir;
         switch (direction) {
@@ -311,7 +309,7 @@ public abstract class Item {
 
     public boolean interact(final Command command, final Context context) {
         return false;
-    };
+    }
 
     public static final class Usage {
         private Visible visible = Visible.VISIBLE;

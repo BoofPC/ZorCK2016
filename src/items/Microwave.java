@@ -1,9 +1,6 @@
 package items;
 import core.*;
-/**
- *
- * @author Bailee
- */
+
 public class Microwave extends Item {
 
     public Microwave() {

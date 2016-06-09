@@ -4,14 +4,16 @@ public class Portal {
     public static enum State {
         UNLOCKED(false), LOCKED(true);
         public boolean value;
+
         private State(final boolean value) {
             this.value = value;
         }
     }
+
     private State locked;
-    private final Class<? extends Area> target; //Should be the id of an area to go to
-//
-    public Portal(final State locked, final Class<? extends Area> target){
+    private final Class<? extends Area> target;
+
+    public Portal(final State locked, final Class<? extends Area> target) {
         this.locked = locked;
         this.target = target;
     }
@@ -20,24 +22,23 @@ public class Portal {
         this(locked ? State.LOCKED : State.UNLOCKED, target);
     }
 
-    public boolean isLocked(){
+    public boolean isLocked() {
         return this.locked.value;
     }
 
-    public void lock(){
+    public void lock() {
         this.locked = State.LOCKED;
     }
 
-    public void unlock(){
+    public void unlock() {
         this.locked = State.UNLOCKED;
     }
 
-    public Class<? extends Area> getTarget(){
+    public Class<? extends Area> getTarget() {
         return this.target;
     }
 
-    public Item getDoor(final Area currentArea){
-        return currentArea.items().stream().filter(i -> i.portal() == this).findAny()
-                .orElse(null);
+    public Item getDoor(final Area currentArea) {
+        return currentArea.items().stream().filter(i -> i.portal() == this).findAny().orElse(null);
     }
 }

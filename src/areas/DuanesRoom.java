@@ -16,7 +16,7 @@ public class DuanesRoom extends Area {
                 + "are snacks on top of a tall shelf and a fuzzy orange cat.")
                 .item(new Door(false, "Northern Door", null, this.portals().north()));
     }
-        
+
 
     @Override
     public void interact(final Command command, final Context context) {

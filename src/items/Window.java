@@ -2,8 +2,8 @@ package items;
 import core.*;
 
 public class Window extends Door {
-    
-    public Window(boolean locked, String name, Class<? extends Item> key, Portal portal) {
+
+    public Window(final boolean locked, final String name, final Class<? extends Item> key, final Portal portal) {
         super(locked, name, key, portal);
         this.usage().open(Item.CLOSED);
         if (locked) {
@@ -24,5 +24,5 @@ public class Window extends Door {
         this.key(key)
             .portal(portal);
     }
-    
+
 }

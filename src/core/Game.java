@@ -40,14 +40,13 @@ public class Game {
                 .addVerb(new Credits()).addVerb(new Curse()).addVerb(new Debug())
                 .addVerb(new Diagnostic()).addVerb(new Drink()).addVerb(new Drop())
                 .addVerb(new Eat()).addVerb(new Examine()).addVerb(new Give()).addVerb(new Hello())
-                .addVerb(new Hit()).addVerb(new Inventory())
-                .addVerb(new Listen()).addVerb(new Lock()).addVerb(new Look()).addVerb(new Make())
-                .addVerb(new Move()).addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray())
-                .addVerb(new Put()).addVerb(new Quit()).addVerb(new Read()).addVerb(new Score())
-                .addVerb(new Shout()).addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab())
-                .addVerb(new Stand()).addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk())
-                .addVerb(new Taste()).addVerb(new TurnOff()).addVerb(new TurnOn())
-                .addVerb(new Unlock());
+                .addVerb(new Hit()).addVerb(new Inventory()).addVerb(new Listen())
+                .addVerb(new Lock()).addVerb(new Look()).addVerb(new Make()).addVerb(new Move())
+                .addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray()).addVerb(new Put())
+                .addVerb(new Quit()).addVerb(new Read()).addVerb(new Score()).addVerb(new Shout())
+                .addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab()).addVerb(new Stand())
+                .addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk()).addVerb(new Taste())
+                .addVerb(new TurnOff()).addVerb(new TurnOn()).addVerb(new Unlock());
 
         //Add all Areas to the new world
         /*
@@ -108,7 +107,6 @@ public class Game {
                 final Area currentArea = player.getCurrentArea();
                 final String currentTitle = currentArea.title();
                 if (currentArea.articleThe()) {
-                    //...
                     System.out.println("You are in the " + currentTitle);
                 } else {
                     System.out.println("You are in " + currentTitle);
@@ -173,8 +171,10 @@ public class Game {
             {
                 final Map<String, Pair<Verb, Pair<String, String>>> matches = new HashMap<>();
                 for (final Verb focus : verbList) {
-                    if (focus.getUsage().isArbitrary() && inputRaw.startsWith(focus.getTitle()))
+                    // System.out.println("trying " + focus.getTitle());
+                    if (focus.getUsage().isArbitrary() && inputRaw.startsWith(focus.getTitle())) {
                         return Command.bare(focus, focus.getTitle(), inputRaw);
+                    }
                     Game.tryMatch(matches, input, focus, focus.getTitle(), focus.getUsage());
                     for (final String syn : focus.getSynonyms()) {
                         Game.tryMatch(matches, input, focus, syn, focus.getUsage());
@@ -211,12 +211,14 @@ public class Game {
                             new HashMap<>();
                     for (final Item focus : player.getInventory()) {
                         for (final String syn : focus.synonyms()) {
+                            // System.out.println("trying " + syn);
                             Game.tryMatch(matches, verbInput,
                                     new Pair<>(focus, Command.NounOrigin.PLAYER), syn, null);
                         }
                     }
                     for (final Item focus : player.getCurrentArea().items()) {
                         for (final String syn : focus.synonyms()) {
+                            // System.out.println("trying " + syn);
                             Game.tryMatch(matches, verbInput,
                                     new Pair<>(focus, Command.NounOrigin.AREA), syn, null);
                         }
@@ -283,9 +285,10 @@ public class Game {
     public static <A, B> void disambiguate(final String input,
             final Map<String, Pair<A, B>> matches) {
         final Set<Entry<String, Pair<A, B>>> matchSet = matches.entrySet();
-        matchSet.retainAll(matchSet.stream()
-                .sorted((a, b) -> b.getKey().length() - a.getKey().length())
-                .filter(Game.distinctByKey(e -> e.getValue().getKey())).collect(Collectors.toList()));
+        matchSet.retainAll(
+                matchSet.stream().sorted((a, b) -> b.getKey().length() - a.getKey().length())
+                        .filter(Game.distinctByKey(e -> e.getValue().getKey()))
+                        .collect(Collectors.toList()));
     }
 
     private final static Matcher endOfMatch = Pattern.compile("^\\s").matcher("");
@@ -297,11 +300,12 @@ public class Game {
             final boolean verb = vUsage != null; //focus instanceof Verb;
             //final Verb.Usage vUse = verb ? ((Verb) focus).getUsage() : null;
             final boolean vBare = verb ? vUsage.isBare() : true;
-            final boolean vApplied = verb ? !vUsage.isBare() : true;
+            final boolean vNoun = verb ? vUsage.isNoun() : true;
             if ((leftovers.isEmpty() && vBare)
-                    || (Game.endOfMatch.reset(leftovers).find() && vApplied))
-                // System.out.println("Match: " + str + "; leftovers: " + leftovers);
+                    || (Game.endOfMatch.reset(leftovers).find() && vNoun)) {
+                // System.out.println("Match:" + str + ";leftovers:" + leftovers + ";");
                 return new Pair<>(focus, new Pair<>(str, leftovers));
+            }
         }
         return null;
     }

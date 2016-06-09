@@ -10,6 +10,6 @@ public class Poke extends Verb {
 
     @Override
     public void run(final Command command, final Context construct) {
-        System.out.println("You poked the " + command.getNoun().name() + ".\n Good Job!");
+        System.out.println("You poked the " + command.getNoun().name() + ".\nGood Job!");
     }
 }

@@ -3,7 +3,7 @@ package items;
 import core.Item;
 
 class IncriminatingEvidence extends Item {
-    
+
     public IncriminatingEvidence() {
         super();
         this.usage().take(Item.TAKABLE);
@@ -11,5 +11,5 @@ class IncriminatingEvidence extends Item {
                 .examine("It's Incriminating Evidence of Mr.Booth...")
                 .synonym("evidence","criminal");
     }
-    
+
 }

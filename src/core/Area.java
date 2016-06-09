@@ -3,7 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List; 
+import java.util.List;
 import java.util.Map;
 
 public abstract class Area {
@@ -44,10 +44,11 @@ public abstract class Area {
     }
 
     public static void defaultInteract(final Command command, final Context context, final Item noun) {
-        if (command.isApplied()) {
-            noun.interact(command, context);
+        boolean done = false;
+        if (!done && command.isApplied()) {
+            done = noun.interact(command, context);
         }
-        if (!context.getSkipGeneral()) {
+        if (!done && !context.getSkipGeneral()) {
             command.getVerb().run(command, context);
         }
     }

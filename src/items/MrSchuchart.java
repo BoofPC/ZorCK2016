@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package items;
+
 import core.*;
-/**
- *
- * @author johnson5951a
- */
+
 public class MrSchuchart extends Item{
-    
+
     public MrSchuchart(){
         super();
         this.name("Mr. Schuchart")
@@ -19,16 +11,16 @@ public class MrSchuchart extends Item{
             .examine("All these essays talk about multiple shooters in the Kennedy assassination")
             .synonym("mr.schuchart","mr schuchart", "mr. schuchart", "schuchart");
     }
-    
+
     @Override
     public boolean interact(final Command command, final Context context){
         if(command.getVerb().getTitle().equals("talk")){
             System.out.println("Oh, it's so hard to read these essays with the blinds open...");
             return true;
         }
-        
+
         else if(command.getVerb().getTitle().equals("take")){
-            String noun = command.getNoun().name();
+            final String noun = command.getNoun().name();
             switch(noun){
                 case "pinata":
                     System.out.println("Oh heck no, that is MY pinata!");
@@ -38,9 +30,9 @@ public class MrSchuchart extends Item{
             }
             return true;
         }
-        
+
         else if(command.getVerb().getTitle().equals("stab")){
-            String noun = command.getNoun().name();
+            final String noun = command.getNoun().name();
             switch(noun){
                 case "Mr. Schuchart":
                     System.out.println("Mr. Schuchart is unstabbable. You stab yourself in embarassment.");
@@ -52,30 +44,25 @@ public class MrSchuchart extends Item{
             }
             return true;
         }
-        
+
         else if(command.getVerb().getTitle().equals("hit")){
-            String noun = command.getNoun().name();
+            final String noun = command.getNoun().name();
             switch(noun){
                 case "Mr. Schuchart":
                     System.out.println("Well... that's rude.");
                     break;
-                
+
                 case "Pinata":
                     System.out.println("Your flimsy punch only causes Schuchart to laugh as the pinata is unharmed.");
                     break;
-                    
+
                 default:
                     System.out.println("Schuchart says 'Wow kid, you've got some anger issues.'");
                     break;
-                    
+
             }
             return true;
         }
-        
-        else{
-            super.interact(command, context);
-        }
-        
         return false;
     }
 }

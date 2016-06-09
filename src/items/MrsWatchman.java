@@ -7,9 +7,8 @@ public class MrsWatchman extends Item {
 
     public MrsWatchman() {
         super();
-        this.name("Mrs.Watchman")
-                .look("Mrs.Watchman is at the door to the compsci room.")
-                .synonym("Mrs.watchman", "mrs.Watchman", "mrs.watchman", "Watchman", "watchman");
+        this.name("Mrs. Watchman").look("Mrs. Watchman is at the door to the compsci room.")
+                .synonym("mrs. watchman", "watchman");
     }
 
     @Override
@@ -19,14 +18,16 @@ public class MrsWatchman extends Item {
         final Item key = player.getItem(Key.SecretPassage.class);
         if (verb.getClass().equals(Talk.class)) {
             if (key == null) {
-                System.out.println("Can you find me the key to the secret passage to the compsci room. If you do i will give you some interesting information on Mr.Booth ");
-                return true;
+                System.out.println(
+                        "Can you find me the key to the secret passage to the compsci room."
+                                + " If you do i will give you some interesting information on Mr. Booth.");
             } else {
-                System.out.println("You found the key. Thank you, and here is the information I promise");
+                System.out.println(
+                        "You found the key. Thank you, and here is the information I promise");
                 context.getPlayer().removeItem(key);
                 context.getPlayer().addItem(new IncriminatingEvidence());
-                return true;
             }
+            return true;
         }
         return false;
     }

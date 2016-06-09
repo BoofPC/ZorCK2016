@@ -27,39 +27,44 @@ public final class Command {
     }
 
     public static Command bare(final Verb verb, final String verbStr, final String leftovers) {
-        if (verb == null)
+        if (verb == null) {
             throw new NullPointerException();
+        }
         return new Command(verb, verbStr, null, null, null, null, null, leftovers);
     }
 
 
     public static Command applied(final Verb verb, final String verbStr, final Item noun,
             final String nounStr, final NounOrigin nounOrigin, final String leftovers) {
-        if (verb == null || noun == null)
+        if (verb == null || noun == null) {
             throw new NullPointerException();
+        }
         return new Command(verb, verbStr, noun, nounOrigin, nounStr, null, null, leftovers);
     }
 
     public static Command directedBare(final Verb verb, final String verbStr,
             final Direction direction, final String directionStr, final String leftovers) {
-        if (verb == null || direction == null)
+        if (verb == null || direction == null) {
             throw new NullPointerException();
+        }
         return new Command(verb, verbStr, null, null, null, direction, directionStr, leftovers);
     }
 
     public static Command directed(final Verb verb, final String verbStr, final Item noun,
             final String nounStr, final NounOrigin nounOrigin, final Direction direction,
             final String directionStr, final String leftovers) {
-        if (verb == null || noun == null || direction == null)
+        if (verb == null || noun == null || direction == null) {
             throw new NullPointerException();
+        }
         return new Command(verb, verbStr, noun, nounOrigin, nounStr, direction, directionStr,
                 leftovers);
     }
 
     public static Command direction(final Direction direction, final String directionStr,
             final String leftovers) {
-        if (direction == null)
+        if (direction == null) {
             throw new NullPointerException();
+        }
         return new Command(null, null, null, null, null, direction, directionStr, leftovers);
     }
 
