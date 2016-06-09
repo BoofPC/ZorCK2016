@@ -1,13 +1,14 @@
 package items;
 
 import core.*;
+import java.util.Scanner;
 
 public class BoothsComputer extends Item{
     
     public BoothsComputer(){
         super();
         this.usage().active(Item.ON).lock(Item.LOCKED);
-        this.name("Booths Computer")
+        this.name("Booth's Computer")
             .examine("It's whirring and puffing as only computers and cats can do")
             .synonym("booths computer", "booth's computer", "computer", 
                     "boofs computer", "boof's computer")
@@ -23,9 +24,12 @@ public class BoothsComputer extends Item{
                     + "bet at fixing your grade");
             System.out.println("Suicide is always an option");
             this.usage().active(Item.STATIC).lock(Item.LOCKED);
+            context.setSkipGeneral(true);
             return true;
         }else if(verb.equals("use")||verb.equals("unlock")){
-            
+            context.setSkipGeneral(true);
+            System.out.println("Please type the password");
+            return true;
         }
         return false;
     }

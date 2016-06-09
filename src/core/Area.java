@@ -51,6 +51,8 @@ public abstract class Area {
         }
         if (!done && !context.getSkipGeneral()) {
             command.getVerb().run(command, context);
+        }else if(context.getSkipGeneral()){
+            context.setSkipGeneral(false);
         }
     }
 

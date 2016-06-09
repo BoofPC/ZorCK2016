@@ -22,4 +22,27 @@ public class BoothsRoom extends Area {
                 .item(new MrBooth())
                 .item(new BoothsComputer());
     }
+    
+    @Override
+    public void interact(Command command, Context context){
+        final String leftovers = command.getLeftovers();
+        final String verb = command.getVerb().getTitle();
+        if(command.getNoun() != null){
+            final String noun = command.getNoun().name();
+        }else{
+            final String noun = null;
+        }
+        
+        if(verb.equals("type") && leftovers.contains("compsci_is_fun!")){
+            getItem(BoothsComputer.class).usage().lock(Item.UNLOCKED);
+            context.getPlayer().addScore(10);
+            System.out.println("You unlocked Booth's Computer and changed your grade to an A!");
+            context.getPlayer().setDeath(Game.Status.WIN);
+        }else if(verb.equals("type")){
+            System.out.println("WRONG PASSWORD");
+        }else{
+            super.interact(command, context);
+        }
+        
+    }
 }
