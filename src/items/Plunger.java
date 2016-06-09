@@ -1,6 +1,6 @@
 package items;
 
-import core.*;
+import core.Item;
 
 public class Plunger extends Item {
     

@@ -28,7 +28,8 @@ public class WomensRestroom extends Area {
             .smell("It smells like flowers.")
 
             .item(new AdamsonPoster())
-            .item(new Window(true, null, Key.WomensRestroom.class, this.portals().east()));
+            .item(new CloggedToilet())
+            .item(new Window(true, null, Key.RestroomWindow.class, this.portals().east()));
 
     }
 
@@ -42,11 +43,13 @@ public class WomensRestroom extends Area {
         if (verb.getTitle().equals("examine") && noun.equals("Adamson Poster")) {
             //prepare your eyes for the beautiful sight
             new Read().run(command, context);
-        } else if (verb.getTitle().equals("unlock") && player.hasItem(Key.WomensRestroom.class)) {
+        } else if (verb.getTitle().equals("unlock") && player.hasItem(Key.RestroomWindow.class)) {
             System.out.println("You twist the key and the lock on the window"
                     + "makes an audible 'click'.");
             this.portals().east().unlock();
             verb.run(command, context);
+        } else if(verb.getTitle().equals("plunge")) {
+            noun.interact(command, context);
         } else {
             super.interact(command, context);
         }
