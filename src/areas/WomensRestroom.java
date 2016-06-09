@@ -5,15 +5,15 @@ import items.*;
 import verbs.Read;
 
 /**
- * This area has a window that leads to the roof. There's nothing else here,
- * except for a poster on the door of a stall.
+ * This area has a window that leads to the roof. You unlock the window by using
+ * a key found by using the plunger, which the girl in the stall gives you in
+ * exchange for toilet paper, on the clogged toilet. I think.
  */
 public class WomensRestroom extends Area {
 
     public WomensRestroom(final World containingWorld) {
         super(containingWorld);
 
-        //TODO: unlock window with key
         this.portals().east(new Portal(Portal.State.LOCKED, Roof.class))
             .south(new Portal(Portal.State.UNLOCKED, Hallway07.class));
 
@@ -36,13 +36,20 @@ public class WomensRestroom extends Area {
     public void interact(final Command command, final Context context) {
         final Verb verb = command.getVerb();
         final Item noun = command.getNoun();
+        final Player player = context.getPlayer();
 
         //read the poster, in case the player looks at it instead
-        if (verb.equals("examine") && noun.equals("Adamson Poster")) {
+        if (verb.getTitle().equals("examine") && noun.equals("Adamson Poster")) {
             //prepare your eyes for the beautiful sight
             new Read().run(command, context);
+        } else if (verb.getTitle().equals("unlock") && player.hasItem(Key.WomensRestroom.class)) {
+            System.out.println("You twist the key and the lock on the window"
+                    + "makes an audible 'click'.");
+            this.portals().east().unlock();
+            verb.run(command, context);
+        } else {
+            super.interact(command, context);
         }
-        super.interact(command, context);
     }
 
 }
