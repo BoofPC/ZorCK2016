@@ -302,9 +302,9 @@ public class Game {
             final boolean verb = vUsage != null; //focus instanceof Verb;
             //final Verb.Usage vUse = verb ? ((Verb) focus).getUsage() : null;
             final boolean vBare = verb ? vUsage.isBare() : true;
-            final boolean vNoun = verb ? vUsage.isNoun() : true;
+            final boolean vMore = verb ? vUsage.isNoun() || vUsage.isDirection() : true;
             if ((leftovers.isEmpty() && vBare)
-                    || (Game.endOfMatch.reset(leftovers).find() && vNoun)) {
+                    || (Game.endOfMatch.reset(leftovers).find() && vMore)) {
                 // System.out.println("Match:" + str + ";leftovers:" + leftovers + ";");
                 return new Pair<>(focus, new Pair<>(str, leftovers));
             }
