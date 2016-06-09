@@ -7,7 +7,7 @@ public class Blackmail extends Item {
     public Blackmail() {
         super();
         this.usage().take(Item.TAKABLE);
-        this.name("Blackmail")
+        this.name("blackmail")
                 .examine("It's a note from an unknown author...")
                 .synonym("mail");
     }
