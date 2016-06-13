@@ -27,5 +27,6 @@ public class DuanesRoom extends Area {
                     + "some treats. You eat them.");
             context.getPlayer().addHp(10);
         }
+        else super.interact(command,context);
     }
 }

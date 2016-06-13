@@ -17,8 +17,4 @@ public class CompSciRoom extends Area {
                 .shortDescription("This is the CompSci Room, Room 317.").articleThe(true);
     }
 
-    @Override
-    public void interact(final Command command, final Context context) {
-        super.interact(command, context);
-    }
 }

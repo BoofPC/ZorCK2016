@@ -28,8 +28,4 @@ public class BroadcastingRoom extends Area {
         this.item(new LaserPointer());
     }
 
-    @Override
-    public void interact(final Command command, final Context context) {
-         //To change body of generated methods, choose Tools | Templates.
-    }
 }
