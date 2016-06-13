@@ -85,11 +85,8 @@ public class Fitz extends Area{
                 this.state("take_or_eat_lunch", true);
             }
             else{
-                command.getVerb().run(command, context);
-            }
-            
-            command.getVerb().run(command, context);
-                
+                super.interact(command, context);
+            } 
         }
 
 }

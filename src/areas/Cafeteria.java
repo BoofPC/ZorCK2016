@@ -47,9 +47,7 @@ public class Cafeteria extends Area{
                 context.getPlayer().addItem(new FitzLunch());
             }
             else{
-                command.getVerb().run(command, context);
+                super.interact(command, context);
             }
-            
-            command.getVerb().run(command, context);
     }
 }

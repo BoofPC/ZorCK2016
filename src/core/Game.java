@@ -81,7 +81,10 @@ public class Game {
                 .addArea(SecretPassage.class).addArea(SecurityRoom.class).addArea(StaffLounge.class)
                 .addArea(StakersRoom.class).addArea(WatchmansRoom.class).addArea(WilsonsRoom.class)
                 .addArea(WomensRestroom.class)
-                .addArea(JanitorsCloset.class);
+                .addArea(JanitorsCloset.class)
+                .addArea(Fitz.class)
+                .addArea(Cafeteria.class)
+                .addArea(SecretPassageLevel1.class);
 
         //Setting initial area for player
         player.setCurrentArea(world.getArea(CompSciRoom.class));
