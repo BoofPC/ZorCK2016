@@ -22,6 +22,7 @@ public class Player {
         this.hp = hp;
         this.maxHp = hp;
         this.name = name;
+        this.score = 0;
         this.prayer = false;
         this.death = Game.Status.KEEP_PLAYING;
         this.sit = false;
