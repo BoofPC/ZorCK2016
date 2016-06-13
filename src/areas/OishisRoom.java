@@ -45,7 +45,7 @@ public class OishisRoom extends Area{
             if(verb.getTitle().equals("examine") && noun.equals("recycling bin")){
                 System.out.println("Oh, hey, look! \n"
                         + "It's your homework assignment. \n");
-                this.items().
+                context.getPlayer().getItem(RecyclingBin.class)
                         .drop(context.getPlayer().getCurrentArea());
             }
             else if(verb.getTitle().equals("examine") && noun.equals("desk")){

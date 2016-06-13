@@ -1,7 +1,6 @@
 package items;
 
 import core.*;
-<<<<<<< eaa8dbe845d4f052017e9a2d8b3460b574111526
 
 /**
  *
