@@ -7,17 +7,19 @@ import java.util.Random;
 
 public class MrBooth extends Item {
     public static enum State {
-        INITIAL, UNCONSCIOUS, FALLEN
+        INITIAL, GAVE_INSTRUCTIONS, UNCONSCIOUS, FALLEN
     }
 
     private State state = State.INITIAL;
 
     public MrBooth() {
         super();
-        this.name("Mr. Booth").look("Mr. Booth is sitting in his chair in front of his computer.")
+        this.name("Mr. Booth")
+                .look("Mr. Booth is sitting in his chair in front of his computer.")
                 .examine("He is in a Robotics t-shirt and jean.")
                 .synonym("mr. booth", "mr booth", "booth", "boof")
-                .smell("He smells like he showered this morning");
+                .smell("He smells like he showered this morning")
+                .taste("Tastes like the early 2000s.");
     }
 
     @Override
@@ -26,14 +28,25 @@ public class MrBooth extends Item {
         switch (this.state) {
             case INITIAL:
                 if (verb.getClass().equals(Talk.class)) {
+                    System.out.println("Yo, wassup homeslice. If you want me to grade, I need five things:");
+                    System.out.println("\ta red pen,");
+                    System.out.println("\ta calculator,");
+                    System.out.println("\tmy laptop,");
+                    System.out.println("\tand your assignment.");
+                    this.changeState(State.GAVE_INSTRUCTIONS);
+                    return true;
+                }
+                break;
+            case GAVE_INSTRUCTIONS:
+                if (verb.getClass().equals(Talk.class)) {
                     final Random rand = new Random();
                     final int n = rand.nextInt(3);
                     if (n == 0) {
-                        System.out.println("You'll never make me grade, fool!");
+                        System.out.println("Waazzzaaaaap?");
                     } else if (n == 1) {
-                        System.out.println("Leave me alone!");
+                        System.out.println("What's shizzy in the hizzy, dawg?!");
                     } else {
-                        System.out.println("Good morning.");
+                        System.out.println("What is the up?");
                     }
                     return true;
                 }
