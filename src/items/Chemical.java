@@ -6,6 +6,8 @@ public class Chemical extends Item {
 
     public Chemical() {
         super();
+        this.usage()
+                .take(Item.TAKABLE);
         this.name("Chemical").look("It is green and nasty looking. It bubbles.")
                 .synonym("chemical", "chemicals")
                 .smell("It smells absolutely horrid. Like, worse than the Super Mario Bros. movie horrid.")
