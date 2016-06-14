@@ -14,8 +14,8 @@ public class Desk extends Item{
         this.usage()
             .can_sit(Item.CAN_SIT)
             .take(Item.TOO_HEAVY);
-        this.name("Desk")
-            .synonym("desk", "table", "chair", "desk chair")
+        this.name("desk")
+            .synonym("Desk", "table", "chair", "desk chair")
             .examine("A desk. People sit in it.")
             .taste("You chew away on gum on the bottom of the seats. Delicious!")
             .smell("It's a desk, what did you expect?")

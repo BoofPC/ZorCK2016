@@ -13,7 +13,7 @@ public class MrFitz extends Item{
         super();
         this.usage().talk(Item.TALK);
         this.name("Mr. Fitz")
-            .synonym("mr fitz", "fitz", "teacher", "man", "guy", "math teacher", "mathteacher")
+            .synonym("Mr. Fitz", "mr fitz", "fitz", "teacher", "man", "guy", "math teacher", "mathteacher")
             .examine("This is Mr. Fitz. He's drinking coffee and he's staring into"
                 + " your soul. 'Sup?', he says, making the situation even more awkward.")
             .taste("You can't taste a person!")

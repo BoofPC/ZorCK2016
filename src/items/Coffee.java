@@ -18,11 +18,11 @@ public class Coffee extends Item{
     public Coffee (){
         super();
         this.usage().take(Item.TAKABLE).drink(Item.DRINKABLE);
-        this.name("Coffee")
+        this.name("coffee")
             .taste("It's bitter.")
             .smell("It exudes a very thick aroma.")
             .sound("There is no particular sound.")
-            .synonym("coffee", "cup of coffee")
+            .synonym("Coffee", "cup of coffee")
             .examine("A cup of coffee. It looks very bitter.");
         drank = false;
     }

@@ -14,10 +14,10 @@ public class SecretPassageLevel1 extends Area {
         super(containingWorld);
 
         this.portals()
-                .up(new Portal(true, Cafeteria.class))
-                .south(new Portal(true, Fitz.class));
+                .up(new Portal(false, Cafeteria.class))
+                .south(new Portal(false, Fitz.class));
         this.title("Secret Passage")
-                .description("It's Mr.Fitz secret passage. Up is the cafeteria." + 
+                .description("It's Mr.Fitz secret passage. Up is the cafeteria. " + 
                             "South is Mr.Fitz room. There are no items.")
                 .shortDescription("It's Mr.Fitz secret passage.").articleThe(true)
                 .state("First",true)
