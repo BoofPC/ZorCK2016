@@ -22,5 +22,4 @@ public class RedPen extends Item {
         this.name("Red pen")
         .synonym("pen");
     }
-    
 }
