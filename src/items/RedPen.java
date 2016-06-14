@@ -17,12 +17,10 @@ public class RedPen extends Item {
     
     public RedPen(){
         super();
-        setUsageKey(Item.TAKE,1);
-        setName("Red pen");
-        addSynonym("pen");
+        this.usage()
+            .take(Item.TAKABLE);
+        this.name("Red pen")
+        .synonym("pen");
     }
     
-    public void interact(Command command, Context context){
-        
-    }
 }
