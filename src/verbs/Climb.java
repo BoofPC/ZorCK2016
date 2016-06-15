@@ -12,7 +12,7 @@ public class Climb extends Verb {
     @Override
     public void run(final Command command, final Context construct) {
         final Player player = construct.getPlayer();
-        final Area currentArea = player.getCurrentArea();
+        final Area<?> currentArea = player.getCurrentArea();
 
         if (command.isBare()) {
             currentArea.interact(Command.directedBare(new Move(), "climb", Direction.UP, "up", ""),

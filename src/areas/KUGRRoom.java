@@ -3,7 +3,7 @@ package areas;
 import core.*;
 import items.*;
 
-public class KUGRRoom extends Area {
+public class KUGRRoom extends Area<NoState> {
 
     public KUGRRoom(final World containingWorld) {
         super(containingWorld);

@@ -3,7 +3,7 @@ package areas;
 import core.*;
 import items.*;
 
-public class LandingPad extends Area {
+public class LandingPad extends Area<NoState> {
     public LandingPad(final World containingWorld) {
         super(containingWorld);
         this.portals().east(new Portal(false, CrampedHall.class)).up(new Portal(true, Roof.class));

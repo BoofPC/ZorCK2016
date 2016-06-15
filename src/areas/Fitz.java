@@ -1,14 +1,18 @@
 package areas;
 
+import java.io.Serializable;
+
 import core.*;
 import items.*;
 
-/**
- *
- * @author pedro
- */
-
-public class Fitz extends Area {
+public class Fitz extends Area<Fitz.State> {
+    public static class State implements Serializable {
+        private static final long serialVersionUID = -6367328032330573609L;
+        public boolean takeCoffee = false;
+        public boolean drinkCoffee = false;
+        public boolean takeLunch = false;
+        public boolean eatLunch = false;
+    }
 
     public Fitz(final World containingWorld) {
         super(containingWorld);
@@ -18,17 +22,16 @@ public class Fitz extends Area {
                         + " 'The Dungeon of torture.' There is a secret passage to"
                         + " the north. In this room you can find Mr. Fitz sipping coffee, his lunch,"
                         + " and a desk.")
-                .shortDescription("This is Mr. Fitz's Room.").state("First", true)
-                .state("take_coffee", false).state("drink_coffee", false).state("take_lunch", false)
-                .state("eat_lunch", false).taste("It tastes of sadness.")
+                .shortDescription("This is Mr. Fitz's Room.").taste("It tastes of sadness.")
                 .smell("It smells of coffee.").sound("Fernat's last therorem being solved.")
                 .item(new MrFitz()).item(new FitzLunch()).item(new Coffee()).item(new Desk());
     }
 
     @Override
     public void interact(final Command command, final Context context) {
+        final State state = this.state();
         if (command.getVerb().getTitle().equals("Drink")
-                && command.getNoun().name().equals("coffee") && !this.state("drink_coffee")) {
+                && command.getNoun().name().equals("coffee") && !state.drinkCoffee) {
             context.getPlayer().setMaxHp(context.getPlayer().getMaxHp() + 1);
             context.getPlayer().setHp(context.getPlayer().getHp() + 1);
             context.getPlayer().getCurrentArea().removeItem(command.getNoun());
@@ -36,16 +39,16 @@ public class Fitz extends Area {
             System.out.println("Your max HP just went up by 1!");
             System.out.println("Mr. Fitz attacked! 3 damage!");
             context.getPlayer().setHp(context.getPlayer().getHp() - 3);
-            this.state("take_coffee", true);
-            this.state("drink_coffee", true);
+            state.takeCoffee = true;
+            state.drinkCoffee = true;
         } else if (command.getVerb().getTitle().equals("Take")
-                && command.getNoun().name().equals("coffee") && !this.state("take_coffee")) {
+                && command.getNoun().name().equals("coffee") && !state.takeCoffee) {
             context.getPlayer().addItem(new Coffee());
             System.out.println("You took the coffee and put it in the bag.");
             System.out.println("Mr. Fitz attacked! 3 damage!");
             context.getPlayer().setHp(context.getPlayer().getHp() - 3);
             context.getPlayer().getCurrentArea().removeItem(command.getNoun());
-            this.state("take_coffee", true);
+            state.takeCoffee = true;
         } else if (command.getVerb().getTitle().equals("Talk")
                 && command.getNoun().name().equals("Mr. Fitz")) {
             System.out.println("Mr. Fitz says 'Sup?'");
@@ -53,7 +56,7 @@ public class Fitz extends Area {
                 && command.getNoun().name().equals("desk")) {
             System.out.println("You sat in the desk and got out of your chair.");
         } else if (command.getVerb().getTitle().equals("Eat")
-                && command.getNoun().name().equals("lunch") && !this.state("eat_lunch")) {
+                && command.getNoun().name().equals("lunch") && !state.eatLunch) {
             System.out.println("You ate Mr.Fitz's lunch.");
             System.out.println("Your max HP just went up by 3!");
             System.out.println("Mr. Fitz attacked! 5 damage!");
@@ -61,15 +64,15 @@ public class Fitz extends Area {
             context.getPlayer().setHp(context.getPlayer().getHp() + 3);
             context.getPlayer().getCurrentArea().removeItem(command.getNoun());
             context.getPlayer().setHp(context.getPlayer().getHp() - 5);
-            this.state("take_lunch", true);
-            this.state("eat_lunch", true);
+            state.takeLunch = true;
+            state.eatLunch = true;
         } else if (command.getVerb().getTitle().equals("Take")
-                && command.getNoun().name().equals("lunch") && !this.state("take_lunch")) {
+                && command.getNoun().name().equals("lunch") && !state.takeLunch) {
             System.out.println("You took Mr. Fitz's lunch and put it in the bag.");
             System.out.println("Mr. Fitz attacked! 5 damage!");
             context.getPlayer().setHp(context.getPlayer().getHp() - 5);
             context.getPlayer().addItem(new FitzLunch());
-            this.state("take_lunch", true);
+            state.takeLunch = true;
         } else {
             super.interact(command, context);
         }

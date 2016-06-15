@@ -7,7 +7,7 @@ import items.*;
  *
  * @author Sonic Duck
  */
-public class OishisRoom extends Area {
+public class OishisRoom extends Area<NoState> {
 
     public OishisRoom(final World containingWorld) {
         super(containingWorld);

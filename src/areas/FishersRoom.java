@@ -4,7 +4,7 @@ import core.*;
 import items.*;
 import java.util.Random;
 
-public class FishersRoom extends Area {
+public class FishersRoom extends Area<NoState> {
 
     public FishersRoom(final World containingWorld) {
         super(containingWorld);

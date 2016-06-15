@@ -4,7 +4,7 @@ import core.*;
 import items.*;
 import verbs.*;
 
-public class CompSciRoom extends Area {
+public class CompSciRoom extends Area<NoState> {
 
     public CompSciRoom(final World containingWorld) {
         super(containingWorld);

@@ -6,7 +6,7 @@ import items.*;
 
 // This is a template for Area
 // For a more thorough explanation, see TutorialArea
-public class AreaTemplate extends Area { // Be sure to replace this
+public class AreaTemplate extends Area<NoState> { // Be sure to replace this
 
     public AreaTemplate(final World containingWorld) { // And this
         super(containingWorld);

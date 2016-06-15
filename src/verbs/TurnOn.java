@@ -18,7 +18,7 @@ public class TurnOn extends Verb {
                 final Player player = construct.getPlayer();
                 usage.active(Item.ON);
                 System.out.println("You turned on the " + noun.name());
-                final Area currentArea = player.getCurrentArea();
+                final Area<?> currentArea = player.getCurrentArea();
                 if (currentArea.firstVisit()) {
                     currentArea.enter(player);
                 }

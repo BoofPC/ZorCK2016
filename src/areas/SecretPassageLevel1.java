@@ -6,7 +6,7 @@ import core.*;
  *
  * @author coons5457w
  */
-public class SecretPassageLevel1 extends Area {
+public class SecretPassageLevel1 extends Area<NoState> {
 
     public SecretPassageLevel1(final World containingWorld) {
 
@@ -17,7 +17,6 @@ public class SecretPassageLevel1 extends Area {
                 .description("It's Mr.Fitz secret passage. Up is the cafeteria. "
                         + "South is Mr.Fitz room. There are no items.")
                 .shortDescription("It's Mr.Fitz secret passage.").articleThe(true)
-                .state("First", true)
                 .taste("Wallpaper and dried old paint. Why are you licking the walls again?")
                 .smell("Old textbooks.").sound("The crying echo of a prisoner strung to the wall.");
     }

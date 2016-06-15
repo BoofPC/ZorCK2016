@@ -11,19 +11,19 @@ public class World {
         NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST, UP, DOWN
     }
 
-    private final HashMap<Class<? extends Area>, Area> map;
+    private final HashMap<Class<? extends Area<?>>, Area<?>> map;
 
 
     public World() {
         this.map = new HashMap<>();
     }
 
-    public World addArea(final Class<? extends Area> areaName, final Area newArea) {
+    public World addArea(final Class<? extends Area<?>> areaName, final Area<?> newArea) {
         this.map.put(areaName, newArea);
         return this;
     }
 
-    public World addArea(final Class<? extends Area> areaName) {
+    public World addArea(final Class<? extends Area<?>> areaName) {
         try {
             return this.addArea(areaName, areaName.getConstructor(World.class).newInstance(this));
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
@@ -34,7 +34,7 @@ public class World {
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends Area> T getArea(final Class<T> area) {
+    public <T extends Area<?>> T getArea(final Class<T> area) {
         return (T) this.map.get(area);
     }
 }

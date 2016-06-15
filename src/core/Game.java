@@ -110,7 +110,7 @@ public class Game {
             //Main Game Loop
             Status death = null;
             while ((death = player.getDeath()) == Status.KEEP_PLAYING) {
-                final Area currentArea = player.getCurrentArea();
+                final Area<?> currentArea = player.getCurrentArea();
                 final String currentTitle = currentArea.title();
                 if (currentArea.articleThe()) {
                     System.out.println("You are in the " + currentTitle);

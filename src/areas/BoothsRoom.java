@@ -4,7 +4,7 @@ import core.*;
 import items.*;
 import verbs.*;
 
-public class BoothsRoom extends Area {
+public class BoothsRoom extends Area<NoState> {
 
     public BoothsRoom(final World containingWorld) {
         super(containingWorld);

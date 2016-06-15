@@ -1,12 +1,11 @@
 package core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public abstract class Area {
+public abstract class Area<S extends Serializable> {
     /**
      * This stores portals in each {@link World.Direction}.
      */
@@ -24,7 +23,7 @@ public abstract class Area {
 
     private final List<Item> items = new ArrayList<Item>();
 
-    private final Map<String, Boolean> state = new HashMap<>();
+    private S state = null;
 
     public Area(final World containingWorld) {
         this.world = containingWorld;
@@ -51,7 +50,7 @@ public abstract class Area {
         }
         if (!done && !context.getSkipGeneral()) {
             command.getVerb().run(command, context);
-        }else if(context.getSkipGeneral()){
+        } else if (context.getSkipGeneral()) {
             context.setSkipGeneral(false);
         }
     }
@@ -74,7 +73,7 @@ public abstract class Area {
         return this.title;
     }
 
-    public Area title(final String title) {
+    public Area<S> title(final String title) {
         this.title = title;
         return this;
     }
@@ -83,7 +82,7 @@ public abstract class Area {
         return this.description;
     }
 
-    public Area description(final String description) {
+    public Area<S> description(final String description) {
         this.description = description;
         return this;
     }
@@ -92,7 +91,7 @@ public abstract class Area {
         return this.shortDescription;
     }
 
-    public Area shortDescription(final String shortDescription) {
+    public Area<S> shortDescription(final String shortDescription) {
         this.shortDescription = shortDescription;
         return this;
     }
@@ -101,7 +100,7 @@ public abstract class Area {
         return this.taste;
     }
 
-    public Area taste(final String input) {
+    public Area<S> taste(final String input) {
         this.taste = input;
         return this;
     }
@@ -110,7 +109,7 @@ public abstract class Area {
         return this.smell;
     }
 
-    public Area smell(final String input) {
+    public Area<S> smell(final String input) {
         this.smell = input;
         return this;
     }
@@ -119,21 +118,17 @@ public abstract class Area {
         return this.sound;
     }
 
-    public Area sound(final String input) {
+    public Area<S> sound(final String input) {
         this.sound = input;
         return this;
     }
 
-    public Map<String, Boolean> state() {
+    public S state() {
         return this.state;
     }
 
-    public boolean state(final String name) {
-        return this.state.get(name);
-    }
-
-    public Area state(final String name, final boolean bool) {
-        this.state.put(name, bool);
+    public Area<S> state(final S state) {
+        this.state = state;
         return this;
     }
 
@@ -141,12 +136,12 @@ public abstract class Area {
         return this.items;
     }
 
-    public Area item(final Item item) {
+    public Area<S> item(final Item item) {
         this.items.add(item);
         return this;
     }
 
-    public Area removeItem(final Item item) {
+    public Area<S> removeItem(final Item item) {
         this.items.remove(item);
         return this;
     }
@@ -165,7 +160,7 @@ public abstract class Area {
         return this.dark;
     }
 
-    public Area dark(final boolean dark) {
+    public Area<S> dark(final boolean dark) {
         this.dark = dark;
         return this;
     }
@@ -174,7 +169,7 @@ public abstract class Area {
         return this.firstVisit;
     }
 
-    public Area firstVisit(final boolean firstVisit) {
+    public Area<S> firstVisit(final boolean firstVisit) {
         this.firstVisit = firstVisit;
         return this;
     }
@@ -183,7 +178,7 @@ public abstract class Area {
         return this.articleThe;
     }
 
-    public Area articleThe(final boolean the) {
+    public Area<S> articleThe(final boolean the) {
         this.articleThe = the;
         return this;
     }

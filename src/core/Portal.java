@@ -11,14 +11,14 @@ public class Portal {
     }
 
     private State locked;
-    private final Class<? extends Area> target;
+    private final Class<? extends Area<?>> target;
 
-    public Portal(final State locked, final Class<? extends Area> target) {
+    public Portal(final State locked, final Class<? extends Area<?>> target) {
         this.locked = locked;
         this.target = target;
     }
 
-    public Portal(final boolean locked, final Class<? extends Area> target) {
+    public Portal(final boolean locked, final Class<? extends Area<?>> target) {
         this(locked ? State.LOCKED : State.UNLOCKED, target);
     }
 
@@ -34,11 +34,11 @@ public class Portal {
         this.locked = State.UNLOCKED;
     }
 
-    public Class<? extends Area> getTarget() {
+    public Class<? extends Area<?>> getTarget() {
         return this.target;
     }
 
-    public Item getDoor(final Area currentArea) {
+    public Item getDoor(final Area<?> currentArea) {
         return currentArea.items().stream().filter(i -> i.portal() == this).findAny().orElse(null);
     }
 }

@@ -12,7 +12,7 @@ public class Hit extends Verb {
     public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
         final Player player = construct.getPlayer();
-        final Area area = player.getCurrentArea();
+        final Area<?> area = player.getCurrentArea();
 
         switch (noun.usage().stab()) {
             case STABABBLE:

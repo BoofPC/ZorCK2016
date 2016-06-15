@@ -3,7 +3,7 @@ package areas;
 import core.*;
 import items.*;
 
-public class Hallway09 extends Area {
+public class Hallway09 extends Area<NoState> {
     public Hallway09(final World containingWorld) {
         super(containingWorld);
 

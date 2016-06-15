@@ -235,7 +235,7 @@ public abstract class Item {
         return this.name.equals(str) || this.synonyms.contains(str);
     }
 
-    public void drop(final Area area) {
+    public void drop(final Area<?> area) {
         if (this.inside() != null) {
             area.item(this.inside());
             this.inside(null);
@@ -251,9 +251,9 @@ public abstract class Item {
         return this.received.contains(name);
     }
 
-    public void synchronizeDoor(final World world, final Area currentArea) {
+    public void synchronizeDoor(final World world, final Area<?> currentArea) {
         final Portal portal = this.portal();
-        final Area target = world.getArea(portal.getTarget());
+        final Area<?> target = world.getArea(portal.getTarget());
         final Direction direction = currentArea.direction(portal);
         final Direction oppDir;
         switch (direction) {

@@ -21,8 +21,10 @@ public class Debug extends Verb {
         final String leftovers = command.getLeftovers().trim();
         final String input = leftovers.substring(Math.min(5, leftovers.length()));
         if (input.startsWith(" teleport ")) {
-            final String areaName = input.substring(10);
-            final Class<? extends Area> area;
+            final String areaInput = input.substring(10);
+            final int endOfName = input.indexOf(' ');
+            final String areaName = areaInput.substring(0, endOfName);
+            final Class<? extends Area<?>> area;
             {
                 Class<?> area_;
                 try {
@@ -31,17 +33,24 @@ public class Debug extends Verb {
                     e.printStackTrace();
                     area_ = null;
                 }
-                area = area_ != null && Area.class.isAssignableFrom(area_) ? (Class<? extends Area>) area_ : null;
+                area = area_ != null && Area.class.isAssignableFrom(area_)
+                        ? (Class<? extends Area<?>>) area_ : null;
             }
             if (area == null) {
                 System.out.println("Invalid area.");
                 return;
             }
             final World world = construct.getWorld();
-            Area worldArea = world.getArea(area);
+            Area<?> worldArea = world.getArea(area);
             if (worldArea == null) {
+                final String areaLeftovers = areaInput.substring(endOfName + 1);
                 try {
-                    worldArea = area.getConstructor(World.class).newInstance(world);
+                    try {
+                        worldArea = area.getConstructor(World.class, String.class)
+                                .newInstance(world, areaLeftovers);
+                    } catch (final NoSuchMethodException e) {
+                        worldArea = area.getConstructor(World.class).newInstance(world);
+                    }
                 } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                         | InvocationTargetException | NoSuchMethodException | SecurityException e) {
                     e.printStackTrace();

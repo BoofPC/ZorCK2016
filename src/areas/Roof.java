@@ -7,7 +7,7 @@ import verbs.*;
 /**
  * This area contains toolbox. If you walk anywhere but west, you fall off of the roof and die.
  */
-public class Roof extends Area {
+public class Roof extends Area<NoState> {
 
     private int countdown = -1;
 

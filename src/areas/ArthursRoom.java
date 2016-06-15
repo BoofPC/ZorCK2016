@@ -9,7 +9,7 @@ import items.*;
  */
 
 
-public class ArthursRoom extends Area {
+public class ArthursRoom extends Area<NoState> {
 
     public ArthursRoom(final World containingWorld) {
         super(containingWorld);

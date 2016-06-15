@@ -19,7 +19,7 @@ import items.*;
  * Special States: n/a<br>
  * Items in room: Piano
  */
-public class PracticeRoom2 extends Area {
+public class PracticeRoom2 extends Area<NoState> {
 
     public PracticeRoom2(final World containingWorld) {
         super(containingWorld);

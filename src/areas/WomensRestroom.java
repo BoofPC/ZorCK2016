@@ -9,7 +9,7 @@ import verbs.Read;
  * using the plunger, which the girl in the stall gives you in exchange for toilet paper, on the
  * clogged toilet.
  */
-public class WomensRestroom extends Area {
+public class WomensRestroom extends Area<NoState> {
 
     public WomensRestroom(final World containingWorld) {
         super(containingWorld);

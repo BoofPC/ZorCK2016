@@ -4,7 +4,7 @@ import core.*;
 import items.*;
 
 
-public class BroadcastingRoom extends Area {
+public class BroadcastingRoom extends Area<NoState> {
 
     public BroadcastingRoom(final World containingWorld) {
         super(containingWorld);

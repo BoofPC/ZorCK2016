@@ -3,7 +3,7 @@ package areas;
 import core.*;
 import items.*;
 
-public class MensRestroom extends Area {
+public class MensRestroom extends Area<NoState> {
 
     public MensRestroom(final World containingWorld) {
         super(containingWorld);

@@ -11,7 +11,7 @@ import verbs.*;
  * to their death.
  */
 
-public class ConcreteGround extends Area {
+public class ConcreteGround extends Area<NoState> {
 
     public ConcreteGround(final World containingWorld) {
         super(containingWorld);

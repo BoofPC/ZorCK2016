@@ -3,7 +3,7 @@ package areas;
 import core.*;
 import items.*;
 
-public class BandRoom extends Area {
+public class BandRoom extends Area<NoState> {
 
     public BandRoom(final World containingWorld) {
         super(containingWorld);

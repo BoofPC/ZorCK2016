@@ -9,7 +9,7 @@ public class Player {
     private int hp;
     private int maxHp;
     private String name;
-    private Area currentArea;
+    private Area<?> currentArea;
     private int score;
     private boolean prayer;
     private Game.Status death;
@@ -32,7 +32,7 @@ public class Player {
 
     public String currentDescription() {
         final StringBuilder desc = new StringBuilder();
-        final Area currentArea = this.getCurrentArea();
+        final Area<?> currentArea = this.getCurrentArea();
         desc.append(currentArea.description());
         final List<Item> items = currentArea.items();
         for (final Item item : items) {
@@ -65,7 +65,7 @@ public class Player {
 
     public String currentShortDescription() {
         final StringBuilder desc = new StringBuilder();
-        final Area currentArea = this.getCurrentArea();
+        final Area<?> currentArea = this.getCurrentArea();
         desc.append(currentArea.shortDescription());
         final List<Item> items = currentArea.items();
         for (final Item item : items) {
@@ -144,11 +144,11 @@ public class Player {
                 .orElse(null);
     }
 
-    public Area getCurrentArea() {
+    public Area<?> getCurrentArea() {
         return this.currentArea;
     }
 
-    public void setCurrentArea(final Area area) {
+    public void setCurrentArea(final Area<?> area) {
         this.currentArea = area;
     }
 
