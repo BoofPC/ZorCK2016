@@ -4,17 +4,17 @@ import core.*;
 import items.Plunger;
 
 public class Plunge extends Verb {
-    
+
     public Plunge() {
         super("plunge", Verb.usage().noun(), "use plunger");
     }
 
     @Override
-    public void run(Command command, Context construct) {
+    public void run(final Command command, final Context construct) {
         final Item noun = command.getNoun();
         final Player player = construct.getPlayer();
         final Item.Usage usage = noun.usage();
-        
+
         if (player.hasItem(Plunger.class)) {
             switch (usage.plungable()) {
                 case PLUNGABLE:
@@ -28,5 +28,5 @@ public class Plunge extends Verb {
             System.out.println("You need a Plunger to do that!");
         }
     }
-    
+
 }

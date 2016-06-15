@@ -29,7 +29,7 @@ public class BoothsRoom extends Area {
 
         if (verb.getClass().equals(Type.class)) {
             if (leftovers.contains(context.getPassword())) {
-                getItem(BoothsComputer.class).usage().lock(Item.UNLOCKED);
+                this.getItem(BoothsComputer.class).usage().lock(Item.UNLOCKED);
                 context.getPlayer().addScore(10);
                 System.out.println("You unlocked Booth's Computer and changed your grade to an A!");
                 context.getPlayer().setDeath(Game.Status.WIN);

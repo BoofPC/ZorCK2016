@@ -16,8 +16,8 @@ public final class Context {
         this.world = world;
         this.state = new HashMap<>();
         this.skipGeneral = false;
-        Random rand = new Random();
-        int n = rand.nextInt(7);
+        final Random rand = new Random();
+        final int n = rand.nextInt(7);
         switch (n) {
             case 0:
                 this.password = "compsci_is_fun!";
@@ -41,8 +41,8 @@ public final class Context {
                 this.password = "Stay Classy, Central Kitsap";
                 break;
             default:
-                this.password = "Great Odin's Raven";    
-                break; 
+                this.password = "Great Odin's Raven";
+                break;
         }
         System.out.println(n);
     }
@@ -66,7 +66,7 @@ public final class Context {
     public boolean getSkipGeneral(){
         return this.skipGeneral;
     }
-    
+
     public String getPassword(){
         return this.password;
     }

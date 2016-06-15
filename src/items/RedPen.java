@@ -5,8 +5,6 @@
  */
 package items;
 
-import core.Command;
-import core.Context;
 import core.Item;
 
 /**
@@ -14,7 +12,7 @@ import core.Item;
  * @author place2849t
  */
 public class RedPen extends Item {
-    
+
     public RedPen(){
         super();
         this.usage()

@@ -13,7 +13,7 @@ import core.*;
  * @author flowers9695r
  */
 public class Cupboard extends Item{
-    
+
     public Cupboard(){
         super();
         this.usage().take(Item.BOLTED_DOWN).open(Item.CLOSED);

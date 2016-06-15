@@ -3,7 +3,7 @@ package areas;
 import core.*;
 
 public class CrampedHall extends Area {
-    public CrampedHall(World containingWorld) {
+    public CrampedHall(final World containingWorld) {
         super(containingWorld);
         this.portals().south(new Portal(false, PracticeRoom1.class));
         this.portals().east(new Portal(false, PracticeRoom2.class));

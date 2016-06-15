@@ -21,19 +21,17 @@ import items.*;
  */
 public class PracticeRoom2 extends Area {
 
-    public PracticeRoom2(World containingWorld) {
+    public PracticeRoom2(final World containingWorld) {
         super(containingWorld);
         this.portals().north(new Portal(false, CrampedHall.class));
         this.title("Second Practice Room")
                 .description("This is the second practice room, with a doorway "
                         + "leading north. A cupboard stands against the east wall, but"
                         + " the place looks ransacked.")
-                .shortDescription("This is the second practice room.")
-                .item(new Cupboard())
+                .shortDescription("This is the second practice room.").item(new Cupboard())
                 .dark(true)
                 .taste("Why would you want to lick the room?"
-                    + " People dumped their spit valves out on the floor!")
-                .sound("You hear the echos of your breathing.")
-                .smell("You smell old sweat.");
+                        + " People dumped their spit valves out on the floor!")
+                .sound("You hear the echos of your breathing.").smell("You smell old sweat.");
     }
 }

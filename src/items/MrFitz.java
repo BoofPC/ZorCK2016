@@ -8,7 +8,7 @@ import core.*;
  */
 
 public class MrFitz extends Item{
-    
+
     public MrFitz(){
         super();
         this.usage().talk(Item.TALK);
@@ -18,6 +18,6 @@ public class MrFitz extends Item{
                 + " your soul. 'Sup?', he says, making the situation even more awkward.")
             .taste("You can't taste a person!")
             .smell("Smells like coffee.")
-            .sound("Mr. Fitz is slurping his coffee.");     
+            .sound("Mr. Fitz is slurping his coffee.");
     }
 }

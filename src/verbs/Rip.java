@@ -14,7 +14,7 @@ public class Rip extends Verb{
     public Rip(){
         super("rip",Verb.usage().noun(),"rip_on");
     }
-    
+
     @Override
     public void run(final Command command, final Context construct) {
         switch (command.getNoun().usage().use()){
@@ -24,9 +24,9 @@ public class Rip extends Verb{
             case NO_USE:
                 System.out.println("No ripping for you hahahaha");
                 break;
-        }      
-                
-    }    
+        }
+
+    }
 }
 
 

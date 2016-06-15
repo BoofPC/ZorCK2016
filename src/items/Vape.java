@@ -11,7 +11,7 @@ import core.*;
  * @author thomas0615d
  */
 public class Vape extends Item{
-    
+
     public Vape(){
         super();
         this.usage()
@@ -21,7 +21,7 @@ public class Vape extends Item{
                 .synonym("vape")
                 .examine("It's a Vape")
                 .taste("It tastes organic...Like Mountain Dew");
-                
+
     }
 
     @Override

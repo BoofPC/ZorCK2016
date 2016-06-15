@@ -8,7 +8,7 @@ import core.*;
  */
 
 public class Desk extends Item{
-    
+
     public Desk (){
         super();
         this.usage()

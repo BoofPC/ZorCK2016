@@ -15,7 +15,7 @@ public class PostIt extends Item {
     }
 
     @Override
-    public boolean interact(Command command, Context context) {
+    public boolean interact(final Command command, final Context context) {
         this.read("PASSWORD: " + context.getPassword());
         return false;
     }

@@ -5,7 +5,7 @@ import items.*;
 
 public class BandRoom extends Area {
 
-    public BandRoom(World containingWorld) {
+    public BandRoom(final World containingWorld) {
         super(containingWorld);
         this.portals().south(new Portal(false, CrampedHall.class));
         this.title("Band Room")
@@ -13,8 +13,7 @@ public class BandRoom extends Area {
                         + " boiler that appears to have fallen through the celing"
                         + " takes up most of it. Behind it are multiple strange instruments."
                         + " One vaugely reminds you of a piano.")
-                .shortDescription("This is the band room.")
-                .item(new Vibraphone()).dark(true);
+                .shortDescription("This is the band room.").item(new Vibraphone()).dark(true);
     }
 
     @Override

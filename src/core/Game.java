@@ -48,7 +48,7 @@ public class Game {
                 .addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk()).addVerb(new Taste())
                 .addVerb(new Throw()).addVerb(new TurnOff()).addVerb(new TurnOn()).addVerb(new Type())
                 .addVerb(new Unlock()).addVerb(new Use()).addVerb(new Rip());
-                        
+
 
         //Add all Areas to the new world
         /*

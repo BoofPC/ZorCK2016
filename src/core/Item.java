@@ -315,7 +315,7 @@ public abstract class Item {
     }
 
     public static final class Usage {
-        private Sit can_sit = Sit.CANNOT_SIT;      
+        private Sit can_sit = Sit.CANNOT_SIT;
         private Visible visible = Visible.VISIBLE;
         private Take take = Take.UNTAKABLE;
         private Food food = Food.UNEDIBLE;
@@ -337,11 +337,11 @@ public abstract class Item {
         private Plungable plungable = Plungable.UNPLUNGABLE;
 
         public Usage() {}
-        
+
         public static enum Sit {
             CAN_SIT, CANNOT_SIT
         }
-        
+
         public static enum Visible {
             VISIBLE, HIDDEN
         }
@@ -394,16 +394,16 @@ public abstract class Item {
         public static enum Use {
             NO_USE, USABLE
         }
-        
+
         public Sit can_sit(){
             return this.can_sit;
         }
-        
+
         public Usage can_sit(final Sit o){
             this.can_sit = o;
             return this;
         }
-        
+
         public Visible visible() {
             return this.visible;
         }
@@ -411,11 +411,11 @@ public abstract class Item {
         public static enum Puttable{
             PUTTABLE,UNPUTTABLE
         }
-        
+
         public static enum Plungable {
             PLUNGABLE, UNPLUNGABLE
         }
-        
+
         public Usage visible(final Visible o) {
             this.visible = Visible.VISIBLE;
             return this;
@@ -573,11 +573,11 @@ public abstract class Item {
             this.puttable = o;
             return this;
         }
-        
+
         public Plungable plungable() {
             return this.plungable;
         }
-        
+
         public Usage plungable(final Plungable o) {
             this.plungable = o;
             return this;

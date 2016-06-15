@@ -1,14 +1,9 @@
 package items;
 
 import core.*;
-/**
- *
- * @author coons5457w
- */
+
 public class Kiddies extends Item{
-    
-    private boolean ate;
-    
+
     public Kiddies(){
         super();
         this.usage().talk(Item.TALK);
@@ -20,4 +15,3 @@ public class Kiddies extends Item{
             .sound("Lips smacking.");
     }
 }
-    

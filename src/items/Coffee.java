@@ -12,9 +12,9 @@ import core.*;
  * @author coons5457w
  */
 public class Coffee extends Item{
-    
+
     private boolean drank;
-    
+
     public Coffee (){
         super();
         this.usage().take(Item.TAKABLE).drink(Item.DRINKABLE);
@@ -24,20 +24,20 @@ public class Coffee extends Item{
             .sound("There is no particular sound.")
             .synonym("Coffee", "cup of coffee")
             .examine("A cup of coffee. It looks very bitter.");
-        drank = false;
+        this.drank = false;
     }
-    
+
     @Override
     public boolean interact(final Command command, final Context context){
-        if(command.getVerb().getTitle().equals("Drink") && 
-            command.getNoun().name().equals("coffee") && !drank){
+        if(command.getVerb().getTitle().equals("Drink") &&
+            command.getNoun().name().equals("coffee") && !this.drank){
             context.getPlayer().setMaxHp(context.getPlayer().getMaxHp() + 1);
             context.getPlayer().setHp(context.getPlayer().getHp() + 1);
             context.getPlayer().getCurrentArea().removeItem(command.getNoun());
             System.out.println("You drank the coffee. It tastes very bitter.");
             System.out.println("Your max HP just went up by 1!");
-            drank = true;
-            return true; 
+            this.drank = true;
+            return true;
         }
         return false;
     }

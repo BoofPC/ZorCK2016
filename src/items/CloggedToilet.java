@@ -4,7 +4,7 @@ import core.*;
 
 public class CloggedToilet extends Item {
     private Item contents = new Key.RestroomWindow();
-    
+
     public CloggedToilet() {
         super();
         this.usage().take(Item.BOLTED_DOWN).plungable(Item.PLUNGABLE);
@@ -13,18 +13,18 @@ public class CloggedToilet extends Item {
             .synonym("toilet")
             .examine("A clogged toilet");
     }
-    
+
     @Override
     public boolean interact(final Command command, final Context context) {
-        final Verb verb = command.getVerb(); 
+        final Verb verb = command.getVerb();
         final Player player = context.getPlayer();
-        
+
         //verb Plunge checks for plunger in inventory
         if (verb.getTitle().equals("plunge")) {
             if (this.contents != null) {
-                player.getCurrentArea().item(contents);
+                player.getCurrentArea().item(this.contents);
                 System.out.println("The toilet geysers and shoots out a "
-                + contents.name());
+                + this.contents.name());
                 this.contents = null;
             } else {
                 System.out.println("Nothing happens.");

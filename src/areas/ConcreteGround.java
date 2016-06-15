@@ -26,7 +26,8 @@ public class ConcreteGround extends Area {
         final Player player = context.getPlayer();
         if (this.firstVisit()) {
             final List<Item> inventory = player.getInventory();
-            inventory.stream().filter(i -> i.usage().take() == Item.TAKABLE).forEach(this.items()::add);
+            inventory.stream().filter(i -> i.usage().take() == Item.TAKABLE)
+                    .forEach(this.items()::add);
             inventory.removeIf(i -> i.usage().take() == Item.TAKABLE);
             final MrBooth booth = this.getItem(MrBooth.class);
             if (booth == null) {
@@ -34,7 +35,8 @@ public class ConcreteGround extends Area {
                 player.setDeath(Game.Status.SUICIDE);
             } else {
                 booth.changeState(MrBooth.State.FALLEN);
-                this.articleThe(false).title("an area with concrete ground").description("That's a lot of concrete.");
+                this.articleThe(false).title("an area with concrete ground")
+                        .description("That's a lot of concrete.");
                 System.out
                         .println("Well, you're not dead. You must have really wanted that grade.");
             }

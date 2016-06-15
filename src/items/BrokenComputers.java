@@ -3,7 +3,7 @@ import core.*;
 import verbs.Use;
 
 public class BrokenComputers extends Item {
-    
+
     public BrokenComputers() {
         super();
         this.name("Broken Computers")
@@ -15,7 +15,7 @@ public class BrokenComputers extends Item {
                 .smell("They smell like they're broken.")
                 .taste("They taste like they're broken.");
     }
-    
+
     @Override
     public boolean interact(final Command command, final Context context) {
         final Verb verb = command.getVerb();

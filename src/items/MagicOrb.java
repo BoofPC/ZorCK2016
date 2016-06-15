@@ -19,6 +19,6 @@ public class MagicOrb extends Item {
         // The object can be taken
         this.usage().take(Item.TAKABLE);
         this.name("Magic Orb").synonym("magic orb", "orb", "magic ball")
-                .examine("It looks like it would do something special if " + "you took it");
+                .examine("It looks like it would do something special if you took it");
     }
 }

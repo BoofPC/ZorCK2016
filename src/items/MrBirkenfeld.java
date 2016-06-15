@@ -18,9 +18,9 @@ public class MrBirkenfeld extends Item{
                 .recieve(Item.RECIEVE);
         this.name("mr.birkenfeld")
             .synonym("mr birkenfeld", "birkenfeld")
-            .sound("I am Barkbackman");     
-    }    
-    
+            .sound("I am Barkbackman");
+    }
+
     @Override
     public boolean interact(final Command command, final Context context){
         if (command.getVerb().getTitle().equals("talk") && (command.getNoun().name().equals("mr.birkenfeld"))) {
@@ -34,5 +34,5 @@ public class MrBirkenfeld extends Item{
             return true;
         }
         return false;
-    }    
+    }
 }

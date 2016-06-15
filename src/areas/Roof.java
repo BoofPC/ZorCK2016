@@ -58,7 +58,7 @@ public class Roof extends Area {
             super.interact(command, context);
         } else if (verbClass.equals(Take.class) && nounClass.equals(Toolbox.class)) {
             this.sound("Sounds like there's no toolbox here.")
-                    .smell("It smells" + " like there's no toolbox here.");
+                    .smell("It smells like there's no toolbox here.");
             command.getVerb().run(command, context);
         } else if (verbClass.equals(Throw.class) && nounClass.equals(MrBooth.class)) {
             System.out.println("You toss Mr. Booth off the edge of the roof. You monster.");
