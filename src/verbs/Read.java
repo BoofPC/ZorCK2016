@@ -15,7 +15,7 @@ public class Read extends Verb {
         switch (noun.usage().read()) {
             case READABLE:
                 if (noun.read() != null) {
-                    System.out.println(noun.read());
+                    System.out.println("\"" + noun.read() + "\"");
                 } else {
                     System.out.println("It says nothing important.");
                 }

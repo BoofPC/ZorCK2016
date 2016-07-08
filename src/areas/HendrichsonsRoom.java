@@ -19,23 +19,6 @@ public class HendrichsonsRoom extends Area<NoState> {
 
     @Override
     public void interact(final Command command, final Context context) {
-        final Verb verb = command.getVerb();
-        final Item noun = command.getNoun();
-        //This is unnecessary
-        if (verb.getTitle().equals("look")) {
-            System.out.println(this.shortDescription());
-        } else {
-            if (verb.getTitle().equals("take") && noun.equals("balloon")) {
-                System.out.println("The saliva from the previous user of the balloon "
-                        + "acts as adhesive to keep the balloon on the ground.");
-            } else if (verb.getTitle().equals("drink")
-                    && (noun.equals("chemical") || noun.equals("chemicals"))) {
-                final Player player = context.getPlayer();
-                System.out.println("Bad choice. You have died.");
-                player.setDeath(Game.Status.SUICIDE);
-            } else {
-                super.interact(command, context);
-            }
-        }
+        super.interact(command, context);
     }
 }

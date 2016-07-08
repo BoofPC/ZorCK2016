@@ -18,22 +18,6 @@ public class SchuchartsRoom extends Area<NoState> {
 
     @Override
     public void interact(final Command command, final Context context) {
-        final Verb verb = command.getVerb();
-        if (verb.getTitle().equals("look") || verb.getTitle().equals("look around")) {
-            System.out.println(this.shortDescription());
-        } else {
-            final Item noun = command.getNoun();
-            if (verb.getTitle().equals("examine")
-                    && (noun.equals("bin") || noun.equals("recycling bin"))) {
-                System.out.println("Oh, hey, look! \nIt's your homework assignment. \n");
-                context.getPlayer().addItem(new Assignment());
-            } else if (verb.getTitle().equals("examine")
-                    && (noun.equals("desk") || noun.equals("my desk")) || noun.equals("the desk")) {
-                System.out.println("Don't be selfish, you're not\n"
-                        + "the only one who sits here. It's been\ncleaned out.");
-            } else {
-                super.interact(command, context);
-            }
-        }
+        super.interact(command, context);
     }
 }

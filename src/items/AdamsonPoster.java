@@ -45,7 +45,8 @@ public class AdamsonPoster extends Item {
         + "..........-ddddddy/sy-.```...``+ddhdhdddhddddddddd\n"
         + "..........yddhhdssMMd   ```` `sddddhdhddhddddddddd\n"
         + ".....----/ddhhds/MMMM+ ```  -hddddddddddhddddddddd\n"
-        + "......---sdhhdyoNMMMMN.`   /ddddhhddddddddddhhdddh");
+        + "......---sdhhdyoNMMMMN.`   /ddddhhddddddddddhhdddh\n"
+        + "  He is always watching. He is always watching.");
         //@formatter:on
     }
 }

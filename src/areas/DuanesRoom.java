@@ -25,10 +25,9 @@ public class DuanesRoom extends Area<NoState> {
     @Override
     public void interact(final Command command, final Context context) {
         if (command.getVerb().hasMatching("Use")
-                && command.getNoun().hasMatching("Laser Pointer")) {
+                && command.getNoun().hasMatching("Lazer Pointer")) {
             System.out.println(
-                    "The cat jumps up on the self and knocks over some treats. You eat them.");
-            context.getPlayer().addHp(10);
+                    "The cat jumps up on the self and knocks over some snacks.");
         } else {
             super.interact(command, context);
         }
