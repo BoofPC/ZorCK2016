@@ -13,7 +13,7 @@ public class BandRoom extends Area<NoState> {
                         + " boiler that appears to have fallen through the celing"
                         + " takes up most of it. Behind it are multiple strange instruments."
                         + " One vaugely reminds you of a piano.")
-                .shortDescription("This is the band room.").item(new Vibraphone()).dark(true);
+                .shortDescription("This is the band room.").dark(true);
     }
 
     @Override

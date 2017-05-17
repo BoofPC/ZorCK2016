@@ -18,7 +18,6 @@ public class StaffLounge extends Area<NoState> {
                 .shortDescription("There is a couch.").articleThe(true)
                 .smell("Smells like something is in the microwave.")
                 .sound("You hear nothing over the annoying sound of the refrigerator.")
-                .item(new VendingMachine())
                 .item(new Door(true, "Northern Door", Key.StaffLounge.class,
                         this.portals().north()));
     }

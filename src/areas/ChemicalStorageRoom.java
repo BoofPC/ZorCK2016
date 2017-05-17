@@ -15,7 +15,7 @@ public class ChemicalStorageRoom extends Area<NoState> {
                 .shortDescription("You're in the Chemical Storage room. You feel light headed.")
                 .articleThe(true)
                 .item(new Door(false, "Southern Door", null, this.portals().south()))
-                .item(new Chemical()).item(new Vape());
+                .item(new Chemical());
     }
 
     @Override

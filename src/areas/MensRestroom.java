@@ -21,7 +21,7 @@ public class MensRestroom extends Area<NoState> {
 
     @Override
     public void interact(final Command command, final Context context) {
-        final Verb verb = command.getVerb();
+        /* Verb verb = command.getVerb();
         if (verb.getTitle().equals("look") || verb.getTitle().equals("look around")) {
             System.out.println(this.shortDescription());
         } else {
@@ -37,6 +37,6 @@ public class MensRestroom extends Area<NoState> {
             } else {
                 super.interact(command, context);
             }
-        }
+        }*/
     }
 }
