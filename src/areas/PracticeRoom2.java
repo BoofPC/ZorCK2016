@@ -22,7 +22,6 @@ public class PracticeRoom2 extends Area<NoState> {
 
     public PracticeRoom2(final World containingWorld) {
         super(containingWorld);
-        this.portals().north(new Portal(false, CrampedHall.class));
         this.title("Second Practice Room")
                 .description("This is the second practice room, with a doorway "
                         + "leading north. A cupboard stands against the east wall, but"

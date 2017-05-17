@@ -69,7 +69,7 @@ public class Game {
                 .addArea(Hallway10.class).addArea(Hallway11.class).addArea(Hallway12.class)
                 .addArea(Hallway13.class).addArea(Hallway14.class).addArea(Hallway15.class)
                 .addArea(Hallway16.class).addArea(Hallway17.class);
-        world.addArea(AdamsonsRoom.class).addArea(ArthursRoom.class).addArea(BirkenfeldsRoom.class)
+        world.addArea(AdamsonsRoom.class).addArea(BirkenfeldsRoom.class)
                 .addArea(BoothsRoom.class).addArea(BroadcastingRoom.class)
                 .addArea(ChemicalStorageRoom.class).addArea(CompSciRoom.class)
                 .addArea(ConcreteGround.class).addArea(ConferenceRoom01.class)

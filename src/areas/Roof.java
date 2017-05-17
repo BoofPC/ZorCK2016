@@ -15,8 +15,7 @@ public class Roof extends Area<NoState> {
         super(containingWorld);
 
         this.portals().south(new Portal(Portal.State.UNLOCKED, ConcreteGround.class))
-                .west(new Portal(Portal.State.UNLOCKED, WomensRestroom.class))
-                .down(new Portal(Portal.State.UNLOCKED, BandRoom.class));
+                .west(new Portal(Portal.State.UNLOCKED, WomensRestroom.class));
 
         this.title("Roof").articleThe(true)
                 .description("The roof is largely empty. Only a small red "

@@ -6,7 +6,6 @@ import items.*;
 public class PracticeRoom1 extends Area<NoState> {
     public PracticeRoom1(final World containingWorld) {
         super(containingWorld);
-        this.portals().north(new Portal(false, CrampedHall.class));
         this.title("First Practice Room")
                 .description("This is the first practice room, with a doorway "
                         + "leading north. Tattered carpet hangs from the walls, and"
