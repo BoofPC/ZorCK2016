@@ -22,8 +22,7 @@ public class Cafeteria extends Area<Cafeteria.State> {
                 .description("It's the cafeteria. Up takes you the third floor via Elevator. "
                         + "Down is the Secret passage. There are a group of kids eating lunch.")
                 .shortDescription("It's the cafeteria.").articleThe(true).taste("Pizza.")
-                .smell("Pizza.").sound("Chattering.").state(new State()).item(new Kiddies())
-                .item(new FitzLunch());
+                .smell("Pizza.").sound("Chattering.").state(new State()).item(new Kiddies());
     }
 
     @Override
@@ -40,13 +39,6 @@ public class Cafeteria extends Area<Cafeteria.State> {
             context.getPlayer().setHp(context.getPlayer().getHp() + 3);
             context.getPlayer().getCurrentArea().removeItem(command.getNoun());
             context.getPlayer().setHp(context.getPlayer().getHp() - 3);
-        } else if (command.getVerb().getTitle().equals("Take")
-                && command.getNoun().name().equals("fitz's lunch") && !state.takeLunch) {
-            System.out.println("You took Mr. Fitz's lunch and put it in the bag.");
-            System.out.println("A kid attacked! 2 damage!");
-            state.takeLunch = true;
-            context.getPlayer().setHp(context.getPlayer().getHp() - 2);
-            context.getPlayer().addItem(new FitzLunch());
         } else {
             super.interact(command, context);
         }

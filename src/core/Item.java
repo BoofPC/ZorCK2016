@@ -121,6 +121,7 @@ public abstract class Item {
         return this.name;
     }
 
+    //chanages name
     public Item name(final String name) {
         this.name = name;
         return this;
@@ -584,7 +585,7 @@ public abstract class Item {
         }
     }
 
-    // java: i cry everytim
+    // java: i cry everytime
     public static final Usage.Sit CAN_SIT = Usage.Sit.CAN_SIT;
     public static final Usage.Sit CANNOT_SIT = Usage.Sit.CANNOT_SIT;
     public static final Usage.Visible VISIBLE = Usage.Visible.VISIBLE;

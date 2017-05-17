@@ -23,7 +23,6 @@ public class BroadcastingRoom extends Area<NoState> {
         this.item(new Door(false, "Door to Mr Adamson's room", null, this.portals().east()));
 
 
-        this.item(new DuckOfDoom());
         this.item(new LaserPointer());
     }
 

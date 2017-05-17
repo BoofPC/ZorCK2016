@@ -145,7 +145,7 @@ public class Game {
                     System.out.println("See you again soon!");
                     break;
                 case WIN:
-                    System.out.println("A winnner is you!");
+                    System.out.println("A winner is you!");
                     break;
                 default:
             }

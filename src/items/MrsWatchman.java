@@ -25,7 +25,6 @@ public class MrsWatchman extends Item {
                 System.out.println(
                         "You found the key. Thank you, and here is the information I promise");
                 context.getPlayer().removeItem(key);
-                context.getPlayer().addItem(new IncriminatingEvidence());
             }
             return true;
         }

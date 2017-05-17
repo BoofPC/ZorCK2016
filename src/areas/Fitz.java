@@ -24,7 +24,7 @@ public class Fitz extends Area<Fitz.State> {
                         + " and a desk.")
                 .shortDescription("This is Mr. Fitz's Room.").taste("It tastes of sadness.")
                 .smell("It smells of coffee.").sound("Fernat's last therorem being solved.")
-                .item(new MrFitz()).item(new FitzLunch()).item(new Coffee()).item(new Desk());
+                .item(new MrFitz()).item(new Coffee()).item(new Desk());
     }
 
     @Override
@@ -66,13 +66,6 @@ public class Fitz extends Area<Fitz.State> {
             context.getPlayer().setHp(context.getPlayer().getHp() - 5);
             state.takeLunch = true;
             state.eatLunch = true;
-        } else if (command.getVerb().getTitle().equals("Take")
-                && command.getNoun().name().equals("lunch") && !state.takeLunch) {
-            System.out.println("You took Mr. Fitz's lunch and put it in the bag.");
-            System.out.println("Mr. Fitz attacked! 5 damage!");
-            context.getPlayer().setHp(context.getPlayer().getHp() - 5);
-            context.getPlayer().addItem(new FitzLunch());
-            state.takeLunch = true;
         } else {
             super.interact(command, context);
         }

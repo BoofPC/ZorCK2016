@@ -28,7 +28,7 @@ public class PracticeRoom2 extends Area<NoState> {
                 .description("This is the second practice room, with a doorway "
                         + "leading north. A cupboard stands against the east wall, but"
                         + " the place looks ransacked.")
-                .shortDescription("This is the second practice room.").item(new Cupboard())
+                .shortDescription("This is the second practice room.")
                 .dark(true)
                 .taste("Why would you want to lick the room?"
                         + " People dumped their spit valves out on the floor!")

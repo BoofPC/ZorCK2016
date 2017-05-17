@@ -17,8 +17,6 @@ public class Hallway07 extends Area<NoState> {
                         + "side is a staircase that has been barricaded with chairs. "
                         + "The hallway continues to the west. A stale cracker lies in "
                         + "the center of the hallway.")
-                .articleThe(true).shortDescription("This is the end of the hallway.")
-
-                .item(new Cracker());
+                .articleThe(true).shortDescription("This is the end of the hallway.");
     }
 }
