@@ -22,8 +22,7 @@ public class Roof extends Area<NoState> {
                 .description("The roof is largely empty. Only a small red "
                         + "toolbox lies on the ground. To the south is the edge of "
                         + "the roof. To the west is a window leading to the Women's Restroom.")
-                .sound("You can hear the toolbox.").smell("It smells like a red toolbox.")
-                .item(new Toolbox()).item(new ZiplineDown());
+                .sound("You can hear the toolbox.").smell("It smells like a red toolbox.");
     }
 
     @Override
@@ -56,10 +55,6 @@ public class Roof extends Area<NoState> {
         if (verbClass.equals(Move.class) && direction == World.Direction.SOUTH) {
             System.out.println("Whoops. You walked off of the roof.");
             super.interact(command, context);
-        } else if (verbClass.equals(Take.class) && nounClass.equals(Toolbox.class)) {
-            this.sound("Sounds like there's no toolbox here.")
-                    .smell("It smells like there's no toolbox here.");
-            command.getVerb().run(command, context);
         } else if (verbClass.equals(Throw.class) && nounClass.equals(MrBooth.class)) {
             System.out.println("You toss Mr. Booth off the edge of the roof. You monster.");
             final MrBooth booth = (MrBooth) noun;

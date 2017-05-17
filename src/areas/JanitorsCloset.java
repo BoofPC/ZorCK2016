@@ -12,8 +12,7 @@ public class JanitorsCloset extends Area<NoState> {
                 .description("A dark old Janitor's Closet. The room is oddly humid... "
                         + "You see a pair of extraordinarily sharp scissors on the floor.")
                 .shortDescription("This is the Janitor's Closet. There's a small planter with grass"
-                        + "and door leaving where you entered to the east")
-                .item(new Scissors());
+                        + "and door leaving where you entered to the east");
     }
 }
 

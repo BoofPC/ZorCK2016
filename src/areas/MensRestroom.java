@@ -17,7 +17,6 @@ public class MensRestroom extends Area<NoState> {
                 .taste("That sounds unsanitary at best.")
                 .sound("Thankfully, there are no other sounds.")
                 .item(new Door(false, "Southern Door", null, this.portals().south()));
-        this.item(new Ketchup());
     }
 
     @Override

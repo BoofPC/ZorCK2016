@@ -17,7 +17,6 @@ import items.*;
  * Sound: You hear echos of your breathing<br>
  * Taste: Why would you want to lick the room? People dumped their spit valves out on the floor!<br>
  * Special States: n/a<br>
- * Items in room: Piano
  */
 public class PracticeRoom2 extends Area<NoState> {
 

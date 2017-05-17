@@ -16,7 +16,6 @@ public class WatchmansRoom extends Area<NoState> {
                         + " and a door to the east that leads to hallway06.")
                 .shortDescription("This is Mrs.Watchman's room.")
                 .item(new Door(false, "Eastern Door", null, this.portals().east()))
-                .item(new Door(false, "Northern Door", null, this.portals().north()))
-                .item(new MrsWatchman());
+                .item(new Door(false, "Northern Door", null, this.portals().north()));
     }
 }

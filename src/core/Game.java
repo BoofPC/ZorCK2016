@@ -89,7 +89,6 @@ public class Game {
 
         //Setting initial area for player
         player.setCurrentArea(world.getArea(CompSciRoom.class));
-        player.addItem(new NoTea());
         final Context construct = new Context(player, world);
 
         //Fun printed start stuff @formatter:off

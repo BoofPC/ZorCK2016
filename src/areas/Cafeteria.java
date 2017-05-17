@@ -22,7 +22,7 @@ public class Cafeteria extends Area<Cafeteria.State> {
                 .description("It's the cafeteria. Up takes you the third floor via Elevator. "
                         + "Down is the Secret passage. There are a group of kids eating lunch.")
                 .shortDescription("It's the cafeteria.").articleThe(true).taste("Pizza.")
-                .smell("Pizza.").sound("Chattering.").state(new State()).item(new Kiddies());
+                .smell("Pizza.").sound("Chattering.").state(new State());
     }
 
     @Override

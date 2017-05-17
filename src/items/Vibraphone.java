@@ -13,7 +13,6 @@ public class Vibraphone extends Item {
                         "not a snare", "not a drum", "not a bass drum", "not a piano")
                 .examine("A very strange looking piano. It has brassy looking bars"
                         + " across the top with tube underneath. There appears to be a"
-                        + " motor attached to a flippy thing between the bars and tubes.")
-                .inside(new Motor());
+                        + " motor attached to a flippy thing between the bars and tubes.");
     }
 }

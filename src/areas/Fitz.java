@@ -24,7 +24,7 @@ public class Fitz extends Area<Fitz.State> {
                         + " and a desk.")
                 .shortDescription("This is Mr. Fitz's Room.").taste("It tastes of sadness.")
                 .smell("It smells of coffee.").sound("Fernat's last therorem being solved.")
-                .item(new MrFitz()).item(new Coffee()).item(new Desk());
+                .item(new Coffee()).item(new Desk());
     }
 
     @Override

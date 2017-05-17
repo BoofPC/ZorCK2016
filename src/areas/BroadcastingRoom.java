@@ -22,8 +22,6 @@ public class BroadcastingRoom extends Area<NoState> {
         // (Here, the door faces south)
         this.item(new Door(false, "Door to Mr Adamson's room", null, this.portals().east()));
 
-
-        this.item(new LaserPointer());
     }
 
 }

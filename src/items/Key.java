@@ -43,12 +43,6 @@ public class Key extends Item {
         }
     }
 
-    public static class Toolbox extends Key {
-        public Toolbox() {
-            super("Toolbox Key", "A key to the toolbox");
-        }
-    }
-
     public static class RestroomWindow extends Key {
         public RestroomWindow() {
             super("Women's Restroom Window Key", "A key to the window in the Women's Restroom");
