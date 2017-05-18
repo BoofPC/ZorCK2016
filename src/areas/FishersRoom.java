@@ -9,7 +9,8 @@ public class FishersRoom extends Area<NoState> {
     public FishersRoom(final World containingWorld) {
         super(containingWorld);
         this.portals().south(new Portal(Portal.State.UNLOCKED, Hallway17.class));
-        this.description("You are in Fisher's room as various papers on "
+        this.title("Ms. Fisher's Room")
+                .description("You are in Fisher's room as various papers on "
                 + "the downfall of the Ming Empire and essays as well as Silk "
                 + "Roads trading changed China while a Reggae-sounding song "
                 + "blares through the speakers. There is a lantern on the floor.")

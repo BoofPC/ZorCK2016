@@ -8,11 +8,9 @@ public class Hallway15 extends Area<NoState> {
         super(containingWorld);
 
         this.portals().north(new Portal(false, OishisRoom.class))
-                .south(new Portal(false, GharstsRoom.class))
                 .west(new Portal(false, Hallway16.class)).east(new Portal(false, Hallway14.class));
         this.title("Hallway").description("----------").shortDescription("-----").articleThe(true)
 
-                .item(new Door(false, "Northern Door", null, this.portals().north()))
-                .item(new Door(false, "Southern Door", null, this.portals().south()));
+                .item(new Door(false, "Northern Door", null, this.portals().north()));
     }
 }

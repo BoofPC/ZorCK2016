@@ -71,21 +71,15 @@ public class Game {
                 .addArea(Hallway16.class).addArea(Hallway17.class);
         world.addArea(AdamsonsRoom.class).addArea(BirkenfeldsRoom.class)
                 .addArea(BoothsRoom.class).addArea(BroadcastingRoom.class)
-                .addArea(ChemicalStorageRoom.class).addArea(CompSciRoom.class)
+                .addArea(CompSciRoom.class)
                 .addArea(ConcreteGround.class).addArea(ConferenceRoom01.class)
-                .addArea(ConferenceRoom02.class).addArea(DuanesRoom.class)
-                .addArea(FishersRoom.class).addArea(GharstsRoom.class)
-                .addArea(HendrichsonsRoom.class).addArea(ISSRoom.class).addArea(JorstadsRoom.class)
-                .addArea(KUGRRoom.class).addArea(KasslersRoom.class).addArea(Library.class)
-                .addArea(MensRestroom.class).addArea(OishisRoom.class).addArea(RomarosRoom.class)
-                .addArea(Roof.class).addArea(RosenquistsRoom.class).addArea(SchuchartsRoom.class)
-                .addArea(SecretPassage.class).addArea(SecurityRoom.class).addArea(StaffLounge.class)
-                .addArea(StakersRoom.class).addArea(WatchmansRoom.class).addArea(WilsonsRoom.class)
-                .addArea(WomensRestroom.class)
-                .addArea(JanitorsCloset.class)
-                .addArea(Fitz.class)
-                .addArea(Cafeteria.class)
-                .addArea(SecretPassageLevel1.class);
+                .addArea(ConferenceRoom02.class)
+                .addArea(FishersRoom.class)
+                .addArea(ISSRoom.class)
+                .addArea(Library.class).addArea(OishisRoom.class)
+                .addArea(Roof.class)
+                .addArea(SecretPassage.class).addArea(StaffLounge.class)
+                .addArea(WomensRestroom.class);
 
         //Setting initial area for player
         player.setCurrentArea(world.getArea(CompSciRoom.class));

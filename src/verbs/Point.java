@@ -11,7 +11,7 @@ public class Point extends Verb {
 
     @Override
     public void run(final Command command, final Context construct) {
-        if(construct.getPlayer().hasItem("Laser Pointer") && command.getNoun().hasMatching("snacks") && construct.getPlayer().getCurrentArea().equals("DuanesRoom")){
+        if(construct.getPlayer().hasItem("Laser Pointer") && command.getNoun().hasMatching("snacks")){
             System.out.println("The cat jumps up on the self and knocks "
                     + "over some treats. You eat them.");
             construct.getPlayer().addHp(10);

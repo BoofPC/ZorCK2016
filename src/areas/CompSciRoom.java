@@ -8,14 +8,12 @@ public class CompSciRoom extends Area<NoState> {
 
     public CompSciRoom(final World containingWorld) {
         super(containingWorld);
-        this.portals().east(new Portal(Portal.State.UNLOCKED, Hallway05.class))
-                .south(new Portal(Portal.State.LOCKED, WatchmansRoom.class));
+        this.portals().east(new Portal(Portal.State.UNLOCKED, Hallway05.class));
         this.title("Comp. Sci. Room").articleThe(true)
                 .description("The room is dark. Only the light shining through "
                         + "cracks in the roof light the room.\n"
                         + "Old computers lie on dust-covered tabletops.\n"
-                        + "To the east is a door leading to the hallway, and "
-                        + "to the south is a door leading to Ms. Watchmans' Room.")
+                        + "To the east is a door leading to the hallway.")
                 .shortDescription("You are in the Comp. Sci. Lab.").item(new BloodyNote())
                 .item(new BrokenComputers());
     }
