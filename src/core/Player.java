@@ -40,7 +40,7 @@ public class Player {
             if (look == null) {
                 continue;
             }
-            desc.append(' ');
+            desc.append('\n');
             desc.append(look);
         }
         desc.append('\n');

@@ -20,6 +20,7 @@ public class MrBooth extends Item {
                 .synonym("mr. booth", "mr booth", "booth", "boof")
                 .smell("He smells like he showered this morning")
                 .taste("Tastes like the early 2000s.");
+        this.usage().recieve(Item.RECIEVE);
     }
 
     @Override
@@ -110,7 +111,19 @@ public class MrBooth extends Item {
 
     public static void stateChangeFailure(final State oldState, final State newState) {
         System.out.println("Mr. Booth glows with a heavenly light."
-                + " Angellic voices in the distance say the words " + oldState.toString() + " and "
+                + " Angelic voices in the distance say the words " + oldState.toString() + " and "
                 + newState.toString() + ".");
+    }
+
+
+    //TODO make a successfulRecieve boolean - player only gives if the other person can receive the item
+    public void receive(final Item item) {
+        if(item.name().equals("red pen")|| item.name().equals("laptop")|| item.name().equals("assignment")||item.name().equals("calculator")){
+            super.receive(item);
+            System.out.println("Mr.Booth received the " + item.name());
+        } else{
+            System.out.print("Mr.Booth does not want that.");
+        }
+
     }
 }

@@ -45,9 +45,9 @@ public class Game {
                 .addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray()).addVerb(new Put())
                 .addVerb(new Quit()).addVerb(new Read()).addVerb(new Score()).addVerb(new Shout())
                 .addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab()).addVerb(new Stand())
-                .addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk()).addVerb(new Taste())
+                .addVerb(new Take()).addVerb(new Talk()).addVerb(new Taste())
                 .addVerb(new Throw()).addVerb(new TurnOff()).addVerb(new TurnOn()).addVerb(new Type())
-                .addVerb(new Unlock()).addVerb(new Use()).addVerb(new Rip());
+                .addVerb(new Unlock()).addVerb(new Use());
 
 
         //Add all Areas to the new world

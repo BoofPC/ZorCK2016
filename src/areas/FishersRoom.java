@@ -53,7 +53,7 @@ public class FishersRoom extends Area<NoState> {
             }
 
             //This is unnecessary
-            else if (verb.getTitle().equals("take") && noun.equals("lantern")) {
+            /*else if (verb.getTitle().equals("take") && noun.equals("lantern")) {
                 if (this.hasMatching(new Lantern())) {
                     System.out.println("You picked up the lantern!");
                     //Add addition to Inventory later
@@ -61,7 +61,7 @@ public class FishersRoom extends Area<NoState> {
                 } else {
                     System.out.println("There is no lantern in here...");
                 }
-            }
+            }*/
 
             else {
                 super.interact(command, context);
