@@ -12,11 +12,17 @@ public class AdamsonsRoom extends Area<NoState> {
                 .west(new Portal(true, BroadcastingRoom.class));
         this.title("Adamson's Room")
                 .description(
-                        "Banners hang from the ceiling proclaiming the acomplishments of Students. In the middle of the room lay 5 rows of highly advanced computers probably made by aliens. at the front of the room lie two massive movie screen sized moniters with a misterious golden key attached. Mr Adamson is at the front giving a lecture about magic to his students. There is a Post-It Note on his desk")
+                        "Banners hang from the ceiling proclaiming the acomplishments of Students.\n"
+                        + " In the middle of the room lay 5 rows of highly advanced computers\n"
+                        + " that are too complex for you to use. At the front of the room lie two\n"
+                        + " fairly large moniters with a misterious golden key attached.\n"
+                        + " There seems to be a 3D printed model of a giant troll that's blocking\n"
+                        + " the enterance to the Broadcasting Room.\n"
+                        + " There is a Post-It Note on his desk")
                 .shortDescription("It's a Nerds paradise")
                 .item(new Door(false, "Northern Door", null, this.portals().north()))
-                .item(new Door(true, "Western Door", Key.Adamsons.class, this.portals().west()))
-                .item(new PostIt());
+                .item(new Door(true, "Western Door", Sword.class, this.portals().west()))
+                .item(new 3DTroll());
     }
 }
 
