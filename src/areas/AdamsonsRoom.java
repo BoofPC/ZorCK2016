@@ -22,7 +22,7 @@ public class AdamsonsRoom extends Area<NoState> {
                 .shortDescription("It's a Nerds paradise")
                 .item(new Door(false, "Northern Door", null, this.portals().north()))
                 .item(new Door(true, "Western Door", Sword.class, this.portals().west()))
-                .item(new 3DTroll());
+                .item(new Troll3D());
     }
 }
 
