@@ -18,7 +18,8 @@ public class MrBirkenfeld extends Item{
                 .recieve(Item.RECIEVE);
         this.name("mr.birkenfeld")
             .synonym("mr birkenfeld", "birkenfeld")
-            .sound("I am Barkbackman");
+            .sound("I am Barkbackman")
+            .taste("You cannot taste Mr.Birkenfeld it would get him fired");
     }
 
     @Override

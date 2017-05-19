@@ -9,6 +9,8 @@ public class Plunger extends Item {
         this.usage().take(Item.TAKABLE);
         this.name("Plunger")
             .examine("A grimy plunger.")
-            .synonym("plunger");
+            .synonym("plunger")
+            .smell("...You know what it smells like")
+            .taste("Oh God please don't");
     }
 }

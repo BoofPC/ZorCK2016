@@ -37,7 +37,7 @@ public class TutorialItem extends Item{
         //Always be the name of the item, set above
             .synonym("potato chip", "chip", "crisp", "potato crisp")
             .taste("It tastes greasy and fattening. Delicious!")   //If you want,
-            .smell("It smells decadent"); //set additional descriptors here
+            .smell("It smells decadent and salty"); //set additional descriptors here
 
         //Other possible descriptors:
         //setInside(Item)       -       if another item is inside this one,

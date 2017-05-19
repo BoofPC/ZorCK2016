@@ -16,7 +16,7 @@ public class MrBooth extends Item {
         super();
         this.name("Mr. Booth")
                 .look("Mr. Booth is sitting in his chair in front of his computer.")
-                .examine("He is in a Robotics t-shirt and jean.")
+                .examine("He is in a Robotics t-shirt and jeans.")
                 .synonym("mr. booth", "mr booth", "booth", "boof")
                 .smell("He smells like he showered this morning")
                 .taste("Tastes like the early 2000s.");

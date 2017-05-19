@@ -21,7 +21,7 @@ public class BoothsComputer extends Item{
         if(verb.equals("stab")||verb.equals("hit")||verb.equals("eat")){
             System.out.println("You attempted something stupid and broke your best "
                     + "bet at fixing your grade");
-            System.out.println("Suicide is always an option");
+            System.out.println("You should try again");
             this.usage().active(Item.STATIC).lock(Item.LOCKED);
             context.setSkipGeneral(true);
             return true;
