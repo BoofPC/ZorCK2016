@@ -162,12 +162,12 @@ public class Game {
     public static Command parse(final String inputRaw, final Context construct,
             final List<Verb> verbList) {
         final String input = inputRaw.trim().toLowerCase();
-        for (final Entry<String, Direction> entry : Game.dirShorthand.entrySet()) {
+        for (final Entry<String, Direction> entry : Game.dirShorthand.entrySet()) {//checking for cardinal directions
             final Pair<Direction, Pair<String, String>> match =
                     Game.getMatch(input, entry.getValue(), entry.getKey(), null);
             if (match != null) {
                 final Pair<String, String> matchStrs = match.getValue();
-                return Command.direction(match.getKey(), matchStrs.getKey(), matchStrs.getKey());
+                return Command.direction(match.getKey(), matchStrs.getKey(), matchStrs.getKey());//return direction
             }
         }
         verb: {
@@ -179,15 +179,15 @@ public class Game {
                 for (final Verb focus : verbList) {
                     // System.out.println("trying " + focus.getTitle());
                     if (focus.getUsage().isArbitrary() && inputRaw.startsWith(focus.getTitle())) {
-                        return Command.bare(focus, focus.getTitle(), inputRaw);
+                        return Command.bare(focus, focus.getTitle(), inputRaw);//returning arbitrary verb
                     }
                     Game.tryMatch(matches, input, focus, focus.getTitle(), focus.getUsage());
                     for (final String syn : focus.getSynonyms()) {
-                        Game.tryMatch(matches, input, focus, syn, focus.getUsage());
+                        Game.tryMatch(matches, input, focus, syn, focus.getUsage());//fill matches with possible verb matches
                     }
                 }
                 if (matches.isEmpty()) {
-                    break verb;
+                    break verb;//no possible matches
                 } else if (matches.size() > 1) {
                     Game.disambiguate(input, matches);
                 }
@@ -198,20 +198,20 @@ public class Game {
                     final Pair<String, String> verbStrs = result.getValue();
                     verbStr = verbStrs.getKey();
                     verbInput = verbStrs.getValue().trim();
-                } else {
+                } else {//more than one possible match, request to clarify
                     Game.ambiguous(matches.entrySet().stream()
                             .map(e -> new Pair<>(e.getValue().getKey(), e.getKey())).iterator(),
                             Verb::getTitle);
                     break verb;
                 }
-            }
+            }//at this point, one possible verb
             final Usage usage = verb.getUsage();
             noun: if (usage.isNoun()) {
                 final Item noun;
                 final Command.NounOrigin nounOrigin;
                 final String nounStr;
                 final String nounInput;
-                {
+                {//looking for what noun is referencing
                     final Player player = construct.getPlayer();
                     final Map<String, Pair<Pair<Item, Command.NounOrigin>, Pair<String, String>>> matches =
                             new HashMap<>();
@@ -265,7 +265,7 @@ public class Game {
                         }
                     }
                 }
-
+                //ends noun block
                 return Command.applied(verb, verbStr, noun, nounStr, nounOrigin, nounInput);
             }
             if (usage.isDirection()) {
