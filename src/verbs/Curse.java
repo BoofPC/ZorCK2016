@@ -30,7 +30,7 @@ public class Curse extends Verb {
                 System.out.println("Tough shit, asshole");
                 break;
             case 1:
-                System.out.println("Its not so bad.  You could have been killed already.");
+                System.out.println("It's not so bad.  You could have been killed already.");
                 break;
             case 2:
                 System.out.println("Oh, dear. Such language from a supposed winning adventurer!");

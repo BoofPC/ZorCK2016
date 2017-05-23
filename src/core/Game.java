@@ -36,59 +36,22 @@ public class Game {
         final World world = new World();
 
         // Register all verbs
-        game.addVerb(new Break()).addVerb(new Choose()).addVerb(new Climb()).addVerb(new Close())
-                .addVerb(new Credits()).addVerb(new Curse()).addVerb(new Debug())
-                .addVerb(new Diagnostic()).addVerb(new Drink()).addVerb(new Drop())
-                .addVerb(new Eat()).addVerb(new Examine()).addVerb(new FlipOff()).addVerb(new Give()).addVerb(new Hello())
-                .addVerb(new Hit()).addVerb(new Inventory()).addVerb(new Listen())
-                .addVerb(new Lock()).addVerb(new Look()).addVerb(new Make()).addVerb(new Move())
-                .addVerb(new Open()).addVerb(new Poke()).addVerb(new Pray()).addVerb(new Put())
-                .addVerb(new Quit()).addVerb(new Read()).addVerb(new Score()).addVerb(new Shout())
-                .addVerb(new Sit()).addVerb(new Smell()).addVerb(new Stab()).addVerb(new Stand())
-                .addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk()).addVerb(new Taste())
-                .addVerb(new Throw()).addVerb(new TurnOff()).addVerb(new TurnOn()).addVerb(new Type())
-                .addVerb(new Unlock()).addVerb(new Use()).addVerb(new Rip());
+        game.addVerb(new Bless()).addVerb(new Close()).addVerb(new Credits()).addVerb(new Curse()).addVerb(new Debug())
+                .addVerb(new Diagnostic()).addVerb(new Drop()).addVerb(new Eat()).addVerb(new Examine())
+                .addVerb(new Give()).addVerb(new Hello()).addVerb(new Hit()).addVerb(new Inventory())
+                .addVerb(new Lock()).addVerb(new Look()).addVerb(new Move()).addVerb(new Open())
+                .addVerb(new Poke()).addVerb(new Put()).addVerb(new Quit()).addVerb(new Read())
+                .addVerb(new Score()).addVerb(new Shout()).addVerb(new Smell()).addVerb(new Stab())
+                .addVerb(new Stand()).addVerb(new Suicide()).addVerb(new Take()).addVerb(new Talk())
+                .addVerb(new Throw()).addVerb(new TurnOff()).addVerb(new TurnOn()).addVerb(new Unlock())
+                .addVerb(new Use());
 
 
         //Add all Areas to the new world
-        /*
-        world.addArea(Test01.class)
-            .addArea(Test02.class)
-            .addArea(Test03.class)
-            .addArea(Test04.class)
-            .addArea(Test05.class)
-            .addArea(Test06.class)
-            .addArea(Test07.class)
-            .addArea(Test08.class)
-            .addArea(Test09.class)
-            .addArea(Test10.class);
-        */
-        world.addArea(Hallway01.class).addArea(Hallway02.class).addArea(Hallway03.class)
-                .addArea(Hallway04.class).addArea(Hallway05.class).addArea(Hallway06.class)
-                .addArea(Hallway07.class).addArea(Hallway08.class).addArea(Hallway09.class)
-                .addArea(Hallway10.class).addArea(Hallway11.class).addArea(Hallway12.class)
-                .addArea(Hallway13.class).addArea(Hallway14.class).addArea(Hallway15.class)
-                .addArea(Hallway16.class).addArea(Hallway17.class);
-        world.addArea(AdamsonsRoom.class).addArea(ArthursRoom.class).addArea(BirkenfeldsRoom.class)
-                .addArea(BoothsRoom.class).addArea(BroadcastingRoom.class)
-                .addArea(ChemicalStorageRoom.class).addArea(CompSciRoom.class)
-                .addArea(ConcreteGround.class).addArea(ConferenceRoom01.class)
-                .addArea(ConferenceRoom02.class).addArea(DuanesRoom.class)
-                .addArea(FishersRoom.class).addArea(GharstsRoom.class)
-                .addArea(HendrichsonsRoom.class).addArea(ISSRoom.class).addArea(JorstadsRoom.class)
-                .addArea(KUGRRoom.class).addArea(KasslersRoom.class).addArea(Library.class)
-                .addArea(MensRestroom.class).addArea(OishisRoom.class).addArea(RomarosRoom.class)
-                .addArea(Roof.class).addArea(RosenquistsRoom.class).addArea(SchuchartsRoom.class)
-                .addArea(SecretPassage.class).addArea(SecurityRoom.class).addArea(StaffLounge.class)
-                .addArea(StakersRoom.class).addArea(WatchmansRoom.class).addArea(WilsonsRoom.class)
-                .addArea(WomensRestroom.class)
-                .addArea(JanitorsCloset.class)
-                .addArea(Fitz.class)
-                .addArea(Cafeteria.class)
-                .addArea(SecretPassageLevel1.class);
+        world.addArea(AreaTemplate.class);
 
         //Setting initial area for player
-        player.setCurrentArea(world.getArea(CompSciRoom.class));
+        player.setCurrentArea(world.getArea(AreaTemplate.class));
         player.addItem(new NoTea());
         final Context construct = new Context(player, world);
 
