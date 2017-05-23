@@ -3,8 +3,6 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 
-import items.Lantern;
-
 public class Player {
     private int hp;
     private int maxHp;
@@ -53,12 +51,7 @@ public class Player {
             }
         }
         if (currentArea.dark() == true) {
-            final Item lantern = this.getItem(Lantern.class);
-            if (lantern != null && lantern.active()) {
-                System.out.println(desc.toString());
-            } else {
-                System.out.println("It's too dark to see!");
-            }
+            System.out.println("It's too dark to see!");
         }
         return desc.toString();
     }
@@ -86,12 +79,7 @@ public class Player {
             }
         }
         if (currentArea.dark() == true) {
-            final Item lantern = this.getItem(Lantern.class);
-            if (lantern != null && lantern.active()) {
-                System.out.println(desc.toString());
-            } else {
-                System.out.println("It's too dark to see!");
-            }
+            System.out.println("It's too dark to see!");
         }
         return desc.toString();
     }
