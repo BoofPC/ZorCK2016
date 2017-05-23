@@ -15,7 +15,7 @@ public class Stab extends Verb {
         final Player player = construct.getPlayer();
         final Area<?> area = player.getCurrentArea();
 
-        if (player.hasItem(Sword.class)) {
+        if (player.hasItem(Scissors.class)) {
             switch (noun.usage().stab()) {
                 case STABABBLE:
                     System.out.println("You stabbed the " + noun.name());
@@ -30,7 +30,7 @@ public class Stab extends Verb {
                     break;
             }
         } else {
-            System.out.println("You need the " + new Sword().name() + " to stab the " + noun.name());
+            System.out.println("You need the " + new Scissors().name() + " to stab the " + noun.name());
         }
     }
 }
