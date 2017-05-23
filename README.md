@@ -1,71 +1,20 @@
-# How to Git in 5 easy steps
+## ZorCK Tutorial Game
+This is a heavily-commented example game with only three rooms.
 
-## Step 0
-Know that the [Git book](https://git-scm.com/book/en/v2) probably talks about
-your problem, and you can append ``-h`` or ``--help`` to any `git` command to
-view either a short or in-depth help message.
+### Steps to win:
+- Turn on lights (5 pts)
+- Go east
+- Open box (10 pts)
+- Take muffin and key
+- Go west
+- Unlock north door (5 pts)
+- Go north
+- Give muffin to troll (10 pts)
 
-## Step 1
-Clone repository so you have main working repository (repo) on your computer.
-_You only do this once!_
-
-```sh
-git clone https://github.com/BoofPC/ZorCK2016.git
-```
-
-## Step 2
-Create your own branch to work on and switch to it using `git checkout`:
-```sh
-git branch $MY_BRANCH
-git checkout $MY_BRANCH
-```
-
-## Step 3
-Do work editing the code/adding cool stuff. When done with a fair bit of work
-*and* testing of your code, add and commit your work on your branch (don't
-forget the message):
-```sh
-git status # figure out what you've changed
-git add $FILE_A $FILE_B $FILE_C # add the files you changed and want to commit
-# (you can use git add -A to add everything, but be careful)
-git commit -m "Short description of work"
-# if you want to say more, use git commit and write the longer changes on
-# extra lines (the comments in the message in the editor should guide you)
-```
-
-## Step 4
-To merge your work into the master:
-```sh
-git checkout master
-git pull --ff-only
-git checkout $MY_BRANCH
-git rebase master # if you need to fix merge conflicts, let me know & I'll help
-git checkout master
-git pull --ff-only # if anything changed in master, restart this step
-git merge $MY_BRANCH # perform a final fast-forward merge of your branch with master
-```
-
-Your branch is now merged into `master`; you just need to push so everyone 
-can pull your changes.
-
-```sh
-git push origin master
-```
-
-Finally, if all that worked, delete your feature branch:
-
-```sh
-git branch -d $MY_BRANCH
-```
-
-Your branch will be deleted if properly merged.
-
-## Step 5
-Repeat steps 2-4 as necessary. You can check on the commit history of a branch
-using `git log $BRANCH`, or no `$BRANCH` for the current branch.
-
-
-IMPORTANT NOTE:
-If you are working on a PERMANENT feature branch (e.g. pokemon), you need to 
-switch all references to "master" above to your feature branch name "pokemon".
-For all intents and purposes, "pokemon" is now your master branch.
+### Other things you can do:
+- DIE: Run with the scissors in your inventory
+- DIE: Eat muffin and confront troll
+- DIE: Just say you want to die
+- Show player stats
+- Look at your inventory
+- Say "hi"
