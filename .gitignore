@@ -23,3 +23,4 @@ nbdist/
 nbactions.xml
 .nb-gradle/
 /bin/
+.idea/workspace.xml
