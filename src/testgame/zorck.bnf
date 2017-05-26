@@ -1,0 +1,14 @@
+<command> := <move> | <intransitiveVerb> | <transitiveVerb> " " <objects>
+<objects> := <directObject> | <directObject> <preposition> <indirectObject>
+<preposition> := " " | " on " | " at " | " to " | " around "
+<directObject> := "\\S.*"
+<indirectObject> := "\\S.*"
+<transitiveVerb> := "\\S.*"
+<intransitiveVerb> := "\\S.*"
+<move> := <movementVerb> " " <direction> | <direction>
+<movementVerb> := "go" | "walk" | "travel" | "saunter" | "swagger"
+<direction> := <up> | <down> | <north> | <northeast> | <east> | <southeast> | <south> | <southwest> | <west> | <northwest>
+<up> := "up" | "Up" | "u" | "U"
+<down> := "down" | "Down" | "d" | "D"
+ ...
+"north" | "North"

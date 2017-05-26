@@ -1,40 +1,45 @@
 package core;
 
-import java.lang.reflect.InvocationTargetException;
+import core.Area;
+import core.Door;
+
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class World {
-    /**
-     * Direction constants for use in world traversal.
-     */
-    public static enum Direction {
-        NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST, UP, DOWN
+
+    protected static final Map<String, Area> areas;
+    protected Area currentArea;
+    static {
+        areas = new HashMap<>();
     }
 
-    private final HashMap<Class<? extends Area<?>>, Area<?>> map;
-
-
-    public World() {
-        this.map = new HashMap<>();
+    public World(String startingArea){
+        this.currentArea = areas.get(Area.toID(startingArea));
     }
 
-    public World addArea(final Class<? extends Area<?>> areaName, final Area<?> newArea) {
-        this.map.put(areaName, newArea);
-        return this;
+    public static Area getArea(String areaId){
+        return areas.get(areaId);
     }
 
-    public World addArea(final Class<? extends Area<?>> areaName) {
-        try {
-            return this.addArea(areaName, areaName.getConstructor(World.class).newInstance(this));
-        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-            e.printStackTrace();
+    public Area getCurrentArea() {
+        return currentArea;
+    }
+
+    private void setCurrentArea(String areaId) {
+        this.currentArea = areas.get(areaId);
+    }
+
+    public void move(Area.Direction direction){
+        Door door;
+        if((door = currentArea.getDoors().get(direction)) != null){
+            if(door.pass() != null){
+                this.setCurrentArea(door.pass());
+            }
+        } else {
+            System.out.println("You can't go that way!");
         }
-        return null;
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T extends Area<?>> T getArea(final Class<T> area) {
-        return (T) this.map.get(area);
     }
 }
