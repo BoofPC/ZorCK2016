@@ -5,7 +5,7 @@ import core.*;
 public class Diagnostic extends Verb {
 
     public Diagnostic() {
-        super("diagnostic", Verb.usage().bare(), "status", "health");
+        super("diagnostic", Verb.usage().bare(), "status", "health", "stats");
     }
 
     @Override
