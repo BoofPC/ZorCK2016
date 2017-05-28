@@ -51,7 +51,7 @@ public class Player {
             }
         }
         if (currentArea.dark() == true) {
-            System.out.println("It's too dark to see!");
+            return "It's too dark to see!";
         }
         return desc.toString();
     }
@@ -79,7 +79,7 @@ public class Player {
             }
         }
         if (currentArea.dark() == true) {
-            System.out.println("It's too dark to see!");
+            return "It's too dark to see!";
         }
         return desc.toString();
     }
