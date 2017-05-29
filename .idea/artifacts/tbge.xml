@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="tbge">
+    <output-path>$PROJECT_DIR$/classes/artifacts/tbge</output-path>
+    <root id="archive" name="tbge.jar">
+      <element id="module-output" name="ZorCK2016" />
+    </root>
+  </artifact>
+</component>

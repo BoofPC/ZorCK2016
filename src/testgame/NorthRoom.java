@@ -9,17 +9,12 @@ import java.util.function.Function;
  * Created by Alex on 5/22/17.
  */
 public class NorthRoom extends Area {
-    private String initialDescription =  "The room has a giant angry troll inside who is guarding his treasure trove. "
-            + "He looks hungry...";
     private String laterDescription = "The troll seems to be getting hungrier...";
     private int turnsInRoom;
 
     public boolean captureInput(VerbPhrase v, Context c){
         turnsInRoom++;
         switch (turnsInRoom){
-            case 1:
-                System.out.println(initialDescription);
-                break;
             case 2:
             case 3:
             case 4:
@@ -38,8 +33,26 @@ public class NorthRoom extends Area {
 
         this.getDoors().put(Direction.SOUTH,new Door("Center Room"));
 
+        this.description = "The room has a giant angry troll inside who is guarding his treasure trove.";
+
         this.getLocalActions().put(new VerbPhrase("kill","troll"),(c)->{
-            System.out.println("You try to kill the troll but he kills you instead.");
+            if(c.getPlayer().getInventory().contains("scissors")){
+                System.out.println("You pull out your scissors and stab the troll in the eye. The troll collapses "
+                + "and slowly, painfully dies. Unfortunately, once he dies, both his body and the treasure " +
+                        "disappear before your eyes. A door in the wall opens taking you out of the dungeon. You win" +
+                        "--sort of. Would've been nice to leave with some treasure....");
+            }else{
+                System.out.println("You try to kill the troll but he kills you instead. You Lose.");
+            }
+            c.getGame().quit();
+            return !Game.GO_TO_NEXT;
+        });
+
+        this.getLocalActions().put(new VerbPhrase("use","scissors","troll"),(c) -> {
+           System.out.println("You fight with the troll and eventually win by skewering him with your scissors.\n" +
+                   "Unfortunately, once he dies, both his body and the treasure " +
+                   "disappear before your eyes.\nA door in the wall opens taking you out of the dungeon.\nYou win" +
+                   "--sort of. Would've been nice to leave with some treasure....");
             c.getGame().quit();
             return !Game.GO_TO_NEXT;
         });

@@ -18,45 +18,50 @@ public class Interpreter {
     }
 
     private VerbPhrase parse(String[] tokens){
+        String[] filteredTokens = new String[tokens.length];
+        for(int i = 0; i < filteredTokens.length; i++){
+            filteredTokens[i] = dictionary.mapsTo(tokens[i].toLowerCase());
+        }
         switch(tokens.length){
             case 0:
                 return null;
 
             case 1:
-                if(dictionary.getMovementDirections().contains(tokens[0])){
-                    return getMove(tokens[0]);
-                }else if(dictionary.getIntransitiveVerbs().contains(tokens[0])){
-                    return new VerbPhrase(dictionary.mapsTo(tokens[0]));
+                if(dictionary.getMovementDirections().contains(filteredTokens[0])){
+                    return getMove(filteredTokens[0]);
+                }else if(dictionary.getIntransitiveVerbs().contains(filteredTokens[0])){
+                    return new VerbPhrase(filteredTokens[0]);
                 }else{
                     return VerbPhrase.wat();
                 }
 
             case 2:
-                if(dictionary.getMovementDirections().contains(tokens[1])) {
-                    return getMove(tokens[1]);
-                }else if(dictionary.getDirectVerbs().contains(tokens[0])){
-                    return new VerbPhrase(dictionary.mapsTo(tokens[0]),dictionary.mapsTo(tokens[1]));
+                if(dictionary.getMovementDirections().contains(filteredTokens[1])) {
+                    return getMove(filteredTokens[1]);
+                }else if(dictionary.getDirectVerbs().contains(filteredTokens[0])){
+                    return new VerbPhrase(filteredTokens[0],tokens[1]);
                 }else{
                     return VerbPhrase.wat();
                 }
 
             default:
-                if(dictionary.getIndirectVerbs().contains(tokens[0]) ){
+                if(tokens.length == 3
+                        && Arrays.asList("a", "an", "the", "to", "with", "on", "around", "at").contains(filteredTokens[1])){
+                    return new VerbPhrase(filteredTokens[0], tokens[2]);
+                }
+                if(dictionary.getIndirectVerbs().contains(filteredTokens[0]) ){
                     if(tokens.length == 3){
-                        if(Arrays.asList("a", "an", "the", "to", "with", "on", "around", "at").contains(tokens[1].toLowerCase())){
-                            return new VerbPhrase(dictionary.mapsTo(tokens[0]), dictionary.mapsTo(tokens[2]));
-                        }else {
-                            return new VerbPhrase(dictionary.mapsTo(tokens[0]), dictionary.mapsTo(tokens[1]), dictionary.mapsTo(tokens[2]));
-                        }
+                        return new VerbPhrase(filteredTokens[0], tokens[1], tokens[2]);
                     } else if(tokens.length == 4){
-                        return new VerbPhrase(dictionary.mapsTo(tokens[0]),dictionary.mapsTo(tokens[1]),dictionary.mapsTo(tokens[3]));
+                        return new VerbPhrase(filteredTokens[0],tokens[1],tokens[3]);
                     } else if(tokens.length == 5){
-                        if(Arrays.asList("a","an","the").contains(tokens[1].toLowerCase()) && Arrays.asList("to","with","on","around","at").contains(tokens[4].toLowerCase())){
-                            return new VerbPhrase(dictionary.mapsTo(tokens[0]), dictionary.mapsTo(tokens[2]), dictionary.mapsTo(tokens[4]));
+                        if(Arrays.asList("a","an","the").contains(filteredTokens[1])
+                                && Arrays.asList("to","with","on","around","at").contains(filteredTokens[4])){
+                            return new VerbPhrase(filteredTokens[0], tokens[2], tokens[4]);
                         }
                     }
                     else if(tokens.length == 6) {
-                        return new VerbPhrase(dictionary.mapsTo(tokens[0]), dictionary.mapsTo(tokens[2]), dictionary.mapsTo(tokens[5]));
+                        return new VerbPhrase(filteredTokens[0], tokens[2], tokens[5]);
                     }
                 }
                 return VerbPhrase.wat();
@@ -65,7 +70,7 @@ public class Interpreter {
 
     private VerbPhrase getMove(String direction){
         for(Area.Direction dir: Area.Direction.values()){
-            if(dictionary.mapsTo(direction).equals(dir.name().toLowerCase())){
+            if(direction.equalsIgnoreCase(dir.name().toLowerCase())){
                 return new VerbPhrase(dir);
             }
         }

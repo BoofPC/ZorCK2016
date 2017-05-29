@@ -24,13 +24,14 @@ public class Dictionary implements Interpretable {
                 "think",
                 "smell",
                 "run",
-                "inventory"
+                "inventory",
+                "description",
+                "help"
         );
 
         directVerbs = Arrays.asList(
                 "take",
                 "eat",
-                "examine",
                 "look",
                 "hit",
                 "put",
@@ -39,12 +40,15 @@ public class Dictionary implements Interpretable {
                 "open",
                 "get",
                 "switch",
-                "turn"
+                "kill",
+                "fight",
+                "unlock"
         );
 
         indirectVerbs = Arrays.asList(
                 "give",
-                "unlock"
+                "unlock",
+                "use"
         );
 
         movementVerbs = Arrays.asList(
@@ -53,20 +57,22 @@ public class Dictionary implements Interpretable {
         );
 
         movementDirections = Arrays.asList(
-                "n", "north",
-                "ne","northeast",
-                "e","east",
-                "se","southeast",
-                "s","south",
-                "sw","southwest",
-                "w","west",
-                "nw","northwest",
-                "u", "up",
-                "d", "down"
+                "north",
+                "northeast",
+                "east",
+                "southeast",
+                "south",
+                "southwest",
+                "west",
+                "northwest",
+                "up",
+                "down"
         );
 
         synonyms = new HashMap<>();
-        synonyms.put("examine","look");
+        synonyms.put("turn","switch");
+        synonyms.put("examine","description");
+        synonyms.put("survey","description");
         synonyms.put("go","move");
         synonyms.put("n", "north");
         synonyms.put("ne","northeast");

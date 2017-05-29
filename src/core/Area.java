@@ -9,14 +9,18 @@ import java.util.function.Function;
 public class Area{
     private final Map<Direction,Door> doors;
     private final Map<VerbPhrase, Function<Context,Boolean>> localActions;
+    private final List<String> inventory;
     private final String name;
     private final String id;
+    public String description;
 
     public Area(String name){
         this.doors = new HashMap<>();
         this.localActions = new HashMap<>();
+        this.inventory = new ArrayList<>();
         this.name = name;
         this.id = toID(name);
+        this.description = "";
     }
 
     public boolean captureInput(VerbPhrase v, Context c){
@@ -49,6 +53,8 @@ public class Area{
     public Map<VerbPhrase, Function<Context,Boolean>> getLocalActions(){
         return this.localActions;
     }
+
+    public List<String> getInventory(){ return this.inventory; }
 
     public static enum Direction{
         NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST,UP,DOWN, NODIRECTION

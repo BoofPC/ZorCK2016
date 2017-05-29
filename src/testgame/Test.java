@@ -10,21 +10,13 @@ public class Test extends Game{
     }
 
     public boolean captureInput(VerbPhrase v, Context c){
-        if(v.equals(new VerbPhrase("quit"))) {
-            this.quit();
-            return !GO_TO_NEXT;
+        super.captureInput(v,c);
+        if(v.getVerb().equals("run") && c.getPlayer().getInventory().contains("scissors")){
+            System.out.println("You fall on your scissors and die as your spleen is impaled by them."
+                    +" I told you those were sharp but you wouldn't listen! Now you're dead and YOU LOSE!");
+            c.getGame().quit();
         }
-
-        if(v.equals(new VerbPhrase("get","inventory"))
-                || v.equals(new VerbPhrase("print","inventory"))
-                || v.equals(new VerbPhrase("inventory"))){
-            System.out.println("Your inventory:");
-            for (String s : c.getPlayer().getInventory()) {
-                System.out.println(s);
-            }
-            return !GO_TO_NEXT;
-        }
-        return GO_TO_NEXT;
+        return !Game.GO_TO_NEXT;
     }
 
 
