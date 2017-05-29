@@ -1,71 +1,27 @@
-# How to Git in 5 easy steps
+Step By Step how to make a Text-Based Game Engine (tbge) game:
 
-## Step 0
-Know that the [Git book](https://git-scm.com/book/en/v2) probably talks about
-your problem, and you can append ``-h`` or ``--help`` to any `git` command to
-view either a short or in-depth help message.
+Add the tbge.jar file as a library to your project. All of the classes in core
+will be available after you do under the package 'tbge'.
 
-## Step 1
-Clone repository so you have main working repository (repo) on your computer.
-_You only do this once!_
+Make a world by sub-classing "World". You should then add all of your areas in a
+static block that accesses the "areas" instance variable, and "puts" them into a
+map of area ids and areas. Finally, set the constructor to take the id of the
+area you want your game to start in.(See MyWorld for a good example).
 
-```sh
-git clone https://github.com/BoofPC/ZorCK2016.git
-```
+Make dictionary class (Dictionary is a good name) that implements the Interpretable
+interface. Your dictionary class should basically have lists of all the relevant
+types of words categorized so that the parser will know what to look for. It should
+also have a map of synonyms that "mapsTo()" refers to.
+(See Dictionary for a good example).
 
-## Step 2
-Create your own branch to work on and switch to it using `git checkout`:
-```sh
-git branch $MY_BRANCH
-git checkout $MY_BRANCH
-```
+Make a subclass of Game. In its constructor, pass your newly defined world and
+dictionary objects from the steps above to the superclass constructor. Aside
+from that, you can initialize any extra variables you may want your game to have
+(points?). You should override the superclass' captureInput() method with you own
+that handles global level commands (i.e. "get inventory", "quit"). Finally, your game
+class should have a main method where you construct an instance of your game and
+start it with .start().
 
-## Step 3
-Do work editing the code/adding cool stuff. When done with a fair bit of work
-*and* testing of your code, add and commit your work on your branch (don't
-forget the message):
-```sh
-git status # figure out what you've changed
-git add $FILE_A $FILE_B $FILE_C # add the files you changed and want to commit
-# (you can use git add -A to add everything, but be careful)
-git commit -m "Short description of work"
-# if you want to say more, use git commit and write the longer changes on
-# extra lines (the comments in the message in the editor should guide you)
-```
-
-## Step 4
-To merge your work into the master:
-```sh
-git checkout master
-git pull --ff-only
-git checkout $MY_BRANCH
-git rebase master # if you need to fix merge conflicts, let me know & I'll help
-git checkout master
-git pull --ff-only # if anything changed in master, restart this step
-git merge $MY_BRANCH # perform a final fast-forward merge of your branch with master
-```
-
-Your branch is now merged into `master`; you just need to push so everyone 
-can pull your changes.
-
-```sh
-git push origin master
-```
-
-Finally, if all that worked, delete your feature branch:
-
-```sh
-git branch -d $MY_BRANCH
-```
-
-Your branch will be deleted if properly merged.
-
-## Step 5
-Repeat steps 2-4 as necessary. You can check on the commit history of a branch
-using `git log $BRANCH`, or no `$BRANCH` for the current branch.
-
-
-IMPORTANT NOTE:
-If you are working on a PERMANENT feature branch (e.g. pokemon), you need to 
-switch all references to "master" above to your feature branch name "pokemon".
-For all intents and purposes, "pokemon" is now your master branch.
+The rest is all based on areas. In areas, you can define doors to other areas
+(thus establishing the connections in your map), capture input with captureInput()
+in order to do anything you might need to do before any other local action is run.
