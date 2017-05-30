@@ -31,9 +31,10 @@ public class Unlock extends Verb {
                     if (test) {
                         usage.lock(Item.UNLOCKED);
                         System.out.println("You unlocked the " + noun.name());
-                        final Portal portal = noun.portal();
-                        if (portal != null) {
-                            portal.unlock();
+                        /* Hey, this doesn't actually unlock the portal.
+                        *  TODO: Make this actually unlock the portal. */
+                        if (noun.portal() != null) {
+                            noun.portal().unlock();
                         }
                         /* synchronizeDoor is meant to sure that both sides of the door is unlocked,
                         *  but it's broken right now */
