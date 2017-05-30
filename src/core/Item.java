@@ -4,101 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import core.World.Direction;
-//
+
 public abstract class Item {
     private String name = "Default item name";
     private String examine;
     private String look;
 
     private final Usage usage = new Usage();
-    // TODO Update description
-    /*
-     * update this number as needed
-     * usage is an array of ints which determines many
-     * characteristics of an item. Each item in the
-     * array corresponds with an attribute of the item
-     * for example the first item in the array represents
-     * whether the item is takable, with different numbers
-     * as different statuses. 0 is always "unset." 1 is "takable," the user can
-     * "take" the item to get it into their inventory. 2 means the item is too
-     * heavy to take, and will return an appropriate message if "take (item)"
-     * is invoked. 3 means the item is bolted down, etc.
-     *
-     * The meanings of each item is as follows:
-     * {0      ,1   ,2  ,3    ,4   ,5   ,6   ,7     ,8   ,9   ,10   ,11  ,12   ,13   ,14     ,15   ,16
-     * {[dummy],take,eat,drink,open,lock,read,turnOn,move,wear,close,stab,press,climb,receive,break,use}
-     * feel free to add more
-     * the possible statuses of each are as follows:
-     * take (n = 1) -    0: unset (default, returns "not takable")
-     *                   1: takable
-     *                   2: too heavy
-     *                   3: bolted down
-     * eat (n = 2) -     0: unset (default, returns "not eatable")
-     *                   1: not eatable
-     *                   2: eatable
-     * drink (n = 3) -   0: unset (default, returns "not drinkable")
-     *                   1: not drinkable
-     *                   2: drinkable
-     *                   3: "You need to open it first!"
-     *                   4: drinkable, already drank
-     * open (n = 4) -    0: unset (default, returns "not openable")
-     *                   1: not openable
-     *                   2: openable, closed
-     *                   3: openable, open
-     * lock (n = 5) -    0: unset {default, returns "not lockable")
-     *                   1: not lockable
-     *                   2: lockable, unlocked
-     *                   3: lockable, locked
-     * read (n = 6) -    0: unset (default, returns "not readable")
-     *                   1: not readable
-     *                   2: readable
-     *                   3: illegible
-     * turnOn (n = 7) - 0: unset (default, returns "not turnOnable")
-     *                   1: not turnOnable
-     *                   2: turnOnable, off
-     *                   3: turnOnable, on
-     * move (n = 8) -    0: unset (default, returns "not movable")
-     *                   1: unmovable
-     *                   2: movable
-     * wear (n = 9) -    0: unset (default, returns "not wearable")
-     *                   1: unwearable
-     *                   2: wearable
-     * close (n = 10) -   0: unset (default, returns "not closeable")
-     *                   1: not closable
-     *                   2: closable, open
-     *                   3: closable, closed
-     * stab (n = 11) -   0: unset (default, returns "not stabable")
-     *                   1: not stabable
-     *                   2: stabable
-     * press (n = 12) -  0: unset (default, returns "not pressable")
-     *                   1: not pressable
-     *                   2: pressable, unpressed
-     *                   3: pressable, pressed
-     * climb (n = 13) -  0: unset (default, returns "not climbable")
-     *                   1: not climbable
-     *                   2: climbable
-     * receive (n = 14) -0: unset (default, returns "cannot receive")
-     *                   1: cannot receive items
-     *                   2: can recieve items
-     * break (n = 15) -  0: unset (default, returns "cannot break")
-     *                   1: cannot break item
-     *                   2: breakable, not broken
-     *                   3: breakable, broken
-     * use (n = 16) -    0: unset (default, returns "no use")
-     *                   1: item has no use
-     *                   2: item has a use (invoked by Use verb)
-     *
-     *
-     *
-     * the first item, represented here as [duumy], refers to
-     * whether the item is a real, tangible, and distinct
-     * object which should be described when "look" is called
-     * (e.g. a screwdriver) or an item which should be hidden
-     * unless interacted with (e.g. a pocket on a gown
-     * [dummy] -     0: unset (default, returns "real")
-     *               1: real
-     *               2: not real
-     */
 
     private String taste;
     private Item inside;
