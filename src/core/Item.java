@@ -163,6 +163,9 @@ public abstract class Item {
         return this.received.contains(name);
     }
 
+    /* This makes sure that when a player locks/unlocks a door, the other side
+     * is locked/unlocked as well.
+     * TODO: make this not broken, direction is null */
     public void synchronizeDoor(final World world, final Area<?> currentArea) {
         final Portal portal = this.portal();
         final Area<?> target = world.getArea(portal.getTarget());

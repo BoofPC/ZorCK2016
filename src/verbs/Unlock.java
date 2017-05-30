@@ -23,7 +23,7 @@ public class Unlock extends Verb {
                     final Player player = construct.getPlayer();
                     boolean test = false;
                     for (final Item item : player.getInventory()) {
-                        if (keys.contains(item)) {
+                        if (keys.contains(item.getClass())) {
                             test = true;
                             break;
                         }
@@ -35,9 +35,11 @@ public class Unlock extends Verb {
                         if (portal != null) {
                             portal.unlock();
                         }
-                        if (noun.hasMatching("door")) {
+                        /* synchronizeDoor is meant to sure that both sides of the door is unlocked,
+                        *  but it's broken right now */
+                        /*if (noun.hasMatching("door")) {
                             noun.synchronizeDoor(construct.getWorld(), player.getCurrentArea());
-                        }
+                        }*/
                     } else {
                         System.out.println("You need a key for that");
                     }
