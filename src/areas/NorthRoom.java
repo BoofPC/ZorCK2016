@@ -49,6 +49,8 @@ public class NorthRoom extends Area<NoState> {
             /* Take the muffin out of their inventory... */
             context.getPlayer().removeItem(context.getPlayer().getItem(Muffin.class));
             System.out.println("You gave the troll the muffin. It looks happy.");
+            /* Award the Player with 10 points... */
+            context.getPlayer().addScore(10);
             /* And make them win the game. */
             context.getPlayer().setDeath(Game.Status.WIN);
         }

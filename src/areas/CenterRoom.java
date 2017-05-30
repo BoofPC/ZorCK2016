@@ -19,6 +19,9 @@ public class CenterRoom extends Area<NoState> {
     *  points. */
     private boolean lampOnPreviously;
 
+    /* Like lampOnPreviously. */
+    private boolean doorUnlockedPreviously;
+
     /* This is where you specify the room information, like its title
      * (Center Room), a description of what it looks like, and a shortened
      * description. You can also specify it the room */
@@ -26,6 +29,7 @@ public class CenterRoom extends Area<NoState> {
         super(containingWorld);
 
         lampOnPreviously = false;
+        doorUnlockedPreviously = false;
 
         /* This is printed every time the user walks in the room.
         *  This is how they know what room they are in! */
@@ -74,8 +78,8 @@ public class CenterRoom extends Area<NoState> {
             /* And this is the first time that the lights have been turned on... */
             if (!lampOnPreviously) {
                 lampOnPreviously = true;
-                /* Award 10 points to the player, and... */
-                context.getPlayer().addScore(10);
+                /* Award 5 points to the player, and... */
+                context.getPlayer().addScore(5);
             }
             /* The room is no longer dark */
             this.dark(false);
@@ -93,6 +97,11 @@ public class CenterRoom extends Area<NoState> {
             if (context.getPlayer().hasItem(Key.NorthDoor.class)) {
                 /* Unlock the portal */
                 this.portals().north().unlock();
+                /* If the player is unlocking the door for the first time...*/
+                if (!doorUnlockedPreviously) {
+                    context.getPlayer().addScore(5);
+                    doorUnlockedPreviously = true;
+                }
             }
         }
         super.interact(command, context);
