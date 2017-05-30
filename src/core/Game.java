@@ -68,6 +68,10 @@ public class Game {
         //'enter' first room to get things started
         //player.getCurrentArea().enter(player);
 
+        /* This is specific to this tutorial. In the actual game, you would use the above code block. */
+        player.getCurrentArea().interact(parse("l", construct, game.verbList), construct);
+        //System.out.println(player.currentDescription());
+
         //Initial prompt setup
         try (Scanner reader = new Scanner(System.in)) {
             //Main Game Loop

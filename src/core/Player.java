@@ -29,6 +29,10 @@ public class Player {
     }
 
     public String currentDescription() {
+        if (currentArea.dark()) {
+            return "It's too dark to see!";
+        }
+
         final StringBuilder desc = new StringBuilder();
         final Area<?> currentArea = this.getCurrentArea();
         desc.append(currentArea.description());
@@ -50,13 +54,15 @@ public class Player {
                 desc.append(item.name());
             }
         }
-        if (currentArea.dark() == true) {
-            return "It's too dark to see!";
-        }
+
         return desc.toString();
     }
 
     public String currentShortDescription() {
+        if (currentArea.dark()) {
+            return "It's too dark to see!";
+        }
+
         final StringBuilder desc = new StringBuilder();
         final Area<?> currentArea = this.getCurrentArea();
         desc.append(currentArea.shortDescription());
@@ -78,9 +84,7 @@ public class Player {
                 desc.append(item.name());
             }
         }
-        if (currentArea.dark() == true) {
-            return "It's too dark to see!";
-        }
+
         return desc.toString();
     }
 
