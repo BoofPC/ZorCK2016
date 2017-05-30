@@ -48,10 +48,10 @@ public class Game {
 
 
         //Add all Areas to the new world
-        world.addArea(AreaTemplate.class);
+        world.addArea(CenterRoom.class).addArea(EastRoom.class).addArea(NorthRoom.class);
 
         //Setting initial area for player
-        player.setCurrentArea(world.getArea(AreaTemplate.class));
+        player.setCurrentArea(world.getArea(CenterRoom.class));
         player.addItem(new NoTea());
         final Context construct = new Context(player, world);
 
@@ -66,7 +66,7 @@ public class Game {
         //@formatter:on
 
         //'enter' first room to get things started
-        player.getCurrentArea().enter(player);
+        //player.getCurrentArea().enter(player);
 
         //Initial prompt setup
         try (Scanner reader = new Scanner(System.in)) {
