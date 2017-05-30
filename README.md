@@ -15,6 +15,6 @@ This is a heavily-commented example game with only three rooms.
 - DIE: Run with the scissors in your inventory
 - DIE: Eat muffin and confront troll
 - DIE: Just say you want to die
-- Show player stats
 - Look at your inventory
+- Use bad words
 - Say "hi"
