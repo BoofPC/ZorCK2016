@@ -25,7 +25,8 @@ public class Dictionary implements Interpretable {
                 "inventory",
                 "description",
                 "help",
-                "look"
+                "look",
+                "quit"
         );
 
         directVerbs = Arrays.asList(
@@ -41,7 +42,9 @@ public class Dictionary implements Interpretable {
                 "switch",
                 "kill",
                 "fight",
-                "unlock"
+                "unlock",
+                "use",
+                "read"
         );
 
         indirectVerbs = Arrays.asList(
