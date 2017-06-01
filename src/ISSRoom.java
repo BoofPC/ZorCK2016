@@ -23,7 +23,7 @@ public class ISSRoom extends Area{
             
     public ISSRoom(){
         super("ISS Room");
-        this.getDoors().put(Direction.NORTH,new Door("Hallway"));
+        this.getDoors().put(Direction.NORTH,new Door("Hallway9"));
         this.getInventory().add("Sword");
         
         this.description = "There are papers scattered throughout the floor."
