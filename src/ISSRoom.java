@@ -17,8 +17,8 @@ import tbge.VerbPhrase;
  * @author rodrigu3163b
  */
 public class ISSRoom extends Area{
-    private String laterDescription = "A messy room where troubled children stay.";
-    private String itemDescription = "There is a Sword on a large desk in the west of the room.";
+    private String laterDescription = "A messy room where troubled children stay.\n";
+    private String itemDescription = "There is a Sword on a large desk in the west of the room.\n";
     private boolean takeSword = false;
             
     public ISSRoom(){
@@ -27,9 +27,9 @@ public class ISSRoom extends Area{
         this.getInventory().add("Sword");
         
         this.description = "There are papers scattered throughout the floor."
-            + "There is a large desk in the west of the room that has a sword on it?" 
-            + "Did someone seriously bring that to school? Probably got confiscated," 
-            + "but maybe you can use it?"; 
+            + "\nThere is a large desk in the west of the room that has a sword on it?" 
+            + "\nDid someone seriously bring that to school? Probably got confiscated," 
+            + "\nbut maybe you can use it?"; 
 
         this.getLocalActions().put(new VerbPhrase("take","Sword"),(c)->{
             description = laterDescription;
