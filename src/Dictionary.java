@@ -44,7 +44,8 @@ public class Dictionary implements Interpretable {
                 "fight",
                 "unlock",
                 "use",
-                "read"
+                "read",
+                "talk"
         );
 
         indirectVerbs = Arrays.asList(
