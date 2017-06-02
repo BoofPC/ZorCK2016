@@ -49,7 +49,7 @@ public class CSRoom extends Area {
     }
 
     public boolean captureInput(VerbPhrase v, Context c){
-        if(!c.getState().contains("CSRoom_inspected")&& (v.equals(new VerbPhrase("look", "around")))){
+        if(!c.getState().contains("CSRoom_inspected")&& (v.equals(new VerbPhrase("look", "around"))||v.equals(new VerbPhrase("description")))){
             System.out.println(description);
             description = "There are a lot of broken computers around the room and there is a note on the ground. " +
                     "\nThere is a door to the east.";
