@@ -1,5 +1,6 @@
 
 import tbge.Area;
+import tbge.Context;
 import tbge.Door;
 import tbge.Game;
 import tbge.VerbPhrase;
@@ -23,7 +24,7 @@ public class ISSRoom extends Area{
             
     public ISSRoom(){
         super("ISS Room");
-        this.getDoors().put(Direction.NORTH,new Door("Hallway9"));
+        this.getDoors().put(Direction.NORTH,new Door("Hallway 9"));
         this.getInventory().add("Sword");
         
         this.description = "There are papers scattered throughout the floor."
@@ -54,5 +55,7 @@ public class ISSRoom extends Area{
             return !Game.GO_TO_NEXT;
         });
     }
-    
+        public boolean captureInput(VerbPhrase v, Context c){
+        return Game.GO_TO_NEXT;
+    }
 }

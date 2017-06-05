@@ -1,4 +1,5 @@
 import tbge.Area;
+import tbge.Context;
 import tbge.Door;
 import tbge.Game;
 import tbge.Player;
@@ -21,8 +22,7 @@ public class AdamsonRoom extends Area{
     
     public AdamsonRoom(){
         super("Adamson's Room");
-        this.getDoors().put(Direction.NORTH,new Door("Hallway10"));
-        this.getDoors().put(Direction.WEST,new Door("Broadcasting"));
+        this.getDoors().put(Direction.NORTH,new Door("Hallway 10"));
         this.getInventory().add("Troll");
         
         this.description = "Banners hang from the ceiling proclaiming the accomplishments of Students."
@@ -50,6 +50,7 @@ public class AdamsonRoom extends Area{
                 System.out.println("You cut up the troll and move the pieces out of"
                 + "/n your path.");
                 this.getInventory().remove("Troll");
+                this.getDoors().put(Direction.WEST,new Door("Broadcasting Room"));
             } else if(!c.getPlayer().getInventory().contains("Sword")) {
                 System.out.println("You need something to cut up the troll with...");
             } else {
@@ -72,5 +73,8 @@ public class AdamsonRoom extends Area{
             System.out.println("The Note Says: 'booth: compsci_is_fun!'");
             return !Game.GO_TO_NEXT;
         });        
+    }
+        public boolean captureInput(VerbPhrase v, Context c){
+        return Game.GO_TO_NEXT;
     }
 }

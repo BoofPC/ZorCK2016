@@ -1,5 +1,6 @@
 
 import tbge.Area;
+import tbge.Context;
 import tbge.Door;
 import tbge.Game;
 import tbge.VerbPhrase;
@@ -20,7 +21,7 @@ public class BroadCastingRoom extends Area{
     
     public BroadCastingRoom(){
         super("Broadcasting Room");
-        this.getDoors().put(Area.Direction.EAST,new Door("Hallway10"));
+        this.getDoors().put(Area.Direction.EAST,new Door("Adamson's Room"));
         this.getInventory().add("Pen");
         
         this.description = "The walls are a lime green that are plastered with light by bright stage lights."
@@ -38,5 +39,8 @@ public class BroadCastingRoom extends Area{
         });
         
         
+    }
+        public boolean captureInput(VerbPhrase v, Context c){
+        return Game.GO_TO_NEXT;
     }
 }

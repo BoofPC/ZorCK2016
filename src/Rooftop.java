@@ -1,4 +1,5 @@
 import tbge.Area;
+import tbge.Context;
 import tbge.Door;
 import tbge.Game;
 import tbge.Player;
@@ -19,7 +20,7 @@ public class Rooftop extends Area{
     
     public Rooftop(){
         super("Rooftop");
-        this.getDoors().put(Direction.WEST,new Door("Hallway7"));
+        this.getDoors().put(Direction.WEST,new Door("Hallway 7"));
         this.getInventory().add("SecretPassageKey");
         
         this.description = "The skies are clear, without a single cloud in the sky. The floor seems slightly "
@@ -64,5 +65,8 @@ public class Rooftop extends Area{
             c.getGame().quit();
             return !Game.GO_TO_NEXT;
         });
+    }
+        public boolean captureInput(VerbPhrase v, Context c){
+        return Game.GO_TO_NEXT;
     }
 }
