@@ -12,6 +12,8 @@ public class MyWorld extends World {
             areas.put(area.getId(), area);
         area = new BirkenfeldRoom();
             areas.put(area.getId(), area);
+        area = new BoothRoom();
+            areas.put(area.getId(), area);
 
         //add all Hallways here- so we can make sure we don't miss one
         area = new Hallway1();

@@ -25,25 +25,27 @@ public class ZorCK extends Game {
     }
 
     public boolean captureInput(VerbPhrase v, Context c){
-        super.captureInput(v,c);
 
         /*if(c.getState().contains("tasted_chemical")){
             countdown--;
+            if(countdown<=0){
+                System.out.println("You die!");
+                c.getGame().quit();
+            }
             System.out.println("countdown decreased");
-        }
-
-        if(v.equals(new VerbPhrase("taste", "chemical"))&&c.getPlayer().getInventory().contains("chemical")){
+        }else if(v.equals(new VerbPhrase("taste", "chemical"))&&c.getPlayer().getInventory().contains("chemical")){
                 c.getState().add("tasted_chemical");
                 System.out.println("You tasted the chemical... You feel a little funny...");
-        }else{
+        }else if(v.equals(new VerbPhrase("taste", "chemical"))){
             System.out.println("You don't have a chemical to taste!");
         }*/
 
         if(v.equals(new VerbPhrase("drink", "chemical"))&&c.getPlayer().getInventory().contains("chemical")){
             System.out.print("You die!");
             c.getGame().quit();
+        }else{
+            super.captureInput(v,c);
         }
-
         return !Game.GO_TO_NEXT;
     }
 
