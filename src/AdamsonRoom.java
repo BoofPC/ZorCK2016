@@ -45,10 +45,10 @@ public class AdamsonRoom extends Area{
             return !Game.GO_TO_NEXT;
         });
         
-        this.getLocalActions().put(new VerbPhrase("cut up", "troll"), (c)->{
+        this.getLocalActions().put(new VerbPhrase("cut", "troll"), (c)->{
             if(this.getInventory().contains("Troll") && c.getPlayer().getInventory().contains("Sword")){
                 System.out.println("You cut up the troll and move the pieces out of"
-                + "/n your path.");
+                + "\n your path.");
                 this.getInventory().remove("Troll");
                 this.getDoors().put(Direction.WEST,new Door("Broadcasting Room"));
             } else if(!c.getPlayer().getInventory().contains("Sword")) {

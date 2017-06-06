@@ -7,7 +7,7 @@ public class Hallway6 extends Area {
     public Hallway6(){
         super("Hallway 6");
         this.getDoors().put(Direction.NORTH, new Door("Hallway 5"));
-        //this.getDoors().put(Direction.SOUTH, new Door("Hallway 8"));
+        this.getDoors().put(Direction.SOUTH, new Door("Hallway 8"));
         this.description = "Yup. The hallway just keeps going.";
     }
 
