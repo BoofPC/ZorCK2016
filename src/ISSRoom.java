@@ -28,7 +28,7 @@ public class ISSRoom extends Area{
         this.getInventory().add("Sword");
         
         this.description = "There are papers scattered throughout the floor."
-            + "\nThere is a large desk in the west of the room that has a sword on it?" 
+            + "\nThere is a large desk in the west of the room that has a Sword on it?"
             + "\nDid someone seriously bring that to school? Probably got confiscated," 
             + "\nbut maybe you can use it?"; 
 

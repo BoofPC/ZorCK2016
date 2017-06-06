@@ -15,6 +15,8 @@ import tbge.VerbPhrase;
  *
  * @author rodrigu3163b
  */
+//TODO edit change to later description so that it happens on look and look around->only works on description now,
+// which might be confusing to players.
 public class BroadCastingRoom extends Area{
     private String laterDescription = "There are some tables in this room, in front of large green walls, with cameras staring at them.";
     private String penDescription = "\nThere seems to be a red pen on one of the tables. ";
@@ -22,7 +24,7 @@ public class BroadCastingRoom extends Area{
     public BroadCastingRoom(){
         super("Broadcasting Room");
         this.getDoors().put(Area.Direction.EAST,new Door("Adamson's Room"));
-        this.getInventory().add("Pen");
+        this.getInventory().add("pen");
         
         this.description = "The walls are a lime green that are plastered with light by bright stage lights."
                 + "\nTwo desks face three large cameras meant for recording the broadcast for Fridays. On the "
@@ -32,7 +34,7 @@ public class BroadCastingRoom extends Area{
         this.getLocalActions().put(new VerbPhrase("description"), (c)->{
             System.out.println(description);
             description = laterDescription;
-            if(this.getInventory().contains("Pen")){
+            if(this.getInventory().contains("pen")){
                 description += penDescription;
             }
             return !Game.GO_TO_NEXT;

@@ -11,8 +11,7 @@ public class CSRoom extends Area {
 
         this.getInventory().add("note");
 
-        this.description = "You wake up in the comp sci lab, and you realize that you only have a couple " +
-                "\nof hours before school ends. On the ground there is a note, and all the computers appear to be broken." +
+        description = "There are a lot of broken computers around the room and there is a note on the ground. " +
                 "\nThere is a door to the east.";
 
         this.getLocalActions().put(new VerbPhrase("use", "computers"), this:: useComputers);
@@ -49,14 +48,6 @@ public class CSRoom extends Area {
     }
 
     public boolean captureInput(VerbPhrase v, Context c){
-        if(!c.getState().contains("CSRoom_inspected")&& (v.equals(new VerbPhrase("look", "around"))||v.equals(new VerbPhrase("description")))){
-            System.out.println(description);
-            description = "There are a lot of broken computers around the room and there is a note on the ground. " +
-                    "\nThere is a door to the east.";
-            c.getState().add("CSRoom_inspected");
-            return !Game.GO_TO_NEXT;
-        } else {
             return Game.GO_TO_NEXT;
-        }
     }
 }
