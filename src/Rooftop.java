@@ -38,6 +38,24 @@ public class Rooftop extends Area{
             return !Game.GO_TO_NEXT;
         });
         
+        this.getLocalActions().put(new VerbPhrase("look"), (c)->{
+            System.out.println(description);
+            description = laterDescription;
+            if(this.getInventory().contains("SecretPassageKey")){
+                description += keyDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("look around"), (c)->{
+            System.out.println(description);
+            description = laterDescription;
+            if(this.getInventory().contains("SecretPassageKey")){
+                description += keyDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
         this.getLocalActions().put(new VerbPhrase("east"), (c)->{
             System.out.println("You walk off the roof and fall to the hard concrete ground."
                     + "\nYour skull breaks open on impact, and your brain slowly oozes out"

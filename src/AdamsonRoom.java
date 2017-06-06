@@ -45,6 +45,30 @@ public class AdamsonRoom extends Area{
             return !Game.GO_TO_NEXT;
         });
         
+        this.getLocalActions().put(new VerbPhrase("look"), (c)->{
+            System.out.println(description);
+            description = laterDescription;
+            if(noteRead){
+                description += noteDescription;
+            }
+            if(this.getInventory().contains("Troll")){
+                description += trollDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("look around"), (c)->{
+            System.out.println(description);
+            description = laterDescription;
+            if(noteRead){
+                description += noteDescription;
+            }
+            if(this.getInventory().contains("Troll")){
+                description += trollDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
         this.getLocalActions().put(new VerbPhrase("cut", "troll"), (c)->{
             if(this.getInventory().contains("Troll") && c.getPlayer().getInventory().contains("Sword")){
                 System.out.println("You cut up the troll and move the pieces out of"

@@ -54,6 +54,26 @@ public class ISSRoom extends Area{
             }
             return !Game.GO_TO_NEXT;
         });
+        
+        this.getLocalActions().put(new VerbPhrase("look"), (c)->{
+            System.out.println(description);
+            if(takeSword == false){
+                description = laterDescription + itemDescription;
+            } else {
+                description = laterDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("look around"), (c)->{
+            System.out.println(description);
+            if(takeSword == false){
+                description = laterDescription + itemDescription;
+            } else {
+                description = laterDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
     }
         public boolean captureInput(VerbPhrase v, Context c){
         return Game.GO_TO_NEXT;
