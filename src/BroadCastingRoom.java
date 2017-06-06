@@ -49,7 +49,7 @@ public class BroadCastingRoom extends Area{
             return !Game.GO_TO_NEXT;
         });
         
-        this.getLocalActions().put(new VerbPhrase("look around"), (c)->{
+        this.getLocalActions().put(new VerbPhrase("look", "around"), (c)->{
             System.out.println(description);
             description = laterDescription;
             if(this.getInventory().contains("pen")){

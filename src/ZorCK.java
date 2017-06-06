@@ -46,7 +46,9 @@ public class ZorCK extends Game {
             c.getState().add("laptop_unlocked");
             System.out.println("You unlocked the laptop!");
         }else if(v.equals(new VerbPhrase("drink", "chemical"))&&c.getPlayer().getInventory().contains("chemical")){
-            System.out.print("You die!");
+            System.out.print("You drink the chemical. It has a bitter taste and your throat feels like it's burning."
+                    + "\nYou feel dizzy and fall on the ground, passing out. "
+                    + "\nYou Lose");
             c.getGame().quit();
         }else if(v.equals(new VerbPhrase("look"))){
             System.out.println(c.getWorld().getCurrentArea().description);
