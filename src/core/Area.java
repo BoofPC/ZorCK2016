@@ -24,14 +24,7 @@ public class Area{
     }
 
     public boolean captureInput(VerbPhrase v, Context c){
-        boolean pass;
-        if(this.localActions.get(v) != null){
-            pass = this.localActions.get(v).apply(c);
-        } else {
-            System.out.println("What?");
-            pass = false;
-        }
-        return pass;
+        return Game.GO_TO_NEXT;
     }
 
     public static String toID(String name){
@@ -57,6 +50,6 @@ public class Area{
     public List<String> getInventory(){ return this.inventory; }
 
     public static enum Direction{
-        NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST,UP,DOWN, NODIRECTION
+        NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST,UP,DOWN,NODIRECTION
     }
 }

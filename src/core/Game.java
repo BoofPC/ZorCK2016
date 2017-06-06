@@ -35,13 +35,13 @@ public abstract class Game {
             turn++;
             String input = console.nextLine();
             VerbPhrase v = interpreter.interpret(input);
-            boolean next = true;
             if(v == null) continue;
             if(v.getVerb().equals("WAT")){
                 System.out.println("I don't understand--can you say that another way?");
                 System.out.println();
                 continue;
             }
+            boolean next = doThisFirst(v,c);
             if(next) {
                 next = c.getWorld().getCurrentArea().captureInput(v, c);
             }
@@ -116,6 +116,10 @@ public abstract class Game {
             System.out.println("You can't do that here.");
         }
 
+        return GO_TO_NEXT;
+    }
+
+    public boolean doThisFirst(VerbPhrase v, Context c){
         return GO_TO_NEXT;
     }
 

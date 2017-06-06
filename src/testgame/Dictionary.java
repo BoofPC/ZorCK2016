@@ -26,7 +26,9 @@ public class Dictionary implements Interpretable {
                 "run",
                 "inventory",
                 "description",
-                "help"
+                "help",
+                "quit",
+                "look"
         );
 
         directVerbs = Arrays.asList(
