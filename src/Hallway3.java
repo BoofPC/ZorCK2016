@@ -6,7 +6,7 @@ import tbge.*;
 public class Hallway3 extends Area {
     public Hallway3(){
         super("Hallway 3");
-        this.getDoors().put(Direction.WEST, new Door("Secret Passage", "SecretPassageKey"));
+        this.getDoors().put(Direction.WEST, new Door("Secret Passage", "secretpassagekey"));
         this.getDoors().put(Direction.NORTH, new Door("Hallway 2"));
         this.getDoors().put(Direction.SOUTH, new Door("Hallway 4"));
         this.description = "There is a door off the hallway to the west. It appears to be locked...";

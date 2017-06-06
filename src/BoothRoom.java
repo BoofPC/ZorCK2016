@@ -17,8 +17,8 @@ public class BoothRoom extends Area {
     public BoothRoom(){
         super("Booth's Room");
         this.getDoors().put(Direction.EAST, new Door("Hallway 2"));
-        this.description.equals("You see various physics and robotics posters on the wall. On a table there is a stack of " +
-                "\nPhysics Textbooks. In the corner sits Mr. Booth eating a snack and listening to music.");
+        this.description = "You see various physics and robotics posters on the wall. On a table there is a stack of " +
+                "\nPhysics Textbooks. In the corner sits Mr. Booth eating a snack and listening to music.";
         this.getLocalActions().put(new VerbPhrase("read", "textbook"), this::readTextbook);
         this.getLocalActions().put(new VerbPhrase("give","pen", "Mr.Booth"), this::givePen);
         this.getLocalActions().put(new VerbPhrase("give", "red_pen", "Mr.Booth"), this::givePen);
@@ -99,11 +99,11 @@ public class BoothRoom extends Area {
     }
 
     public boolean giveLaptop(Context c){
-        if(c.getState().contains("laptop_unlocked")&&c.getPlayer().getInventory().remove("laptop")){
-            this.BoothsInventory.add("laptop");
+        if(c.getState().contains("laptop_unlocked")&&c.getPlayer().getInventory().remove("Laptop")){
+            this.BoothsInventory.add("Laptop");
             System.out.println("You gave Booth the laptop!");
             win(c);
-        }else if(c.getPlayer().getInventory().contains("laptop")){
+        }else if(c.getPlayer().getInventory().contains("Laptop")){
             System.out.println("You must unlock the laptop before you give it to me!");
         }else{
             System.out.println("You don't have the laptop!");
@@ -112,8 +112,8 @@ public class BoothRoom extends Area {
     }
 
     public void win(Context c){
-        if(BoothsInventory.contains("calculator")&&BoothsInventory.contains("assignment")&&BoothsInventory.contains("red_pen")
-                &&BoothsInventory.contains("laptop")){
+        if(BoothsInventory.contains("calculator")&&BoothsInventory.contains("assignment")&&BoothsInventory.contains("pen")
+                &&BoothsInventory.contains("Laptop")){
             System.out.println();
             System.out.println("Mr. Booth has everything he needs to grade! He grades your assignment- you got 99%..." +
                     "\nguess you were missing a semicolon... Whoops.");

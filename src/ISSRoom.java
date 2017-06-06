@@ -25,18 +25,18 @@ public class ISSRoom extends Area{
     public ISSRoom(){
         super("ISS Room");
         this.getDoors().put(Direction.NORTH,new Door("Hallway 9"));
-        this.getInventory().add("Sword");
+        this.getInventory().add("sword");
         
         this.description = "There are papers scattered throughout the floor."
             + "\nThere is a large desk in the west of the room that has a Sword on it?"
             + "\nDid someone seriously bring that to school? Probably got confiscated," 
             + "\nbut maybe you can use it?"; 
 
-        this.getLocalActions().put(new VerbPhrase("take","Sword"),(c)->{
+        this.getLocalActions().put(new VerbPhrase("take","sword"),(c)->{
             description = laterDescription;
             System.out.println("You take the Sword. Be sure to not get caught with that.");
-            if(this.getInventory().remove("Sword")){
-                c.getPlayer().getInventory().add("Sword");
+            if(this.getInventory().remove("sword")){
+                c.getPlayer().getInventory().add("sword");
                 takeSword = true;
             } else {
                 System.out.println("You already took that!");
@@ -46,6 +46,26 @@ public class ISSRoom extends Area{
         });
         
         this.getLocalActions().put(new VerbPhrase("description"), (c)->{
+            System.out.println(description);
+            if(takeSword == false){
+                description = laterDescription + itemDescription;
+            } else {
+                description = laterDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("look"), (c)->{
+            System.out.println(description);
+            if(takeSword == false){
+                description = laterDescription + itemDescription;
+            } else {
+                description = laterDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("look", "around"), (c)->{
             System.out.println(description);
             if(takeSword == false){
                 description = laterDescription + itemDescription;

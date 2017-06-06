@@ -7,6 +7,7 @@ import tbge.VerbPhrase;
  * Created by guerrer4154c on 5/31/2017.
  */
 public class FisherRoom extends Area{
+<<<<<<< HEAD
     private String laterDescription = "History posters are all around on the walls. Mrs. Fischer is frantically looking for some coffee.";
     private String itemDescription = "A lantern sits on a desk, perhaps it can light your way.";
     private boolean takeLantern = false;
@@ -16,6 +17,17 @@ public class FisherRoom extends Area{
                 "\nPosters depicting politicians and important moments in history are all around on the walls."+
                 "\nMrs.Fisher sits at her desk muttering things to herself.";
         this.getDoors().put(Direction.SOUTH,new Door("Hallway17"));
+=======
+
+    private String itemDescription = "A lantern sits on a desk, perhaps it can light your way.";
+    private boolean takeLantern = false;
+    private String laterDescription = "History posters are all around on the walls. Mrs. Fisher is frantically looking for some coffee.";
+    public FisherRoom(){
+        super("Fisher's Room");
+        this.description = "You enter the room. The class is empty with the exception of Mrs. Fisher";
+        this.getDoors().put(Direction.SOUTH,new Door("Hallway 17"));
+
+>>>>>>> origin/ZorCK2017
         this.getInventory().add("Lantern");
         this.getLocalActions().put(new VerbPhrase("take","Lantern"),(c)-> {
             description = laterDescription;

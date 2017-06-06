@@ -13,6 +13,7 @@ public class LibraryRoom extends Area {
                 "\nYou’ve entered the library, in the distance there’s a table with a laptop on it";
         this.getDoors().put(Direction.WEST,new Door("Hallway13"));
         this.getInventory().add("Laptop");
+<<<<<<< HEAD
         this.getLocalActions().put(new VerbPhrase("take","Laptop"),(c) ->{
             description = laterDescription;
             System.out.println("You took the laptop!");
@@ -36,5 +37,8 @@ public class LibraryRoom extends Area {
     }
     public boolean captureInput(VerbPhrase v, Context c){
         return Game.GO_TO_NEXT;
+=======
+
+>>>>>>> origin/ZorCK2017
     }
 }
