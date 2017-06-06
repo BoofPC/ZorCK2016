@@ -15,8 +15,6 @@ public class LibraryRoom extends Area {
                 "\nYou’ve entered the library, in the distance there’s a table with a laptop on it";
         this.getDoors().put(Direction.WEST,new Door("Hallway13"));
         this.getInventory().add("Laptop");
-        this.getLocalActions().put(new VerbPhrase("take","Laptop"),(c)-> {
 
-        }
     }
 }
