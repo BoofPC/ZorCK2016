@@ -10,7 +10,7 @@ import java.util.List;
  * Created by lynds on 6/5/2017.
  */
 
-//TODO add talking to Booth
+//TODO add alternate phrases to list -> should also have "give Mr.Booth (item)" construct
 public class BoothRoom extends Area {
     private List<String> BoothsInventory;
 
@@ -99,11 +99,11 @@ public class BoothRoom extends Area {
     }
 
     public boolean giveLaptop(Context c){
-        if(c.getState().contains("laptop_unlocked")&&c.getPlayer().getInventory().remove("Laptop")){
-            this.BoothsInventory.add("Laptop");
+        if(c.getState().contains("laptop_unlocked")&&c.getPlayer().getInventory().remove("laptop")){
+            this.BoothsInventory.add("laptop");
             System.out.println("You gave Booth the laptop!");
             win(c);
-        }else if(c.getPlayer().getInventory().contains("Laptop")){
+        }else if(c.getPlayer().getInventory().contains("laptop")){
             System.out.println("You must unlock the laptop before you give it to me!");
         }else{
             System.out.println("You don't have the laptop!");

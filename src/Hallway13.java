@@ -5,11 +5,16 @@ import tbge.*;
  */
 public class Hallway13 extends Area {
     public Hallway13(){
-        super("Hallway13");
-        this.getDoors().put(Direction.SOUTH, new Door("Hallway12"));
-        this.getDoors().put(Direction.EAST, new Door("Library"));
+        super("Hallway 13");
+        this.getDoors().put(Direction.SOUTH, new Door("Hallway 12"));
+
+       //Can either choose to have a locked library or a barricaded library- but you aren't supposed to be able to get
+        // to the Library from this hallway
+
+        //this.getDoors().put(Direction.EAST, new Door("Library", "LibraryKey"));
         this.description = "You've reached the end of the hallway! The stairs are blocked, so there is no way downstairs." +
-                "\nThere is a door to the Northwest or you can go back the way you came.";
+                "\nThe door to the east appears to be blocked. Maybe you can find a back way in. Or maybe you should just go back " +
+                "\nthe way you came.";
     }
     public boolean captureInput(VerbPhrase v, Context c){
         return Game.GO_TO_NEXT;

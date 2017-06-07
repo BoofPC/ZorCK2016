@@ -5,9 +5,9 @@ import tbge.*;
  */
 public class Hallway16 extends Area {
     public Hallway16(){
-        super("Hallway16");
-        this.getDoors().put(Direction.WEST, new Door("Hallway17"));
-        this.getDoors().put(Direction.EAST, new Door("Hallway15"));
+        super("Hallway 16");
+        this.getDoors().put(Direction.WEST, new Door("Hallway 17"));
+        this.getDoors().put(Direction.EAST, new Door("Hallway 15"));
         this.description = "This part of the hallway seems pretty boring."
         +"\nMaybe if you continue down the path, you will be lead to somewhere important?";
     }

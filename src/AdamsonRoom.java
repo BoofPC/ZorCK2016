@@ -70,7 +70,7 @@ public class AdamsonRoom extends Area{
         });
         
         this.getLocalActions().put(new VerbPhrase("cut", "troll"), (c)->{
-            if(this.getInventory().contains("Troll") && c.getPlayer().getInventory().contains("Sword")){
+            if(this.getInventory().contains("Troll") && c.getPlayer().getInventory().contains("sword")){
                 System.out.println("You cut up the troll and move the pieces out of"
                 + "\n your path.");
                 this.getInventory().remove("Troll");

@@ -19,7 +19,7 @@ import tbge.VerbPhrase;
  */
 public class ISSRoom extends Area{
     private String laterDescription = "A messy room where troubled children stay.\n";
-    private String itemDescription = "There is a Sword on a large desk in the west of the room.\n";
+    private String itemDescription = "There is a sword on a large desk in the west of the room.\n";
     private boolean takeSword = false;
             
     public ISSRoom(){
@@ -34,7 +34,7 @@ public class ISSRoom extends Area{
 
         this.getLocalActions().put(new VerbPhrase("take","sword"),(c)->{
             description = laterDescription;
-            System.out.println("You take the Sword. Be sure to not get caught with that.");
+            System.out.println("You take the sword. Be sure to not get caught with that.");
             if(this.getInventory().remove("sword")){
                 c.getPlayer().getInventory().add("sword");
                 takeSword = true;

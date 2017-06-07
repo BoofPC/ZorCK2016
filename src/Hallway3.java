@@ -14,8 +14,8 @@ public class Hallway3 extends Area {
     }
 
     public boolean unlockDoor(Context c){
-        if(c.getPlayer().getInventory().contains("SecretPassageKey")){
-            this.getDoors().get(Direction.WEST).unlock("SecretPassageKey");
+        if(c.getPlayer().getInventory().contains("secretpassagekey")){
+            this.getDoors().get(Direction.WEST).unlock("secretpassagekey");
             System.out.println("You unlocked the door!");
             description = "There is a door off the hallway to the west.";
         }else{
@@ -25,8 +25,9 @@ public class Hallway3 extends Area {
     }
 
     public boolean captureInput(VerbPhrase v, Context c) {
-        if(c.getPlayer().getInventory().contains("SPKey")){
-            description+= "But you have a key that might just fit into the lock!";
+        if(c.getPlayer().getInventory().contains("secretpassagekey")){
+            description = "There is a door off the hallway to the west. It appears to be locked..." +
+                    "\nBut you have a key that might just fit into the lock!";
         }
         return Game.GO_TO_NEXT;
     }

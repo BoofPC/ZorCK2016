@@ -19,8 +19,7 @@ public class Hallway11 extends Area{
     public Hallway11(){
         super("Hallway 11");
         this.getDoors().put(Direction.EAST, new Door("Hallway 10"));
-        //add later once Cyren's branch exists
-        //this.getDoors().put(Direction.WEST, new Door("Hallway 12"));
+        this.getDoors().put(Direction.WEST, new Door("Hallway 12"));
         this.description = "A room is to the south, however it seems to be locked. It's labeled"
                 + "\n\"Broadcasting Room\". How would you get inside?";
         

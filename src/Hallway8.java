@@ -23,7 +23,7 @@ public class Hallway8 extends Area{
         this.getDoors().put(Direction.WEST, new Door("Hallway 9"));
         
         this.description = "The hallway continues to the west and the east, as well as opening to the"
-                + "\nsouth. It reeks of cheap perfume, most likely because you're so close to the Women's "
+                + "\nnorth. It reeks of cheap perfume, most likely because you're so close to the Women's "
                 + "\nrestroom.";
     }
         public boolean captureInput(VerbPhrase v, Context c){
