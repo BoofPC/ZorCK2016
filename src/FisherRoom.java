@@ -28,6 +28,55 @@ public class FisherRoom extends Area{
             }
             return !Game.GO_TO_NEXT;
         });
+        
+        this.getLocalActions().put(new VerbPhrase("look"), (c)->{
+            System.out.println(description);
+            if(!takeLantern){
+                description = laterDescription + itemDescription;
+            } else {
+                description = laterDescription;
+            }
+            return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("give", "coffee", "Ms.Fisher"), (c)->{
+        if(c.getPlayer().getInventory().remove("coffee")){
+            System.out.println("Thank you for the coffee. I really needed it to be active this morning.");
+            c.getState().add("fisher_got_coffee");
+        }else{
+            System.out.println("You don't even have any coffee.");
+        }
+        return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("give", "coffee", "Fisher"), (c)->{
+        if(c.getPlayer().getInventory().remove("coffee")){
+            System.out.println("Thank you for the coffee. I really needed it to be active this morning.");
+            c.getState().add("fisher_got_coffee");
+        }else{
+            System.out.println("You don't even have any coffee.");
+        }
+        return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("talk", "Fisher"), (c)->{
+        if(!c.getState().contains("fisher_got_coffee")){
+            System.out.println("Hello! I would talk to you, but I would really like some coffee first...");
+        }else{
+            System.out.println("Thank you so much for the coffee!");
+        }
+        return !Game.GO_TO_NEXT;
+        });
+        
+        this.getLocalActions().put(new VerbPhrase("talk", "Ms.Fisher"), (c)->{
+        if(!c.getState().contains("fisher_got_coffee")){
+            System.out.println("Hello! I would talk to you, but I would really like some coffee first...");
+        }else{
+            System.out.println("Thank you so much for the coffee!");
+        }
+        return !Game.GO_TO_NEXT;
+        });
+        
         }
 
         public boolean captureInput(VerbPhrase v, Context c){
