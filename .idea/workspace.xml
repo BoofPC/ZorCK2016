@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="ZorCK2016:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="ab9a9ae1-336a-4346-bd83-ec6b8ad31a6c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/tbge.jar" afterPath="$PROJECT_DIR$/dist/tbge.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Area.java" afterPath="$PROJECT_DIR$/src/core/Area.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Game.java" afterPath="$PROJECT_DIR$/src/core/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/testgame/Dictionary.java" afterPath="$PROJECT_DIR$/src/testgame/Dictionary.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZorCK2016.iml" afterPath="$PROJECT_DIR$/ZorCK2016.iml" />
     </list>
-    <ignored path="$PROJECT_DIR$/bin/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
-              <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+              <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -49,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/testgame/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -81,7 +72,9 @@
               <caret line="36" column="56" lean-forward="false" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
               <folding>
                 <element signature="e#5240#5241#0" expanded="true" />
-                <element signature="e#5273#5274#0" expanded="true" />
+                <marker date="1496775435000" expanded="true" signature="5268:5274" ph=" }" />
+                <marker date="1496775435000" expanded="false" signature="5298:5308" ph=" { " />
+                <marker date="1496775435000" expanded="false" signature="5329:5335" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -90,8 +83,8 @@
       <file leaf-file-name="CenterRoom.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/testgame/CenterRoom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="390">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,13 +92,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dictionary.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Dictionary.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/testgame/Dictionary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="151">
+              <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1496775656000" expanded="false" signature="2322:2333" ph=" { " />
+                <marker date="1496775656000" expanded="false" signature="2358:2364" ph=" }" />
+                <marker date="1496775656000" expanded="false" signature="2420:2431" ph=" { " />
+                <marker date="1496775656000" expanded="false" signature="2450:2456" ph=" }" />
+                <marker date="1496775656000" expanded="false" signature="2514:2525" ph=" { " />
+                <marker date="1496775656000" expanded="false" signature="2546:2552" ph=" }" />
+                <marker date="1496775656000" expanded="false" signature="2610:2621" ph=" { " />
+                <marker date="1496775656000" expanded="false" signature="2642:2648" ph=" }" />
+                <marker date="1496775656000" expanded="false" signature="2711:2722" ph=" { " />
+                <marker date="1496775656000" expanded="false" signature="2748:2754" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -116,7 +119,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
               <caret line="39" column="53" lean-forward="false" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,94 +141,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>state</find>
-      <find>verb</find>
-      <find>Interpretable</find>
-      <find>null</find>
-      <find>dictionary.mapsTo(</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>&quot;&quot;</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/core/Verb.java" />
-        <option value="$PROJECT_DIR$/src/core/Item.java" />
-        <option value="$PROJECT_DIR$/src/items/MrBirkenfeld.java" />
-        <option value="$PROJECT_DIR$/src/items/TimeMachine.java" />
-        <option value="$PROJECT_DIR$/src/areas/WomensRestroom.java" />
-        <option value="$PROJECT_DIR$/src/areas/Hallway07.java" />
-        <option value="$PROJECT_DIR$/src/areas/PracticeRoom2.java" />
-        <option value="$PROJECT_DIR$/src/areas/BroadcastingRoom.java" />
-        <option value="$PROJECT_DIR$/src/verbs/Bless.java" />
-        <option value="$PROJECT_DIR$/src/items/EagleOfBlessing.java" />
-        <option value="$PROJECT_DIR$/src/areas/Cafeteria.java" />
-        <option value="$PROJECT_DIR$/src/areas/Fitz.java" />
-        <option value="$PROJECT_DIR$/src/areas/JanitorsCloset.java" />
-        <option value="$PROJECT_DIR$/src/items/MrsWatchman.java" />
-        <option value="$PROJECT_DIR$/src/core/zorck.bnf" />
-        <option value="$PROJECT_DIR$/src/core/CommandTest.java" />
-        <option value="$PROJECT_DIR$/src/core/Parser.java" />
-        <option value="$PROJECT_DIR$/src/core/Player.java" />
-        <option value="$PROJECT_DIR$/src/areas/JorstadsRoom.java" />
-        <option value="$PROJECT_DIR$/src/areas/ArthursRoom.java" />
-        <option value="$PROJECT_DIR$/src/areas/GacsRoom.java" />
-        <option value="$PROJECT_DIR$/src/areas/NorthRoom.java" />
-        <option value="$PROJECT_DIR$/src/areas/EastRoom.java" />
-        <option value="$PROJECT_DIR$/src/areas/SouthRoom.java" />
-        <option value="$PROJECT_DIR$/src/areas/WestRoom.java" />
-        <option value="$PROJECT_DIR$/src/core/Command.java" />
-        <option value="$PROJECT_DIR$/src/areas/MainRoom.java" />
-        <option value="$PROJECT_DIR$/src/core/SimpleInterpreter.java" />
-        <option value="$PROJECT_DIR$/src/areas/CenterRoom.java" />
-        <option value="$PROJECT_DIR$/src/game_specific/World.java" />
-        <option value="$PROJECT_DIR$/src/game_specific/MyWorld.java" />
-        <option value="$PROJECT_DIR$/src/game_specific/MyGame.java" />
-        <option value="$PROJECT_DIR$/src/game_specific/Game.java" />
-        <option value="$PROJECT_DIR$/src/testgame/Game.java" />
-        <option value="$PROJECT_DIR$/src/testgame/Verbs.java" />
-        <option value="$PROJECT_DIR$/src/core/HowToMakeAGame.txt" />
-        <option value="$PROJECT_DIR$/src/core/Interpretable.java" />
-        <option value="$PROJECT_DIR$/src/testgame/HowToMakeAGame.txt" />
-        <option value="$PROJECT_DIR$/src/core/Context.java" />
-        <option value="$PROJECT_DIR$/src/core/World.java" />
-        <option value="$PROJECT_DIR$/src/core/Door.java" />
-        <option value="$PROJECT_DIR$/src/core/VerbPhrase.java" />
-        <option value="$PROJECT_DIR$/src/testgame/EastRoom.java" />
-        <option value="$PROJECT_DIR$/src/testgame/Test.java" />
-        <option value="$PROJECT_DIR$/src/testgame/CenterRoom.java" />
-        <option value="$PROJECT_DIR$/src/core/Interpreter.java" />
-        <option value="$PROJECT_DIR$/src/testgame/NorthRoom.java" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/core/Area.java" />
-        <option value="$PROJECT_DIR$/src/core/Game.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/testgame/Dictionary.java" />
+        <option value="$PROJECT_DIR$/src/core/yfhjgfjhg.java" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
     <option name="width" value="1280" />
@@ -295,6 +227,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZorCK2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZorCK2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZorCK2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZorCK2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -303,27 +263,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Alex/workspace/ZorCK2016/src/testgame/CenterRoom.java" />
-    <property name="FullScreen" value="true" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
-    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
-    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="true" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="zorck2016" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/testgame" />
-      <recent name="$PROJECT_DIR$/src/game_specific" />
-    </key>
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -337,47 +279,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
-    <configuration default="false" name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="core.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="testgame.Test" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ZorCK2016" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="CommandTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="core.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="core.CommandTest" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ZorCK2016" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -582,37 +484,12 @@
       <listeners />
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Application.Test" />
-      <item index="1" class="java.lang.String" itemvalue="Application.CommandTest" />
-    </list>
-    <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Test" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CommandTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="ab9a9ae1-336a-4346-bd83-ec6b8ad31a6c" name="Default" comment="" />
-      <created>1494599317864</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1494599317864</updated>
-      <workItem from="1494599325899" duration="2210000" />
-      <workItem from="1494867648366" duration="3792000" />
-    </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -650,15 +527,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.bnf" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -682,8 +550,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/items/Coffee.java" />
-    <entry file="file://$PROJECT_DIR$/src/areas/WomensRestroom.java" />
     <entry file="file://$PROJECT_DIR$/src/items/Cracker.java" />
     <entry file="file://$PROJECT_DIR$/src/items/Crow.java" />
     <entry file="file://$PROJECT_DIR$/src/areas/Hallway07.java" />
@@ -761,7 +627,7 @@
         <state relative-caret-position="165">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -789,7 +655,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="39" column="53" lean-forward="false" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -805,15 +673,15 @@
     <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/testgame/CenterRoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="390">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -837,17 +705,9 @@
           <caret line="36" column="56" lean-forward="false" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
           <folding>
             <element signature="e#5240#5241#0" expanded="true" />
-            <element signature="e#5273#5274#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testgame/Dictionary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1496775435000" expanded="true" signature="5268:5274" ph=" }" />
+            <marker date="1496775435000" expanded="false" signature="5298:5308" ph=" { " />
+            <marker date="1496775435000" expanded="false" signature="5329:5335" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -862,13 +722,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12039">
+          <caret line="101" column="65" lean-forward="false" selection-start-line="101" selection-start-column="65" selection-end-line="101" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/yfhjgfjhg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="36" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/testgame/Dictionary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1496775656000" expanded="false" signature="2322:2333" ph=" { " />
+            <marker date="1496775656000" expanded="false" signature="2358:2364" ph=" }" />
+            <marker date="1496775656000" expanded="false" signature="2420:2431" ph=" { " />
+            <marker date="1496775656000" expanded="false" signature="2450:2456" ph=" }" />
+            <marker date="1496775656000" expanded="false" signature="2514:2525" ph=" { " />
+            <marker date="1496775656000" expanded="false" signature="2546:2552" ph=" }" />
+            <marker date="1496775656000" expanded="false" signature="2610:2621" ph=" { " />
+            <marker date="1496775656000" expanded="false" signature="2642:2648" ph=" }" />
+            <marker date="1496775656000" expanded="false" signature="2711:2722" ph=" { " />
+            <marker date="1496775656000" expanded="false" signature="2748:2754" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>ZorCK2016:jar</last-edited>
+          <last-edited>tbge</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -921,18 +817,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -940,6 +825,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>tbge</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
