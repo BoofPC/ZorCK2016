@@ -41,6 +41,9 @@ public class StaffLounge extends Area {
     
     @Override
     public boolean captureInput(VerbPhrase v,Context c){
+        if(v.equals(new VerbPhrase("move","north"))){
+            return Game.GO_TO_NEXT;
+        }
         if(!(v.equals(new VerbPhrase("use","lantern")))
                 && !c.getState().contains("lantern_on")){
             System.out.println(description);

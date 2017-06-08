@@ -13,7 +13,7 @@ public class Hallway13 extends Area {
 
         //this.getDoors().put(Direction.EAST, new Door("Library", "LibraryKey"));
         this.description = "You've reached the end of the hallway! The stairs are blocked, so there is no way downstairs." +
-                "\nThe door to the east appears to be blocked. Maybe you can find a back way in. Or maybe you should just go back " +
+                "\nThe door to the Library appears to be blocked. Maybe you can find a back way in. Or maybe you should just go back " +
                 "\nthe way you came.";
     }
     public boolean captureInput(VerbPhrase v, Context c){

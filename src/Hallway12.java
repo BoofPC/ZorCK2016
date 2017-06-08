@@ -11,8 +11,8 @@ public class Hallway12 extends Area {
         this.getDoors().put(Direction.EAST, new Door("Hallway 11"));
         this.getDoors().put(Direction.WEST, new Door("Hallway 14"));
         this.getDoors().put(Direction.NORTH, new Door("Hallway 13"));
-        this.description = "A room is to the south, however it seems to be locked. It's labeled"
-                + "\n'ASL Romano\". How would you get inside?";
+        this.description = "The hallway seems to split into three paths here, one path to the west and another to the "
+                + "\neast, but with a short path to the north.";
         this.getLocalActions().put(new VerbPhrase("south"), (c) -> {
             System.out.println("The door seems to be locked, maybe there is another way"
                     + "\n to get in...");

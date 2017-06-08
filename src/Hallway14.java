@@ -8,6 +8,9 @@ import tbge.*;
 public class Hallway14 extends Area {
     public Hallway14(){
         super("Hallway 14");
+        this.description = "This part of the hallway kind of smells, probably because it's so close to the Men's"
+                + "\nRestroom... Poor teachers, their staff lounge is across from the most disgusting place in"
+                + "\nthe school.";
         this.getDoors().put(Direction.SOUTH, new Door("Staff Lounge", "staffloungekey"));
         this.getDoors().put(Direction.EAST, new Door("Hallway 12"));
         this.getDoors().put(Direction.WEST, new Door("Hallway 15"));
