@@ -113,7 +113,7 @@ public class BoothRoom extends Area {
 
     public void win(Context c){
         if(BoothsInventory.contains("calculator")&&BoothsInventory.contains("assignment")&&BoothsInventory.contains("pen")
-                &&BoothsInventory.contains("Laptop")){
+                &&BoothsInventory.contains("laptop")){
             System.out.println();
             System.out.println("Mr. Booth has everything he needs to grade! He grades your assignment- you got 99%..." +
                     "\nguess you were missing a semicolon... Whoops.");

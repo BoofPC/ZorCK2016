@@ -4,6 +4,8 @@ import tbge.*;
 /**
  * Created by guerrer4154c on 6/6/2017.
  */
+
+//TODO this room should still allow the player to move out of the room if they don't have the lantern
 public class StaffLounge extends Area {
     private String laterDescription = "The light that you have makes it possible to see into the room. A"
             + "\nbroken copy machine rests in the corner of the room, the school should probably get a"

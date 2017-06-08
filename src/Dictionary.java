@@ -48,7 +48,8 @@ public class Dictionary implements Interpretable {
                 "taste",
                 "drink",
                 "type",
-                "cut"
+                "cut",
+                "search"
         );
 
         indirectVerbs = Arrays.asList(

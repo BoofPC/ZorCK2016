@@ -43,6 +43,7 @@ public class FisherRoom extends Area{
         if(c.getPlayer().getInventory().remove("coffee")){
             System.out.println("Thank you for the coffee. I really needed it to be active this morning.");
             c.getState().add("fisher_got_coffee");
+            ((ZorCK)c.getGame()).addPoints(10);
         }else{
             System.out.println("You don't even have any coffee.");
         }
@@ -53,6 +54,7 @@ public class FisherRoom extends Area{
         if(c.getPlayer().getInventory().remove("coffee")){
             System.out.println("Thank you for the coffee. I really needed it to be active this morning.");
             c.getState().add("fisher_got_coffee");
+            ((ZorCK)c.getGame()).addPoints(10);
         }else{
             System.out.println("You don't even have any coffee.");
         }

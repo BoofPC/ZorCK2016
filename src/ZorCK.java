@@ -7,6 +7,8 @@ import java.util.Random;
 /**
  * Created by lynds on 5/31/2017.
  */
+
+//TODO fix typing in computer-> wrong passwords should do something. maybe add use laptop loop?
 public class ZorCK extends Game {
 
     private int points;
@@ -42,7 +44,7 @@ public class ZorCK extends Game {
             System.out.println("You don't have a chemical to taste!");
         }*/
 
-        if(v.equals(new VerbPhrase("type", "comp_sci_is_fun!"))&&c.getPlayer().getInventory().contains("laptop")){
+        if(v.equals(new VerbPhrase("type", "compsci_is_fun!"))&&c.getPlayer().getInventory().contains("laptop")){
             c.getState().add("laptop_unlocked");
             System.out.println("You unlocked the laptop!");
         }else if(v.equals(new VerbPhrase("drink", "chemical"))&&c.getPlayer().getInventory().contains("chemical")){

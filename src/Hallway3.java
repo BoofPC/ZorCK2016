@@ -18,6 +18,7 @@ public class Hallway3 extends Area {
             this.getDoors().get(Direction.WEST).unlock("secretpassagekey");
             System.out.println("You unlocked the door!");
             description = "There is a door off the hallway to the west.";
+            c.getState().add("secret_passage_unlocked");
         }else{
             System.out.println("You don't have the key!");
         }
@@ -25,7 +26,7 @@ public class Hallway3 extends Area {
     }
 
     public boolean captureInput(VerbPhrase v, Context c) {
-        if(c.getPlayer().getInventory().contains("secretpassagekey")){
+        if(c.getPlayer().getInventory().contains("secretpassagekey")&&!c.getState().contains("secret_passage_unlocked")){
             description = "There is a door off the hallway to the west. It appears to be locked..." +
                     "\nBut you have a key that might just fit into the lock!";
         }
