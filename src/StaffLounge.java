@@ -15,6 +15,7 @@ public class StaffLounge extends Area {
             + "\ncoffee cup on it, maybe someone left it here.";
     private String laterLaterDescription = "A small room that has an overflowing recycling bin, where teachers take a break."
             + "\nIt smells of coffee.";
+    private boolean trash = false;
     public StaffLounge(){
         super("Staff Lounge");
         this.getDoors().put(Direction.NORTH,new Door("Hallway 14"));
@@ -22,18 +23,33 @@ public class StaffLounge extends Area {
         this.getInventory().add("coffee");
         
         
-        Function<Context,Boolean>switchOn = (c)-> {
+        this.getLocalActions().put(new VerbPhrase("use","lantern"), (c)->{
+            if(c.getPlayer().getInventory().contains("lantern")){
             System.out.println("You turn on the lantern! Now you can see!");
             System.out.println(description = laterDescription);
             this.description = laterLaterDescription;
             c.getState().add("lantern_on");
+            }
             return !Game.GO_TO_NEXT;
-        };
-        this.getLocalActions().put(new VerbPhrase("use","lantern"), switchOn);
+            });
+        
+        this.getLocalActions().put(new VerbPhrase("take","coffee"), (c)->{
+            if(this.getInventory().contains("coffee")){
+            c.getPlayer().getInventory().add("coffee");
+            this.getInventory().remove("coffee");
+            System.out.println("You take the coffee. The cup feels warm to the touch.");
+            }
+            return !Game.GO_TO_NEXT;
+        });
         
         this.getLocalActions().put(new VerbPhrase("search", "recycle"), (c)->{
+            if(trash == false){
             System.out.println("Hey, you found an old assignment. Mr. Booth needed that, right?");
             c.getPlayer().getInventory().add("assignment");
+            trash = true;
+            } else {
+                System.out.println("You already searched the recycle bin...");
+            }
             return !Game.GO_TO_NEXT;
         });
         
@@ -41,14 +57,14 @@ public class StaffLounge extends Area {
     
     @Override
     public boolean captureInput(VerbPhrase v,Context c){
-        if(v.getDirection() == null){
+        if(c.getState().contains("lantern_on") || v.getDirection() != Area.Direction.NODIRECTION){
             return Game.GO_TO_NEXT;
-        }
-        if(!(v.equals(new VerbPhrase("use","lantern")))
+        }else if(!(v.equals(new VerbPhrase("use","lantern")))
                 && !c.getState().contains("lantern_on")){
             System.out.println(description);
             return !Game.GO_TO_NEXT;
+        } else {
+        return Game.GO_TO_NEXT;
         }
-    return Game.GO_TO_NEXT;
     }
 }
