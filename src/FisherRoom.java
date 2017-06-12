@@ -13,11 +13,22 @@ public class FisherRoom extends Area{
     public FisherRoom(){
         super("Fisher's Room");
 
-        this.description = "You enter the room. The class is empty with the exception of Ms. Fisher";
+        this.description = "A small classroom with posters lining the walls. Ms. Fisher is grading papers at her desk."
+                + "\nShe seems to be falling asleep. Maybe she could use some coffee. There is a lantern on her desk."
+                + "\nIt could be helpful to light up dark rooms.";
 
         this.getDoors().put(Direction.SOUTH,new Door("Hallway 17"));
 
         this.getInventory().add("lantern");
+        
+        this.getLocalActions().put(new VerbPhrase("take", "lantern"), (c)->{
+            if(this.getInventory().contains("lantern")){
+                System.out.println("You got the lantern. You can use it to light up dark rooms.");
+                c.getPlayer().getInventory().add("lantern");
+                this.getInventory().remove("lantern");
+            }
+            return !Game.GO_TO_NEXT;
+            });
 
         this.getLocalActions().put(new VerbPhrase("description"), (c)->{
             System.out.println(description);

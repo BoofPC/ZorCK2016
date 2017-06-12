@@ -33,9 +33,9 @@ public class ISSRoom extends Area{
             + "\nbut maybe you can use it?"; 
 
         this.getLocalActions().put(new VerbPhrase("take","sword"),(c)->{
-            description = laterDescription;
             System.out.println("You take the sword. Be sure to not get caught with that.");
             if(this.getInventory().remove("sword")){
+                ((ZorCK)(c.getGame())).addPoints(10);
                 c.getPlayer().getInventory().add("sword");
                 takeSword = true;
             } else {
@@ -65,15 +65,6 @@ public class ISSRoom extends Area{
             return !Game.GO_TO_NEXT;
         });
         
-        this.getLocalActions().put(new VerbPhrase("look", "around"), (c)->{
-            System.out.println(description);
-            if(takeSword == false){
-                description = laterDescription + itemDescription;
-            } else {
-                description = laterDescription;
-            }
-            return !Game.GO_TO_NEXT;
-        });
     }
         public boolean captureInput(VerbPhrase v, Context c){
         return Game.GO_TO_NEXT;

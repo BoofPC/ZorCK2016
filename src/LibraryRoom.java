@@ -14,8 +14,29 @@ public class LibraryRoom extends Area {
                 "\nYou’ve entered the library, in the distance there’s a table with a laptop on it";
         this.getDoors().put(Direction.NORTH,new Door("Secret Passage"));
         this.getInventory().add("laptop");
+        
+        this.getLocalActions().put(new VerbPhrase("take", "laptop"), (c)->{
+            if(!takeLaptop){
+                System.out.println("You got Mr.Booth's laptop. It's logged out though, you'll need to enter the password"
+                        + "\ngiving it to Mr.Booth.");
+                c.getPlayer().getInventory().add("laptop");
+                this.getInventory().remove("laptop");
+                takeLaptop = true;
+            }
+            return !Game.GO_TO_NEXT;
+            });
 
         this.getLocalActions().put(new VerbPhrase("description"), (c)->{
+            System.out.println(description);
+            if(!takeLaptop){
+                description = laterDescription + itemDescription;
+            } else {
+                description = laterDescription;
+            }
+            return !Game.GO_TO_NEXT;
+            });
+        
+        this.getLocalActions().put(new VerbPhrase("look"), (c)->{
             System.out.println(description);
             if(!takeLaptop){
                 description = laterDescription + itemDescription;

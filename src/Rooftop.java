@@ -45,6 +45,15 @@ public class Rooftop extends Area{
             }
             return !Game.GO_TO_NEXT;
         });
+        
+        this.getLocalActions().put(new VerbPhrase("take", "secretpassagekey"), (c)->{
+            if(this.getInventory().contains("secretpassagekey")){
+                System.out.println("You got the secretpassagekey. You should be able to go into the library through the secret passage now.");
+                c.getPlayer().getInventory().add("secretpassagekey");
+                this.getInventory().remove("secretpassagekey");
+            }
+            return !Game.GO_TO_NEXT;
+            });
     }
         public boolean captureInput(VerbPhrase v, Context c){
         return Game.GO_TO_NEXT;

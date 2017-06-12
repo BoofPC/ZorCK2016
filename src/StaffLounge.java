@@ -35,6 +35,7 @@ public class StaffLounge extends Area {
         
         this.getLocalActions().put(new VerbPhrase("take","coffee"), (c)->{
             if(this.getInventory().contains("coffee")){
+            ((ZorCK)(c.getGame())).addPoints(10);
             c.getPlayer().getInventory().add("coffee");
             this.getInventory().remove("coffee");
             System.out.println("You take the coffee. The cup feels warm to the touch.");
@@ -46,6 +47,7 @@ public class StaffLounge extends Area {
             if(trash == false){
             System.out.println("Hey, you found an old assignment. Mr. Booth needed that, right?");
             c.getPlayer().getInventory().add("assignment");
+            ((ZorCK)(c.getGame())).addPoints(10);
             trash = true;
             } else {
                 System.out.println("You already searched the recycle bin...");

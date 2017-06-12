@@ -49,14 +49,15 @@ public class BroadCastingRoom extends Area{
             return !Game.GO_TO_NEXT;
         });
         
-        this.getLocalActions().put(new VerbPhrase("look", "around"), (c)->{
-            System.out.println(description);
-            description = laterDescription;
+        this.getLocalActions().put(new VerbPhrase("take", "pen"), (c)->{
             if(this.getInventory().contains("pen")){
-                description += penDescription;
+                ((ZorCK)(c.getGame())).addPoints(10);
+                System.out.println("You got a red pen. Mr.Booth needed this, you should give it to him.");
+                c.getPlayer().getInventory().add("pen");
+                this.getInventory().remove("pen");
             }
             return !Game.GO_TO_NEXT;
-        });
+            });
         
         
     }
