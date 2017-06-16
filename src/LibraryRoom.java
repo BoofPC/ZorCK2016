@@ -18,7 +18,7 @@ public class LibraryRoom extends Area {
         this.getLocalActions().put(new VerbPhrase("take", "laptop"), (c)->{
             if(!takeLaptop){
                 System.out.println("You got Mr.Booth's laptop. It's logged out though, you'll need to enter the password"
-                        + "\ngiving it to Mr.Booth.");
+                        + "\nbefore giving it to Mr.Booth.");
                 c.getPlayer().getInventory().add("laptop");
                 this.getInventory().remove("laptop");
                 takeLaptop = true;

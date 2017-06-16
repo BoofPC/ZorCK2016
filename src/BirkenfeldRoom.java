@@ -1,4 +1,7 @@
-import tbge.*;
+gimport tbge.*;
+
+import tbge.Area.Direction;
+import tbge.Door;
 
 /**
  * Created by lynds on 6/2/2017.

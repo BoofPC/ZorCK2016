@@ -94,7 +94,7 @@ public class AdamsonRoom extends Area{
         
         this.getLocalActions().put(new VerbPhrase("read", "note"), (c)->{
             noteRead = true;
-            System.out.println("The Note Says: 'booth: compsci_is_fun!'");
+            System.out.println("The Note Says: 'booth: compsci_is_fun'");
             return !Game.GO_TO_NEXT;
         });        
     }
